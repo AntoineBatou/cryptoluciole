@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- =====================================================================
+     CRYPTOLUCIOLE — TEMPLATE DE NEWSLETTER (réutilisable)
+     Établi le 2026-06-03. Ne PAS refaire le squelette : remplir les {{SLOTS}}.
+     Palette : nuit #1A2332 · teal #28B092 / #2ABFAB · or-luciole #F5A623
+               vert #16a34a · rouge #dc2626 · gris #94a3b8
+     Police : Inter (repli Helvetica/Arial). Corps 16px. Largeur 600px.
+     Rubriques (thème luciole) :
+       🔦 ON ÉCLAIRE (notion) · ✨ DANS LE FAISCEAU (actus) · 🔍 SOUS LA LOUPE (protocole)
+       📊 LES REPÈRES (cours) · 💡 ÇA BRILLE (data) · 📖 DÉFINITIONS · ✉️ À toi de jouer
+     Règles : 2 ou 3 actus (pas de chiffre devant le titre, marqueur ✦ doré).
+              Chaque actu a un encadré vert "💡 Notre avis :". Toujours fact-check web.
+              Toujours le disclaimer. Logo en SVG transparent.
+===================================================================== -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CryptoLuciole #{{NUM}}</title>
+<!--[if mso]><style>*{font-family:Arial,sans-serif!important;}</style><![endif]-->
+</head>
+<body style="margin:0; padding:0; background-color:#EEF2F2; -webkit-text-size-adjust:100%;">
+<div style="display:none; max-height:0; overflow:hidden; opacity:0; color:#EEF2F2; font-size:1px;">{{PREHEADER}}</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#EEF2F2;">
+<tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:16px; overflow:hidden; font-family:'Inter',Helvetica,Arial,sans-serif;">
+
+  <!-- ===== EN-TÊTE ===== -->
+  <tr><td style="background-color:#1A2332; padding:24px 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td width="52" valign="middle" style="width:52px;">
+        <img src="https://raw.githubusercontent.com/AntoineBatou/cryptoluciole-assets/main/firefly-logo-white.png" width="44" alt="CryptoLuciole" style="display:block; width:44px; height:auto;">
+      </td>
+      <td valign="middle" style="padding-left:12px;">
+        <div style="font-size:22px; font-weight:700; color:#ffffff; letter-spacing:0.3px;">CryptoLuciole</div>
+        <div style="font-size:13px; color:#2ABFAB; font-weight:500; margin-top:2px;">La crypto, expliquée en moins de 10 min.</div>
+      </td>
+      <td align="right" valign="middle" style="font-size:12px; color:#94a3b8;">#{{NUM}}<br><span style="color:#64748b;">édition du {{DATE}}</span></td>
+    </tr></table>
+  </td></tr>
+
+  <!-- ===== INTRO ===== -->
+  <tr><td style="padding:34px 36px 10px 36px; color:#1A2332;">
+    <p style="margin:0 0 16px 0; font-size:16px; line-height:1.65;">Bonjour 👋,</p>
+    <p style="margin:0 0 18px 0; font-size:16px; line-height:1.65;">{{INTRO}}</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f7fafa; border-radius:12px;">
+      <tr><td style="padding:18px 22px; font-size:15px; line-height:2; color:#475569;">
+        <strong style="color:#1A2332;">Au menu :</strong><br>
+        🔦 Une notion expliquée<br>
+        ✨ Les actus qui comptent, accompagnées de notre analyse<br>
+        🔍 Un protocole ou une stratégie de la DeFi, expliqué simplement<br>
+        📊 Un rappel des cours et de leur évolution récente<br>
+        📖 Un glossaire des termes du secteur, expliqués clairement
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ===== 🔦 ON ÉCLAIRE (notion) ===== -->
+  <tr><td style="padding:28px 36px 0 36px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background-color:#e8f7f3; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#1d8870; letter-spacing:1.2px;">🔦 ON ÉCLAIRE</td></tr></table>
+    <p style="margin:14px 0 16px 0; font-size:22px; font-weight:800; color:#1A2332;">{{NOTION_TITRE}}</p>
+  </td></tr>
+  <tr><td style="padding:0 36px; color:#1A2332;">
+    <!-- Répéter ce bloc autant que de sous-points. ⬡ = puce dorée -->
+    <p style="margin:0 0 14px 0; font-size:16px; line-height:1.7;"><strong style="color:#F5A623;">⬡ {{SOUS_TITRE}}.</strong> {{TEXTE}}</p>
+  </td></tr>
+
+  <tr><td style="padding:26px 36px 0 36px;"><div style="border-top:1px solid #eef2f2;"></div></td></tr>
+
+  <!-- ===== ✨ DANS LE FAISCEAU (2 ou 3 actus) ===== -->
+  <tr><td style="padding:24px 36px 0 36px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background-color:#fff4e0; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#b9770f; letter-spacing:1.2px;">✨ DANS LE FAISCEAU</td></tr></table>
+  </td></tr>
+  <tr><td style="padding:18px 36px 0 36px; color:#1A2332;">
+
+    <!-- ░░░ BLOC ACTU (à dupliquer pour chaque actu) ░░░ -->
+    <p style="margin:0 0 6px 0; font-size:17px; font-weight:700;"><span style="color:#F5A623;">✦</span>&nbsp; {{ACTU_TITRE}}</p>
+    <p style="margin:0 0 12px 0; font-size:16px; line-height:1.7;">{{ACTU_TEXTE}}</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0fdf4; border-left:4px solid #28B092; border-radius:8px; margin-bottom:14px;">
+      <tr><td style="padding:14px 18px; font-size:16px; line-height:1.65; color:#1A2332;">
+        💡 <strong>Notre avis :</strong> {{ACTU_AVIS}}
+      </td></tr>
+    </table>
+    <p style="margin:0 0 22px 0; font-size:12px; color:#94a3b8;">Source : {{ACTU_SOURCE}}</p>
+    <!-- ░░░ FIN BLOC ACTU ░░░ -->
+
+  </td></tr>
+
+  <tr><td style="padding:26px 36px 0 36px;"><div style="border-top:1px solid #eef2f2;"></div></td></tr>
+
+  <!-- ===== 🔍 SOUS LA LOUPE (protocole) ===== -->
+  <tr><td style="padding:24px 36px 0 36px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background-color:#e8f7f3; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#1d8870; letter-spacing:1.2px;">🔍 SOUS LA LOUPE</td></tr></table>
+    <p style="margin:14px 0 16px 0; font-size:22px; font-weight:800; color:#1A2332;">{{PROTO_NOM}}</p>
+  </td></tr>
+  <tr><td style="padding:0 36px; color:#1A2332;">
+    <p style="margin:0 0 14px 0; font-size:16px; line-height:1.7;"><strong style="color:#28B092;">En bref.</strong> {{PROTO_BREF}}</p>
+    <p style="margin:0 0 8px 0; font-size:16px; line-height:1.7;"><strong style="color:#28B092;">Comment ça marche.</strong></p>
+    <ul style="margin:0 0 14px 0; padding-left:20px; font-size:16px; line-height:1.7;">
+      <li style="margin-bottom:6px;">{{PROTO_ETAPE_1}}</li>
+      <li style="margin-bottom:6px;">{{PROTO_ETAPE_2}}</li>
+      <li>{{PROTO_ETAPE_3}}</li>
+    </ul>
+    <p style="margin:0 0 14px 0; font-size:16px; line-height:1.7;"><strong style="color:#28B092;">Le rendement.</strong> {{PROTO_RENDEMENT}}</p>
+    <!-- Badge risque : 🟢 faible (bg #dcfce7 / txt #15803d) · 🟡 moyen (bg #fef9c3 / txt #a16207) · 🔴 élevé (bg #fee2e2 / txt #b91c1c) -->
+    <p style="margin:0 0 10px 0; font-size:16px; line-height:1.7;"><strong style="color:#28B092;">Les risques.</strong>&nbsp; <span style="background-color:{{RISQUE_BG}}; color:{{RISQUE_TXT}}; font-weight:700; font-size:13px; padding:3px 10px; border-radius:20px;">{{RISQUE_EMOJI}} Niveau&nbsp;: {{RISQUE_NIVEAU}}</span></p>
+    <p style="margin:0 0 14px 0; font-size:16px; line-height:1.7;">{{PROTO_RISQUES}}</p>
+    <p style="margin:0; font-size:16px; line-height:1.7;"><strong style="color:#28B092;">Pourquoi ça compte.</strong> {{PROTO_IMPORTANCE}}</p>
+  </td></tr>
+
+  <tr><td style="padding:26px 36px 0 36px;"><div style="border-top:1px solid #eef2f2;"></div></td></tr>
+
+  <!-- ===== 📊 LES REPÈRES (cours — vert hausse / rouge baisse) ===== -->
+  <tr><td style="padding:24px 36px 0 36px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background-color:#eef0ff; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#4338ca; letter-spacing:1.2px;">📊 LES REPÈRES</td></tr></table>
+  </td></tr>
+  <tr><td style="padding:16px 36px 0 36px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #eef2f2; border-radius:12px; overflow:hidden;">
+      <tr style="background-color:#1A2332;">
+        <td style="padding:11px 18px; font-size:12px; font-weight:600; color:#94a3b8; letter-spacing:0.5px;">ACTIF</td>
+        <td align="right" style="padding:11px 18px; font-size:12px; font-weight:600; color:#94a3b8; letter-spacing:0.5px;">PRIX</td>
+        <td align="right" style="padding:11px 18px; font-size:12px; font-weight:600; color:#94a3b8; letter-spacing:0.5px;">7 JOURS</td>
+      </tr>
+      <!-- {{COULEUR_x}} = #16a34a (vert/hausse) ou #dc2626 (rouge/baisse) ; appliqué AU NOM ET à la variation. Var. : ▲ +x % ou ▼ -x % -->
+      <tr><td style="padding:13px 18px; font-size:16px;"><strong style="color:{{COULEUR_BTC}};">BTC</strong> <span style="color:#94a3b8;">Bitcoin</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">{{PRIX_BTC}}</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:{{COULEUR_BTC}};">{{VAR_BTC}}</td></tr>
+      <tr style="background-color:#f7fafa;"><td style="padding:13px 18px; font-size:16px;"><strong style="color:{{COULEUR_ETH}};">ETH</strong> <span style="color:#94a3b8;">Ethereum</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">{{PRIX_ETH}}</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:{{COULEUR_ETH}};">{{VAR_ETH}}</td></tr>
+      <tr><td style="padding:13px 18px; font-size:16px;"><strong style="color:{{COULEUR_SOL}};">SOL</strong> <span style="color:#94a3b8;">Solana</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">{{PRIX_SOL}}</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:{{COULEUR_SOL}};">{{VAR_SOL}}</td></tr>
+      <tr style="background-color:#f7fafa;"><td style="padding:13px 18px; font-size:16px;"><strong style="color:{{COULEUR_HYPE}};">HYPE</strong> <span style="color:#94a3b8;">Hyperliquid</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">{{PRIX_HYPE}}</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:{{COULEUR_HYPE}};">{{VAR_HYPE}}</td></tr>
+      <tr><td style="padding:13px 18px; font-size:16px;"><strong style="color:{{COULEUR_BNB}};">BNB</strong></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">{{PRIX_BNB}}</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:{{COULEUR_BNB}};">{{VAR_BNB}}</td></tr>
+    </table>
+    <p style="margin:8px 0 0 0; font-size:11px; line-height:1.5; color:#94a3b8;">Prix &amp; variations 7 j au {{DATE}} (CoinGecko). <span style="color:#16a34a; font-weight:700;">Vert</span> = hausse, <span style="color:#dc2626; font-weight:700;">rouge</span> = baisse.</p>
+  </td></tr>
+
+  <!-- ===== 💡 ÇA BRILLE (data de la semaine) ===== -->
+  <tr><td style="padding:24px 36px 0 36px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,#1A2332,#2e1b8b); border-radius:14px;">
+      <tr><td style="padding:22px 24px;">
+        <div style="font-size:12px; font-weight:700; color:#F5A623; letter-spacing:1.2px; margin-bottom:8px;">💡 ÇA BRILLE</div>
+        <div style="font-size:20px; font-weight:800; color:#ffffff; margin-bottom:8px;">{{DATA_TITRE}}</div>
+        <div style="font-size:14px; line-height:1.6; color:#cbd5e1;">{{DATA_TEXTE}}</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:26px 36px 0 36px;"><div style="border-top:1px solid #eef2f2;"></div></td></tr>
+
+  <!-- ===== 📖 DÉFINITIONS (puces dorées) ===== -->
+  <tr><td style="padding:24px 36px 0 36px;">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background-color:#fff4e0; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#b9770f; letter-spacing:1.2px;">📖 DÉFINITIONS</td></tr></table>
+  </td></tr>
+  <tr><td style="padding:16px 36px 0 36px; color:#1A2332;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td valign="top" width="20" style="font-size:16px; color:#F5A623; line-height:1.6;">•</td>
+        <td style="font-size:16px; line-height:1.6;"><strong>{{TERME_1}}</strong> <span style="color:#94a3b8;">({{TERME_1_EN}})</span> — {{DEF_1}}</td>
+      </tr>
+      <tr><td colspan="2" style="height:10px; line-height:10px;">&nbsp;</td></tr>
+      <tr>
+        <td valign="top" width="20" style="font-size:16px; color:#F5A623; line-height:1.6;">•</td>
+        <td style="font-size:16px; line-height:1.6;"><strong>{{TERME_2}}</strong> <span style="color:#94a3b8;">({{TERME_2_EN}})</span> — {{DEF_2}}</td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:26px 36px 0 36px;"><div style="border-top:1px solid #eef2f2;"></div></td></tr>
+
+  <!-- ===== ✉️ À TOI DE JOUER ===== -->
+  <tr><td style="padding:24px 36px 28px 36px; color:#1A2332;">
+    <p style="margin:0 0 12px 0; font-size:18px; font-weight:800;">✉️ À toi de jouer</p>
+    <p style="margin:0 0 16px 0; font-size:16px; line-height:1.6;"><strong>Une question ?</strong> Réponds simplement à cet email — on choisira une question par édition et on y répondra clairement.</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0fdf4; border-radius:12px;">
+      <tr><td style="padding:18px 20px; font-size:16px; line-height:1.8;">
+        🗳️ <strong>{{SONDAGE_QUESTION}}</strong> Réponds <strong>A</strong> ou <strong>B</strong> :<br>
+        <strong style="color:#28B092;">A.</strong> {{SONDAGE_A}}<br>
+        <strong style="color:#28B092;">B.</strong> {{SONDAGE_B}}
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ===== PIED ===== -->
+  <tr><td style="background-color:#1A2332; padding:24px 36px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td valign="middle" width="40"><img src="https://raw.githubusercontent.com/AntoineBatou/cryptoluciole-assets/main/firefly-logo-white.png" width="32" alt="" style="display:block;width:32px;height:auto;"></td>
+      <td valign="middle" style="padding-left:10px; font-size:14px; font-weight:700; color:#F5A623;">CryptoLuciole 🪲✨</td>
+    </tr></table>
+    <p style="margin:14px 0 0 0; font-size:11px; line-height:1.6; color:#94a3b8;">⚠️ Contenu purement pédagogique — <strong>pas un conseil en investissement</strong>. Fais tes propres recherches.</p>
+  </td></tr>
+
+</table>
+</td></tr></table>
+</body>
+</html>
