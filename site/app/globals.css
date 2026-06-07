@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* ===== Couleurs de marque CryptoLuciole =====
+   Déclarées ici, elles deviennent utilisables comme classes Tailwind :
+   bg-nuit, text-luciole, border-teal, etc. */
+@theme {
+  --color-nuit: #1a2332;        /* bleu nuit (fonds foncés) */
+  --color-teal: #28b092;        /* teal principal */
+  --color-teal-light: #2abfab;  /* teal clair (accents) */
+  --color-luciole: #f5a623;     /* or-luciole (la lumière) */
+  --color-brume: #eef2f2;       /* gris-vert très clair (fonds) */
+  --color-vert: #16a34a;        /* hausse */
+  --color-rouge: #dc2626;       /* baisse */
+
+  --font-sans: var(--font-inter); /* on utilise Inter, défini dans layout.tsx */
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-nuit);
+  font-family: var(--font-inter), Helvetica, Arial, sans-serif;
+}

@@ -43,9 +43,10 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 
 - **Lecteur-type** : « Grégoire », ~32 ans, débutant qui veut comprendre ET savoir *comment faire*.
 - **Edge** : profondeur DeFi vulgarisée et **actionnable**, pas « les news en plus court ».
-- **Approche tech (C — hybride)** : envoi via **beehiiv** (abonnés + délivrabilité gérés) + site **Next.js** (repart du squelette `../trackpaw`) par-dessus pour l'archive. Identité visuelle : charte **DefiLantern** (`../preparation_projet`) + logos luciole de Didier. Agents de veille : étendre `../analyste-defi` (Phase 4).
+- **Approche tech (C — hybride)** : envoi via **beehiiv** (abonnés + délivrabilité gérés) + **site web à construire à neuf** (cryptoluciole.com) pour l'archive des numéros + l'inscription, puis plus tard de la data crypto. **Le site reprend la charte CryptoLuciole** (= celle de la newsletter, ci-dessous). ⚠️ **trackpaw n'est PAS la base du site** : c'est seulement, plus tard, une *source de data* (chiffres) à afficher — jamais le squelette ni le design. Agents de veille : étendre `../analyste-defi` (Phase 4).
 - **Cadence** : 1×/semaine au départ (mardi+jeudi à terme). **2 actus par numéro** (pas 3).
 - **Domaine** : cryptoluciole.com (OVH).
+- **Périmètre du site** (à construire à neuf, charte CryptoLuciole) : (1) accueil brandé + inscription, (2) archive des numéros, (3) plus tard : section data (prix/TVL, éventuellement chiffres issus de trackpaw) **et tutos pas-à-pas** (ouvrir un wallet, faire du staking…).
 - **Doc de design** (source de vérité) : `~/.gstack/projects/newsletter/marc-master-design-20260602-205425.md`.
 - **Maquettes** : `~/Library/CloudStorage/GoogleDrive-toubas.antoine@gmail.com/Mon Drive/Obsidian/A/Newsletter/` (`MAQUETTE.md`, `NEWSLETTER.md`).
 
@@ -62,7 +63,8 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 
 - **Palette** : nuit `#1A2332` · teal `#28B092`/`#2ABFAB` · or-luciole `#F5A623` · vert hausse `#16a34a` · rouge baisse `#dc2626` · gris `#94a3b8`.
 - **Police** Inter (repli Helvetica/Arial), corps **16px**, largeur 600px, beaucoup d'air (marges 36px).
-- **Logo** : SVG transparent `assets/logo/firefly-logo-white.svg` (header + pied, sur fond foncé). Ne jamais remettre un PNG à fond blanc.
+- **Logo dans les emails** : utiliser l'**URL hébergée** (Gmail n'affiche que des images en ligne) : `https://raw.githubusercontent.com/AntoineBatou/cryptoluciole/main/assets/logo/firefly-logo-white.png` (PNG transparent). Le SVG/PNG local sert au site/preview. Ne jamais remettre un PNG à fond blanc.
+- **Dépôt GitHub** : `github.com/AntoineBatou/cryptoluciole` (public) = tout le projet ; les images y sont servies via `raw.githubusercontent.com`.
 - **Rubriques nommées (thème luciole)** : 🔦 ON ÉCLAIRE (notion) · ✨ DANS LE FAISCEAU (actus) · 🔍 SOUS LA LOUPE (protocole) · 📊 LES REPÈRES (cours) · 💡 ÇA BRILLE (data) · 📖 DÉFINITIONS · ✉️ À toi de jouer. **Pas de numéro** devant les titres d'actu → marqueur ✦ doré.
 - **2 ou 3 actus** selon les semaines. **Chaque actu a OBLIGATOIREMENT un encadré vert « 💡 Notre avis : »** (notre commentaire/analyse) — c'est un invariant de la formule.
 - **Tableau des cours** : nom de la crypto **+** colonne 7 jours colorés en **vert (hausse `#16a34a`) / rouge (baisse `#dc2626`)** ; prix + variations à rafraîchir le jour de l'envoi (CoinGecko).
