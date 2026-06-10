@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SignupForm from "./SignupForm";
 
 // La page d'accueil de cryptoluciole.com.
 // Tout ce qui est entre return( ... ) est l'affichage, écrit en JSX
@@ -51,27 +52,10 @@ export default function Home() {
             <em>comment faire</em>.
           </p>
 
-          {/* Formulaire d'inscription (pas encore relié — on le branchera plus tard) */}
-          <form
-            id="inscription"
-            className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
-          >
-            <input
-              type="email"
-              required
-              placeholder="ton@email.com"
-              className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-white placeholder-white/40 outline-none focus:border-teal-light"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-luciole px-6 py-3 font-semibold text-nuit hover:opacity-90"
-            >
-              Je m&apos;inscris
-            </button>
-          </form>
-          <p className="mt-3 text-xs text-white/40">
-            Gratuit. Une édition par semaine. Désinscription en un clic.
-          </p>
+          {/* Formulaire d'inscription, relié à beehiiv via /api/subscribe */}
+          <div id="inscription">
+            <SignupForm />
+          </div>
         </div>
       </section>
 
