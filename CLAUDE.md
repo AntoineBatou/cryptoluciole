@@ -58,6 +58,13 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 3. **Contraintes de forme** : police Inter (titres 28-32, sous-titres 18-20, corps 16), séparateurs fins, beaucoup d'air, 2-3 emojis max, illustrations pédagogiques, éviter les mots « spammy ».
 4. **Toujours inclure le disclaimer** : « Ce contenu n'est pas un conseil en investissement. »
 
+### Workflow d'envoi beehiiv (décidé le 2026-06-11)
+
+- **Contenu = bloc « HTML personnalisé » beehiiv** : on colle notre HTML email (garde pastilles, encadrés verts, tableau cours vert/rouge). Fichier de référence : `cryptoluciole-01-beehiiv.html` (version body-only, SANS notre header/footer car beehiiv ajoute les siens).
+- **Habillage = beehiiv (réglé une fois)** : bandeau header = image `assets/banniere.png` (1200×280, hébergée GitHub) ; fond gris « Outside Background » `#EEF2F2` ; police Inter ; corps 16px ; footer beehiiv (désinscription + adresse). Réglages de design beehiiv déjà faits.
+- **Pour chaque nouveau numéro** : générer le bloc HTML du contenu (depuis le template/données), Marc le colle dans le bloc HTML beehiiv. Ne PAS refaire l'habillage.
+- Expéditeur : `cryptoluciole@mail.cryptoluciole.com` (SPF/DKIM/DMARC = pass ✓). On n'a PAS cherché à cloner le design v3 dans l'email (impossible proprement) : le showcase visuel vit sur le site (`/numeros/[id]`), l'email renvoie dessus via un bouton.
+
 ### Template & système de design (NE PAS refaire le squelette)
 
 **Réutiliser `templates/newsletter-template.html`** pour chaque numéro — remplir les `{{SLOTS}}`, ne jamais reconstruire la structure. Référence finale : `cryptoluciole-01-v3.html` (= le #1 abouti).
