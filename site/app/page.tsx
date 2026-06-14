@@ -67,12 +67,12 @@ export default function Home() {
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              ["🔦", "On éclaire", "Une notion expliquée simplement."],
-              ["✨", "Dans le faisceau", "Les actus qui comptent, analysées."],
-              ["🔍", "Sous la loupe", "Un protocole ou une stratégie décrypté."],
-              ["📊", "Les repères", "Les cours et leur évolution récente."],
-              ["💡", "Ça brille", "La donnée de la semaine."],
-              ["📖", "Définitions", "Les termes du secteur, au clair."],
+              ["🔦", "On éclaire", "Une notion, simplement."],
+              ["✨", "Dans le faisceau", "Les actus + notre analyse."],
+              ["🔍", "Sous la loupe", "Un protocole décrypté."],
+              ["📊", "Les repères", "Les cours du moment."],
+              ["💡", "Ça brille", "La data de la semaine."],
+              ["📖", "Définitions", "Les mots du secteur."],
             ].map(([emoji, titre, desc]) => (
               <div
                 key={titre}
