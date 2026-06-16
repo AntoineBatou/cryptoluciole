@@ -140,7 +140,10 @@ Cette semaine : c'est quoi le staking, Strategy vend du bitcoin (la vérité der
 
   <!-- ============ 4. COURS ============ -->
   <tr><td style="padding:24px 36px 0 36px;">
-    <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background-color:#eef0ff; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#4338ca; letter-spacing:1.2px;">📊 LES REPÈRES</td></tr></table>
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td style="background-color:#eef0ff; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#4338ca; letter-spacing:1.2px;">📊 LES REPÈRES</td>
+      <td style="padding-left:12px; font-size:12px; color:#94a3b8; white-space:nowrap;">au 3 juin 2026</td>
+    </tr></table>
   </td></tr>
   <tr><td style="padding:16px 36px 0 36px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #eef2f2; border-radius:12px; overflow:hidden;">

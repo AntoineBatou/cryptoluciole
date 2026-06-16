@@ -124,7 +124,10 @@ export default async function NumeroPage({
 
         {/* LES REPÈRES (cours) */}
         <section className="mb-12">
-          <Pill tone="indigo">📊 Les repères</Pill>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <Pill tone="indigo">📊 Les repères</Pill>
+            <span className="text-xs text-nuit/50">au {n.date}</span>
+          </div>
           <div className="mt-4 overflow-hidden rounded-xl border border-black/5">
             <table className="w-full text-sm">
               <thead className="bg-nuit text-white/60">
