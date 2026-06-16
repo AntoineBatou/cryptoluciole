@@ -3,11 +3,11 @@
 // Accessible en POST sur /api/subscribe.
 import { NextResponse } from "next/server";
 import {
-  WELCOME_FROM,
+  NEWSLETTER_FROM,
   WELCOME_SUBJECT,
-  WELCOME_UNSUBSCRIBE_MAILTO,
-  welcomeIssueHtml,
-} from "../../emails/welcome-issue";
+  UNSUBSCRIBE_MAILTO,
+  welcomeHtml,
+} from "../../emails/latest";
 
 export async function POST(request: Request) {
   const { email } = await request.json().catch(() => ({ email: "" }));
@@ -50,12 +50,12 @@ export async function POST(request: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: WELCOME_FROM,
+          from: NEWSLETTER_FROM,
           to: email,
           subject: WELCOME_SUBJECT,
-          html: welcomeIssueHtml,
+          html: welcomeHtml(),
           // Bouton de désinscription natif (Gmail/Outlook) — bon pour la délivrabilité.
-          headers: { "List-Unsubscribe": `<${WELCOME_UNSUBSCRIBE_MAILTO}>` },
+          headers: { "List-Unsubscribe": `<${UNSUBSCRIBE_MAILTO}>` },
         }),
       });
       if (!welcome.ok) {
