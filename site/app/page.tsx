@@ -35,7 +35,7 @@ export default function Home() {
       </header>
 
       {/* ===== Hero (la grande accroche + inscription) ===== */}
-      <section className="bg-nuit px-6 pb-20 pt-10 text-center">
+      <section className="bg-nuit px-6 pb-16 pt-10 text-center">
         <div className="mx-auto max-w-2xl">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-teal-light">
             🪲 La newsletter qui éclaire la crypto
@@ -59,8 +59,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== Transition douce nuit -> brume (évite la cassure nette) ===== */}
+      <div
+        aria-hidden
+        className="h-24 bg-gradient-to-b from-nuit to-brume"
+      />
+
       {/* ===== Au menu (les rubriques) ===== */}
-      <section id="numeros" className="bg-brume px-6 py-16">
+      <section id="numeros" className="bg-brume px-6 pb-16 pt-4">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-center text-2xl font-bold text-nuit">
             Dans chaque édition

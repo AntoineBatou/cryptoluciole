@@ -21,7 +21,7 @@ export default function SignupForm() {
       });
       if (res.ok) {
         setStatus("success");
-        setMessage("Merci ! Tu es inscrit·e. À très vite dans ta boîte mail. 🪲");
+        setMessage("Tu es bien inscrit·e. Un email de bienvenue arrive dans ta boîte mail.");
         setEmail("");
       } else {
         const data = await res.json().catch(() => ({}));
@@ -34,12 +34,16 @@ export default function SignupForm() {
     }
   }
 
-  // Une fois inscrit, on remplace le formulaire par un message de remerciement.
+  // Une fois inscrit, on remplace le formulaire par un visuel de confirmation.
   if (status === "success") {
     return (
-      <p className="mx-auto mt-8 max-w-md rounded-2xl bg-teal/15 px-6 py-5 font-semibold text-teal-light">
-        {message}
-      </p>
+      <div className="mx-auto mt-8 max-w-md rounded-2xl border border-teal/30 bg-teal/10 px-6 py-7 text-center">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-teal text-2xl font-bold text-nuit">
+          ✓
+        </div>
+        <p className="mt-4 text-lg font-bold text-white">Inscription validée 🪲</p>
+        <p className="mt-1 text-sm leading-relaxed text-white/70">{message}</p>
+      </div>
     );
   }
 
@@ -60,7 +64,7 @@ export default function SignupForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="rounded-full bg-luciole px-6 py-3 font-semibold text-nuit hover:opacity-90 disabled:opacity-60"
+          className="whitespace-nowrap rounded-full bg-luciole px-6 py-3 font-semibold text-nuit hover:opacity-90 disabled:opacity-60"
         >
           {status === "loading" ? "…" : "Je m'inscris"}
         </button>

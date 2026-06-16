@@ -1,4 +1,21 @@
-<!DOCTYPE html>
+// ===== Email de bienvenue automatique =====
+// Envoyé en transactionnel (API Resend /emails) juste après l'inscription.
+// Il reprend le DERNIER numéro complet, à la charte CryptoLuciole.
+//
+// ⚠️ Quand un nouveau numéro sort : remplace le HTML ci-dessous par le corps
+// du dernier email (fichier cryptoluciole-XX-resend.html à la racine du repo),
+// en gardant la ligne de désinscription en mailto (et non le token Broadcast
+// {{{RESEND_UNSUBSCRIBE_URL}}}, qui ne fonctionne QUE dans les Broadcasts Resend).
+
+// Expéditeur = adresse du domaine vérifié dans Resend (send.cryptoluciole.com).
+export const WELCOME_FROM = "CryptoLuciole <mail@send.cryptoluciole.com>";
+export const WELCOME_SUBJECT =
+  "Bienvenue chez CryptoLuciole 🪲 — voici le dernier numéro";
+// Désinscription par email (pas de token Broadcast en transactionnel).
+export const WELCOME_UNSUBSCRIBE_MAILTO =
+  "mailto:mail@send.cryptoluciole.com?subject=D%C3%A9sinscription";
+
+export const welcomeIssueHtml = `<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -194,10 +211,10 @@ Cette semaine : c'est quoi le staking, Strategy vend du bitcoin (la vérité der
       <td valign="middle" style="padding-left:10px; font-size:14px; font-weight:700; color:#F5A623;">CryptoLuciole 🪲✨</td>
     </tr></table>
     <p style="margin:14px 0 0 0; font-size:11px; line-height:1.6; color:#94a3b8;">⚠️ Contenu purement pédagogique — <strong>pas un conseil en investissement</strong>. Fais tes propres recherches.</p>
-    <p style="margin:12px 0 0 0; font-size:11px; line-height:1.6; color:#64748b;"><a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:#94a3b8;">Se désabonner</a> &middot; CryptoLuciole</p>
+    <p style="margin:12px 0 0 0; font-size:11px; line-height:1.6; color:#64748b;"><a href="${WELCOME_UNSUBSCRIBE_MAILTO}" style="color:#94a3b8;">Se désabonner</a> &middot; CryptoLuciole</p>
   </td></tr>
 
 </table>
 </td></tr></table>
 </body>
-</html>
+</html>`;

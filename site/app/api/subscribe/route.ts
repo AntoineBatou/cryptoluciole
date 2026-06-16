@@ -1,6 +1,13 @@
-// Route API : ajoute un email à l'audience Resend (côté serveur, clé cachée).
+// Route API : ajoute un email à l'audience Resend (côté serveur, clé cachée),
+// puis envoie un email de bienvenue (le dernier numéro complet).
 // Accessible en POST sur /api/subscribe.
 import { NextResponse } from "next/server";
+import {
+  WELCOME_FROM,
+  WELCOME_SUBJECT,
+  WELCOME_UNSUBSCRIBE_MAILTO,
+  welcomeIssueHtml,
+} from "../../emails/welcome-issue";
 
 export async function POST(request: Request) {
   const { email } = await request.json().catch(() => ({ email: "" }));
@@ -33,6 +40,31 @@ export async function POST(request: Request) {
         { status: 502 }
       );
     }
+
+    // Email de bienvenue (best-effort) : on n'échoue PAS l'inscription si l'envoi rate.
+    try {
+      const welcome = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: WELCOME_FROM,
+          to: email,
+          subject: WELCOME_SUBJECT,
+          html: welcomeIssueHtml,
+          // Bouton de désinscription natif (Gmail/Outlook) — bon pour la délivrabilité.
+          headers: { "List-Unsubscribe": `<${WELCOME_UNSUBSCRIBE_MAILTO}>` },
+        }),
+      });
+      if (!welcome.ok) {
+        console.error("resend welcome email error:", welcome.status, await welcome.text());
+      }
+    } catch (e) {
+      console.error("resend welcome email exception:", e);
+    }
+
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error("subscribe route error:", e);
