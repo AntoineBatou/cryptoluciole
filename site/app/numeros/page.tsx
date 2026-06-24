@@ -3,10 +3,19 @@ import { issues } from "./issues";
 
 // Page accessible à l'adresse /numeros
 export default function NumerosPage() {
+  // On affiche du plus récent au plus ancien (numéro décroissant).
+  const numerosTries = [...issues].sort((a, b) => b.numero - a.numero);
+
   return (
     <div className="flex flex-1 flex-col bg-brume">
       {/* petit en-tête de page */}
       <header className="bg-nuit px-6 py-12 text-center">
+        <Link
+          href="/"
+          className="mx-auto mb-6 block w-fit text-sm text-teal-light hover:text-white"
+        >
+          ← Retour à l&apos;accueil
+        </Link>
         <h1 className="text-3xl font-extrabold text-white sm:text-4xl">
           Les numéros
         </h1>
@@ -17,8 +26,8 @@ export default function NumerosPage() {
 
       <main className="mx-auto w-full max-w-3xl px-6 py-12">
         <div className="flex flex-col gap-5">
-          {/* On parcourt la liste des numéros et on génère une carte pour chacun */}
-          {issues.map((n) => (
+          {/* On parcourt la liste triée et on génère une carte pour chacun */}
+          {numerosTries.map((n) => (
             <Link
               key={n.id}
               href={`/numeros/${n.id}`}

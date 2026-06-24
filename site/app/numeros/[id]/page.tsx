@@ -70,9 +70,15 @@ export default async function NumeroPage({
       {/* En-tête du numéro */}
       <header className="bg-nuit px-6 py-12">
         <div className="mx-auto max-w-2xl">
-          <Link href="/numeros" className="text-sm text-teal-light hover:text-white">
-            ← Tous les numéros
-          </Link>
+          <div className="flex items-center gap-4 text-sm">
+            <Link href="/" className="text-teal-light hover:text-white">
+              ← Accueil
+            </Link>
+            <span className="text-white/30">·</span>
+            <Link href="/numeros" className="text-teal-light hover:text-white">
+              Tous les numéros
+            </Link>
+          </div>
           <div className="mt-4 flex items-center gap-3 text-sm text-white/60">
             <span className="rounded-full bg-luciole/15 px-3 py-1 font-bold text-luciole">
               #{n.numero}
