@@ -27,13 +27,19 @@ export type ProtoBloc =
 
 export type ProtoSection = { titre: string; blocs: ProtoBloc[] };
 
+import type { ProtoLiveConfig } from "./live";
+
 export type ProtocoleFiche = {
   slug: string;
   nom: string;
   type: string;
   chains?: string;
   resume: string;
-  // « Carte d'identité » affichée en haut (label → valeur).
+  // Chiffres LIVE (TVL/APY) récupérés via DeFiLlama — JAMAIS recopiés du wiki.
+  // Voir live.ts. À renseigner pour CHAQUE protocole.
+  live?: ProtoLiveConfig;
+  // « Carte d'identité » affichée en haut (label → valeur) — faits DURABLES
+  // uniquement (type, date de lancement, équipe…). Pas de TVL/APY ici : c'est live.
   enBref?: { label: string; valeur: string }[];
   // Badge de score maison (échelle de risque CryptoLuciole).
   score?: { valeur: number; sur: number; mention: string; sens: "faible" | "moyen" | "eleve" };
@@ -53,11 +59,16 @@ export const PROTOCOLES: ProtocoleFiche[] = [
     chains: "Ethereum (principal), Avalanche, Arbitrum, Base",
     resume:
       "Re (re.xyz) est un réassureur sur blockchain : ton argent finance de vraies compagnies d'assurance, et en échange tu touches une part des primes payées par leurs clients. Deux jetons selon le risque voulu — reUSD (prudent) et reUSDe (risqué). Sa promesse : un rendement qui ne dépend PAS du prix du Bitcoin, mais de la sinistralité des assurances du monde réel.",
+    live: {
+      defillamaSlug: "re",
+      pools: [
+        { label: "reUSD (senior)", id: "1c312830-ee96-40c9-b55f-b0f209ca6ebd" },
+        { label: "reUSDe (junior)", id: "145810df-dc01-43e7-8033-e0aa5dceb767" },
+      ],
+    },
     enBref: [
       { label: "Type", valeur: "Réassurance tokenisée (RWA), structure en tranches" },
       { label: "Lancement on-chain", valeur: "21 janvier 2025" },
-      { label: "TVL", valeur: "~267 M$ on-chain (475 M$ portefeuille total)" },
-      { label: "Rendement", valeur: "reUSD ~6–9 % · reUSDe ~6 % réel (cible 12–25 %)" },
       { label: "Combined ratio", valeur: "92 % au T3 2025 (donc profitable)" },
       { label: "Équipe", valeur: "Identifiée — Karn Saroya (ex-assurtech Cover)" },
     ],
@@ -121,11 +132,10 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             entetes: ["", "reUSD (senior)", "reUSDe (junior)"],
             lignes: [
               ["Rôle", "Capital protégé, coupon stable", "Capital « first loss », rendement amplifié"],
-              ["Rendement", "~6–9 %/an", "Cible 12–25 % — mais ~6 % réel aujourd'hui"],
+              ["Rendement", "Plancher SOFR + 2,5 %", "Variable (surplus de souscription)"],
               ["Perte en cas de sinistre", "En dernier", "En premier"],
               ["Prix", "Stable ~1 $", "Variable (peut baisser)"],
               ["Sortie", "Quasi instantanée (buffer)", "40 j min. + fenêtres trimestrielles"],
-              ["Taille", "~162,5 M$", "~19,1 M$"],
             ],
           },
           {
@@ -167,7 +177,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             type: "note",
             ton: "info",
             texte:
-              "Écart à connaître : reUSDe est annoncé à 12–25 %/an, mais DeFiLlama mesure plutôt ~6 % réels à la mi-2026. La cible haute suppose une excellente année de souscription — ne pas la prendre pour acquise.",
+              "À garder en tête : le rendement de reUSDe est très variable (il dépend de l'année de souscription) et la cible marketing de 12–25 % n'est pas garantie. Fie-toi au chiffre « en direct » affiché en haut de la fiche plutôt qu'à la fourchette annoncée.",
           },
         ],
       },

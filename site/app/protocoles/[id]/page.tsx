@@ -1,8 +1,53 @@
 import Link from "next/link";
 import { getProtocole, PROTOCOLES, type ProtoBloc } from "../protocols";
+import { fetchProtoLive, formatUsd, formatApy, type ProtoLiveData } from "../live";
 
 export function generateStaticParams() {
   return PROTOCOLES.map((p) => ({ id: p.slug }));
+}
+
+// Régénère la page (et donc les chiffres live DeFiLlama) toutes les heures.
+export const revalidate = 3600;
+
+// Carte « chiffres en direct » : TVL du protocole + TVL/APY par pool (DeFiLlama).
+function LiveCard({ live }: { live: ProtoLiveData }) {
+  const hasPools = live.pools.length > 0;
+  if (live.tvlUsd == null && !hasPools) return null;
+  return (
+    <section className="mt-6 rounded-2xl border border-teal/20 bg-teal/5 p-5">
+      <div className="mb-3 flex items-center gap-2">
+        <span className="text-xs font-bold uppercase tracking-wider text-teal">
+          📊 Chiffres en direct
+        </span>
+        <span className="text-xs text-nuit/40">via DeFiLlama</span>
+      </div>
+      {live.tvlUsd != null && (
+        <div className="mb-3">
+          <span className="text-2xl font-extrabold text-nuit">{formatUsd(live.tvlUsd)}</span>
+          <span className="ml-2 text-sm text-nuit/50">de TVL (valeur déposée)</span>
+        </div>
+      )}
+      {hasPools && (
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-black/5 bg-black/5 sm:grid-cols-2">
+          {live.pools.map((pool) => (
+            <div key={pool.label} className="bg-white px-4 py-3">
+              <p className="text-sm font-semibold text-nuit">{pool.label}</p>
+              <p className="mt-1 text-sm text-nuit/70">
+                <span className="font-bold text-teal">{formatApy(pool.apy)}</span> de rendement
+                {pool.tvlUsd != null && (
+                  <span className="text-nuit/50"> · {formatUsd(pool.tvlUsd)}</span>
+                )}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+      <p className="mt-3 text-xs text-nuit/40">
+        Mis à jour automatiquement (env. 1×/h). Les rendements varient — ce ne sont pas des
+        taux garantis.
+      </p>
+    </section>
+  );
 }
 
 // Couleurs du badge de score (échelle de risque maison).
@@ -109,6 +154,9 @@ export default async function ProtocolePage({
   const p = getProtocole(id);
   const label = p?.nom ?? decodeURIComponent(id).replace(/-/g, " ");
 
+  // Chiffres live (TVL/APY) — récupérés au build/revalidation, jamais en dur.
+  const live = p?.live ? await fetchProtoLive(p.live) : null;
+
   return (
     <div className="flex flex-1 flex-col bg-brume">
       <header className="bg-nuit px-6 py-12">
@@ -152,6 +200,9 @@ export default async function ProtocolePage({
             {p.chains && (
               <p className="mt-2 text-sm text-nuit/50">Blockchains : {p.chains}</p>
             )}
+
+            {/* Chiffres en direct (DeFiLlama) */}
+            {live && <LiveCard live={live} />}
 
             {/* Carte d'identité rapide */}
             {p.enBref && p.enBref.length > 0 && (
