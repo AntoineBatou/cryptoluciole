@@ -3,6 +3,13 @@
 // Pour ajouter le #2 plus tard : tu copies un objet et tu changes le contenu.
 // L'affichage (les pages) lit ces données — il ne faut donc PAS toucher au design ici.
 
+// Élément du corps d'une notion (format aéré, #2+) : paragraphe, sous-titre,
+// ou encadré de définition (terme lié au glossaire).
+export type NotionEl =
+  | { type: "p"; texte: string }
+  | { type: "st"; texte: string }
+  | { type: "def"; terme: string; slug: string; texte: string };
+
 // Le "type" décrit la forme d'un numéro (les garde-fous TypeScript).
 export type Issue = {
   id: string; // identifiant dans l'URL, ex. "1" -> /numeros/1
@@ -10,10 +17,13 @@ export type Issue = {
   date: string;
   titre: string;
   excerpt: string; // petit résumé affiché sur la carte
-  notion: { titre: string; blocs: { label: string; texte: string }[] };
-  actus: { titre: string; texte: string; avis: string; source: string }[];
+  // notion : ancien format (blocs ⬡, #1) OU nouveau format aéré (corps, #2+).
+  notion: { titre: string; blocs?: { label: string; texte: string }[]; corps?: NotionEl[] };
+  // une actu peut porter des encadrés de définition (termes liés au glossaire).
+  actus: { titre: string; texte: string; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[] }[];
   protocole: {
     nom: string;
+    slug?: string; // -> /protocoles/<slug>
     bref: string;
     etapes: string[];
     rendement: string;
@@ -26,8 +36,9 @@ export type Issue = {
     importance: string;
   };
   cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down" }[];
-  data: { titre: string; texte: string };
-  definitions: { terme: string; en: string; def: string }[];
+  coursAvis?: string; // encadré « Notre avis » sous le tableau des cours
+  data: { titre: string; texte: string; points?: string[]; texteFin?: string };
+  definitions: { terme: string; en: string; def: string; avis?: string; slug?: string }[];
 };
 
 export const issues: Issue[] = [
@@ -133,46 +144,40 @@ export const issues: Issue[] = [
       "C'est quoi le restaking, Backpack lance les vraies actions tokenisées, Binance face au compte à rebours MiCA, et un protocole qui fait travailler tes stablecoins dans l'assurance.",
     notion: {
       titre: "Le restaking, en clair",
-      blocs: [
-        {
-          label: "Rappel : le staking",
-          texte:
-            "Sur Ethereum, tu peux bloquer tes ethers pour aider à sécuriser le réseau ; en échange, tu touches une récompense (~2,6 % par an aujourd'hui chez Lido), un peu comme un livret d'épargne. Les acteurs qui font ce travail s'appellent les validateurs. (On a tout détaillé dans le numéro #1, « Le staking, sans le jargon ».)",
-        },
-        {
-          label: "Le principe",
-          texte:
-            "Le restaking va un cran plus loin : on reprend des ethers déjà mis en staking et on les réutilise pour sécuriser, en plus, d'autres services qu'on appelle des AVS (de jeunes projets — ponts, oracles… — qui « louent » la sécurité d'Ethereum). Le même capital sert deux fois, d'où un rendement supplémentaire. Le protocole leader est EigenLayer (~94 % du marché).",
-        },
-        {
-          label: "En pratique",
-          texte:
-            "Tu stakes tes ethers via un protocole comme Lido et tu reçois un jeton liquide (LST), le stETH. Tu déposes ce stETH dans EigenLayer (le restaking) pour sécuriser des AVS contre une prime. Souvent, tu passes par un protocole de restaking (ether.fi, Renzo, Kelp…) qui te remet encore un nouveau jeton, un LRT (ex. eETH), lui aussi liquide — que tu peux replacer ailleurs en DeFi.",
-        },
-        {
-          label: "Combien ça rapporte",
-          texte:
-            "En théorie : ~2,6 % de base + 1 à 3 % de prime de restaking, soit ~4 à 6 %. En pratique, l'écart est minime : un jeton de restaking comme l'eETH tourne autour de 3 %, à peine au-dessus du simple staking. La prime promise existe surtout sur le papier, et elle est souvent versée en points ou en jetons plutôt qu'en vrais revenus.",
-        },
-        {
-          label: "Les risques",
-          texte:
-            "Le principal est le slashing : la sanction d'un validateur qui se comporte mal, qui te coûte une partie de tes fonds. Tu délègues à un opérateur, donc tu ne gères rien toi-même ; le risque, c'est que cet opérateur fasse n'importe quoi. En pratique ce risque est quasi inexistant à ce jour (aucun cas recensé chez les opérateurs sérieux depuis son activation en avril 2025), mais pas nul. S'ajoutent l'empilement de risques (chaque étage dérive un jeton d'un autre) et l'immaturité du secteur : la TVL du restaking a fondu d'environ 15-20 Md$ en début d'année à ~5 Md$ à la mi-2026.",
-        },
-        {
-          label: "Notre avis",
-          texte:
-            "Pour le moment, le restaking ne vaut pas le coup : le surplus de rendement (~0,3 point dans notre exemple) ne justifie pas un risque plus élevé et plus difficile à évaluer qu'un simple staking. C'est un pari sur l'avenir — le jour où les AVS seront assez nombreux et rentables pour payer une vraie prime. En revanche, le staking simple, lui, vaut le coup : peu risqué et éprouvé, il rapporte un rendement natif sur tes ethers à moindre risque. Si tu débutes, commence par là.",
-        },
+      corps: [
+        { type: "p", texte: "Pour comprendre le restaking, il faut d'abord se rappeler le staking." },
+        { type: "def", terme: "Staking", slug: "staking", texte: "Sur Ethereum, on « bloque » ses ethers pour aider à sécuriser le réseau. En échange, on touche une récompense (~2,6 % par an aujourd'hui chez Lido), un peu comme un livret d'épargne. Ceux qui font ce travail sont les validateurs." },
+        { type: "p", texte: "Le restaking, c'est aller un cran plus loin : reprendre des ethers déjà mis en staking et les réutiliser pour sécuriser, en plus, d'autres services. Le même capital sert donc deux fois, d'où un rendement supplémentaire. Le protocole leader est EigenLayer (~94 % du marché)." },
+        { type: "def", terme: "AVS (Actively Validated Service)", slug: "avs", texte: "Des services tiers (ponts entre blockchains, oracles, couches de données…) qui ont besoin d'un gardien fiable mais n'ont pas les moyens de bâtir leur propre armée de validateurs. Ils « louent » la sécurité d'Ethereum." },
+        { type: "st", texte: "En pratique, comment ça marche ?" },
+        { type: "p", texte: "1. Tu stakes tes ethers via un protocole de liquid staking comme Lido. Tu reçois un jeton liquide (un LST), chez Lido le stETH." },
+        { type: "def", terme: "LST (Liquid Staking Token)", slug: "lst", texte: "Un jeton qui prouve que tu as des ethers en staking (ex. stETH). Il rapporte le rendement du staking et peut circuler librement : le reçu est lui-même un actif." },
+        { type: "p", texte: "2. Tu déposes ce stETH dans EigenLayer (l'opération de restaking) : ton capital sert alors aussi à sécuriser des AVS, contre une prime." },
+        { type: "p", texte: "3. Souvent, tu passes par un protocole de restaking (ether.fi, Renzo, Kelp…) qui fait le dépôt pour toi et te remet encore un nouveau jeton." },
+        { type: "def", terme: "LRT (Liquid Restaking Token)", slug: "lrt", texte: "Le reçu de ta position de restaking (ex. eETH, ~3 % aujourd'hui). Comme le LST, il reste liquide : tu peux le replacer ailleurs en DeFi." },
+        { type: "p", texte: "Le même ether de départ porte donc deux étages de rendement empilés : staking → restaking. Et comme le LRT reste liquide, tu peux en plus l'employer ailleurs en DeFi — par exemple le prêter contre un rendement, ou le bloquer en garantie pour emprunter contre lui et faire du levier. C'est cette superposition qui fait l'attrait… et le danger : à chaque étage, un jeton est dérivé d'un autre, et un problème à la base se répercute sur tous les étages au-dessus." },
+        { type: "st", texte: "Combien ça rapporte ?" },
+        { type: "p", texte: "En théorie : ~2,6 % de base + 1 à 3 % de prime de restaking, soit ~4 à 6 %. En pratique, l'écart est minime : un jeton de restaking comme l'eETH tourne autour de 3 %, à peine au-dessus du simple staking (~0,3 point). La prime promise existe surtout sur le papier, et elle est souvent versée en points ou en jetons plutôt qu'en vrais revenus." },
+        { type: "st", texte: "Les risques" },
+        { type: "p", texte: "Le principal est le slashing." },
+        { type: "def", terme: "Slashing", slug: "slashing", texte: "La sanction d'un validateur (l'opérateur technique) qui se comporte mal ou tombe en panne : une partie des fonds est confisquée. Tu ne fais pas tourner de validateur toi-même, tu délègues à un opérateur — tu n'as rien à gérer, le risque c'est que cet opérateur fasse n'importe quoi. Avec le restaking, tu t'exposes en plus aux règles de pénalité de chaque AVS." },
+        { type: "p", texte: "En pratique, ce risque est-il réel ? Oui en théorie, mais à ce jour quasi inexistant : le slashing n'a été activé sur EigenLayer qu'en avril 2025, et aucun cas n'a été recensé chez les opérateurs sérieux depuis. Pas nul, mais jamais matérialisé pour l'instant." },
+        { type: "p", texte: "S'ajoutent l'empilement de risques (chaque étage dérive un jeton d'un autre) et l'immaturité du secteur : la TVL du restaking a fondu d'environ 15-20 Md$ en début d'année à ~5 Md$ à la mi-2026." },
+        { type: "st", texte: "Notre avis" },
+        { type: "p", texte: "Pour le moment, le restaking ne vaut pas le coup : ~0,3 point de mieux ne justifie pas un risque plus élevé et bien plus difficile à évaluer qu'un simple staking. C'est un pari sur l'avenir — quand les AVS seront assez nombreux et rentables pour payer une vraie prime. En revanche, le staking simple, lui, vaut le coup : peu risqué et éprouvé, il rapporte un rendement natif sur tes ethers à moindre risque. Si tu débutes, commence par là." },
       ],
     },
     actus: [
       {
         titre: "Backpack lance les premières vraies actions tokenisées — et rafle la mise",
         texte:
-          "Tout part de l'IPO (introduction en bourse) de SpaceX. Lancée à 135 $, l'action a flambé jusqu'à 225 $ le 16 juin, propulsant brièvement l'entreprise au rang de 5e valorisation mondiale, devant Amazon ; depuis, elle est retombée autour de 160 $. La frénésie a débordé sur la blockchain : les volumes d'actions tokenisées (des actions classiques représentées par un jeton, échangeables 24h/24 sans courtier) ont explosé sur Solana. Backpack a capté 74 % du volume le 16 juin, avec plus de 105 M$ à elle seule. Mais l'exploit, c'est la nature du produit : là où xStocks ou Ondo ne proposaient que des emballages synthétiques, Backpack offre une vraie propriété de l'action, encadrée par le droit de l'État de New York (le même cadre que Robinhood ou Fidelity). Concrètement : tu touches de vrais dividendes (versés on-chain en stablecoin), tu peux transférer tes actions vers un vrai courtier, et les échanger 1:1 contre la vraie action (la « redemption »), via un partenariat avec Sunrise (un produit de Wormhole).",
+          "Tout part de l'IPO de SpaceX. Lancée à 135 $, l'action a flambé jusqu'à 225 $ le 16 juin, propulsant brièvement l'entreprise au rang de 5e valorisation mondiale, devant Amazon ; depuis, elle est retombée autour de 160 $. La frénésie a débordé sur la blockchain : les volumes d'actions tokenisées ont explosé sur Solana. Backpack a capté 74 % du volume le 16 juin, avec plus de 105 M$ à elle seule. Mais l'exploit, c'est la nature du produit : là où xStocks ou Ondo ne proposaient que des emballages synthétiques, Backpack offre une vraie propriété de l'action, encadrée par le droit de l'État de New York (le même cadre que Robinhood ou Fidelity). Concrètement : tu touches de vrais dividendes (versés en stablecoin), tu peux transférer tes actions vers un vrai courtier, et les échanger 1:1 contre la vraie action (la « redemption »), via un partenariat avec Sunrise (un produit de Wormhole).",
+        defs: [
+          { terme: "IPO (introduction en bourse)", slug: "ipo", texte: "La première mise en vente publique des actions d'une entreprise." },
+          { terme: "Action tokenisée", slug: "action-tokenisee", texte: "Une action classique (Apple, SpaceX…) représentée par un jeton sur une blockchain, qu'on peut donc échanger 24h/24 sans passer par un courtier traditionnel." },
+        ],
         avis:
-          "C'est un vrai jalon, pas un coup de buzz. La grande objection aux actions on-chain — pourquoi acheter ici plutôt que chez un courtier régulé ? — trouve enfin une réponse : on possède réellement l'action, pas une copie synthétique. C'est ce qui pourrait, un jour, faire basculer des milliers de milliards de dollars sur la blockchain. En revanche, nous ne recommandons pas d'investir dans SpaceX à ce stade : sa valorisation est déjà très élevée et la baisse amorcée (de 225 $ à ~160 $) pourrait se poursuivre à court terme.",
+          "C'est un vrai jalon, pas un coup de buzz. La grande objection aux actions sur blockchain — pourquoi acheter ici plutôt que chez un courtier régulé ? — trouve enfin une réponse : on possède réellement l'action, pas une copie synthétique. C'est ce qui pourrait, un jour, faire basculer des milliers de milliards de dollars sur la blockchain. En revanche, nous ne recommandons pas d'investir dans SpaceX à ce stade : sa valorisation est déjà très élevée et la baisse amorcée (de 225 $ à ~160 $) pourrait se poursuivre à court terme.",
         source: "CoinAcademy, The Block, The DeFi Investor",
       },
       {
@@ -180,17 +185,18 @@ export const issues: Issue[] = [
         texte:
           "Le 30 juin 2026, le régime transitoire s'achève : à partir du 1er juillet, toute plateforme crypto sans agrément MiCA ne pourra plus, légalement, servir les résidents de l'UE. Le principe de MiCA : une plateforme obtient un agrément dans un seul pays, qui lui sert de passeport pour les 27. Or Binance, n°1 mondial, n'a toujours pas cet agrément. Selon plusieurs enquêtes, elle aurait d'abord visé la Grèce (refus du régulateur), et la Banque centrale européenne aurait exprimé de fortes réserves. D'après certaines rumeurs, elle chercherait désormais à se rapprocher de la France pour décrocher sa licence — un chemin difficile : la France est l'un des régulateurs les plus stricts d'Europe, et Binance y fait l'objet d'une enquête judiciaire pour blanchiment d'argent aggravé. Côté « too big to fail », MiCA ne prévoit aucune exception liée à la taille : seules ~210 sociétés sont agréées à ce jour, contre 1 200+ avant.",
         avis:
-          "Pas de panique, mais pas d'aveuglement. Nous ne te disons pas de quitter Binance — la situation peut se dénouer en quelques jours. Mais l'asymétrie est réelle : une échéance ferme (30 juin) + un agrément en suspens = un risque opérationnel concret. Si l'accès était coupé, une plateforme peut geler temporairement les retraits le temps de se mettre en règle. Le bon réflexe : vérifier le statut réglementaire de ta plateforme principale, et savoir à l'avance ce que tu ferais.",
+          "Pas de panique — inutile d'enterrer Binance dès aujourd'hui, la situation peut encore se dénouer. Mais dans un scénario pessimiste, les retraits pourraient être temporairement bloqués. Par précaution, on te conseille de sortir tes cryptos de Binance avant l'échéance du 30 juin. Deux façons de faire : les transférer vers ton propre portefeuille auto-géré — un Ledger par exemple (un boîtier physique où tu détiens toi-même tes clés : bien plus sûr, mais qui demande aussi plus de responsabilité) — ou les déplacer vers une plateforme qui a déjà l'agrément MiCA. L'occasion, au passage, de reprendre la main sur tes cryptos.",
         source: "CoinAcademy, Finance Magnates, The Block",
       },
     ],
     protocole: {
       nom: "Re Protocol (reUSD & reUSDe)",
+      slug: "re",
       bref:
-        "Re est un réassureur sur blockchain : ton argent sert de matelas de sécurité à de vraies compagnies d'assurance, et en échange tu touches une part des primes qu'elles encaissent.",
+        "Re est un réassureur sur blockchain : ton argent sert à financer de vraies compagnies d'assurance, et en échange tu touches une partie des primes payées par leurs clients.",
       etapes: [
         "La réassurance, c'est « l'assurance des assureurs » : une compagnie d'assurance encaisse des primes mais redoute les mauvaises années ; pour ne pas couler, elle transfère une partie de son risque (et des primes) à un réassureur.",
-        "Avec Re, c'est toi le réassureur : tu déposes des dollars numériques (un stablecoin comme l'USDC), et ton dépôt sert de réserve de sécurité pour de vraies assurances (auto, responsabilité d'entreprises…). En attendant d'être mobilisé, il est placé sur un produit qui rapporte un petit rendement de base.",
+        "Avec Re, c'est toi le réassureur : tu déposes des dollars numériques (un stablecoin comme l'USDC), et ton dépôt sert de réserve de sécurité pour de vraies assurances (auto, responsabilité d'entreprises…). En attendant d'être mobilisé, il génère du rendement.",
         "Tu peux investir de deux façons selon le jeton choisi : reUSD (prudent, capital protégé en priorité) ou reUSDe (risqué, premier à éponger les pertes mais bien mieux payé). En coulisses, ce sont deux « tranches » (voir Définitions).",
       ],
       rendement:
@@ -200,9 +206,9 @@ export const issues: Issue[] = [
         { label: "reUSDe", niveau: "élevé", sens: "eleve" },
       ],
       risques:
-        "Si une mauvaise année de sinistres survient, la réserve doit payer et une partie de ton dépôt peut être consommée. En cas de sinistre, ce sont d'abord les détenteurs de reUSDe qui perdent ; si la perte est trop grosse, on rabote ensuite les détenteurs de reUSD. Et comme pour tout protocole DeFi, le risque de hack reste inhérent au secteur.",
+        "Si les assureurs doivent indemniser beaucoup de sinistres d'un coup (une année à nombreux accidents ou dégâts), la réserve doit payer — et une partie de ton dépôt peut y passer. En cas de sinistre, ce sont d'abord les détenteurs de reUSDe qui perdent ; si la perte est trop grosse, on rabote ensuite les détenteurs de reUSD. Et comme pour tout protocole DeFi, le risque de hack reste inhérent au secteur.",
       importance:
-        "En DeFi, la plupart des rendements viennent de jetons distribués gratuitement, qui finissent souvent par s'effondrer. Ici, l'argent vient d'une vraie activité économique : l'assurance. À notre avis, Re peut être une bonne piste de diversification pour faire travailler ses stablecoins au-delà des stratégies classiques (prêt, staking de stablecoins) : son rendement dépend de la sinistralité des assurances, pas des mêmes facteurs que le reste de la DeFi, ce qui répartit les risques. À doser, surtout pour reUSDe : un rendement de 12 % n'est jamais un cadeau, c'est le prix d'un risque.",
+        "Ici, l'argent vient d'une vraie activité économique : l'assurance. À notre avis, Re peut être une bonne piste de diversification pour faire travailler ses stablecoins au-delà des stratégies classiques (prêt, staking de stablecoins) : son rendement dépend de la sinistralité des assurances, pas des mêmes facteurs que le reste de la DeFi, ce qui répartit les risques. À doser, surtout pour reUSDe : un rendement de 12 % n'est jamais un cadeau, c'est le prix d'un risque.",
     },
     cours: [
       { actif: "BTC", nom: "Bitcoin", prix: "~62 545 $", var7j: "▼ -4,7 %", sens: "down" },
@@ -211,16 +217,26 @@ export const issues: Issue[] = [
       { actif: "HYPE", nom: "Hyperliquid", prix: "~61,9 $", var7j: "▼ -15,2 %", sens: "down" },
       { actif: "BNB", prix: "~577 $", var7j: "▼ -4,6 %", sens: "down" },
     ],
+    coursAvis:
+      "La crypto, vue comme un actif risqué, suit le décrochage des marchés actions (surtout la tech), dans un climat de défiance « risk-off ». En cause : la banque centrale américaine (la Fed), qui a douché les espoirs de baisse de taux face à une inflation tenace, poussant les investisseurs à fuir les placements risqués.",
     data: {
       titre: "80 % des plateformes crypto pourraient disparaître avec MiCA",
       texte:
-        "C'est l'estimation d'Erald Ghoos, patron d'OKX Europe — et elle colle aux faits : seules ~200 plateformes ont décroché leur agrément MiCA, sur plus de 1 000 qui opéraient en Europe (le cabinet Hogan Lovells arrive à ~75 %). Au programme, sans doute en même temps : fermetures des petits acteurs, rachats et consolidation (OKX et Bybit lancent déjà des primes pour récupérer les utilisateurs), et repli géographique pour ceux qui, comme Binance, n'obtiennent pas leur licence. L'ESMA a exclu tout délai : moins d'acteurs, mieux régulés.",
+        "C'est l'estimation d'Erald Ghoos, patron d'OKX Europe — et elle colle aux faits : seules ~200 plateformes ont décroché leur agrément MiCA, sur plus de 1 000 qui opéraient en Europe. Au programme, sans doute en même temps :",
+      points: [
+        "fermetures des petits acteurs ;",
+        "rachats et consolidation ;",
+        "repli géographique pour ceux qui n'obtiennent pas leur licence.",
+      ],
+      texteFin: "L'ESMA a exclu tout délai : moins d'acteurs, mieux régulés.",
     },
     definitions: [
       {
         terme: "Tranching",
+        slug: "tranching",
         en: "découpage en tranches",
-        def: "Découper un même investissement en plusieurs niveaux de risque (les « tranches »), classés par priorité face aux pertes. La tranche junior (risquée) encaisse les premières pertes et est mieux payée ; la senior (prudente) n'est touchée qu'en dernier. Chez Re : reUSDe = junior, reUSD = senior. Attention : les protocoles précisent rarement les règles exactes de répartition, et l'impact dépend de la taille (TVL) de chaque tranche.",
+        def: "Découper un même investissement en plusieurs niveaux de risque (les « tranches »), classés par priorité face aux pertes. La tranche junior (risquée) encaisse les premières pertes et est mieux payée ; la senior (prudente) n'est touchée qu'en dernier. Chez Re : reUSDe = junior, reUSD = senior.",
+        avis: "Depuis quelques mois, de plus en plus de protocoles adoptent ce modèle de tranches — et c'est intéressant, car il te permet de t'exposer à une même stratégie avec plus ou moins de risque selon la tranche choisie. Le hic : ils précisent rarement les règles exactes de répartition des pertes, donc tu ne sais pas toujours combien tu perdrais ni à partir de quand. L'impact dépend aussi de la taille de chaque tranche : sur 100 € de pertes, si la tranche risquée ne contient que 60 €, elle est vidée et les 40 € restants rognent la tranche prudente ; si elle en contient 300 €, la prudente n'est pas touchée. D'où le réflexe : regarder la TVL de chaque tranche avant de déposer.",
       },
     ],
   },

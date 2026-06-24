@@ -68,9 +68,18 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
   3. **Envoi en masse** : créer un **Broadcast Resend** (dashboard) avec le HTML du numéro, vers l'audience. Le code ne gère QUE le welcome transactionnel.
 - Expéditeur : `mail@send.cryptoluciole.com`. Le showcase visuel vit aussi sur le site (`/numeros/[id]`), l'email peut renvoyer dessus via un bouton.
 
+### Liens glossaire & protocoles (architecture figée le 2026-06-24)
+
+- **URLs par chemin, jamais par ancre `#`** : un terme = `/glossaire/<slug>`, un protocole = `/protocoles/<slug>` (routes dynamiques Next.js `[terme]`/`[id]`, déjà en place). Raison : SEO (1 page indexable par terme), évolutivité, et on peut ajouter des ancres PAR-DESSUS plus tard (`/protocoles/re#les-risques`). L'inverse (tout sur une page `#`) casserait les liens des mails déjà envoyés le jour où on découpe.
+- **Slug canonique INVARIABLE** : minuscules, **sans accent**, tirets. Ex. `action-tokenisee`, `lrt`, `re`. Un slug ne doit jamais changer (sinon redirection Next.js pour ne pas casser les liens des mails partis).
+- **Dans chaque numéro** : tout terme défini est lié à `https://www.cryptoluciole.com/glossaire/<slug>` (sur l'encadré de définition) ; le protocole de SOUS LA LOUPE a un lien `→ Voir la fiche complète` vers `/protocoles/<slug>`. Pages « en construction » OK en attendant le vrai contenu.
+- ⚠️ **Déployer le site AVANT l'envoi en masse** sinon les liens 404 en ligne.
+
 ### Template & système de design (NE PAS refaire le squelette)
 
 **Réutiliser `templates/newsletter-template.html`** pour chaque numéro — remplir les `{{SLOTS}}`, ne jamais reconstruire la structure. Référence finale : `cryptoluciole-01-v3.html` (= le #1 abouti).
+
+**Format aéré = standard depuis le #2 (figé le 2026-06-24).** Chaque terme défini va dans un **encadré de définition** dédié (fond gris clair, terme en gras lié au glossaire), pas fondu en parenthèses. Sous-titres clairs dans ON ÉCLAIRE (« En pratique », « Combien ça rapporte »…). Listes à puces quand ça aide (ex. scénarios de ÇA BRILLE). Côté site, ce format est porté par le type `NotionEl` (`corps: p | st | def`) + `defs` sur les actus + `points`/`texteFin` sur `data`, rendus par `site/app/numeros/[id]/page.tsx` (composant `DefBox`). L'email reproduit le même rendu en HTML (encadrés `background-color:#f3f6f6`). Objectif : **agréable à lire**.
 
 - **Palette** : nuit `#1A2332` · teal `#28B092`/`#2ABFAB` · or-luciole `#F5A623` · vert hausse `#16a34a` · rouge baisse `#dc2626` · gris `#94a3b8`.
 - **Police** Inter (repli Helvetica/Arial), corps **16px**, largeur 600px, beaucoup d'air (marges 36px).
@@ -91,7 +100,7 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 4. 🔍 SOUS LA LOUPE : 1 protocole/stratégie (en bref / comment ça marche / **Le rendement** : taux actuel + fourchette sur 1 an / **Les risques** avec badge de niveau / pourquoi ça compte).
 
    **Échelle de risque (classification maison, à réutiliser)** : 🟢 **Faible** (bg `#dcfce7`, txt `#15803d`) · 🟡 **Moyen** (bg `#fef9c3`, txt `#a16207`) · 🔴 **Élevé** (bg `#fee2e2`, txt `#b91c1c`). Badge en pastille à côté de « Les risques », suivi d'un court paragraphe qui justifie le niveau (toujours nuancer : « faible » ≠ « nul »).
-5. 📊 LES REPÈRES : tableau cours BTC/ETH/SOL/HYPE/BNB, noms + 7 j en vert/rouge.
+5. 📊 LES REPÈRES : tableau cours BTC/ETH/SOL/HYPE/BNB, noms + 7 j en vert/rouge. **Sous le tableau, un encadré vert « 💡 Notre avis »** qui explique le mouvement de la semaine en ~2 phrases (les causes de la hausse/baisse). **Note de bas de tableau = uniquement dates + sources** (pas de légende couleur vert/rouge : inutile).
 6. 💡 ÇA BRILLE : 1 data de la semaine (carte nuit/violet).
 7. 📖 DÉFINITIONS : 2 termes à puces.
 8. ✉️ À toi de jouer : question lecteur + sondage A/B.

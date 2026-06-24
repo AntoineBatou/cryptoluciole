@@ -21,6 +21,18 @@ function Pill({ children, tone }: { children: React.ReactNode; tone: "teal" | "o
   );
 }
 
+// Encadré de définition : le terme est cliquable vers sa fiche glossaire.
+function DefBox({ terme, slug, texte }: { terme: string; slug: string; texte: string }) {
+  return (
+    <div className="mb-4 rounded-lg border border-black/5 bg-white px-4 py-3 text-sm leading-relaxed text-nuit/70">
+      <Link href={`/glossaire/${slug}`} className="font-bold text-teal hover:underline">
+        {terme}
+      </Link>{" "}
+      — {texte}
+    </div>
+  );
+}
+
 // En Next.js 16, "params" arrive de façon asynchrone -> la fonction est "async" et on "await".
 export default async function NumeroPage({
   params,
@@ -80,11 +92,28 @@ export default async function NumeroPage({
           <h2 className="mb-4 mt-4 text-2xl font-extrabold text-nuit">
             {n.notion.titre}
           </h2>
-          {n.notion.blocs.map((b) => (
+          {/* Ancien format (#1) : blocs ⬡ */}
+          {n.notion.blocs?.map((b) => (
             <p key={b.label} className="mb-4 leading-relaxed text-nuit/80">
               <strong className="text-luciole">⬡ {b.label}.</strong> {b.texte}
             </p>
           ))}
+          {/* Format aéré (#2+) : corps typé (paragraphes, sous-titres, encadrés de définition) */}
+          {n.notion.corps?.map((el, i) => {
+            if (el.type === "st")
+              return (
+                <h3 key={i} className="mb-2 mt-6 text-lg font-bold text-teal">
+                  {el.texte}
+                </h3>
+              );
+            if (el.type === "def")
+              return <DefBox key={i} terme={el.terme} slug={el.slug} texte={el.texte} />;
+            return (
+              <p key={i} className="mb-4 leading-relaxed text-nuit/80">
+                {el.texte}
+              </p>
+            );
+          })}
         </section>
 
         {/* DANS LE FAISCEAU */}
@@ -97,6 +126,13 @@ export default async function NumeroPage({
                   <span className="text-luciole">✦</span> {a.titre}
                 </h3>
                 <p className="mt-2 leading-relaxed text-nuit/80">{a.texte}</p>
+                {a.defs && (
+                  <div className="mt-3">
+                    {a.defs.map((d, i) => (
+                      <DefBox key={i} terme={d.terme} slug={d.slug} texte={d.texte} />
+                    ))}
+                  </div>
+                )}
                 <div className="mt-3 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80">
                   💡 <strong>Notre avis :</strong> {a.avis}
                 </div>
@@ -139,6 +175,16 @@ export default async function NumeroPage({
           <p className="leading-relaxed text-nuit/80">
             <strong className="text-teal">Pourquoi ça compte.</strong> {n.protocole.importance}
           </p>
+          {n.protocole.slug && (
+            <p className="mt-4">
+              <Link
+                href={`/protocoles/${n.protocole.slug}`}
+                className="font-bold text-teal hover:underline"
+              >
+                → Voir la fiche complète du protocole
+              </Link>
+            </p>
+          )}
         </section>
 
         {/* LES REPÈRES (cours) */}
@@ -178,6 +224,11 @@ export default async function NumeroPage({
               </tbody>
             </table>
           </div>
+          {n.coursAvis && (
+            <div className="mt-4 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80">
+              💡 <strong>Notre avis :</strong> {n.coursAvis}
+            </div>
+          )}
         </section>
 
         {/* ÇA BRILLE (data) */}
@@ -187,6 +238,16 @@ export default async function NumeroPage({
           </div>
           <div className="mt-2 text-xl font-extrabold text-white">{n.data.titre}</div>
           <p className="mt-2 leading-relaxed text-white/70">{n.data.texte}</p>
+          {n.data.points && (
+            <ul className="mt-2 list-disc space-y-1 pl-5 leading-relaxed text-white/70">
+              {n.data.points.map((p, i) => (
+                <li key={i}>{p}</li>
+              ))}
+            </ul>
+          )}
+          {n.data.texteFin && (
+            <p className="mt-2 leading-relaxed text-white/70">{n.data.texteFin}</p>
+          )}
         </section>
 
         {/* DÉFINITIONS */}
@@ -194,12 +255,28 @@ export default async function NumeroPage({
           <Pill tone="or">📖 Définitions</Pill>
           <ul className="mt-4 space-y-3">
             {n.definitions.map((d) => (
-              <li key={d.terme} className="flex gap-3 text-nuit/80">
-                <span className="text-luciole">•</span>
-                <span>
-                  <strong>{d.terme}</strong>{" "}
-                  <span className="text-nuit/40">({d.en})</span> — {d.def}
-                </span>
+              <li key={d.terme} className="text-nuit/80">
+                <div className="flex gap-3">
+                  <span className="text-luciole">•</span>
+                  <span>
+                    {d.slug ? (
+                      <Link
+                        href={`/glossaire/${d.slug}`}
+                        className="font-bold text-teal hover:underline"
+                      >
+                        {d.terme}
+                      </Link>
+                    ) : (
+                      <strong>{d.terme}</strong>
+                    )}{" "}
+                    <span className="text-nuit/40">({d.en})</span> — {d.def}
+                  </span>
+                </div>
+                {d.avis && (
+                  <div className="ml-6 mt-2 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80">
+                    💡 <strong>Notre avis :</strong> {d.avis}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
