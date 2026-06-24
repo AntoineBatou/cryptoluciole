@@ -44,7 +44,7 @@ Cette semaine : c'est quoi le restaking, Backpack lance les vraies actions token
     <td style="padding:20px 36px 10px 36px; color:#1A2332;">
       <p style="margin:0 0 16px 0; font-size:16px; line-height:1.65;">Bonjour 👋,</p>
       <p style="margin:0 0 18px 0; font-size:16px; line-height:1.65;">
-        Cette semaine, on décrypte le <strong>restaking</strong> — la suite logique du <em>staking</em>, qu'on avait défini dans notre <a href="https://www.cryptoluciole.com/numeros/1" style="color:#28B092; font-weight:600;">précédent numéro</a>. Et côté actus, en bref : Backpack lance des actions tokenisées qui offrent les mêmes droits que les actions traditionnelles, et Binance joue sa présence en Europe face à MiCA.
+        Cette semaine, on décrypte le <strong>restaking</strong> — la suite logique du <em>staking</em>, qu'on avait défini dans notre <a href="https://www.cryptoluciole.com/numeros/1" style="color:#28B092; font-weight:600;">précédent numéro</a>. Et côté actus, en bref : Backpack lance des actions tokenisées qui offrent les mêmes droits que les actions traditionnelles, et Binance confirme son départ de France, faute d'agrément MiCA.
       </p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f7fafa; border-radius:12px;">
         <tr><td style="padding:18px 22px; font-size:15px; line-height:2; color:#475569;">
@@ -107,16 +107,16 @@ Cette semaine : c'est quoi le restaking, Backpack lance les vraies actions token
     </table>
     <p style="margin:0 0 22px 0; font-size:12px; color:#94a3b8;">Source : CoinAcademy, The Block, The DeFi Investor</p>
 
-    <p style="margin:0 0 6px 0; font-size:17px; font-weight:700;"><span style="color:#F5A623;">✦</span>&nbsp; Binance face à MiCA : le géant peut-il vraiment être bloqué en Europe ?</p>
+    <p style="margin:0 0 6px 0; font-size:17px; font-weight:700;"><span style="color:#F5A623;">✦</span>&nbsp; Binance quitte la France : ce qui change pour tes cryptos</p>
     <p style="margin:0 0 12px 0; font-size:16px; line-height:1.7;">
-      Le 30 juin 2026, le régime transitoire s'achève : à partir du 1er juillet, toute plateforme crypto sans <strong>agrément MiCA</strong> ne pourra plus, légalement, servir les résidents de l'UE. Le principe : une plateforme obtient un agrément dans un seul pays, qui lui sert de <strong>passeport</strong> pour les 27. Or Binance, n°1 mondial, n'a toujours pas cet agrément. Selon plusieurs enquêtes, elle aurait d'abord visé la Grèce (refus du régulateur), et la Banque centrale européenne aurait exprimé de fortes réserves. D'après certaines rumeurs, elle chercherait désormais à se rapprocher de la <strong>France</strong> — un chemin difficile : la France est l'un des régulateurs les plus stricts d'Europe, et Binance y fait l'objet d'une enquête judiciaire pour blanchiment d'argent aggravé. Côté « too big to fail », MiCA ne prévoit aucune exception liée à la taille.
+      C'est désormais <strong>officiel</strong> : Binance n'obtiendra pas l'agrément MiCA et cessera de proposer ses services crypto <strong>en France à partir du 1er juillet 2026</strong> — plus de nouveaux utilisateurs, et services progressivement restreints. (Rappel : MiCA est le règlement européen ; sans agrément, une plateforme ne peut plus, légalement, servir les résidents de l'UE.) Point rassurant, et Binance le confirme : <strong>aucun gel soudain</strong>. Tu pourras retirer tes actifs <strong>à tout moment</strong>, en crypto comme en euros, y compris après le 1er juillet ; passé cette date, les opérations se limiteront à réduire tes positions et retirer tes fonds. Deux échéances à retenir : le <strong>1er juillet</strong> (arrêt du trading Spot et des nouveaux ordres) et le <strong>1er octobre</strong> (liquidation des positions sur marge et des prêts encore ouverts).
     </p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0fdf4; border-left:4px solid #28B092; border-radius:8px; margin-bottom:14px;">
       <tr><td style="padding:14px 18px; font-size:16px; line-height:1.65; color:#1A2332;">
-        💡 <strong>Notre avis :</strong> pas de panique — inutile d'enterrer Binance dès aujourd'hui, la situation peut encore se dénouer. Mais dans un scénario pessimiste, les retraits pourraient être temporairement bloqués. Par précaution, on te conseille de <strong>sortir tes cryptos de Binance avant l'échéance du 30 juin</strong>. Deux façons de faire : les transférer vers ton <strong>propre portefeuille auto-géré</strong> — un <em>Ledger</em> par exemple (un boîtier physique où tu détiens toi-même tes clés : bien plus sûr, mais qui demande aussi plus de responsabilité) — ou les déplacer vers <strong>une plateforme qui a déjà l'agrément MiCA</strong>. L'occasion, au passage, de reprendre la main sur tes cryptos.
+        💡 <strong>Notre avis :</strong> pas de panique : cette fois Binance le confirme noir sur blanc — <strong>aucun gel</strong>, tes retraits restent ouverts même après le 1er juillet. Mais comme la plateforme ferme en France, tu devras de toute façon déplacer tes cryptos. Deux options propres : les transférer vers ton <strong>propre portefeuille auto-géré</strong> (un <em>Ledger</em> par exemple — tu détiens toi-même tes clés, plus sûr mais plus responsabilisant), ou vers <strong>une autre plateforme déjà agréée MiCA</strong> (voir la <a href="https://www.amf-france.org/fr/espace-epargnants/proteger-son-epargne/listes-blanches" style="color:#28B092; font-weight:600;">liste officielle de l'AMF</a>).
       </td></tr>
     </table>
-    <p style="margin:0; font-size:12px; color:#94a3b8;">Source : CoinAcademy, Finance Magnates, The Block</p>
+    <p style="margin:0; font-size:12px; color:#94a3b8;">Source : communication officielle Binance France (e-mail aux utilisateurs)</p>
   </td></tr>
 
   <tr><td style="padding:26px 36px 0 36px;"><div style="border-top:1px solid #eef2f2;"></div></td></tr>
@@ -147,7 +147,7 @@ Cette semaine : c'est quoi le restaking, Backpack lance les vraies actions token
   <tr><td style="padding:24px 36px 0 36px;">
     <table role="presentation" cellpadding="0" cellspacing="0"><tr>
       <td style="background-color:#eef0ff; border-radius:30px; padding:6px 16px; font-size:12px; font-weight:700; color:#4338ca; letter-spacing:1.2px;">📊 LES REPÈRES</td>
-      <td style="padding-left:12px; font-size:12px; color:#94a3b8; white-space:nowrap;">au 24 juin 2026</td>
+      <td style="padding-left:12px; font-size:12px; color:#94a3b8; white-space:nowrap;">au 24 juin 2026, 17h24</td>
     </tr></table>
   </td></tr>
   <tr><td style="padding:16px 36px 0 36px;">
@@ -157,18 +157,18 @@ Cette semaine : c'est quoi le restaking, Backpack lance les vraies actions token
         <td align="right" style="padding:11px 18px; font-size:12px; font-weight:600; color:#94a3b8; letter-spacing:0.5px;">PRIX</td>
         <td align="right" style="padding:11px 18px; font-size:12px; font-weight:600; color:#94a3b8; letter-spacing:0.5px;">7 JOURS</td>
       </tr>
-      <tr><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">BTC</strong> <span style="color:#94a3b8;">Bitcoin</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~62 545 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -4,7 %</td></tr>
-      <tr style="background-color:#f7fafa;"><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">ETH</strong> <span style="color:#94a3b8;">Ethereum</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~1 662 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -7,2 %</td></tr>
-      <tr><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">SOL</strong> <span style="color:#94a3b8;">Solana</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~69,4 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -5,7 %</td></tr>
-      <tr style="background-color:#f7fafa;"><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">HYPE</strong> <span style="color:#94a3b8;">Hyperliquid</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~61,9 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -15,2 %</td></tr>
-      <tr><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">BNB</strong></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~577 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -4,6 %</td></tr>
+      <tr><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">BTC</strong> <span style="color:#94a3b8;">Bitcoin</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~60 981 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -6,6 %</td></tr>
+      <tr style="background-color:#f7fafa;"><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">ETH</strong> <span style="color:#94a3b8;">Ethereum</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~1 646 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -6,5 %</td></tr>
+      <tr><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">SOL</strong> <span style="color:#94a3b8;">Solana</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~68,4 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -6,0 %</td></tr>
+      <tr style="background-color:#f7fafa;"><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">HYPE</strong> <span style="color:#94a3b8;">Hyperliquid</span></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~60,6 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -16,1 %</td></tr>
+      <tr><td style="padding:13px 18px; font-size:16px; color:#1A2332;"><strong style="color:#dc2626;">BNB</strong></td><td align="right" style="padding:13px 18px; font-size:16px; font-weight:700; color:#1A2332;">~568 $</td><td align="right" style="padding:13px 18px; font-size:15px; font-weight:700; color:#dc2626;">▼ -5,7 %</td></tr>
     </table>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0fdf4; border-left:4px solid #28B092; border-radius:8px; margin-top:14px;">
       <tr><td style="padding:14px 18px; font-size:16px; line-height:1.6; color:#1A2332;">
         💡 <strong>Notre avis :</strong> la crypto, vue comme un actif risqué, suit le décrochage des marchés actions (surtout la tech), dans un climat de défiance « risk-off ». En cause : la banque centrale américaine (la Fed), qui a douché les espoirs de baisse de taux face à une inflation tenace, poussant les investisseurs à fuir les placements risqués.
       </td></tr>
     </table>
-    <p style="margin:8px 0 0 0; font-size:11px; line-height:1.5; color:#94a3b8;">Prix &amp; variations 7 j au 24 juin 2026 (DeFiLlama / CoinGecko).</p>
+    <p style="margin:8px 0 0 0; font-size:11px; line-height:1.5; color:#94a3b8;">Prix &amp; variations 7 j au 24 juin 2026, 17h24 (DeFiLlama / CoinGecko).</p>
   </td></tr>
 
   <!-- DATA DE LA SEMAINE -->

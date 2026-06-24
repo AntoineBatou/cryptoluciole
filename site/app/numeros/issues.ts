@@ -20,7 +20,7 @@ export type Issue = {
   // notion : ancien format (blocs ⬡, #1) OU nouveau format aéré (corps, #2+).
   notion: { titre: string; blocs?: { label: string; texte: string }[]; corps?: NotionEl[] };
   // une actu peut porter des encadrés de définition (termes liés au glossaire).
-  actus: { titre: string; texte: string; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[] }[];
+  actus: { titre: string; texte: string; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[]; lien?: { label: string; href: string } }[];
   protocole: {
     nom: string;
     slug?: string; // -> /protocoles/<slug>
@@ -36,6 +36,7 @@ export type Issue = {
     importance: string;
   };
   cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down" }[];
+  coursHeure?: string; // heure de prise des cours (ex. "17h24")
   coursAvis?: string; // encadré « Notre avis » sous le tableau des cours
   data: { titre: string; texte: string; points?: string[]; texteFin?: string };
   definitions: { terme: string; en: string; def: string; avis?: string; slug?: string }[];
@@ -181,12 +182,16 @@ export const issues: Issue[] = [
         source: "CoinAcademy, The Block, The DeFi Investor",
       },
       {
-        titre: "Binance face à MiCA : le géant peut-il vraiment être bloqué en Europe ?",
+        titre: "Binance quitte la France : ce qui change pour tes cryptos",
         texte:
-          "Le 30 juin 2026, le régime transitoire s'achève : à partir du 1er juillet, toute plateforme crypto sans agrément MiCA ne pourra plus, légalement, servir les résidents de l'UE. Le principe de MiCA : une plateforme obtient un agrément dans un seul pays, qui lui sert de passeport pour les 27. Or Binance, n°1 mondial, n'a toujours pas cet agrément. Selon plusieurs enquêtes, elle aurait d'abord visé la Grèce (refus du régulateur), et la Banque centrale européenne aurait exprimé de fortes réserves. D'après certaines rumeurs, elle chercherait désormais à se rapprocher de la France pour décrocher sa licence — un chemin difficile : la France est l'un des régulateurs les plus stricts d'Europe, et Binance y fait l'objet d'une enquête judiciaire pour blanchiment d'argent aggravé. Côté « too big to fail », MiCA ne prévoit aucune exception liée à la taille : seules ~210 sociétés sont agréées à ce jour, contre 1 200+ avant.",
+          "C'est désormais officiel : Binance n'obtiendra pas l'agrément MiCA et cessera de proposer ses services crypto en France à partir du 1er juillet 2026 — plus de nouveaux utilisateurs, et services progressivement restreints. (Rappel : MiCA est le règlement européen ; sans agrément, une plateforme ne peut plus, légalement, servir les résidents de l'UE.) Point rassurant, et Binance le confirme : aucun gel soudain. Tu pourras retirer tes actifs à tout moment, en crypto comme en euros, y compris après le 1er juillet ; passé cette date, les opérations se limiteront à réduire tes positions et retirer tes fonds. Deux échéances à retenir : le 1er juillet (arrêt du trading Spot et des nouveaux ordres) et le 1er octobre (liquidation des positions sur marge et des prêts encore ouverts).",
         avis:
-          "Pas de panique — inutile d'enterrer Binance dès aujourd'hui, la situation peut encore se dénouer. Mais dans un scénario pessimiste, les retraits pourraient être temporairement bloqués. Par précaution, on te conseille de sortir tes cryptos de Binance avant l'échéance du 30 juin. Deux façons de faire : les transférer vers ton propre portefeuille auto-géré — un Ledger par exemple (un boîtier physique où tu détiens toi-même tes clés : bien plus sûr, mais qui demande aussi plus de responsabilité) — ou les déplacer vers une plateforme qui a déjà l'agrément MiCA. L'occasion, au passage, de reprendre la main sur tes cryptos.",
-        source: "CoinAcademy, Finance Magnates, The Block",
+          "Pas de panique : cette fois Binance le confirme noir sur blanc — aucun gel, tes retraits restent ouverts même après le 1er juillet. Mais comme la plateforme ferme en France, tu devras de toute façon déplacer tes cryptos. Deux options propres : les transférer vers ton propre portefeuille auto-géré (un Ledger par exemple — tu détiens toi-même tes clés, plus sûr mais plus responsabilisant), ou vers une autre plateforme déjà agréée MiCA.",
+        lien: {
+          label: "Voir la liste officielle des plateformes agréées (AMF)",
+          href: "https://www.amf-france.org/fr/espace-epargnants/proteger-son-epargne/listes-blanches",
+        },
+        source: "Communication officielle Binance France (e-mail aux utilisateurs)",
       },
     ],
     protocole: {
@@ -211,12 +216,13 @@ export const issues: Issue[] = [
         "Ici, l'argent vient d'une vraie activité économique : l'assurance. À notre avis, Re peut être une bonne piste de diversification pour faire travailler ses stablecoins au-delà des stratégies classiques (prêt, staking de stablecoins) : son rendement dépend de la sinistralité des assurances, pas des mêmes facteurs que le reste de la DeFi, ce qui répartit les risques. À doser, surtout pour reUSDe : un rendement de 12 % n'est jamais un cadeau, c'est le prix d'un risque.",
     },
     cours: [
-      { actif: "BTC", nom: "Bitcoin", prix: "~62 545 $", var7j: "▼ -4,7 %", sens: "down" },
-      { actif: "ETH", nom: "Ethereum", prix: "~1 662 $", var7j: "▼ -7,2 %", sens: "down" },
-      { actif: "SOL", nom: "Solana", prix: "~69,4 $", var7j: "▼ -5,7 %", sens: "down" },
-      { actif: "HYPE", nom: "Hyperliquid", prix: "~61,9 $", var7j: "▼ -15,2 %", sens: "down" },
-      { actif: "BNB", prix: "~577 $", var7j: "▼ -4,6 %", sens: "down" },
+      { actif: "BTC", nom: "Bitcoin", prix: "~60 981 $", var7j: "▼ -6,6 %", sens: "down" },
+      { actif: "ETH", nom: "Ethereum", prix: "~1 646 $", var7j: "▼ -6,5 %", sens: "down" },
+      { actif: "SOL", nom: "Solana", prix: "~68,4 $", var7j: "▼ -6,0 %", sens: "down" },
+      { actif: "HYPE", nom: "Hyperliquid", prix: "~60,6 $", var7j: "▼ -16,1 %", sens: "down" },
+      { actif: "BNB", prix: "~568 $", var7j: "▼ -5,7 %", sens: "down" },
     ],
+    coursHeure: "17h24",
     coursAvis:
       "La crypto, vue comme un actif risqué, suit le décrochage des marchés actions (surtout la tech), dans un climat de défiance « risk-off ». En cause : la banque centrale américaine (la Fed), qui a douché les espoirs de baisse de taux face à une inflation tenace, poussant les investisseurs à fuir les placements risqués.",
     data: {

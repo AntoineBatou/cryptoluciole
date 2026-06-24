@@ -136,6 +136,18 @@ export default async function NumeroPage({
                 <div className="mt-3 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80">
                   💡 <strong>Notre avis :</strong> {a.avis}
                 </div>
+                {a.lien && (
+                  <p className="mt-2">
+                    <a
+                      href={a.lien.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-teal hover:underline"
+                    >
+                      → {a.lien.label}
+                    </a>
+                  </p>
+                )}
                 <p className="mt-2 text-xs text-nuit/40">Source : {a.source}</p>
               </div>
             ))}
@@ -191,7 +203,10 @@ export default async function NumeroPage({
         <section className="mb-12">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <Pill tone="indigo">📊 Les repères</Pill>
-            <span className="text-xs text-nuit/50">au {n.date}</span>
+            <span className="text-xs text-nuit/50">
+              au {n.date}
+              {n.coursHeure ? `, ${n.coursHeure}` : ""}
+            </span>
           </div>
           <div className="mt-4 overflow-hidden rounded-xl border border-black/5">
             <table className="w-full text-sm">
