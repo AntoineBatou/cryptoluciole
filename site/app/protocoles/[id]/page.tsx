@@ -1,13 +1,101 @@
 import Link from "next/link";
 import { getProtocole, PROTOCOLES, type ProtoBloc } from "../protocols";
 import { fetchProtoLive, formatUsd, formatApy, type ProtoLiveData } from "../live";
+import { fetchPharosCard, pharosGradeColor, type PharosCard } from "../pharos";
 
 export function generateStaticParams() {
   return PROTOCOLES.map((p) => ({ id: p.slug }));
 }
 
-// Régénère la page (et donc les chiffres live DeFiLlama) toutes les heures.
+// Régénère la page (et donc les chiffres live DeFiLlama + Pharos) toutes les heures.
 export const revalidate = 3600;
+
+// Encadré « note de risque indépendante Pharos » dans la catégorie risques.
+function PharosBox({ card }: { card: PharosCard }) {
+  return (
+    <section className="mt-6 rounded-2xl border border-nuit/10 bg-white p-5">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h3 className="text-base font-bold text-nuit">🛡️ Note de risque indépendante</h3>
+          <p className="text-sm text-nuit/50">
+            Par{" "}
+            <a
+              href={card.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-teal hover:underline"
+            >
+              Pharos.watch
+            </a>{" "}
+            — un service tiers qui note la sécurité des stablecoins.
+          </p>
+        </div>
+        <span
+          className={`rounded-xl px-4 py-2 text-lg font-extrabold ${pharosGradeColor(card.grade)}`}
+        >
+          {card.grade} · {card.score}/100
+        </span>
+      </div>
+
+      {card.dimensions.length > 0 && (
+        <div className="mt-4 flex flex-col gap-2">
+          {card.dimensions.map((d) => (
+            <div key={d.cle} className="flex items-center gap-3">
+              <span className="w-40 shrink-0 text-sm text-nuit/70">{d.label}</span>
+              <div className="h-2 flex-1 overflow-hidden rounded-full bg-nuit/5">
+                {d.score != null && (
+                  <div
+                    className="h-full rounded-full bg-teal"
+                    style={{ width: `${Math.max(0, Math.min(100, d.score))}%` }}
+                  />
+                )}
+              </div>
+              <span
+                className={`w-20 shrink-0 rounded-full px-2 py-0.5 text-center text-xs font-bold ${pharosGradeColor(
+                  d.grade,
+                )}`}
+              >
+                {d.grade}
+                {d.score != null ? ` ${d.score}` : ""}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Mini-tuto : comment lire / utiliser Pharos */}
+      <details className="mt-4 rounded-lg bg-brume px-4 py-3 text-sm text-nuit/70">
+        <summary className="cursor-pointer font-semibold text-nuit">
+          Comment lire cette note ?
+        </summary>
+        <div className="mt-2 flex flex-col gap-2 leading-relaxed">
+          <p>
+            Pharos attribue une note de <strong>F (risqué)</strong> à{" "}
+            <strong>A+ (solide)</strong>, calculée à partir de plusieurs dimensions : la
+            tenue du peg, la facilité à ressortir son argent (liquidité), la solidité du
+            collatéral (résilience), le degré de décentralisation et la dépendance à
+            d'autres protocoles.
+          </p>
+          <p>
+            <strong>En pratique :</strong> regarde d'abord la note globale, puis repère les
+            dimensions les plus basses — ce sont les points faibles à creuser. Ici, par
+            exemple, la décentralisation est notée bas (gouvernance centralisée), ce qui
+            rejoint notre propre analyse plus haut.
+          </p>
+          <p>
+            Clique sur «&nbsp;Pharos.watch&nbsp;» pour le détail complet et la méthodologie.
+            C'est un avis externe utile à recouper — pas un conseil en investissement.
+          </p>
+        </div>
+      </details>
+
+      <p className="mt-3 text-xs text-nuit/40">
+        Note récupérée automatiquement (env. 1×/h). Échelle Pharos, distincte de notre score
+        maison.
+      </p>
+    </section>
+  );
+}
 
 // Carte « chiffres en direct » : TVL du protocole + TVL/APY par pool (DeFiLlama).
 function LiveCard({ live }: { live: ProtoLiveData }) {
@@ -154,8 +242,11 @@ export default async function ProtocolePage({
   const p = getProtocole(id);
   const label = p?.nom ?? decodeURIComponent(id).replace(/-/g, " ");
 
-  // Chiffres live (TVL/APY) — récupérés au build/revalidation, jamais en dur.
-  const live = p?.live ? await fetchProtoLive(p.live) : null;
+  // Données live — récupérées au build/revalidation, jamais en dur.
+  const [live, pharos] = await Promise.all([
+    p?.live ? fetchProtoLive(p.live) : Promise.resolve(null),
+    p?.pharos ? fetchPharosCard(p.pharos.id) : Promise.resolve(null),
+  ]);
 
   return (
     <div className="flex flex-1 flex-col bg-brume">
@@ -226,6 +317,9 @@ export default async function ProtocolePage({
                 ))}
               </section>
             ))}
+
+            {/* Note de risque indépendante Pharos (dans la continuité des risques) */}
+            {pharos && <PharosBox card={pharos} />}
 
             {/* À retenir */}
             {p.pointsCles && p.pointsCles.length > 0 && (

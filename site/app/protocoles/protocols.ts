@@ -38,6 +38,8 @@ export type ProtocoleFiche = {
   // Chiffres LIVE (TVL/APY) récupérés via DeFiLlama — JAMAIS recopiés du wiki.
   // Voir live.ts. À renseigner pour CHAQUE protocole.
   live?: ProtoLiveConfig;
+  // Note de risque indépendante Pharos.watch (live). id = format ticker-issuer.
+  pharos?: { id: string };
   // « Carte d'identité » affichée en haut (label → valeur) — faits DURABLES
   // uniquement (type, date de lancement, équipe…). Pas de TVL/APY ici : c'est live.
   enBref?: { label: string; valeur: string }[];
@@ -66,6 +68,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
         { label: "reUSDe (junior)", id: "145810df-dc01-43e7-8033-e0aa5dceb767" },
       ],
     },
+    pharos: { id: "reusd-re-protocol" },
     enBref: [
       { label: "Type", valeur: "Réassurance tokenisée (RWA), structure en tranches" },
       { label: "Lancement on-chain", valeur: "21 janvier 2025" },
