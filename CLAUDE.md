@@ -65,7 +65,8 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 - **Pour chaque nouveau numéro** :
   1. Créer `site/app/emails/issues/issue-0X.ts` (sur le modèle de `issue-01.ts`) et l'ajouter à `ALL_ISSUES` dans `latest.ts` → le welcome pointera dessus.
   2. Ajouter le numéro dans `site/app/numeros/issues.ts` (archive du site).
-  3. **Envoi en masse** : créer un **Broadcast Resend** (dashboard) avec le HTML du numéro, vers l'audience. Le code ne gère QUE le welcome transactionnel.
+  3. **Envoi en masse via l'API** (PAS l'éditeur Broadcast) : `cd site && node scripts/send-newsletter.mjs app/emails/issues/issue-0X.ts --test <email>` (valider le rendu par le canal réel) → `--dry-run` (compter l'audience) → `--send` (envoi réel). Le script suit la pagination, exclut les désinscrits, ajoute `List-Unsubscribe`.
+- ⛔ **Ne plus utiliser l'éditeur Broadcast Resend** : il réencapsule le HTML collé (conteneur ~600px + styles globaux) et casse le fond pleine largeur / le centrage (constaté au #2). L'API `/emails` envoie le HTML brut = rendu fidèle. Toujours valider par le canal RÉEL avant un mass-send.
 - Expéditeur : `mail@send.cryptoluciole.com`. Le showcase visuel vit aussi sur le site (`/numeros/[id]`), l'email peut renvoyer dessus via un bouton.
 
 ### Liens glossaire & protocoles (architecture figée le 2026-06-24)
