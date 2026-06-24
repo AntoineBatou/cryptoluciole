@@ -43,10 +43,10 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 
 - **Lecteur-type** : « Grégoire », ~32 ans, débutant qui veut comprendre ET savoir *comment faire*.
 - **Edge** : profondeur DeFi vulgarisée et **actionnable**, pas « les news en plus court ».
-- **Approche tech (C — hybride)** : envoi via **beehiiv** (abonnés + délivrabilité gérés) + **site web à construire à neuf** (cryptoluciole.com) pour l'archive des numéros + l'inscription, puis plus tard de la data crypto. **Le site reprend la charte CryptoLuciole** (= celle de la newsletter, ci-dessous). ⚠️ **trackpaw n'est PAS la base du site** : c'est seulement, plus tard, une *source de data* (chiffres) à afficher — jamais le squelette ni le design. Agents de veille : étendre `../analyste-defi` (Phase 4).
+- **Approche tech (C — hybride)** : envoi via **Resend** (audience + emails) + **site web à construire à neuf** (cryptoluciole.com) pour l'archive des numéros + l'inscription, puis plus tard de la data crypto. **Le site reprend la charte CryptoLuciole** (= celle de la newsletter, ci-dessous). ⚠️ **trackpaw n'est PAS la base du site** : c'est seulement, plus tard, une *source de data* (chiffres) à afficher — jamais le squelette ni le design. Agents de veille : étendre `../analyste-defi` (Phase 4).
 - **Cadence** : 1×/semaine au départ (mardi+jeudi à terme). **2 actus par numéro** (pas 3).
 - **Domaine** : cryptoluciole.com (OVH).
-- **Plateforme d'envoi** : **beehiiv** (plan gratuit Launch). Publication « CryptoLuciole », `pub_b56c1563-3276-46fa-9762-806430feb760`. Domaine d'envoi : sous-domaine **`mail.cryptoluciole.com`** (CNAME em/DKIM via SendGrid sur OVH). **Inscription** branchée : formulaire du site → route `site/app/api/subscribe/route.ts` → API beehiiv. Secrets `BEEHIIV_API_KEY` + `BEEHIIV_PUBLICATION_ID` dans `site/.env.local` (local, gitignored) ET dans les Environment Variables Vercel (prod). La clé API ne doit jamais être commitée ni écrite en mémoire.
+- **Plateforme d'envoi** : **Resend** (bascule depuis beehiiv le 2026-06, beehiiv abandonné). Domaine vérifié d'envoi : **`send.cryptoluciole.com`** ; expéditeur `CryptoLuciole <mail@send.cryptoluciole.com>` (SPF/DKIM). **Inscription** branchée : formulaire du site → route `site/app/api/subscribe/route.ts` → ajout du contact à l'**audience Resend** PUIS envoi auto d'un **mail de bienvenue** (= le dernier numéro complet). Secrets `RESEND_API_KEY` + `RESEND_AUDIENCE_ID` dans `site/.env.local` (local, gitignored) ET dans les Environment Variables Vercel (prod). La clé API ne doit jamais être commitée ni écrite en mémoire.
 - **Périmètre du site** (à construire à neuf, charte CryptoLuciole) : (1) accueil brandé + inscription, (2) archive des numéros, (3) plus tard : section data (prix/TVL, éventuellement chiffres issus de trackpaw) **et tutos pas-à-pas** (ouvrir un wallet, faire du staking…).
 - **Doc de design** (source de vérité) : `~/.gstack/projects/newsletter/marc-master-design-20260602-205425.md`.
 - **Maquettes** : `~/Library/CloudStorage/GoogleDrive-toubas.antoine@gmail.com/Mon Drive/Obsidian/A/Newsletter/` (`MAQUETTE.md`, `NEWSLETTER.md`).
@@ -58,12 +58,15 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 3. **Contraintes de forme** : police Inter (titres 28-32, sous-titres 18-20, corps 16), séparateurs fins, beaucoup d'air, 2-3 emojis max, illustrations pédagogiques, éviter les mots « spammy ».
 4. **Toujours inclure le disclaimer** : « Ce contenu n'est pas un conseil en investissement. »
 
-### Workflow d'envoi beehiiv (décidé le 2026-06-11)
+### Workflow d'envoi Resend (mis à jour le 2026-06-23)
 
-- **Contenu = bloc « HTML personnalisé » beehiiv** : on colle notre HTML email (garde pastilles, encadrés verts, tableau cours vert/rouge). Fichier de référence : `cryptoluciole-01-beehiiv.html` (version body-only, SANS notre header/footer car beehiiv ajoute les siens).
-- **Habillage = beehiiv (réglé une fois)** : bandeau header = image `assets/banniere.png` (1200×280, hébergée GitHub) ; fond gris « Outside Background » `#EEF2F2` ; police Inter ; corps 16px ; footer beehiiv (désinscription + adresse). Réglages de design beehiiv déjà faits.
-- **Pour chaque nouveau numéro** : générer le bloc HTML du contenu (depuis le template/données), Marc le colle dans le bloc HTML beehiiv. Ne PAS refaire l'habillage.
-- Expéditeur : `cryptoluciole@mail.cryptoluciole.com` (SPF/DKIM/DMARC = pass ✓). On n'a PAS cherché à cloner le design v3 dans l'email (impossible proprement) : le showcase visuel vit sur le site (`/numeros/[id]`), l'email renvoie dessus via un bouton.
+- **Contenu = HTML email complet** (header/footer inclus, contrairement à l'ancienne version beehiiv body-only). Fichier de référence : `cryptoluciole-01-resend.html`.
+- **Mail de bienvenue automatique** : à l'inscription, le nouvel abonné reçoit le **dernier numéro** en transactionnel. La sélection est AUTO via `site/app/emails/latest.ts` → tableau `ALL_ISSUES` (le numéro au plus grand `number` gagne).
+- **Pour chaque nouveau numéro** :
+  1. Créer `site/app/emails/issues/issue-0X.ts` (sur le modèle de `issue-01.ts`) et l'ajouter à `ALL_ISSUES` dans `latest.ts` → le welcome pointera dessus.
+  2. Ajouter le numéro dans `site/app/numeros/issues.ts` (archive du site).
+  3. **Envoi en masse** : créer un **Broadcast Resend** (dashboard) avec le HTML du numéro, vers l'audience. Le code ne gère QUE le welcome transactionnel.
+- Expéditeur : `mail@send.cryptoluciole.com`. Le showcase visuel vit aussi sur le site (`/numeros/[id]`), l'email peut renvoyer dessus via un bouton.
 
 ### Template & système de design (NE PAS refaire le squelette)
 

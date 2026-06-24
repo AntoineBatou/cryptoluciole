@@ -33,11 +33,25 @@ export default async function NumeroPage({
   // Si le numéro n'existe pas, on affiche la page 404.
   if (!n) notFound();
 
-  const risqueColor = {
+  // Couleur d'un badge de risque selon son "sens".
+  const risqueColors = {
     faible: "bg-green-100 text-green-700",
     moyen: "bg-yellow-100 text-yellow-700",
     eleve: "bg-red-100 text-red-700",
-  }[n.protocole.risqueSens];
+  };
+
+  // Soit plusieurs badges (protocole à tranches, ex. Re), soit un seul (ex. Lido).
+  const badges =
+    n.protocole.badges ??
+    (n.protocole.risqueSens
+      ? [
+          {
+            label: "Niveau",
+            niveau: n.protocole.risqueNiveau ?? "",
+            sens: n.protocole.risqueSens,
+          },
+        ]
+      : []);
 
   return (
     <div className="flex flex-1 flex-col bg-brume">
@@ -110,11 +124,16 @@ export default async function NumeroPage({
           <p className="mb-4 leading-relaxed text-nuit/80">
             <strong className="text-teal">Le rendement.</strong> {n.protocole.rendement}
           </p>
-          <p className="mb-3">
+          <p className="mb-3 flex flex-wrap items-center gap-2">
             <strong className="text-teal">Les risques.</strong>{" "}
-            <span className={`ml-1 rounded-full px-3 py-1 text-xs font-bold ${risqueColor}`}>
-              Niveau : {n.protocole.risqueNiveau}
-            </span>
+            {badges.map((b) => (
+              <span
+                key={b.label}
+                className={`rounded-full px-3 py-1 text-xs font-bold ${risqueColors[b.sens]}`}
+              >
+                {b.label} : {b.niveau}
+              </span>
+            ))}
           </p>
           <p className="mb-4 leading-relaxed text-nuit/80">{n.protocole.risques}</p>
           <p className="leading-relaxed text-nuit/80">
