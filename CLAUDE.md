@@ -76,6 +76,11 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 - **Dans chaque numéro** : tout terme défini est lié à `https://www.cryptoluciole.com/glossaire/<slug>` (sur l'encadré de définition) ; le protocole de SOUS LA LOUPE a un lien `→ Voir la fiche complète` vers `/protocoles/<slug>`. Pages « en construction » OK en attendant le vrai contenu.
 - ⚠️ **Déployer le site AVANT l'envoi en masse** sinon les liens 404 en ligne.
 
+**Deux niveaux de contenu protocole (figé le 2026-06-24)** — ne jamais les confondre :
+- **Newsletter (email + `site/app/numeros/issues.ts`)** = COURT et succinct. On reste vulgarisé, on ne surcharge pas. Vérifier seulement que c'est *en accord* avec le wiki (pas de contradiction de chiffres), pas besoin de tout détailler.
+- **Fiche SITE (`site/app/protocoles/protocols.ts`)** = la version qui va PLUS LOIN, pour le lecteur qui clique « → Voir la fiche complète ». **À alimenter depuis le WIKI de veille** (`~/Library/CloudStorage/.../Obsidian/A/_wiki/protocoles/` + `Obsidian/A/Crypto/Protocoles/...` + analyses `../analyste-defi/analyses/`) : plus technique, plus long, chiffré, risques nuancés — tout en gardant l'esprit du site (clair, aéré, expliqué). Réflexe : avant d'écrire une fiche protocole pour le site, **lire d'abord la fiche wiki correspondante**, ne pas rédiger « de tête ».
+- **Modèle de fiche site** = type `ProtocoleFiche` dans `protocols.ts` : `enBref` (carte d'identité), `score` (badge échelle maison), `sections[]` faites de blocs souples (`ProtoBloc` : `p`/`st`/`liste`/`def`/`note`{info|alerte|avis}/`tableau`), `pointsCles` (« à retenir »), `verdict`, `sources`. Structure NON stricte : on mixe les blocs selon le protocole. Rendu par `site/app/protocoles/[id]/page.tsx`.
+
 ### Template & système de design (NE PAS refaire le squelette)
 
 **Réutiliser `templates/newsletter-template.html`** pour chaque numéro — remplir les `{{SLOTS}}`, ne jamais reconstruire la structure. Référence finale : `cryptoluciole-01-v3.html` (= le #1 abouti).
