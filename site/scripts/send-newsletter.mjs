@@ -86,16 +86,36 @@ if (!audienceId) {
   process.exit(1);
 }
 
-const listRes = await fetch(
-  `https://api.resend.com/audiences/${audienceId}/contacts`,
-  { headers }
-);
-if (!listRes.ok) {
-  console.error("❌ Lecture de l'audience échouée :", listRes.status, await listRes.text());
-  process.exit(1);
+// Récupère TOUS les contacts en suivant la pagination curseur (`after` = ID du
+// dernier, on boucle tant que `has_more`). Bulletproof quelle que soit la taille.
+async function fetchAllContacts() {
+  const all = [];
+  let after;
+  for (let page = 1; ; page++) {
+    const url = new URL(`https://api.resend.com/audiences/${audienceId}/contacts`);
+    url.searchParams.set("limit", "100");
+    if (after) url.searchParams.set("after", after);
+    const res = await fetch(url, { headers });
+    if (!res.ok) {
+      console.error("❌ Lecture de l'audience échouée :", res.status, await res.text());
+      process.exit(1);
+    }
+    const j = await res.json();
+    const data = j.data ?? [];
+    all.push(...data);
+    console.log(`  page ${page} : +${data.length} contacts (has_more=${j.has_more})`);
+    if (!j.has_more || data.length === 0) break;
+    after = data[data.length - 1].id; // curseur = ID du dernier contact
+  }
+  return all;
 }
-const contacts = ((await listRes.json()).data ?? []).filter((c) => !c.unsubscribed);
+
+const allContacts = await fetchAllContacts();
+const contacts = allContacts.filter((c) => !c.unsubscribed);
 const emails = contacts.map((c) => c.email).filter(Boolean);
+console.log(
+  `Total récupéré : ${allContacts.length} | actifs (non désinscrits) : ${contacts.length}`
+);
 
 console.log(`Audience : ${emails.length} contact(s) actif(s).`);
 console.log(`Objet : "${subject}"`);
