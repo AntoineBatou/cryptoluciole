@@ -24,6 +24,15 @@ export default function Home() {
             <Link href="/numeros" className="hover:text-white">
               Les numéros
             </Link>
+            <Link href="/glossaire" className="hover:text-white">
+              Glossaire
+            </Link>
+            <Link href="/protocoles" className="hover:text-white">
+              Protocoles
+            </Link>
+            <Link href="/tutos" className="hover:text-white">
+              Tutos
+            </Link>
             <a
               href="#inscription"
               className="rounded-full bg-luciole px-4 py-2 font-semibold text-nuit hover:opacity-90"
