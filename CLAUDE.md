@@ -1,3 +1,32 @@
+## 👋 AU DÉMARRAGE — à afficher quand Marc dit bonjour / ouvre le projet
+
+Quand Marc salue ou ouvre le projet, **rappelle-lui d'abord ce mémo** (mémoire vivante de
+la couche IA en construction — détail : `docs/agents-ia.md`). Le tenir à jour à mesure
+qu'on construit les agents.
+
+**Workflow IA CryptoLuciole — où on en est :**
+
+| Agent | Modèle | Comment le lancer | État |
+|-------|--------|-------------------|------|
+| 🔦 **Veilleur** (lit large, classe, ne rédige pas) | Haiku | **`/veille`** → écrit `veille/AAAA-MM-JJ.md` + remonte nouvelles sources | ✅ construit |
+| ✍️ **Rédacteur** (une section à la fois, ton style) | Opus 4.8 | (à venir) | ⏳ pas encore |
+| ✅ **Vérificateur** (note /10, seuil 8, max 3 boucles) | Opus | (à venir) | ⏳ pas encore |
+| 🔍 **Fact-checker** (lit tout, web, ne change rien) | Sonnet | (à venir) | ⏳ pas encore |
+
+**Boucle type d'un numéro** : `/veille` → on choisit le sujet → rédacteur **une section
+à la fois** → vérificateur note (reboucle si < 8) → tu valides/corriges (leçon de style
+capitalisée dans `style-editorial.md`) → section suivante → assemblage verbatim
+(`issues.ts` + `issue-0X.ts`) → fact-checker → envoi Resend.
+
+**Invariants** : transparence (toujours dire quel agent agit / où on en est) · souplesse
+(on peut déroger sur ta demande) · séquentiel (une section validée avant la suivante) ·
+mémoire = **fichiers** (les agents n'ont pas de mémoire interne).
+
+**Protocole** : 2 niveaux — newsletter (résumé 3 min) vs fiche site complète (cahier des
+charges : wiki d'abord → si absent, lancer `/analyse` du projet `../analyste-defi`).
+
+---
+
 ## GBrain Configuration (configured by /setup-gbrain)
 - Mode: local-stdio
 - Engine: pglite

@@ -4,3 +4,6 @@ node_modules/
 /tmp/
 .gstack/
 .vercel
+
+# Réglages locaux Claude Code (contient des secrets en clair → jamais committer)
+.claude/settings.local.json
