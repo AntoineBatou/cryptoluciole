@@ -31,9 +31,9 @@ Concrètement, le trajet de tes 1 000 USDC :
 
 **Ton rendement, c'est l'intérêt payé par les emprunteurs.** Tu es le prêteur, eux paient pour emprunter, et le protocole te reverse ce paiement (en gardant une petite commission au passage).
 
-Le taux n'est pas fixe : il **monte quand beaucoup de gens veulent emprunter** (la demande est forte, donc on paie cher) et **baisse quand peu de gens empruntent** (l'argent dort, il rapporte moins). C'est de l'offre et de la demande appliquées à un pool de dollars.
+Le taux n'est pas fixe : il **monte quand beaucoup de gens veulent emprunter** (la demande est forte, donc on paie cher) et **baisse quand peu de gens empruntent** (l'argent dort, il rapporte moins). C'est de l'offre et de la demande appliquées à cette réserve commune.
 
-> **💡 Notre avis :** c'est ce qui distingue un rendement *sain* d'un rendement *suspect*. Quand le yield vient d'intérêts d'emprunt ou de vrais frais payés par des utilisateurs, il est adossé à une activité réelle et soutenable. Quand un protocole promet 30, 50 ou 100 % « par an » sans dire d'où ça sort, c'est presque toujours qu'il **paie en créant son propre jeton** — une émission qui se dilue et finit par s'effondrer. Le premier réflexe face à un rendement : se demander *qui paie, et pourquoi*. S'il n'y a pas de réponse claire, méfiance.
+> **💡 Notre avis :** c'est ce qui distingue un rendement *sain* d'un rendement *suspect*. Quand le rendement vient d'intérêts d'emprunt ou de vrais frais payés par des utilisateurs, il est adossé à une activité réelle et soutenable. Quand un protocole promet 30, 50 ou 100 % « par an » sans dire d'où ça sort, c'est presque toujours qu'il **paie en créant son propre jeton** — une émission qui se dilue et finit par s'effondrer. Le premier réflexe face à un rendement : se demander *qui paie, et pourquoi*. S'il n'y a pas de réponse claire, méfiance.
 
 ---
 
