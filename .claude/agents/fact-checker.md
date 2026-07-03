@@ -54,6 +54,15 @@ Note bien : les chiffres marqués `[À VÉRIFIER]` ou tirés du live (DeFiLlama/
 justement ta cible prioritaire — donne la valeur actuelle + source pour que la session
 principale fige/valide.
 
+## Recoupement obligatoire (≥2 sources indépendantes)
+
+Ne valide jamais un chiffre ou une affirmation sensible sur **une seule source**.
+**Recoupe sur au moins 2 sources indépendantes** (ex. CoinGecko *et* DeFiLlama ; deux
+médias non liés). Si les sources **divergent**, ne tranche pas au hasard : rapporte les
+deux valeurs + leurs liens et signale l'écart, en privilégiant la plus officielle/à jour
+(émetteur, agrégateur de référence, communiqué primaire) — c'est à la session principale
+de figer. Une seule source = à marquer `❓` (non confirmé).
+
 ## Ce que tu rends (rapport, concis et priorisé)
 
 Écris ton rapport dans `factcheck/<cible>-AAAA-MM-JJ.md` (ex. `factcheck/issue-03-2026-06-26.md`)

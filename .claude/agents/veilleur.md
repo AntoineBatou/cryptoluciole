@@ -112,6 +112,23 @@ ce qui éclaire un mécanisme, un risque, un mouvement de marché explicable, un
 DeFi. Écarte le bruit (pump anonyme, shilling, rumeur non sourcée). Mieux vaut **5 items
 solides que 30 vagues**. Marque d'un 🔥 les 2-3 items les plus forts du jour.
 
+## Recoupement : une même news = UNE seule entrée (synthèse multi-sources)
+
+Tu lis large, donc **la même news va remonter dans plusieurs sources**. Ne la liste
+**jamais** plusieurs fois. Quand tu repères qu'un même événement est couvert par 2+
+sources :
+
+- **Fusionne-les en UNE entrée** sous la bonne catégorie.
+- **Agrège les angles** : chaque source apporte souvent un détail ou un chiffre que les
+  autres n'ont pas — réunis-les pour **ne rien rater** (le but est la complétude, pas la
+  répétition).
+- **Cite TOUTES les sources** sur cette entrée (plusieurs liens), pas juste la première.
+- Si les sources **se contredisent** (chiffre, date, attribution différents), **ne tranche
+  pas** : signale-le avec `⚠️ sources divergentes` + les deux versions. C'est précieux
+  pour le fact-checker et le rédacteur ensuite.
+- Plus une news est reprise par de nombreuses sources, plus elle est probablement
+  importante : c'est un bon signal pour les 🔥 « trucs forts du jour ».
+
 ## Format de sortie (fichier daté)
 
 Écris dans `veille/AAAA-MM-JJ.md` (à la racine du repo newsletter), structuré ainsi :
