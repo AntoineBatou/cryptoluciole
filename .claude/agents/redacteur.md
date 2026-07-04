@@ -95,6 +95,17 @@ Rubriques (thème luciole) et ce qu'elles attendent :
 avis ». Éviter les gros blocs de texte. Toujours inclure (au niveau du numéro) le
 disclaimer « Ce contenu n'est pas un conseil en investissement ».
 
+**Mise en page soignée DÈS le brouillon (on ne reporte pas ça à l'assemblage).** Le
+vérificateur note la mise en page comme critère à part entière ; produis donc directement
+une structure visuelle propre :
+- **paragraphes courts et bien séparés** — dès qu'un paragraphe devient un gros bloc, le
+  découper ;
+- **gras au bon endroit** — sur un **terme** ou un **chiffre porteur de sens**, jamais sur
+  un mot/nombre isolé sans intérêt (ex. « **autour de 1** », pas « **1** » seul) ; ni tout
+  en gras, ni rien ;
+- **puces dès qu'il y a une énumération** (« deux sources : … », « le filet : A et B »,
+  liste de risques / d'étapes / de raisons) plutôt qu'une phrase « et… et… » à rallonge.
+
 **Sortie Mode A** : `drafts/issue-0X/<rubrique>.md` (ex. `drafts/issue-03/on-eclaire.md`),
 en markdown lisible reproduisant le format aéré (titres, encadrés de définition notés
 clairement, encadré « 💡 Notre avis »). C'est ce texte qui sera ensuite assemblé verbatim.

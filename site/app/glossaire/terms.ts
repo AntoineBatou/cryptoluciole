@@ -100,7 +100,7 @@ export const TERMES: GlossaireTerme[] = [
     slug: "dat",
     terme: "DAT (Digital Asset Treasury)",
     definition:
-      "Une entreprise dont l'activité est de détenir des crypto-actifs en trésorerie. Ex. : Strategy, qui accumule du bitcoin.",
+      "Littéralement « trésorerie d'actifs numériques ». Une société cotée en bourse dont la trésorerie est massivement investie en crypto-actifs (le plus souvent du bitcoin), au point d'en faire le cœur de son activité. Acheter son action revient à s'exposer indirectement à sa réserve de cryptos. Exemple emblématique : Strategy (ex-MicroStrategy).",
     numero: 1,
   },
   {
@@ -109,6 +109,48 @@ export const TERMES: GlossaireTerme[] = [
     definition:
       "Une cryptomonnaie conçue pour garder une valeur stable, généralement adossée au dollar (1 jeton ≈ 1 $). Ex. : USDC, USDT.",
     numero: 1,
+  },
+  {
+    slug: "dollar-synthetique",
+    terme: "Dollar synthétique",
+    definition:
+      "Un jeton qui vise 1 $ sans détenir de vrais dollars en réserve. Sa stabilité ne vient pas d'un compte en banque, mais d'une combinaison de placements et de positions de marché qui se compensent (par ex. détenir de l'ETH et parier à la baisse dessus pour le même montant). Plus rémunérateur qu'un stablecoin classique, mais dépendant du bon fonctionnement de cette mécanique. Exemple : l'USDe d'Ethena.",
+    numero: 3,
+  },
+  {
+    slug: "depeg",
+    terme: "Dépeg",
+    definition:
+      "Quand un stablecoin décroche de sa valeur cible : un jeton censé valoir 1 $ qui tombe, par exemple, à 0,95 $. C'est le signal d'une perte de confiance ou d'un problème sur les réserves — et rien ne garantit le retour à 1 $. (« Peg » = l'ancrage à la valeur cible ; « dé-peg » = il lâche.) Cas célèbres : l'UST de Terra qui s'effondre à zéro en mai 2022 (~40 milliards de dollars partis en fumée), l'USDC brièvement tombé à 0,87 $ en mars 2023 lors de la faillite de la banque SVB, ou plus récemment l'USD0++ de Usual.",
+    numero: 3,
+  },
+  {
+    slug: "reserves",
+    terme: "Réserves (d'un stablecoin)",
+    definition:
+      "L'ensemble des dollars (ou actifs sûrs, comme des bons du Trésor) mis de côté par l'émetteur pour garantir que chaque jeton reste échangeable contre 1 $. C'est ce qui empêche le stablecoin de s'effondrer.",
+    numero: 3,
+  },
+  {
+    slug: "bons-du-tresor",
+    terme: "Bons du Trésor US",
+    definition:
+      "Des reconnaissances de dette de l'État américain. Le placement « sans risque » de référence en finance : on prête son argent au gouvernement, il verse un intérêt. C'est là que dorment la plupart des réserves des grands stablecoins.",
+    numero: 3,
+  },
+  {
+    slug: "mnav",
+    terme: "mNAV (multiple of Net Asset Value)",
+    definition:
+      "Pour une DAT (entreprise à trésorerie crypto), le rapport entre sa valeur en Bourse et la valeur totale des cryptos qu'elle détient. Au-dessus de 1, l'entreprise vaut plus que ses bitcoins : elle peut émettre des actions « chères » et les convertir en bitcoin « au prix réel » — chaque levée achète plus de BTC qu'elle ne dilue les actionnaires, donc lever des fonds crée de la valeur. À 1, elle vaut pile ses bitcoins. En dessous de 1, elle vaut moins que son trésor : émettre des actions détruit de la valeur (autant acheter le bitcoin en direct). C'est l'indicateur-clé pour juger une DAT comme Strategy.",
+    numero: 3,
+  },
+  {
+    slug: "mint",
+    terme: "Mint (frapper)",
+    definition:
+      "Créer de nouveaux jetons. Pour un stablecoin : tu déposes des dollars et le protocole « frappe » l'équivalent en jetons ; à l'inverse, quand tu les rends, il les « rachète » (redeem) et te rend tes dollars.",
+    numero: 3,
   },
 ];
 

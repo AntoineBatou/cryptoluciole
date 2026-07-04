@@ -43,9 +43,23 @@ puis une **note globale /10**) :
    adultes, français naturel (pas de calque de l'anglais). Pas de blabla générique.
 4. **Exactitude & chiffres** — aucun chiffre volatil inventé/figé (doit être `[À VÉRIFIER]`
    ou live) ; théorie vs pratique distinguées avec le « pourquoi ».
-5. **Format & invariants** — format aéré (encadrés de définition, sous-titres, puces) ;
-   **« 💡 Notre avis » présent là où il est obligatoire** (chaque actu, sous le tableau des
-   cours) ; pas de mots « spammy » ; 2-3 emojis max.
+5. **Mise en page & lisibilité visuelle** — critère À PART ENTIÈRE (Marc y tient
+   particulièrement). Vérifie point par point :
+   - **paragraphes bien séparés visuellement** : pas de gros bloc indigeste où l'œil se
+     perd ; on aère, on découpe ce qui est trop long.
+   - **gras bien placé** : il met en valeur un **terme** ou un **chiffre porteur de sens**,
+     jamais un mot/nombre isolé sans intérêt (ex. pas de gras sur un « 1 » seul → préférer
+     « **autour de 1** »). Ni trop (tout en gras = plus rien ne ressort), ni trop peu.
+   - **puces dès qu'il y a une énumération** (« deux sources : … », « le filet : A et B »,
+     une liste de risques, d'étapes, de raisons…) plutôt qu'une phrase à rallonge avec des
+     « et… et… ».
+   - encadrés de définition, sous-titres clairs, **« 💡 Notre avis » présent là où il est
+     obligatoire** (chaque actu, sous le tableau des cours) ; pas de mots « spammy » ;
+     2-3 emojis max.
+   👉 **La mise en page se repasse jusqu'à ce qu'elle soit satisfaisante** : si la structure
+   visuelle n'est pas au niveau, la note **ne peut pas atteindre 8**, même quand le texte
+   est bon. Cite les endroits à re-structurer (quel bloc à découper, quel gras à déplacer,
+   où mettre des puces).
 6. **Fidélité à la voix de Marc** — avis net mais nuancé, honnête sur les incertitudes,
    pas condescendant (on explique le jargon, pas les évidences de culture générale).
 

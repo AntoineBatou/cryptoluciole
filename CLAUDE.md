@@ -14,9 +14,16 @@ qu'on construit les agents.
 | 🔍 **Fact-checker** (lit tout, web, ne change rien) | Sonnet | lancé avant l'envoi : vérifie chiffres + actualité, rapport ✅/⚠️/❓ + GO/NO-GO dans `factcheck/`, ne corrige rien (c'est moi qui corrige après) | ✅ construit |
 
 **Boucle type d'un numéro** : `/veille` → on choisit le sujet → rédacteur **une section
-à la fois** → vérificateur note (reboucle si < 8) → tu valides/corriges (leçon de style
-capitalisée dans `style-editorial.md`) → section suivante → assemblage verbatim
-(`issues.ts` + `issue-0X.ts`) → fact-checker → envoi Resend.
+à la fois** (mise en page soignée dès le brouillon) → vérificateur note **style ET mise en
+page** (reboucle si < 8) → tu valides/corriges (leçon de style capitalisée dans
+`style-editorial.md`) → section suivante → assemblage verbatim (`issues.ts` + `issue-0X.ts`)
+→ fact-checker → envoi Resend.
+
+**Mise en page = au fur et à mesure** (décidé 2026-07-04) : la lisibilité visuelle
+(paragraphes bien séparés, gras au bon endroit — jamais sur un « 1 » seul, puces dès qu'il y
+a une énumération) est **verrouillée section par section** par le vérificateur (dimension 5,
+bloque la note à < 8 si pas au niveau), pas dans un gros contrôle final. À l'assemblage, il
+ne reste qu'un **coup d'œil de cohérence global léger**.
 
 **Invariants** : transparence (toujours dire quel agent agit / où on en est) · souplesse
 (on peut déroger sur ta demande) · séquentiel (une section validée avant la suivante) ·
@@ -94,7 +101,9 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 - **Pour chaque nouveau numéro** :
   1. Créer `site/app/emails/issues/issue-0X.ts` (sur le modèle de `issue-01.ts`) et l'ajouter à `ALL_ISSUES` dans `latest.ts` → le welcome pointera dessus.
   2. Ajouter le numéro dans `site/app/numeros/issues.ts` (archive du site).
-  3. **Envoi en masse via l'API** (PAS l'éditeur Broadcast) : `cd site && node scripts/send-newsletter.mjs app/emails/issues/issue-0X.ts --test <email>` (valider le rendu par le canal réel) → `--dry-run` (compter l'audience) → `--send` (envoi réel). Le script suit la pagination, exclut les désinscrits, ajoute `List-Unsubscribe`.
+  3. **Fact-check AVANT le mail de test** (l'ordre compte, décidé 2026-07-04) : le mail de test qui *valide* doit refléter le contenu **définitif** → lancer le fact-checker sur `issue-0X.ts` et corriger d'abord, PUIS envoyer le test. (Un aperçu de forme en amont reste possible, mais ce n'est pas la validation.)
+  4. **Contrôle anti-troncature AVANT chaque mail de test** (obligatoire) : (a) **contenu** — chaque section complète, aucune phrase coupée, pas de « … » parasite (vérif possible par le vérificateur ou la session principale sur l'email assemblé) ; (b) **anti-repli Gmail** — email **< 102 Ko** ET **objet de test unique/varié à chaque envoi** (sinon Gmail regroupe les tests en conversation et replie la partie répétée derrière un bouton « ··· », ce qui ressemble à tort à une troncature — constaté le 2026-07-04).
+  5. **Envoi en masse via l'API** (PAS l'éditeur Broadcast) : `cd site && node scripts/send-newsletter.mjs app/emails/issues/issue-0X.ts --test <email>` (rendu réel) → `--dry-run` (compter l'audience) → `--send` (envoi réel). Le script suit la pagination, exclut les désinscrits, ajoute `List-Unsubscribe`.
 - ⛔ **Ne plus utiliser l'éditeur Broadcast Resend** : il réencapsule le HTML collé (conteneur ~600px + styles globaux) et casse le fond pleine largeur / le centrage (constaté au #2). L'API `/emails` envoie le HTML brut = rendu fidèle. Toujours valider par le canal RÉEL avant un mass-send.
 - Expéditeur : `mail@send.cryptoluciole.com`. Le showcase visuel vit aussi sur le site (`/numeros/[id]`), l'email peut renvoyer dessus via un bouton.
 
