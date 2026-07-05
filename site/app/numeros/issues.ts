@@ -8,7 +8,9 @@
 export type NotionEl =
   | { type: "p"; texte: string }
   | { type: "st"; texte: string }
-  | { type: "def"; terme: string; slug: string; texte: string };
+  | { type: "def"; terme: string; slug: string; texte: string }
+  | { type: "liste"; items: string[] }
+  | { type: "avis"; texte: string };
 
 // Le "type" décrit la forme d'un numéro (les garde-fous TypeScript).
 export type Issue = {
@@ -20,7 +22,7 @@ export type Issue = {
   // notion : ancien format (blocs ⬡, #1) OU nouveau format aéré (corps, #2+).
   notion: { titre: string; blocs?: { label: string; texte: string }[]; corps?: NotionEl[] };
   // une actu peut porter des encadrés de définition (termes liés au glossaire).
-  actus: { titre: string; texte: string; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[]; lien?: { label: string; href: string } }[];
+  actus: { titre: string; texte?: string; corps?: NotionEl[]; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[]; lien?: { label: string; href: string } }[];
   protocole: {
     nom: string;
     slug?: string; // -> /protocoles/<slug>
@@ -39,7 +41,7 @@ export type Issue = {
   coursHeure?: string; // heure de prise des cours (ex. "17h24")
   coursAvis?: string; // encadré « Notre avis » sous le tableau des cours
   data: { titre: string; texte: string; points?: string[]; texteFin?: string };
-  definitions: { terme: string; en: string; def: string; avis?: string; slug?: string }[];
+  definitions: { terme: string; en?: string; def: string; avis?: string; slug?: string }[];
 };
 
 export const issues: Issue[] = [
@@ -243,6 +245,130 @@ export const issues: Issue[] = [
         en: "découpage en tranches",
         def: "Découper un même investissement en plusieurs niveaux de risque (les « tranches »), classés par priorité face aux pertes. La tranche junior (risquée) encaisse les premières pertes et est mieux payée ; la senior (prudente) n'est touchée qu'en dernier. Chez Re : reUSDe = junior, reUSD = senior.",
         avis: "Depuis quelques mois, de plus en plus de protocoles adoptent ce modèle de tranches — et c'est intéressant, car il te permet de t'exposer à une même stratégie avec plus ou moins de risque selon la tranche choisie. Le hic : ils précisent rarement les règles exactes de répartition des pertes, donc tu ne sais pas toujours combien tu perdrais ni à partir de quand. L'impact dépend aussi de la taille de chaque tranche : sur 100 € de pertes, si la tranche risquée ne contient que 60 €, elle est vidée et les 40 € restants rognent la tranche prudente ; si elle en contient 300 €, la prudente n'est pas touchée. D'où le réflexe : regarder la TVL de chaque tranche avant de déposer.",
+      },
+    ],
+  },
+  {
+    id: "3",
+    numero: 3,
+    date: "Samedi 4 juillet 2026",
+    titre: "La guerre des stablecoins",
+    excerpt:
+      "D'où vient l'argent des stablecoins, Open USD (le stablecoin des géants), Strategy s'autorise à vendre du bitcoin, et Ethena débarque chez BlackRock.",
+    notion: {
+      titre: "Un stablecoin, d'où vient l'argent qu'il rapporte ?",
+      corps: [
+        { type: "p", texte: "Cette semaine, tout le monde se bat pour lancer son stablecoin — Visa, Stripe, BlackRock… Pour comprendre pourquoi c'est devenu un tel enjeu, il faut regarder une chose : ce que peuvent rapporter les stablecoins, et qui empoche ces gains." },
+        { type: "def", terme: "Rappel : les stablecoins (USDT / USDC / etc.)", slug: "stablecoin", texte: "conservent une valeur stable (celle d'une monnaie de référence), presque toujours le dollar. 1 USDC ≈ 1 $, en permanence. C'est le « cash » de la crypto." },
+        { type: "st", texte: "Un jeton = un dollar bien réel quelque part" },
+        { type: "p", texte: "Les stablecoins classiques fonctionnent comme un reçu : tu donnes 1 $ à l'émetteur (Tether pour l'USDT, Circle pour l'USDC), il te remet 1 jeton qui vaut 1 $, remboursable à tout moment. Pour que le système tienne, il faut que l'émetteur conserve le dollar qui a été apporté (ce sont les réserves), et qu'il ne crée pas plus de jetons (n'imprime pas plus de reçus) qu'il n'a de dollars en réserve." },
+        { type: "p", texte: "Ces réserves ne dorment pas : elles sont placées." },
+        { type: "st", texte: "D'où vient le rendement" },
+        { type: "p", texte: "Un émetteur ne laisse pas des milliards de dollars sans les faire travailler. Il les place dans l'actif le plus sûr qui existe : les bons du Trésor américain, qui rapportent aujourd'hui autour de 3,75 % par an." },
+        { type: "def", terme: "Bons du Trésor US", slug: "bons-du-tresor", texte: "des reconnaissances de dette de l'État américain. Le placement « sans risque » de référence en finance : on prête son argent au gouvernement, il verse un intérêt." },
+        { type: "p", texte: "Sur des montants pareils, ça change tout. Un exemple concret :" },
+        { type: "liste", items: [
+          "l'USDT (Tether) pèse environ 185 milliards de dollars ;",
+          "placés à ~3,75 %, ça produit de l'ordre de 7 milliards de dollars par an — c'est exactement ce que Tether a tiré de ses bons du Trésor en 2024 ;",
+          "le tout avec une équipe minuscule et quasiment aucun coût.",
+        ] },
+        { type: "p", texte: "Résultat : sur l'ensemble de 2024, Tether a dégagé plus de 13 milliards de dollars de profit (le reste venant de l'or et du Bitcoin qu'il détient aussi) — l'un des bénéfices par salarié les plus élevés du monde." },
+        { type: "st", texte: "Qui empoche ce rendement ?" },
+        { type: "p", texte: "Toi, tu détiens le jeton ; l'émetteur détient ton dollar et touche les intérêts. Aujourd'hui, avec l'USDT et l'USDC, tout ce rendement va dans la poche de l'émetteur. Tu as un dollar stable, pratique — mais tu ne vois pas un centime de ce qu'il rapporte." },
+        { type: "p", texte: "Ce n'est pourtant pas une fatalité : toute une génération de stablecoins reverse déjà tout ou partie de ce rendement aux détenteurs — l'USDe (Ethena), l'USD0 (Usual), l'USDY (Ondo)… Mais ils restent une petite fraction du marché et n'ont pas détrôné le duopole. Pourquoi ce succès limité ? Trois raisons :" },
+        { type: "liste", items: [
+          "Réglementaire — partager le rendement fait courir le risque d'être requalifié en titre financier (« security »). Résultat : accès restreint (souvent hors-US ou investisseurs qualifiés), donc mauvaise « monnaie du quotidien ».",
+          "Effet de réseau / liquidité — l'USDT et l'USDC sont LA paire de base partout (exchanges, marchands, DeFi). Un jeton qui rapporte est un mauvais moyen d'échange → il reste un produit de placement, pas un « cash ».",
+          "Complexité / risque — il faut souvent staker ses jetons (les bloquer : sUSDe, USD0++) pour toucher le rendement, celui-ci peut être spéculatif (parfois payé dans un token maison), et certains ont déjà dépeggé (perdu leur ancrage à 1 $) — l'USD0++ de Usual, sans oublier le krach de l'UST en 2022.",
+        ] },
+        { type: "avis", texte: "c'est LE modèle économique du secteur, et il est très rentable. Émettre un stablecoin, c'est encaisser les intérêts d'un placement fait avec l'argent des autres. On comprend que tant de géants de la finance veuillent leur part — et la nouveauté de la semaine, c'est justement qui débarque pour bousculer cette rente. On en parle juste en dessous." },
+        { type: "st", texte: "Et les modèles plus compliqués ?" },
+        { type: "p", texte: "Tous ne se valent pas côté risque. L'USDe d'Ethena, qu'on vient de citer, tire par exemple son rendement d'une stratégie de marché plutôt que de simples bons du Trésor — plus rémunérateur, mais aussi plus risqué. On le creuse plus loin (c'est notre protocole Sous la loupe) : retiens juste que la source du rendement change tout, et le risque avec." },
+      ],
+    },
+    actus: [
+      {
+        titre: "Un stablecoin des géants de la finance pour concurrencer Tether et Circle",
+        corps: [
+          { type: "p", texte: "Une alliance de plus de 140 poids lourds de la finance traditionnelle — Visa, Mastercard, Stripe, BlackRock, BNY Mellon — lance son propre stablecoin, Open USD (projet « Open Standard »). Objectif affiché : casser le duopole de l'USDT (Tether) et de l'USDC (Circle)." },
+          { type: "p", texte: "Le point qui nous intéresse, c'est son modèle de partage des revenus. On l'a vu juste au-dessus : les réserves d'un stablecoin sont placées en bons du Trésor et rapportent, et aujourd'hui Tether et Circle gardent l'intégralité de ce rendement. Open USD prend le contre-pied : les plateformes et protocoles qui l'intègrent touchent une part des revenus des réserves, moins une petite commission de gestion. Frapper et racheter des Open USD se fait par ailleurs sans frais." },
+          { type: "p", texte: "Des stablecoins qui partagent leur rendement, il en existe pourtant déjà (USDe, USD0…) — et aucun n'a détrôné le duopole, faute de distribution. C'est là qu'Open USD peut changer la donne : Visa, Stripe ou Mastercard peuvent l'intégrer directement dans leurs produits, auprès de millions de commerçants et d'utilisateurs, à une échelle qu'aucun challenger crypto n'atteint. Le nerf de la guerre n'est plus la technologie, mais la puissance de déploiement." },
+          { type: "def", terme: "Mint / frapper", slug: "mint", texte: "créer de nouveaux jetons. Pour un stablecoin, tu déposes des dollars et le protocole « frappe » l'équivalent en jetons ; à l'inverse, quand tu les rends, il les « rachète » (redeem) et te rend tes dollars." },
+        ],
+        avis:
+          "l'important n'est pas qu'Open USD gagne, mais qu'il force Tether et Circle à partager le rendement qu'ils empochent seuls jusqu'ici. Rien que la concurrence peut suffire à faire bouger les lignes — et les gagnants seraient alors les plateformes et protocoles DeFi qui détiennent de gros dépôts en stablecoins (Aave, par exemple), avec au bout de la chaîne des rendements potentiellement meilleurs pour l'utilisateur. Beaucoup de ces géants ont longtemps combattu la crypto, et les voir débarquer en émetteurs a de quoi rendre méfiant. L'idéal ne serait pas qu'un mastodonte de la TradFi rafle la mise, mais qu'un émetteur né dans la crypto (Sky, Ethena, ou le GHO d'Aave) s'impose.",
+        source: "joinopenstandard.com, The DeFi Investor",
+      },
+      {
+        titre: "Le plus gros détenteur de bitcoin au monde s'autorise à en vendre",
+        corps: [
+          { type: "p", texte: "Strategy (ex-MicroStrategy, dirigée par Michael Saylor) est la plus grande DAT du monde : une société cotée en bourse qui, depuis 2020, lève des capitaux à une seule fin — accumuler du bitcoin. Elle en détient aujourd'hui environ 847 000, soit près de 52 milliards de dollars au cours actuel." },
+          { type: "p", texte: "Le 29 juin, Strategy officialise un cadre qui l'autorise à vendre jusqu'à 1,25 milliard de dollars de bitcoin (~2,5 % de son stock). Ça te dit quelque chose ? On en parlait déjà dans notre tout premier numéro : fin mai, Strategy cédait 32 bitcoins (~2,5 M$) pour honorer un paiement — une goutte d'eau, disions-nous. La nouveauté n'est donc pas la vente en soi, mais qu'elle devienne une politique permanente, votée par le conseil, au plafond ~500 fois plus élevé." },
+          { type: "p", texte: "Pourquoi maintenant ? Son moteur historique tournait tant que son action valait, en Bourse, bien plus cher que les bitcoins qu'elle détient. Cet écart a un nom : le mNAV — le rapport entre la valeur boursière de Strategy et celle de son trésor. Tant qu'il dépasse largement 1, l'entreprise peut émettre des actions « à prime » pour racheter encore plus de BTC : chaque levée crée de la valeur. Sauf que ce mNAV est aujourd'hui retombé autour de 1, et le moteur cale : autrement dit, Strategy vaut désormais en Bourse à peu près ce que valent ses bitcoins — la prime qui faisait toute la magie a disparu." },
+          { type: "p", texte: "Pendant ce temps, Strategy doit verser chaque année environ 1,8 milliard de dollars de dividendes et d'intérêts sur ses actions préférentielles (dont les fameuses STRC, qui ont beaucoup fait parler ces dernières semaines). D'où le filet de sécurité annoncé :" },
+          { type: "liste", items: [
+            "une réserve en dollars (plus de 12 mois de dividendes d'avance) ;",
+            "et, si besoin, la possibilité de vendre un peu de bitcoin.",
+          ] },
+          { type: "def", terme: "DAT (Digital Asset Treasury)", slug: "dat", texte: "littéralement « trésorerie d'actifs numériques ». Une société cotée en bourse dont la trésorerie est massivement investie en crypto-actifs (le plus souvent du bitcoin), au point d'en faire le cœur de son activité. Acheter son action revient à s'exposer indirectement à sa réserve." },
+        ],
+        avis:
+          "faiblesse ou maturité ? Plutôt une maturation qu'une capitulation. Strategy ne renie pas le bitcoin — elle le réaffirme comme actif de réserve principal ; elle passe simplement d'un modèle « accumuler à tout prix » à un modèle « gérer son bilan sur la durée ». C'est plus sain : ça réduit le risque d'une vente forcée en catastrophe le jour où le marché baisse. Mais l'annonce révèle aussi les limites du modèle : il n'est invincible que tant que le bitcoin monte et que la prime tient. Dans un prochain article, on décortiquera en détail comment Strategy a fait évoluer ses méthodes pour lever des fonds — et quels indicateurs surveiller pour juger une DAT, à commencer par le mNAV.",
+        source: "communiqué Strategy du 29 juin 2026 + dépôt 8-K (SEC) ; CoinDesk, The Block, Bitcoin Magazine",
+      },
+    ],
+    protocole: {
+      nom: "Ethena (USDe & sUSDe)",
+      slug: "ethena",
+      bref:
+        "Ethena émet l'USDe, un « dollar synthétique » qui vaut environ 1 $. Contrairement aux stablecoins classiques (adossés à du vrai cash ou des bons du Trésor), l'USDe n'est pas garanti par des dollars en banque : il tient sa valeur grâce à une stratégie de marché.",
+      etapes: [
+        "Le protocole détient de l'ETH et, en même temps, parie à la baisse sur l'ETH pour le même montant (une position « short » sur des contrats à terme).",
+        "Résultat : si le prix de l'ETH monte, il gagne d'un côté et perd de l'autre ; s'il baisse, l'inverse. Les deux se neutralisent, et la valeur reste stable — c'est la stratégie dite « delta-neutre ».",
+      ],
+      rendement:
+        "En stakant ton USDe, tu reçois du sUSDe — c'est lui qui capte le rendement. Celui-ci vient de deux sources : les intérêts que paient les traders qui parient à la hausse sur l'ETH (ce qu'on appelle le funding), et le rendement du staking de l'ETH détenu. Le sUSDe rapporte actuellement ~3,8 % par an — un niveau bas, cohérent avec la correction de marché du moment. Ce rendement suit le sentiment du marché : il grimpe quand tout le monde est haussier (beaucoup de traders paient pour parier à la hausse). Historiquement, il a été beaucoup plus élevé en période de hausse des marchés.",
+      risqueNiveau: "moyen",
+      risqueSens: "moyen",
+      risques:
+        "Trois risques principaux. Funding négatif : en marché baissier durable, le funding peut devenir négatif — le rendement s'effondre, voire coûte au protocole (un fonds de réserve d'environ 1 % de la taille amortit ce genre de passage, mais seulement de façon temporaire). Dépendance aux plateformes : les positions sont ouvertes sur des plateformes d'échange ; si l'une fait défaut, une partie du dispositif est menacée. Dépeg : en cas de stress extrême, l'USDe peut décrocher de son dollar. Pourquoi « moyen » et pas « élevé » ? L'USDe n'est pas un stablecoin algorithmique bancal : il est réellement collatéralisé, c'est l'un des plus gros du secteur, il a traversé plusieurs cycles sans casser son ancrage et dispose d'un fonds de réserve. Ce qui l'empêche d'être « faible », c'est surtout sa dépendance à des plateformes d'échange centralisées et à un funding qui peut se tarir. Bref : une stratégie de marché, pas un dollar dormant à la banque — un risque réel, mais maîtrisé.",
+      importance:
+        "Cette semaine, l'USDe est désormais intégré chez BlackRock, via Aladdin, sa plateforme de gestion d'actifs (plus de 20 000 milliards de dollars d'actifs suivis), avec son fonds tokenisé BUIDL comme collatéral.",
+    },
+    cours: [
+      { actif: "BTC", nom: "Bitcoin", prix: "~63 370 $", var7j: "▲ +5,0 %", sens: "up" },
+      { actif: "ETH", nom: "Ethereum", prix: "~1 791 $", var7j: "▲ +13,3 %", sens: "up" },
+      { actif: "SOL", nom: "Solana", prix: "~82,0 $", var7j: "▲ +14,9 %", sens: "up" },
+      { actif: "HYPE", nom: "Hyperliquid", prix: "~70,1 $", var7j: "▲ +11,9 %", sens: "up" },
+      { actif: "BNB", prix: "~574 $", var7j: "▲ +2,2 %", sens: "up" },
+    ],
+    coursAvis:
+      "rebond quasi général cette semaine, porté surtout par la Fed — un rapport sur l'emploi américain décevant a éloigné la menace d'une hausse des taux. Côté ETF Bitcoin, prudence : après un mois de juin de sorties massives, les flux ne font que commencer à se stabiliser, rien de plus. Les « alts » (ETH, SOL, HYPE) rebondissent plus fort que le bitcoin, comme souvent quand l'appétit pour le risque revient. Attention toutefois : ça ne suffit pas à décréter la fin du marché baissier — un juillet haussier pourrait très bien précéder un nouveau point bas cet été avant une reprise à l'automne.",
+    data: {
+      titre: "ETF Bitcoin US : −4 milliards de dollars en juin 2026",
+      texte:
+        "C'est le pire mois de sorties depuis le lancement de ces ETF (janvier 2024). Les flux nets mensuels des ETF Bitcoin spot US en 2026 :",
+      points: [
+        "Janvier : −1,6 Md$",
+        "Février : −0,2 Md$",
+        "Mars : +1,3 Md$",
+        "Avril : +2,4 Md$",
+        "Mai : −3,2 Md$",
+        "Juin : −4,1 Md$",
+      ],
+      texteFin:
+        "Le printemps encore positif (mars-avril) s'est brutalement inversé en mai-juin. Notre avis : depuis leur pic, ces ETF ont rendu près de 10 Md$ — environ 15 % de tout ce qu'ils avaient accumulé. Ce niveau de capitulation s'observe souvent à l'approche d'un point bas de marché, et nous pensons que nous en sommes proches.",
+    },
+    definitions: [
+      {
+        terme: "Dépeg",
+        slug: "depeg",
+        def: "quand un stablecoin décroche de sa valeur cible : un jeton censé valoir 1 $ qui tombe, par exemple, à 0,95 $. Signe d'une perte de confiance ou d'un problème sur les réserves — et rien ne garantit le retour à 1 $. Cas célèbres : l'UST de Terra effondré à zéro en 2022, ou l'USDC brièvement tombé à 0,87 $ en 2023.",
+      },
+      {
+        terme: "mNAV",
+        slug: "mnav",
+        def: "pour une DAT (comme Strategy), le rapport entre sa valeur en Bourse et la valeur totale des cryptos qu'elle détient. Au-dessus de 1 : l'entreprise vaut plus que ses bitcoins — elle peut émettre des actions « chères » et les convertir en bitcoin « au prix réel », donc lever des fonds crée de la valeur. À 1 : elle vaut pile ses bitcoins. En dessous de 1 : elle vaut moins que son trésor, et émettre des actions détruit alors de la valeur (autant acheter le bitcoin en direct).",
       },
     ],
   },

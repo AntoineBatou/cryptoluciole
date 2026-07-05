@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getIssue, issues } from "../issues";
+import { getIssue, issues, type NotionEl } from "../issues";
 
 // Pré-génère une page pour chaque numéro existant (rapide + bon pour le référencement).
 export function generateStaticParams() {
@@ -30,6 +30,47 @@ function DefBox({ terme, slug, texte }: { terme: string; slug: string; texte: st
       </Link>{" "}
       — {texte}
     </div>
+  );
+}
+
+// Rend un corps typé (paragraphes, sous-titres, encadrés de définition, listes, encadré « Notre avis »).
+// Partagé entre la notion (On éclaire) et les actus (Dans le faisceau).
+function CorpsBlocks({ corps }: { corps: NotionEl[] }) {
+  return (
+    <>
+      {corps.map((el, i) => {
+        if (el.type === "st")
+          return (
+            <h3 key={i} className="mb-2 mt-6 text-lg font-bold text-teal">
+              {el.texte}
+            </h3>
+          );
+        if (el.type === "def")
+          return <DefBox key={i} terme={el.terme} slug={el.slug} texte={el.texte} />;
+        if (el.type === "liste")
+          return (
+            <ul key={i} className="mb-4 list-disc space-y-1 pl-5 leading-relaxed text-nuit/80">
+              {el.items.map((it, j) => (
+                <li key={j}>{it}</li>
+              ))}
+            </ul>
+          );
+        if (el.type === "avis")
+          return (
+            <div
+              key={i}
+              className="mb-4 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80"
+            >
+              💡 <strong>Notre avis :</strong> {el.texte}
+            </div>
+          );
+        return (
+          <p key={i} className="mb-4 leading-relaxed text-nuit/80">
+            {el.texte}
+          </p>
+        );
+      })}
+    </>
   );
 }
 
@@ -104,22 +145,8 @@ export default async function NumeroPage({
               <strong className="text-luciole">⬡ {b.label}.</strong> {b.texte}
             </p>
           ))}
-          {/* Format aéré (#2+) : corps typé (paragraphes, sous-titres, encadrés de définition) */}
-          {n.notion.corps?.map((el, i) => {
-            if (el.type === "st")
-              return (
-                <h3 key={i} className="mb-2 mt-6 text-lg font-bold text-teal">
-                  {el.texte}
-                </h3>
-              );
-            if (el.type === "def")
-              return <DefBox key={i} terme={el.terme} slug={el.slug} texte={el.texte} />;
-            return (
-              <p key={i} className="mb-4 leading-relaxed text-nuit/80">
-                {el.texte}
-              </p>
-            );
-          })}
+          {/* Format aéré (#2+) : corps typé (paragraphes, sous-titres, encadrés, listes, avis) */}
+          {n.notion.corps && <CorpsBlocks corps={n.notion.corps} />}
         </section>
 
         {/* DANS LE FAISCEAU */}
@@ -131,7 +158,13 @@ export default async function NumeroPage({
                 <h3 className="text-lg font-bold text-nuit">
                   <span className="text-luciole">✦</span> {a.titre}
                 </h3>
-                <p className="mt-2 leading-relaxed text-nuit/80">{a.texte}</p>
+                {a.corps ? (
+                  <div className="mt-2">
+                    <CorpsBlocks corps={a.corps} />
+                  </div>
+                ) : (
+                  <p className="mt-2 leading-relaxed text-nuit/80">{a.texte}</p>
+                )}
                 {a.defs && (
                   <div className="mt-3">
                     {a.defs.map((d, i) => (
@@ -290,7 +323,7 @@ export default async function NumeroPage({
                     ) : (
                       <strong>{d.terme}</strong>
                     )}{" "}
-                    <span className="text-nuit/40">({d.en})</span> — {d.def}
+                    {d.en && <span className="text-nuit/40">({d.en})</span>} — {d.def}
                   </span>
                 </div>
                 {d.avis && (
