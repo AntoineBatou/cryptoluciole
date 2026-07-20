@@ -30,3 +30,31 @@ body {
   color: var(--color-nuit);
   font-family: var(--font-inter), Helvetica, Arial, sans-serif;
 }
+
+/* ===== Impression / génération PDF (dossiers format long) =====
+   On masque le chrome de navigation et on conserve les fonds de marque
+   (les blocs « nuit », encadrés colorés) pour un PDF fidèle au site. */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  /* Éléments d'interface à retirer du PDF */
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: var(--color-papier) !important;
+  }
+  /* Évite de couper titres et encadrés en plein milieu d'une page */
+  h1, h2, h3, h4 {
+    break-after: avoid;
+  }
+  .print-avoid-break {
+    break-inside: avoid;
+  }
+}
+
+@page {
+  margin: 14mm 0;
+}

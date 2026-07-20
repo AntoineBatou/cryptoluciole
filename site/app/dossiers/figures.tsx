@@ -516,7 +516,7 @@ const FIGS: Record<number, () => React.JSX.Element> = {
 export function DossierFigure({ id, titre, legende }: { id: number; titre: string; legende: string }) {
   const Fig = FIGS[id];
   return (
-    <figure className="my-2">
+    <figure className="print-avoid-break my-2">
       <div className="rounded-sm border border-[color:var(--color-encre)]/12 bg-white px-4 py-6 sm:px-8">
         <p
           className="mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-ambre-fonce)]"

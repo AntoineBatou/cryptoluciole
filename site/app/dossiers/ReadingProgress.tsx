@@ -23,7 +23,7 @@ export default function ReadingProgress() {
   }, []);
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 h-[3px] bg-transparent" aria-hidden>
+    <div className="no-print fixed inset-x-0 top-0 z-50 h-[3px] bg-transparent" aria-hidden>
       <div
         className="h-full bg-[color:var(--color-luciole)] transition-[width] duration-150 ease-out"
         style={{ width: `${pct}%` }}

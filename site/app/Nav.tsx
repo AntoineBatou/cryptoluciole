@@ -18,7 +18,7 @@ export default function Nav() {
   const [ouvert, setOuvert] = useState(false);
 
   return (
-    <header className="bg-nuit">
+    <header className="no-print bg-nuit">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <Image

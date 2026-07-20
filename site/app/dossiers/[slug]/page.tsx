@@ -147,7 +147,7 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
     // 📖 Définition — glose en marge, filet ambre à gauche.
     case "def":
       return (
-        <aside className="border-l-2 border-[color:var(--color-luciole)] bg-[color:var(--color-papier2)]/60 py-3 pl-5 pr-4">
+        <aside className="print-avoid-break border-l-2 border-[color:var(--color-luciole)] bg-[color:var(--color-papier2)]/60 py-3 pl-5 pr-4">
           <p className="text-[13px] font-semibold text-[color:var(--color-encre)]" style={monoStyle}>
             {bloc.slug ? (
               <Link href={`/glossaire/${bloc.slug}`} className="underline decoration-[color:var(--color-luciole)] decoration-2 underline-offset-2">
@@ -167,7 +167,7 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
     case "box":
       if (bloc.ton === "essentiel") {
         return (
-          <aside className="border-y border-[color:var(--color-encre)]/15 py-5">
+          <aside className="print-avoid-break border-y border-[color:var(--color-encre)]/15 py-5">
             <Eyebrow color="var(--color-teal-fonce)">L&apos;essentiel</Eyebrow>
             {bloc.titre && bloc.titre !== "L'essentiel" && (
               <p className="mt-1 text-[0.8rem] text-[color:var(--color-encre)]/50" style={monoStyle}>
@@ -193,7 +193,7 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
       }
       if (bloc.ton === "piege") {
         return (
-          <aside className="border-l-[3px] border-[color:var(--color-brique)] bg-[color:var(--color-brique)]/[0.05] py-4 pl-5 pr-4">
+          <aside className="print-avoid-break border-l-[3px] border-[color:var(--color-brique)] bg-[color:var(--color-brique)]/[0.05] py-4 pl-5 pr-4">
             <Eyebrow color="var(--color-brique)">⚠ Le piège{bloc.titre ? ` — ${bloc.titre}` : ""}</Eyebrow>
             {bloc.texte && (
               <p className="mt-2 text-[1.02rem] leading-[1.62] text-[color:var(--color-encre)]/90">
@@ -217,7 +217,7 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
       }
       // 🔍 Exemple chiffré — bloc « registre » (fond ivoire soutenu, mono en tête).
       return (
-        <aside className="rounded-sm bg-[color:var(--color-papier2)] px-5 py-4">
+        <aside className="print-avoid-break rounded-sm bg-[color:var(--color-papier2)] px-5 py-4">
           <Eyebrow>Exemple chiffré{bloc.titre ? ` — ${bloc.titre}` : ""}</Eyebrow>
           {bloc.texte && (
             <p className="mt-2 text-[1.0rem] leading-[1.62] text-[color:var(--color-encre)]/90">
@@ -395,6 +395,31 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
                 </span>
               ))}
             </div>
+          )}
+          {dossier.pdf && (
+            <a
+              href={dossier.pdf}
+              download
+              className="no-print group mt-8 inline-flex items-center gap-2.5 rounded-full bg-[color:var(--color-encre)] px-5 py-2.5 text-[14px] font-medium text-[color:var(--color-papier)] transition-colors hover:bg-[color:var(--color-teal-fonce)]"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+                className="transition-transform group-hover:translate-y-0.5"
+              >
+                <path d="M12 3v12" />
+                <path d="m7 10 5 5 5-5" />
+                <path d="M5 21h14" />
+              </svg>
+              Télécharger le dossier (PDF)
+            </a>
           )}
           {dossier.statut === "en-construction" && (
             <p className="mt-6 text-[12px] text-[color:var(--color-ambre-fonce)]" style={monoStyle}>

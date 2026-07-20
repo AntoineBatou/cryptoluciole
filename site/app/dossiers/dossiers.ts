@@ -55,6 +55,7 @@ export type Dossier = {
   tempsLecture: string;
   scope?: string[]; // acteurs/protocoles couverts — affichés en tags sur la couverture
   statut: "en-construction" | "publie";
+  pdf?: string; // chemin du PDF téléchargeable (dans public/), ex. "/dossiers/dat.pdf"
   parties: DossierPartie[];
   sources?: { label: string; href?: string }[];
 };
@@ -70,6 +71,7 @@ export const DOSSIERS: Dossier[] = [
     tempsLecture: "45 min",
     scope: ["Strategy", "Bitmine", "Strive", "Apyx", "Pendle", "Morpho"],
     statut: "publie",
+    pdf: "/dossiers/dat.pdf",
     parties: [
       {
         id: "introduction",
