@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Nav from "./Nav";
 import SignupForm from "./SignupForm";
 
 // La page d'accueil de cryptoluciole.com.
@@ -9,39 +9,7 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1">
       {/* ===== Barre de navigation ===== */}
-      <header className="bg-nuit">
-        <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/firefly-logo-white.png"
-              alt="CryptoLuciole"
-              width={40}
-              height={35}
-            />
-            <span className="text-xl font-bold text-white">CryptoLuciole</span>
-          </div>
-          <div className="hidden items-center gap-6 text-sm font-medium text-white/80 sm:flex">
-            <Link href="/numeros" className="hover:text-white">
-              Les numéros
-            </Link>
-            <Link href="/glossaire" className="hover:text-white">
-              Glossaire
-            </Link>
-            <Link href="/protocoles" className="hover:text-white">
-              Protocoles
-            </Link>
-            <Link href="/tutos" className="hover:text-white">
-              Tutos
-            </Link>
-            <a
-              href="#inscription"
-              className="rounded-full bg-luciole px-4 py-2 font-semibold text-nuit hover:opacity-90"
-            >
-              S&apos;inscrire
-            </a>
-          </div>
-        </nav>
-      </header>
+      <Nav />
 
       {/* ===== Hero (la grande accroche + inscription) ===== */}
       <section className="bg-nuit px-6 pb-16 pt-10 text-center">

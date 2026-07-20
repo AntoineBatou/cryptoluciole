@@ -12,7 +12,17 @@
   --color-vert: #16a34a;        /* hausse */
   --color-rouge: #dc2626;       /* baisse */
 
-  --font-sans: var(--font-inter); /* on utilise Inter, défini dans layout.tsx */
+  /* ----- Palette éditoriale des Dossiers (format long) ----- */
+  --color-papier: #f7f4ec;      /* ivoire chaud : surface de lecture */
+  --color-papier2: #efeadd;     /* ivoire un cran plus soutenu */
+  --color-encre: #1c2430;       /* encre (proche nuit, un peu plus douce) */
+  --color-ambre-fonce: #b26a00; /* ambre lisible en texte/filet sur papier */
+  --color-teal-fonce: #0f7862;  /* teal lisible sur papier (liens) */
+  --color-brique: #b13c2b;      /* rouge brique sobre : « le piège » */
+
+  --font-sans: var(--font-inter);   /* corps */
+  --font-serif: var(--font-newsreader); /* titres & exergues */
+  --font-mono: var(--font-plex-mono);   /* repères, données */
 }
 
 body {
