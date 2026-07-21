@@ -267,40 +267,67 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
 
 function SectionBlock({ section, lead }: { section: DossierSection; lead?: boolean }) {
   const chap = isChapter(section.titre);
+  const titleEl = section.titre ? (
+    chap ? (
+      <div className="mb-6 mt-4">
+        <div className="flex items-baseline gap-3">
+          <span
+            className="text-[0.95rem] font-semibold text-[color:var(--color-ambre-fonce)]"
+            style={monoStyle}
+          >
+            {chapterMark(section.titre)}
+          </span>
+          <span className="h-px flex-1 bg-[color:var(--color-encre)]/15" />
+        </div>
+        <h3
+          className="mt-2 text-[1.72rem] font-medium leading-tight text-[color:var(--color-encre)]"
+          style={serifStyle}
+        >
+          {chapterRest(section.titre)}
+        </h3>
+      </div>
+    ) : (
+      <h4
+        className="mb-3 mt-2 text-[1.32rem] font-medium text-[color:var(--color-encre)]"
+        style={serifStyle}
+      >
+        {section.titre}
+      </h4>
+    )
+  ) : null;
+
+  // Groupe d'intro INSÉCABLE (print-intro) = titre + les 2 premiers blocs de
+  // CONTENU réel (on saute les sous-titres `st`). But : une section ne démarre
+  // jamais en bas de page avec seulement son titre et 1-2 lignes — si le groupe
+  // ne tient pas dans le bas de page, il bascule entier à la page suivante.
+  let introEnd = 0;
+  let real = 0;
+  for (let i = 0; i < section.blocs.length; i++) {
+    introEnd = i + 1;
+    if (section.blocs[i].type !== "st") real++;
+    if (real >= 2) break;
+  }
+  const introBlocs = section.blocs.slice(0, introEnd);
+  const restBlocs = section.blocs.slice(introEnd);
+
   return (
     <section id={section.id} className="scroll-mt-24">
-      {section.titre &&
-        (chap ? (
-          <div className="mb-6 mt-4">
-            <div className="flex items-baseline gap-3">
-              <span
-                className="text-[0.95rem] font-semibold text-[color:var(--color-ambre-fonce)]"
-                style={monoStyle}
-              >
-                {chapterMark(section.titre)}
-              </span>
-              <span className="h-px flex-1 bg-[color:var(--color-encre)]/15" />
-            </div>
-            <h3
-              className="mt-2 text-[1.72rem] font-medium leading-tight text-[color:var(--color-encre)]"
-              style={serifStyle}
-            >
-              {chapterRest(section.titre)}
-            </h3>
-          </div>
-        ) : (
-          <h4
-            className="mb-3 mt-2 text-[1.32rem] font-medium text-[color:var(--color-encre)]"
-            style={serifStyle}
-          >
-            {section.titre}
-          </h4>
-        ))}
-      <div className="flex flex-col gap-5">
-        {section.blocs.map((bloc, i) => (
+      {/* Groupe d'intro en flux BLOC (space-y, pas flex) : paged.js fragmente
+          mal le flex → un flex insécable se coupe quand même. En bloc, le
+          break-inside: avoid est respecté. */}
+      <div className="print-intro [&>*+*]:mt-5">
+        {titleEl}
+        {introBlocs.map((bloc, i) => (
           <Bloc key={i} bloc={bloc} lead={lead && i === 0} />
         ))}
       </div>
+      {restBlocs.length > 0 && (
+        <div className="flex flex-col gap-5 pt-5">
+          {restBlocs.map((bloc, i) => (
+            <Bloc key={introEnd + i} bloc={bloc} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -430,8 +457,9 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
       </header>
 
       <div className="mx-auto max-w-[720px] px-6">
-        {/* Sommaire : chapitres seulement */}
-        <nav className="border-b border-[color:var(--color-encre)]/12 py-8">
+        {/* Sommaire : chapitres seulement. print-avoid-break = ne pas laisser
+            une seule ligne (« Verdict ») déborder sur la page suivante. */}
+        <nav className="print-avoid-break border-b border-[color:var(--color-encre)]/12 py-8">
           <Eyebrow>Sommaire</Eyebrow>
           <ol className="mt-4 flex flex-col gap-3">
             {dossier.parties.map((p) => {

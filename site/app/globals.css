@@ -51,13 +51,21 @@ body {
     orphans: 3;
     widows: 3;
   }
-  /* Un titre ne se coupe jamais en deux et reste collé à ce qui suit */
-  h1, h2, h3, h4 {
+  /* Un titre ne se coupe jamais en deux et reste collé à ce qui suit.
+     .print-head = conteneurs de titre qui ne sont pas des balises <h*>
+     (titre de chapitre = div enveloppant un h3) : sans ça, un titre peut
+     démarrer en tout bas de page avec 1-2 lignes seulement. */
+  h1, h2, h3, h4, .print-head {
     break-inside: avoid;
     break-after: avoid;
   }
   /* Figures + encadrés : gardés d'un seul tenant (jamais tranchés) */
   .print-avoid-break {
+    break-inside: avoid;
+  }
+  /* Début de section = titre + 2 premiers blocs de contenu, insécable : évite
+     qu'une section démarre en bas de page avec juste son titre + 1-2 lignes. */
+  .print-intro {
     break-inside: avoid;
   }
   /* Une figure ne peut jamais dépasser la hauteur utile d'une page :
