@@ -280,7 +280,7 @@ function SectionBlock({ section, lead }: { section: DossierSection; lead?: boole
           <span className="h-px flex-1 bg-[color:var(--color-encre)]/15" />
         </div>
         <h3
-          className="mt-2 text-[1.72rem] font-medium leading-tight text-[color:var(--color-encre)]"
+          className="run-head-src mt-2 text-[1.72rem] font-medium leading-tight text-[color:var(--color-encre)]"
           style={serifStyle}
         >
           {chapterRest(section.titre)}
@@ -345,7 +345,7 @@ function PartieThreshold({ partie }: { partie: DossierPartie }) {
             {gauche}
           </span>
         </div>
-        <h2 className="mt-3 text-[2.1rem] font-medium leading-[1.1] text-[#f7f4ec] sm:text-[2.5rem]" style={serifStyle}>
+        <h2 className="run-head-src mt-3 text-[2.1rem] font-medium leading-[1.1] text-[#f7f4ec] sm:text-[2.5rem]" style={serifStyle}>
           {droite}
         </h2>
         {partie.sousTitre && (
@@ -362,7 +362,12 @@ function Partie({ partie, lead }: { partie: DossierPartie; lead?: boolean }) {
       <PartieThreshold partie={partie} />
       <section id={!partie.bandeau ? partie.id : undefined} className="scroll-mt-24">
         {partie.titre && !partie.bandeau && (
-          <h2 className="mb-8 mt-4 text-[2rem] font-medium text-[color:var(--color-encre)]" style={serifStyle}>
+          <h2
+            className={`mb-8 mt-4 text-[2rem] font-medium text-[color:var(--color-encre)] ${
+              partie.id === "verdict" ? "run-head-src" : ""
+            }`}
+            style={serifStyle}
+          >
             {partie.titre}
           </h2>
         )}
@@ -389,6 +394,15 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
       {/* Couverture éditoriale */}
       <header className="border-b border-[color:var(--color-encre)]/12 px-6">
         <div className="mx-auto max-w-[720px] pb-12 pt-12">
+          {/* Logo en tête de couverture — PDF/impression uniquement (à l'écran,
+              le logo est déjà dans la barre de navigation). */}
+          <div className="mb-10 hidden items-center gap-3 print:flex">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/firefly-logo-black.png" alt="" width={30} height={26} />
+            <span className="text-[1.15rem] font-bold text-[color:var(--color-encre)]">
+              CryptoLuciole
+            </span>
+          </div>
           <Link href="/dossiers" className="text-[13px] text-[color:var(--color-encre)]/45 hover:text-[color:var(--color-encre)]" style={monoStyle}>
             ← Dossiers
           </Link>
@@ -498,9 +512,29 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
             <Partie key={partie.id} partie={partie} lead={i === 0} />
           ))}
 
-          <p className="mt-16 border-t border-[color:var(--color-encre)]/12 pt-6 text-[13px] text-[color:var(--color-encre)]/45" style={monoStyle}>
+          <p className="mt-16 border-t border-[color:var(--color-encre)]/12 pt-6 text-[13px] text-[color:var(--color-encre)]/45 print:hidden" style={monoStyle}>
             Ce contenu n&apos;est pas un conseil en investissement.
           </p>
+
+          {/* Page de fin brandée — PDF/impression uniquement. */}
+          <div className="hidden break-before-page flex-col items-center pt-44 text-center print:flex">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/firefly-logo-black.png" alt="" width={56} height={48} />
+            <div className="mt-5 text-[1.6rem] font-bold text-[color:var(--color-encre)]">
+              CryptoLuciole
+            </div>
+            <p className="mt-6 max-w-[380px] text-[1.05rem] leading-relaxed text-[color:var(--color-encre)]/70">
+              La newsletter qui éclaire la DeFi, un dossier à la fois. Retrouve tous les
+              numéros et dossiers sur{" "}
+              <span className="font-semibold text-[color:var(--color-teal-fonce)]">
+                cryptoluciole.com
+              </span>
+              .
+            </p>
+            <p className="mt-12 text-[12px] text-[color:var(--color-encre)]/45" style={monoStyle}>
+              Ce contenu n&apos;est pas un conseil en investissement.
+            </p>
+          </div>
         </article>
       </div>
     </div>

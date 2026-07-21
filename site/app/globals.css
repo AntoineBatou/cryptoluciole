@@ -97,14 +97,42 @@ body {
 }
 
 /* Pagination « type livre » — lue par Paged.js (génération du PDF) ET par
-   l'impression navigateur (Cmd+P sur la page). Numéro de page en pied. */
+   l'impression navigateur. En-tête courant (section + n° page) et pied de
+   marque, façon rapport. `string(runhead)` = titre de la section en cours,
+   alimenté par .run-head-src (voir plus bas). */
 @page {
   size: A4;
-  margin: 18mm 16mm 20mm 16mm;
-  @bottom-center {
+  margin: 20mm 16mm 18mm 16mm;
+  @top-left {
+    content: string(runhead);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9a8f7f;
+  }
+  @top-right {
     content: counter(page);
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 8.5pt;
     color: #b0a595;
   }
+  @bottom-center {
+    content: "CryptoLuciole · cryptoluciole.com";
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.05em;
+    color: #b0a595;
+  }
+}
+/* Page de couverture : ni en-tête ni pied (le logo est dans le contenu). */
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+/* Alimente l'en-tête courant : chaque titre de chapitre / partie met à jour
+   le nom affiché en haut de page jusqu'au titre suivant. */
+.run-head-src {
+  string-set: runhead content();
 }
