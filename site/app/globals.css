@@ -46,15 +46,49 @@ body {
   body {
     background: var(--color-papier) !important;
   }
-  /* Évite de couper titres et encadrés en plein milieu d'une page */
+  /* Pas de ligne seule stranded en haut/bas de page */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+  /* Un titre ne se coupe jamais en deux et reste collé à ce qui suit */
   h1, h2, h3, h4 {
+    break-inside: avoid;
     break-after: avoid;
   }
+  /* Figures + encadrés : gardés d'un seul tenant (jamais tranchés) */
   .print-avoid-break {
+    break-inside: avoid;
+  }
+  /* Une figure ne peut jamais dépasser la hauteur utile d'une page :
+     sinon `break-inside: avoid` est ignoré et le schéma se coupe. */
+  figure svg {
+    max-height: 13cm;
+    height: auto;
+  }
+  /* Les tableaux, eux, PEUVENT se répartir sur plusieurs pages (pas de gros
+     blanc pour les garder entiers) — mais on répète l'en-tête et on ne coupe
+     jamais une ligne au milieu. */
+  table {
+    break-inside: auto;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr, td, th {
     break-inside: avoid;
   }
 }
 
+/* Pagination « type livre » — lue par Paged.js (génération du PDF) ET par
+   l'impression navigateur (Cmd+P sur la page). Numéro de page en pied. */
 @page {
-  margin: 14mm 0;
+  size: A4;
+  margin: 18mm 16mm 20mm 16mm;
+  @bottom-center {
+    content: counter(page);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 8.5pt;
+    color: #b0a595;
+  }
 }
