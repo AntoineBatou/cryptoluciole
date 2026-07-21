@@ -51,6 +51,14 @@ body {
     orphans: 3;
     widows: 3;
   }
+  /* Texte justifié (rendu « livre ») — PDF/impression seulement, le site reste
+     en drapeau. Césure automatique (doc en lang="fr") pour éviter les rivières
+     de blancs. Titres, labels mono et cellules de tableau NON justifiés. */
+  p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
   /* Un titre ne se coupe jamais en deux et reste collé à ce qui suit.
      .print-head = conteneurs de titre qui ne sont pas des balises <h*>
      (titre de chapitre = div enveloppant un h3) : sans ça, un titre peut
