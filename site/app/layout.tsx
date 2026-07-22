@@ -9,10 +9,19 @@ const inter = Inter({
 });
 
 // Ces infos s'affichent dans l'onglet du navigateur et pour le partage.
+// metadataBase = base pour résoudre les URLs absolues (og:url, og:image) —
+// indispensable pour un bon aperçu sur LinkedIn/X/Slack.
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.cryptoluciole.com"),
   title: "CryptoLuciole — la crypto expliquée en 10 min",
   description:
     "La crypto et la DeFi sans le jargon. Une notion, deux actus analysées, un protocole décrypté — en moins de 10 minutes.",
+  openGraph: {
+    siteName: "CryptoLuciole",
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

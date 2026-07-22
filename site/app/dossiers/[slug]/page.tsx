@@ -19,7 +19,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const dossier = getDossier(slug);
   if (!dossier) return { title: "Dossier — CryptoLuciole" };
-  return { title: `${dossier.titre} — CryptoLuciole`, description: dossier.accroche };
+  const url = `/dossiers/${slug}`;
+  // og:image est fourni automatiquement par opengraph-image.tsx (même dossier).
+  return {
+    title: `${dossier.titre} — CryptoLuciole`,
+    description: dossier.accroche,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      title: dossier.titre,
+      description: dossier.accroche,
+      url,
+      siteName: "CryptoLuciole",
+    },
+    twitter: { card: "summary_large_image", title: dossier.titre, description: dossier.accroche },
+  };
 }
 
 // Un chapitre = section dont le titre est numéroté (I.1, II.3…). Le reste = sous-partie.
