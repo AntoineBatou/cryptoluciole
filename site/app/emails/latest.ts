@@ -15,9 +15,13 @@ import { issue03 } from "./issues/issue-03";
 
 // Expéditeur = adresse du domaine vérifié dans Resend (send.cryptoluciole.com).
 export const NEWSLETTER_FROM = "CryptoLuciole <mail@send.cryptoluciole.com>";
-// Désinscription par email (en transactionnel, pas de token Broadcast).
+// Reply-To = vraie boîte lisible (send.cryptoluciole.com n'a pas de MX → les
+// réponses y rebondissent). contact@ redirige vers le Gmail de Marc.
+export const NEWSLETTER_REPLY_TO = "contact@cryptoluciole.com";
+// Désinscription par email — pointe vers la boîte qui REÇOIT (contact@), pas
+// vers le sous-domaine d'envoi qui rebondit.
 export const UNSUBSCRIBE_MAILTO =
-  "mailto:mail@send.cryptoluciole.com?subject=D%C3%A9sinscription";
+  "mailto:contact@cryptoluciole.com?subject=D%C3%A9sinscription";
 export const WELCOME_SUBJECT =
   "Bienvenue chez CryptoLuciole 🪲 — voici le dernier numéro";
 
@@ -28,8 +32,35 @@ export const latestIssue: IssueEmail = ALL_ISSUES.reduce((a, b) =>
   b.number > a.number ? b : a
 );
 
-// HTML prêt pour le mail de bienvenue : on remplace le placeholder de
-// désinscription par le mailto (le token Broadcast ne marche qu'en Broadcast).
+// Encart « dossier » ajouté EN BAS du mail de bienvenue (juste avant le pied) :
+// le nouvel inscrit reçoit le dernier numéro + une invitation à lire le dossier.
+// N'altère pas le numéro archivé (injection uniquement à la volée ici).
+const DOSSIER_ENCART = `
+  <!-- ============ ENCART DOSSIER (bienvenue) ============ -->
+  <tr><td style="padding:6px 36px 26px 36px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f7fafa; border-radius:12px;">
+      <tr><td style="padding:20px 22px; color:#1A2332;">
+        <p style="margin:0 0 6px 0; font-size:13px; font-weight:700; color:#28B092; letter-spacing:0.3px;">📖 NOTRE TOUT PREMIER DOSSIER</p>
+        <p style="margin:0 0 14px 0; font-size:15px; line-height:1.6; color:#475569;">
+          En plus des numéros, on publie ponctuellement des <strong style="color:#1A2332;">dossiers</strong> — des formats longs et complets. Le premier décrypte les <strong style="color:#1A2332;">DAT</strong> (ces sociétés cotées, Strategy en tête, dont le métier est de détenir de la crypto). ~45 min de lecture.
+        </p>
+        <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+          <td style="background-color:#1A2332; border-radius:9px;">
+            <a href="https://www.cryptoluciole.com/dossiers/dat" style="display:inline-block; padding:11px 22px; font-size:15px; font-weight:700; color:#ffffff; text-decoration:none;">Lire le dossier →</a>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+  </td></tr>
+`;
+
+// HTML prêt pour le mail de bienvenue : dernier numéro + encart dossier injecté
+// avant le pied, puis remplacement du placeholder de désinscription.
 export function welcomeHtml(): string {
-  return latestIssue.html.replaceAll("%UNSUBSCRIBE_URL%", UNSUBSCRIBE_MAILTO);
+  return latestIssue.html
+    .replace(
+      "<!-- ============ PIED ============ -->",
+      DOSSIER_ENCART + "\n  <!-- ============ PIED ============ -->"
+    )
+    .replaceAll("%UNSUBSCRIBE_URL%", UNSUBSCRIBE_MAILTO);
 }

@@ -4,6 +4,7 @@
 import { NextResponse } from "next/server";
 import {
   NEWSLETTER_FROM,
+  NEWSLETTER_REPLY_TO,
   WELCOME_SUBJECT,
   UNSUBSCRIBE_MAILTO,
   welcomeHtml,
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           from: NEWSLETTER_FROM,
+          reply_to: NEWSLETTER_REPLY_TO,
           to: email,
           subject: WELCOME_SUBJECT,
           html: welcomeHtml(),
