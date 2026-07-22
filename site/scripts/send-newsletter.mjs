@@ -28,7 +28,12 @@ function loadEnv(path) {
 loadEnv(join(root, ".env.local"));
 
 const FROM = "CryptoLuciole <mail@send.cryptoluciole.com>";
-const UNSUB = "mailto:mail@send.cryptoluciole.com?subject=D%C3%A9sinscription";
+// Reply-To = vraie boîte lisible (send.cryptoluciole.com est un sous-domaine
+// d'ENVOI, sans MX → les réponses y rebondissent). contact@cryptoluciole.com
+// est hébergée chez OVH (messagerie du domaine principal).
+const REPLY_TO = "contact@cryptoluciole.com";
+// Désinscription : même raison, on pointe le mailto vers la vraie boîte.
+const UNSUB = "mailto:contact@cryptoluciole.com?subject=D%C3%A9sinscription";
 
 const [, , issueFile, mode, modeArg] = process.argv;
 if (!issueFile || !["--test", "--dry-run", "--send"].includes(mode)) {
@@ -63,7 +68,7 @@ async function sendOne(to) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers,
-    body: JSON.stringify({ from: FROM, to, subject, html, headers: emailHeaders }),
+    body: JSON.stringify({ from: FROM, reply_to: REPLY_TO, to, subject, html, headers: emailHeaders }),
   });
   return { status: res.status, body: await res.text() };
 }
@@ -137,6 +142,7 @@ for (let i = 0; i < emails.length; i += 100) {
     body: JSON.stringify(
       chunk.map((to) => ({
         from: FROM,
+        reply_to: REPLY_TO,
         to: [to],
         subject,
         html,
