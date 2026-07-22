@@ -32,6 +32,23 @@ export const latestIssue: IssueEmail = ALL_ISSUES.reduce((a, b) =>
   b.number > a.number ? b : a
 );
 
+// Métadonnées du dernier numéro, pour le message de confirmation à l'inscription.
+// ZÉRO champ à maintenir : tout est dérivé du numéro lui-même —
+//  · titre = sujet ("CryptoLuciole #N — Titre" → "Titre") ;
+//  · date  = ligne d'en-tête du HTML ("#N · SAMEDI 4 JUILLET 2026" → "4 juillet 2026").
+// Dès qu'un numéro est ajouté à ALL_ISSUES, le message suit automatiquement.
+function extractIssueDate(html: string): string {
+  const raw = (html.match(/#\d+\s*·\s*([^<]+)</) ?? [])[1]?.trim() ?? "";
+  const m = raw.match(/(\d{1,2}\s+\p{L}+\s+\d{4})/u); // "4 JUILLET 2026" (sans le jour de semaine)
+  return (m ? m[1] : raw).toLowerCase();
+}
+
+export const latestIssueMeta = {
+  number: latestIssue.number,
+  title: latestIssue.subject.replace(/^.*?—\s*/, "").trim(),
+  date: extractIssueDate(latestIssue.html),
+};
+
 // Encart « dossier » ajouté EN BAS du mail de bienvenue (juste avant le pied) :
 // le nouvel inscrit reçoit le dernier numéro + une invitation à lire le dossier.
 // N'altère pas le numéro archivé (injection uniquement à la volée ici).

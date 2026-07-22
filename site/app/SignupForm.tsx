@@ -20,8 +20,14 @@ export default function SignupForm() {
         body: JSON.stringify({ email }),
       });
       if (res.ok) {
+        const data = await res.json().catch(() => ({}));
+        const i = data.issue;
         setStatus("success");
-        setMessage("Tu es bien inscrit·e. Un email de bienvenue arrive dans ta boîte mail.");
+        setMessage(
+          i
+            ? `Tu vas recevoir notre dernier numéro — #${i.number} « ${i.title} » (${i.date}) — pour découvrir le format. Il arrive dans ta boîte mail.`
+            : "Un email de bienvenue arrive dans ta boîte mail."
+        );
         setEmail("");
       } else {
         const data = await res.json().catch(() => ({}));

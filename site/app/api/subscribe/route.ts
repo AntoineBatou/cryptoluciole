@@ -8,6 +8,7 @@ import {
   WELCOME_SUBJECT,
   UNSUBSCRIBE_MAILTO,
   welcomeHtml,
+  latestIssueMeta,
 } from "../../emails/latest";
 
 export async function POST(request: Request) {
@@ -67,7 +68,7 @@ export async function POST(request: Request) {
       console.error("resend welcome email exception:", e);
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, issue: latestIssueMeta });
   } catch (e) {
     console.error("subscribe route error:", e);
     return NextResponse.json({ error: "Erreur réseau, réessaie." }, { status: 500 });
