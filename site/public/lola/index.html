@@ -552,7 +552,7 @@ footer.src { border-top: 1px solid var(--line); padding-top: 28px; display: flex
 
               <div class="cards-intro">
                 <b>Le détail régime par régime</b>
-                <span>Le grand chiffre de chaque carte est <strong>l'impôt de la première année</strong> : impôt sur le revenu à ta tranche, plus 17,2 % de prélèvements sociaux. Le total sur toute la durée de détention figure en gras dans le détail juste en dessous.</span>
+                <span>Le grand chiffre de chaque carte est <strong>l'impôt cumulé sur toute la durée de détention</strong> : impôt sur le revenu à ta tranche, plus 17,2 % de prélèvements sociaux, année après année. C'est le chiffre qui compte pour comparer les régimes. Le montant de la première année figure en première ligne du détail, juste en dessous.</span>
               </div>
 
               <div class="cards" id="cards"></div>
@@ -1223,16 +1223,18 @@ footer.src { border-top: 1px solid var(--line); padding-top: 28px; display: flex
               + (r.E.reelBic.an1Imposee ? "an " + r.E.reelBic.an1Imposee : "aucune") + '</span></div>';
       }
 
+      var tot = r.E[d.key].impot;
+
       el.innerHTML =
         '<div class="card-t"><span class="name">' + d.name + '</span><span class="kind">' + d.kind + '</span></div>' +
-        '<div class="headline ' + (a1.impot > 1 ? "neg" : "pos") + '">' + fs(a1.impot) + '</div>' +
-        '<div class="headline-lbl">' + (a1.impot < -1 ? "d'impôt en moins la 1<sup>re</sup> année" : "d'impôt la 1<sup>re</sup> année") + '</div>' +
-        '<div class="headline-sub">impôt sur le revenu + prélèvements sociaux, soit ' + fs(a1.impot / 12) + ' par mois</div>' +
+        '<div class="headline ' + (tot > 1 ? "neg" : "pos") + '">' + fs(tot) + '</div>' +
+        '<div class="headline-lbl">' + (tot < -1 ? "d'impôt en moins sur " : "d'impôt sur ") + r.horizon + ' ans</div>' +
+        '<div class="headline-sub">impôt sur le revenu + prélèvements sociaux, soit ' + fs(tot / r.horizon) + ' par an en moyenne</div>' +
         '<div class="rows">' +
+          '<div class="row"><span>Impôt la 1<sup>re</sup> année</span><span>' + fs(a1.impot) + '</span></div>' +
           '<div class="row"><span>Loyers encaissés (an 1)</span><span>' + f(a1.loyers) + '</span></div>' +
           '<div class="row"><span>Revenu imposable (an 1)</span><span>' + f(a1.base) + '</span></div>' +
           extra +
-          '<div class="row"><span><b>Impôt total sur ' + r.horizon + ' ans</b></span><span><b>' + fs(r.E[d.key].impot) + '</b></span></div>' +
           '<div class="row"><span>Loyers nets d\'impôt (an 1)</span><span>' + fs(a1.net) + '</span></div>' +
         '</div>' +
         (!eligible ? '<span class="pill bad">Plafond dépassé</span>'
