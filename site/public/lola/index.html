@@ -1,0 +1,1381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>*{margin:0}html{-webkit-text-size-adjust:100%}</style>
+<title>Louer nu ou meublé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+</head>
+<body>
+<style>
+/* ───────────────────────── tokens ───────────────────────── */
+:root {
+  --ink: #16202e; --ink-2: #3b4a5e; --ink-3: #6a7889;
+  --ground: #f5f7fa; --surface: #ffffff; --surface-2: #eef1f6;
+  --line: #d8dee8; --line-soft: #e6eaf1;
+  --accent: #2f5d8c; --accent-ink: #1e4066; --accent-wash: #e4ecf5;
+  --warn: #a8622a; --warn-wash: #f7ecdf;
+  --good: #3d6b52; --good-wash: #e4efe8;
+  --crit: #9b3535; --crit-wash: #f7e6e6;
+  --f-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --measure: 68ch; --r: 4px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e2e8f1; --ink-2: #aab6c6; --ink-3: #7c8899;
+    --ground: #111721; --surface: #19202b; --surface-2: #212a37;
+    --line: #303b4b; --line-soft: #262f3d;
+    --accent: #7fabd8; --accent-ink: #a9c7e8; --accent-wash: #1c2836;
+    --warn: #d69a63; --warn-wash: #2c2419;
+    --good: #77b28e; --good-wash: #1a2620;
+    --crit: #d97b7b; --crit-wash: #2c1c1c;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e2e8f1; --ink-2: #aab6c6; --ink-3: #7c8899;
+  --ground: #111721; --surface: #19202b; --surface-2: #212a37;
+  --line: #303b4b; --line-soft: #262f3d;
+  --accent: #7fabd8; --accent-ink: #a9c7e8; --accent-wash: #1c2836;
+  --warn: #d69a63; --warn-wash: #2c2419;
+  --good: #77b28e; --good-wash: #1a2620;
+  --crit: #d97b7b; --crit-wash: #2c1c1c;
+}
+
+/* ───────────────────────── base ───────────────────────── */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--f-body);
+       font-size: 16.5px; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: var(--f-display); font-weight: 500; text-wrap: balance; margin: 0; line-height: 1.2; }
+p { margin: 0; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+strong { font-weight: 600; color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .14em;
+           text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+
+/* ───────────────────────── shell ───────────────────────── */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 96px; }
+.masthead { border-bottom: 1px solid var(--line); padding: 56px 0 32px;
+            display: flex; flex-direction: column; gap: 18px; }
+.masthead h1 { font-size: clamp(38px, 6vw, 62px); letter-spacing: -0.015em; }
+.masthead .lede { max-width: 60ch; font-size: 18px; color: var(--ink-2); }
+.stamp { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center;
+         font-family: var(--f-mono); font-size: 12px; color: var(--ink-3);
+         border-top: 1px dashed var(--line); padding-top: 14px; }
+.stamp b { color: var(--ink-2); font-weight: 500; }
+
+.cols { display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: 56px;
+        align-items: start; padding-top: 44px; }
+@media (max-width: 900px) { .cols { grid-template-columns: 1fr; gap: 28px; } }
+
+.toc { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 3px; }
+@media (max-width: 900px) { .toc { position: static; border: 1px solid var(--line);
+        border-radius: var(--r); padding: 14px; background: var(--surface); } }
+.toc-h { margin-bottom: 8px; }
+.toc a { font-size: 13.5px; color: var(--ink-2); text-decoration: none; padding: 4px 0 4px 12px;
+         border-left: 2px solid var(--line-soft); display: block; }
+.toc a:hover { color: var(--accent); border-left-color: var(--accent); }
+.toc a.part { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+              color: var(--accent); font-weight: 600; margin-top: 14px; border-left-color: transparent; padding-left: 0; }
+
+main { display: flex; flex-direction: column; gap: 60px; min-width: 0; }
+
+.part-head { display: flex; gap: 18px; align-items: baseline; border-top: 2px solid var(--ink);
+             padding-top: 16px; margin-bottom: -18px; }
+.part-num { font-family: var(--f-mono); font-size: 13px; font-weight: 600; color: var(--accent);
+            letter-spacing: .05em; white-space: nowrap; }
+.part-head h2 { font-size: 31px; }
+.part-head .sub { display: block; font-family: var(--f-body); font-size: 14.5px; color: var(--ink-3);
+                  margin-top: 6px; line-height: 1.5; font-weight: 400; max-width: 56ch; }
+
+section { display: flex; flex-direction: column; gap: 22px; }
+section > h3 { font-size: 23px; margin-top: 14px; }
+section > h4 { font-size: 18px; font-family: var(--f-body); font-weight: 600; margin-top: 8px; }
+section > p, section > ul, section > ol { max-width: var(--measure); }
+ul, ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+li::marker { color: var(--ink-3); }
+
+/* callouts */
+.note { border-left: 3px solid var(--accent); background: var(--accent-wash); padding: 16px 20px;
+        border-radius: 0 var(--r) var(--r) 0; display: flex; flex-direction: column; gap: 8px; max-width: var(--measure); }
+.note.warn { border-left-color: var(--warn); background: var(--warn-wash); }
+.note.good { border-left-color: var(--good); background: var(--good-wash); }
+.note.crit { border-left-color: var(--crit); background: var(--crit-wash); }
+.note .tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+             font-weight: 600; color: var(--accent-ink); }
+.note.warn .tag { color: var(--warn); }
+.note.good .tag { color: var(--good); }
+.note.crit .tag { color: var(--crit); }
+.note p { font-size: 15.5px; }
+
+/* tables */
+.tbl-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
+th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+thead th { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+           color: var(--ink-3); font-weight: 500; background: var(--surface-2);
+           border-bottom: 1px solid var(--line); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+td.num, th.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ───────────────────────── infobulles ───────────────────────── */
+.i { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px;
+     border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-3);
+     font-family: var(--f-mono); font-size: 9.5px; font-weight: 600; line-height: 1; cursor: help;
+     position: relative; vertical-align: middle; margin-left: 5px; padding: 0; }
+.i:hover, .i:focus-visible { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.i::after { content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 9px);
+            transform: translateX(-50%); width: 250px; background: var(--ink); color: var(--ground);
+            font-family: var(--f-body); font-weight: 400; font-size: 12px; line-height: 1.45;
+            letter-spacing: 0; text-align: left; text-transform: none; padding: 9px 11px; border-radius: 4px;
+            opacity: 0; visibility: hidden; transition: opacity .12s ease; z-index: 30; pointer-events: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,.22); }
+.i:hover::after, .i:focus-visible::after { opacity: 1; visibility: visible; }
+
+/* ───────────────────────── simulateurs ───────────────────────── */
+.sim { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.sim-head { padding: 18px 24px; border-bottom: 1px solid var(--line); background: var(--surface-2);
+            display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: baseline;
+            justify-content: space-between; border-radius: var(--r) var(--r) 0 0; }
+.sim-head h4 { font-family: var(--f-display); font-size: 20px; font-weight: 500; }
+.sim-body { display: grid; grid-template-columns: 320px minmax(0, 1fr); }
+.sim-body.solo { grid-template-columns: 1fr; }
+@media (max-width: 880px) { .sim-body { grid-template-columns: 1fr; } }
+
+.inputs { padding: 22px 24px 26px; border-right: 1px solid var(--line); display: flex;
+          flex-direction: column; gap: 20px; background: var(--surface); }
+@media (max-width: 880px) { .inputs { border-right: none; border-bottom: 1px solid var(--line); } }
+
+fieldset { border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+legend { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase;
+         color: var(--accent); font-weight: 600; padding: 0 0 8px; border-bottom: 1px solid var(--line-soft);
+         width: 100%; margin-bottom: 3px; }
+.field { display: grid; grid-template-columns: 1fr 100px; gap: 10px; align-items: center; }
+.field label { font-size: 13.5px; color: var(--ink-2); line-height: 1.35; }
+.field .hint { display: block; font-size: 11.5px; color: var(--ink-3); }
+.field input[type="number"], .field select {
+  font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 13.5px; padding: 6px 8px;
+  border: 1px solid var(--line); border-radius: 3px; background: var(--ground); color: var(--ink);
+  width: 100%; text-align: right; }
+.field select { text-align: left; font-family: var(--f-body); }
+.field input:focus, .field select:focus { border-color: var(--accent); }
+
+details.adv { border: 1px dashed var(--line); border-radius: var(--r); background: transparent; }
+details.adv summary { padding: 9px 12px; font-size: 12.5px; font-weight: 500; color: var(--ink-3);
+                      font-family: var(--f-mono); letter-spacing: .04em; }
+details.adv summary::after { font-size: 15px; }
+details.adv[open] summary { border-bottom: 1px dashed var(--line); }
+.adv-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+
+.results { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 22px; background: var(--ground);
+           border-radius: 0 0 var(--r) var(--r); }
+
+.verdict { border: 1px solid var(--accent); background: var(--accent-wash); border-radius: var(--r);
+           padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+.verdict .eyebrow { color: var(--accent-ink); }
+.verdict .big { font-family: var(--f-display); font-size: 24px; line-height: 1.25; }
+.verdict .why { font-size: 14px; color: var(--ink-2); }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(218px, 1fr)); gap: 12px; }
+.card { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
+        padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 9px; }
+.card.best { border-color: var(--good); box-shadow: inset 3px 0 0 var(--good); }
+.card.off { opacity: .55; }
+.card-t { display: flex; flex-direction: column; gap: 2px; }
+.card-t .name { font-family: var(--f-display); font-size: 17px; }
+.card-t .kind { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em;
+                text-transform: uppercase; color: var(--ink-3); }
+.card .headline { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 25px;
+                  font-weight: 500; letter-spacing: -.02em; }
+.card .headline.pos { color: var(--good); }
+.card .headline.neg { color: var(--ink); }
+.card .headline-lbl { font-size: 12.5px; color: var(--ink-2); margin-top: -7px; font-weight: 500; line-height: 1.35; }
+.card .headline-sub { font-size: 11.5px; color: var(--ink-3); margin-top: -6px; }
+.cards-intro { display: flex; flex-direction: column; gap: 4px; }
+.cards-intro b { font-family: var(--f-display); font-weight: 500; font-size: 18px; color: var(--ink); }
+.cards-intro span { font-size: 12.5px; color: var(--ink-3); max-width: 66ch; }
+.rows { display: flex; flex-direction: column; gap: 3px; border-top: 1px solid var(--line-soft); padding-top: 9px; }
+.row { display: flex; justify-content: space-between; gap: 12px; font-size: 12.5px; color: var(--ink-2); }
+.row span:last-child { font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.pill { align-self: flex-start; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em;
+        text-transform: uppercase; padding: 3px 7px; border-radius: 2px; background: var(--surface-2); color: var(--ink-3); }
+.pill.bad { background: var(--crit-wash); color: var(--crit); }
+.pill.ok { background: var(--good-wash); color: var(--good); }
+
+.bars { display: flex; flex-direction: column; gap: 9px; }
+.bar-row { display: grid; grid-template-columns: 132px minmax(0,1fr) 92px; gap: 10px; align-items: center; font-size: 12.5px; }
+.bar-row .lbl { color: var(--ink-2); }
+.bar-track { height: 16px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width .28s ease; }
+.bar-fill.good { background: var(--good); }
+.bar-fill.crit { background: var(--crit); }
+.bar-row .val { font-family: var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; }
+
+.panel { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
+         padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+.panel > h4 { font-family: var(--f-display); font-weight: 500; font-size: 18px; margin: 0; }
+.panel .caption { font-size: 12.5px; color: var(--ink-3); max-width: 62ch; }
+
+.flags { display: flex; flex-direction: column; gap: 7px; }
+.flag { display: flex; gap: 9px; font-size: 13px; line-height: 1.45; align-items: flex-start; }
+.flag .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; margin-top: 6px; background: var(--ink-3); }
+.flag.warn .dot { background: var(--warn); }
+.flag.crit .dot { background: var(--crit); }
+.flag.good .dot { background: var(--good); }
+
+/* scénarios de sortie */
+.scenarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.scen { text-align: left; border: 1px solid var(--line); background: var(--ground); border-radius: var(--r);
+        padding: 12px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 4px;
+        font-family: var(--f-body); color: var(--ink-2); transition: border-color .15s, background .15s; }
+.scen b { font-size: 14px; color: var(--ink); font-weight: 600; }
+.scen span { font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+.scen:hover { border-color: var(--accent); }
+.scen.active { border-color: var(--accent); background: var(--accent-wash); box-shadow: inset 0 0 0 1px var(--accent); }
+.scen-explain { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; border-left: 3px solid var(--accent);
+                padding: 12px 16px; background: var(--accent-wash); border-radius: 0 var(--r) var(--r) 0; }
+.recall { font-family: var(--f-mono); font-size: 12px; color: var(--ink-3); display: flex;
+          flex-wrap: wrap; gap: 4px 16px; }
+.recall b { color: var(--ink-2); font-weight: 500; }
+
+/* timeline */
+.timeline { display: flex; flex-direction: column; border-left: 2px solid var(--line); margin-left: 8px; }
+.tl { display: grid; grid-template-columns: 116px minmax(0,1fr); gap: 18px; padding: 14px 0 14px 20px;
+      position: relative; border-bottom: 1px solid var(--line-soft); }
+.timeline .tl:last-child { border-bottom: none; }
+.tl::before { content: ""; position: absolute; left: -6px; top: 21px; width: 10px; height: 10px;
+              border-radius: 50%; background: var(--ground); border: 2px solid var(--accent); }
+.tl .when { font-family: var(--f-mono); font-size: 12px; color: var(--accent-ink); font-weight: 500; line-height: 1.5; }
+.tl .what { display: flex; flex-direction: column; gap: 4px; }
+.tl .what b { font-size: 15px; }
+.tl .what p { font-size: 14px; color: var(--ink-2); }
+@media (max-width: 620px) { .tl { grid-template-columns: 1fr; gap: 4px; } }
+
+/* details */
+details:not(.adv) { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); max-width: var(--measure); }
+summary { cursor: pointer; padding: 13px 18px; font-weight: 600; font-size: 15px; list-style: none;
+          display: flex; justify-content: space-between; gap: 14px; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--f-mono); color: var(--accent); font-size: 17px; }
+details[open] > summary::after { content: "–"; }
+details:not(.adv)[open] > summary { border-bottom: 1px solid var(--line-soft); }
+.details-body { padding: 14px 18px 18px; display: flex; flex-direction: column; gap: 12px;
+                font-size: 15px; color: var(--ink-2); }
+.details-body strong { color: var(--ink); }
+
+footer.src { border-top: 1px solid var(--line); padding-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+.src ul { padding-left: 18px; font-size: 13.5px; color: var(--ink-2); }
+.disclaimer { font-size: 13px; color: var(--ink-3); max-width: var(--measure); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="eyebrow">Fiche pratique · Fiscalité locative</span>
+    <h1>Louer nu ou meublé</h1>
+    <p class="lede">Un appartement, quatre régimes fiscaux possibles, et une décision à prendre <em>avant</em> de signer le premier bail. Cette fiche traite séparément les deux moments où l'impôt intervient : chaque année sur les loyers, puis une fois à la revente.</p>
+    <div class="stamp">
+      <span>État du droit au <b>24 août 2026</b></span>
+      <span>Cas couvert : <b>location longue durée, résidence principale du locataire</b></span>
+      <span>Bien détenu <b>en nom propre</b>, bailleuse salariée</span>
+    </div>
+  </header>
+
+  <div class="cols">
+
+    <nav class="toc">
+      <div class="eyebrow toc-h">Sommaire</div>
+      <a class="part" href="#p1">I — Les revenus</a>
+      <a href="#difference">Nu ou meublé</a>
+      <a href="#regimes">Les quatre régimes</a>
+      <a href="#amortissement">L'amortissement</a>
+      <a href="#sim1">Simulateur des loyers</a>
+      <a href="#lecture">Lire le résultat</a>
+      <a href="#demarches">Démarches et calendrier</a>
+      <a href="#couts">Coût de la gestion</a>
+      <a href="#bail">Le bail et le mobilier</a>
+      <a class="part" href="#p2">II — La vente</a>
+      <a href="#pv-principe">Comment ça se calcule</a>
+      <a href="#reforme">La reprise des amortissements</a>
+      <a href="#trajectoires">Les quatre sorties</a>
+      <a href="#sim2">Simulateur de revente</a>
+      <a href="#demitour">Faire demi-tour</a>
+      <a class="part" href="#p3">III — Cas particuliers</a>
+      <a href="#lmp">Le basculement en LMP</a>
+      <a href="#structures">Faut-il une société</a>
+      <a href="#risques">Les requalifications</a>
+      <a href="#sources">Sources</a>
+    </nav>
+
+    <main>
+
+      <!-- ══════════════════ PARTIE I ══════════════════ -->
+      <div class="part-head" id="p1">
+        <span class="part-num">Partie I</span>
+        <h2>Les revenus locatifs
+          <span class="sub">L'impôt payé chaque année sur les loyers. C'est ce qui décide du régime à choisir au départ.</span>
+        </h2>
+      </div>
+
+      <section id="difference">
+        <h3>La vraie différence entre nu et meublé</h3>
+        <p>La distinction n'est pas décorative. Un logement loué <strong>nu</strong> produit des <strong>revenus fonciers</strong> : du revenu passif, catégorie « patrimoine ». Un logement loué <strong>meublé</strong> produit des <strong>bénéfices industriels et commerciaux</strong> : fiscalement, c'est une activité d'entreprise. Le fisc considère qu'en fournissant lit, table et casseroles, on ne loue plus des murs mais un service.</p>
+        <p>Cette bascule de catégorie entraîne trois conséquences qui décident du reste :</p>
+        <ol>
+          <li><strong>On peut amortir le bien.</strong> Chaque année, on déduit une fraction de la valeur de l'immeuble comme s'il s'usait, alors qu'aucun euro ne sort du compte. Résultat courant : un revenu imposable proche de zéro pendant 10 à 20 ans. Impossible en location nue.</li>
+          <li><strong>On devient une micro-entreprise aux yeux de l'administration.</strong> Numéro SIRET, déclaration au guichet unique, cotisation foncière des entreprises, liasse fiscale si on est au réel.</li>
+          <li><strong>Le bail change de nature.</strong> Un an au lieu de trois, préavis d'un mois côté locataire au lieu de trois, dépôt de garantie de deux mois au lieu d'un.</li>
+        </ol>
+        <div class="note">
+          <span class="tag">Le point qui compte pour toi</span>
+          <p>Tu ne sais pas combien de temps le locataire restera. C'est un argument <strong>en faveur du meublé sur le plan juridique</strong> — bail d'un an, préavis d'un mois, souplesse des deux côtés — mais c'est aussi son principal défaut : <strong>plus de rotation, donc plus de vacance et plus de frais de remise en état</strong>. Un mois de vacance annule à peu près l'écart de loyer entre nu et meublé. Le simulateur permet de tester ce paramètre.</p>
+        </div>
+      </section>
+
+      <section id="regimes">
+        <h3>Les quatre régimes possibles</h3>
+        <p>Deux modes de location × deux régimes d'imposition. On choisit d'abord le mode, puis le régime.</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead>
+              <tr><th>Régime</th><th>Catégorie</th><th class="num">Plafond de recettes</th><th>Ce qu'on déduit</th><th>Comptabilité</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Micro-BIC</b><br><span style="color:var(--ink-3);font-size:13px">Meublé, forfaitaire</span></td>
+                <td>BIC</td><td class="num">83 600 € <span style="color:var(--ink-3)">(recettes 2026)</span></td>
+                <td>Abattement forfaitaire de <b>50 %</b>. Aucune charge réelle.</td>
+                <td>Aucune. Deux cases sur la 2042-C-PRO.</td>
+              </tr>
+              <tr>
+                <td><b>Réel BIC</b><br><span style="color:var(--ink-3);font-size:13px">Meublé, sur justificatifs</span></td>
+                <td>BIC</td><td class="num">Aucun</td>
+                <td>Toutes les charges réelles <b>+ l'amortissement du bien et du mobilier</b>.</td>
+                <td>Bilan, compte de résultat, liasse 2031/2033. Comptable quasi indispensable.</td>
+              </tr>
+              <tr>
+                <td><b>Micro-foncier</b><br><span style="color:var(--ink-3);font-size:13px">Nu, forfaitaire</span></td>
+                <td>Revenus fonciers</td><td class="num">15 000 €</td>
+                <td>Abattement forfaitaire de <b>30 %</b>. Aucune charge réelle.</td>
+                <td>Aucune. Une case sur la 2042.</td>
+              </tr>
+              <tr>
+                <td><b>Réel foncier</b><br><span style="color:var(--ink-3);font-size:13px">Nu, sur justificatifs</span></td>
+                <td>Revenus fonciers</td><td class="num">Aucun</td>
+                <td>Charges réelles, dont intérêts et travaux. <b>Pas d'amortissement.</b> Déficit imputable sur le revenu global jusqu'à 10 700 €/an.</td>
+                <td>Déclaration 2044. Faisable seule.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note warn">
+          <span class="tag">Attention aux articles périmés</span>
+          <p>Les plafonds ont bougé deux fois en deux ans. Le chiffre de <strong>77 700 €</strong> qu'on lit partout concerne les <strong>recettes 2025</strong>, déclarées en 2026. Depuis le 1<sup>er</sup> janvier 2026, la revalorisation triennale l'a porté à <strong>83 600 €</strong> pour les recettes 2026 à 2028. Et l'abattement de <strong>71 %</strong> pour les meublés de tourisme classés n'existe plus : la loi Le Meur l'a ramené à 50 %.</p>
+        </div>
+      </section>
+
+      <section id="amortissement">
+        <h3>L'amortissement, sans jargon</h3>
+        <p>C'est le mécanisme qui décide de tout dans le meublé, et c'est aussi le plus mal compris. En une phrase : <strong>l'administration accepte de considérer que le logement s'use, et autorise à déduire chaque année une part de sa valeur — alors qu'aucun euro ne sort du compte en banque.</strong></p>
+        <p>C'est une charge sur le papier uniquement. D'où l'effet caractéristique du meublé au réel : des loyers encaissés en vrai, et un revenu imposable à zéro.</p>
+
+        <h4>Combien, concrètement ?</h4>
+        <p>L'amortissement annuel du bâti représente en pratique <strong>3 à 3,5 % du prix de revient</strong> — prix d'achat, frais de notaire et travaux, moins la valeur du terrain qui ne s'use pas. Sur un bien à 200 000 € tout compris, cela fait environ <strong>6 500 à 7 000 € par an</strong>, auxquels s'ajoute le mobilier.</p>
+
+        <div class="note">
+          <span class="tag">Non, l'amortissement ne dépasse pas les loyers</span>
+          <p>C'est une confusion fréquente. Rapporté au loyer, l'amortissement en couvre en général <strong>60 à 70 %</strong> — jamais la totalité. Ce qui annule l'impôt, c'est l'<em>addition</em> des charges, des intérêts d'emprunt et de l'amortissement.</p>
+          <p>Et une règle le garantit : <strong>l'amortissement n'a pas le droit de créer un déficit.</strong> Chaque année, il est plafonné à ce qui reste après déduction des autres charges. L'excédent n'est pas perdu : il est mis en réserve et reporté <strong>sans limite de durée</strong>. Cette réserve porte un nom que le comptable emploiera : les <em>amortissements réputés différés</em>.</p>
+        </div>
+
+        <h4>Le cycle de vie en trois temps</h4>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Période</th><th>Ce qui absorbe le bénéfice</th><th class="num">Impôt sur les loyers</th></tr></thead>
+            <tbody>
+              <tr><td><b>Années 1 à 8</b><br><span style="color:var(--ink-3);font-size:13px">début du crédit</span></td>
+                  <td>Les <b>intérêts d'emprunt</b>, très élevés au début, suffisent à eux seuls. L'amortissement de l'année ne sert presque pas — il s'accumule en réserve.</td>
+                  <td class="num"><b>0 €</b></td></tr>
+              <tr><td><b>Années 8 à 20</b><br><span style="color:var(--ink-3);font-size:13px">fin du crédit</span></td>
+                  <td>Les intérêts s'effondrent, mais l'<b>amortissement prend le relais</b> et puise dans la réserve accumulée.</td>
+                  <td class="num"><b>0 €</b></td></tr>
+              <tr><td><b>Après 20 à 25 ans</b><br><span style="color:var(--ink-3);font-size:13px">crédit soldé</span></td>
+                  <td>Plus d'intérêts, les composants à durée courte sont épuisés, la réserve aussi. <b>Le bénéfice devient réellement imposable.</b></td>
+                  <td class="num">Réel</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Le simulateur ci-dessous indique, pour le scénario saisi, l'année précise où l'impôt commence à tomber.</p>
+      </section>
+
+      <!-- ══════════════════ SIMULATEUR 1 ══════════════════ -->
+      <section id="sim1">
+        <h3>Simulateur — l'impôt sur les loyers</h3>
+        <p>Les valeurs par défaut décrivent un cas type : un appartement de 200 000 €, financé à crédit, loué 1 000 € nu ou 1 100 € meublé. <strong>Il faut les remplacer par les chiffres réels du bien.</strong> Les petits <span class="i" data-tip="Comme celui-ci : passez la souris ou tabulez dessus pour l'explication.">i</span> expliquent les champs techniques.</p>
+
+        <div class="sim">
+          <div class="sim-head">
+            <h4>Ce que tu paieras chaque année</h4>
+            <span class="eyebrow" id="sim-note">—</span>
+          </div>
+
+          <div class="sim-body">
+            <div class="inputs">
+
+              <fieldset>
+                <legend>Le bien</legend>
+                <div class="field">
+                  <label for="i-prix">Prix d'achat</label>
+                  <input type="number" id="i-prix" value="200000" min="0" step="1000">
+                </div>
+                <div class="field">
+                  <label for="i-notaire">Frais de notaire <button type="button" class="i" data-tip="Environ 7 à 8 % du prix dans l'ancien, 2 à 3 % dans le neuf. Ils entrent dans la base amortissable en meublé, et dans le prix d'acquisition retenu pour la plus-value.">i</button></label>
+                  <input type="number" id="i-notaire" value="15000" min="0" step="500">
+                </div>
+                <div class="field">
+                  <label for="i-travaux">Travaux à l'achat <button type="button" class="i" data-tip="Travaux réalisés avant la mise en location. En meublé ils s'ajoutent à la base amortissable ; en nu au réel ils sont déductibles immédiatement et peuvent créer un déficit foncier.">i</button></label>
+                  <input type="number" id="i-travaux" value="10000" min="0" step="500">
+                </div>
+                <div class="field">
+                  <label for="i-mobilier">Mobilier <button type="button" class="i" data-tip="Coût de l'équipement du logement, en meublé uniquement. Amorti sur 7 ans — et jamais réintégré dans la plus-value à la revente, contrairement à l'immeuble.">i</button></label>
+                  <input type="number" id="i-mobilier" value="6000" min="0" step="250">
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Les loyers</legend>
+                <div class="field">
+                  <label for="i-loyer-nu">Loyer mensuel <b>nu</b> <span class="hint">hors charges</span></label>
+                  <input type="number" id="i-loyer-nu" value="1000" min="0" step="10">
+                </div>
+                <div class="field">
+                  <label for="i-loyer-meuble">Loyer mensuel <b>meublé</b> <button type="button" class="i" data-tip="En général 5 à 15 % au-dessus du loyer nu pour un même logement. L'écart est plus marqué dans les villes étudiantes.">i</button></label>
+                  <input type="number" id="i-loyer-meuble" value="1100" min="0" step="10">
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Les charges annuelles</legend>
+                <div class="field">
+                  <label for="i-tf">Taxe foncière</label>
+                  <input type="number" id="i-tf" value="1000" min="0" step="50">
+                </div>
+                <div class="field">
+                  <label for="i-copro">Charges de copro <span class="hint">non récupérables</span></label>
+                  <input type="number" id="i-copro" value="600" min="0" step="50">
+                </div>
+                <div class="field">
+                  <label for="i-autres">Assurance + entretien <button type="button" class="i" data-tip="Assurance propriétaire non occupant, garantie loyers impayés, petites réparations. Déductible au réel dans les deux modes de location.">i</button></label>
+                  <input type="number" id="i-autres" value="850" min="0" step="50">
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Le crédit</legend>
+                <div class="field">
+                  <label for="i-emprunt">Capital emprunté <button type="button" class="i" data-tip="Seuls les intérêts sont déductibles, jamais le remboursement du capital. C'est pour cela que le crédit figure ici : il réduit l'impôt par ses intérêts, sans être une charge fiscale pour le reste.">i</button></label>
+                  <input type="number" id="i-emprunt" value="190000" min="0" step="1000">
+                </div>
+                <div class="field">
+                  <label for="i-taux">Taux nominal <span class="hint">% par an</span></label>
+                  <input type="number" id="i-taux" value="3.4" min="0" max="15" step="0.05">
+                </div>
+                <div class="field">
+                  <label for="i-duree-credit">Durée <span class="hint">en années</span></label>
+                  <input type="number" id="i-duree-credit" value="20" min="1" max="30" step="1">
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Ta situation</legend>
+                <div class="field">
+                  <label for="i-tmi">Tranche d'imposition <button type="button" class="i" data-tip="Le taux auquel est imposé ton dernier euro de revenu. Il figure sur ton avis d'imposition. Les prélèvements sociaux de 17,2 % s'ajoutent toujours par-dessus.">i</button></label>
+                  <select id="i-tmi">
+                    <option value="0">0 %</option><option value="11">11 %</option>
+                    <option value="30" selected>30 %</option><option value="41">41 %</option><option value="45">45 %</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="i-horizon">Durée de détention <button type="button" class="i" data-tip="Nombre d'années pendant lesquelles tu comptes garder le bien. Détermine le moment où l'amortissement s'épuise, et les abattements de plus-value en partie II.">i</button></label>
+                  <input type="number" id="i-horizon" value="15" min="1" max="40" step="1">
+                </div>
+              </fieldset>
+
+              <details class="adv">
+                <summary>Paramètres avancés</summary>
+                <div class="adv-body">
+                  <div class="field">
+                    <label for="i-terrain">Quote-part terrain <button type="button" class="i" data-tip="Le terrain ne s'use pas, donc ne s'amortit jamais. On retient 10 à 20 % en immeuble collectif, davantage en maison. Une valeur trop basse est un motif classique de redressement.">i</button> <span class="hint">%</span></label>
+                    <input type="number" id="i-terrain" value="15" min="0" max="50" step="1">
+                  </div>
+                  <div class="field">
+                    <label for="i-vac-nu">Vacance <b>nu</b> <button type="button" class="i" data-tip="Nombre de mois sans locataire par an, en moyenne. Le meublé tourne plus vite : préavis d'un mois au lieu de trois.">i</button> <span class="hint">mois/an</span></label>
+                    <input type="number" id="i-vac-nu" value="0.3" min="0" max="12" step="0.1">
+                  </div>
+                  <div class="field">
+                    <label for="i-vac-meuble">Vacance <b>meublé</b> <span class="hint">mois/an</span></label>
+                    <input type="number" id="i-vac-meuble" value="0.8" min="0" max="12" step="0.1">
+                  </div>
+                  <div class="field">
+                    <label for="i-compta">Comptable <button type="button" class="i" data-tip="Uniquement au régime réel meublé. 300 à 600 €/an en ligne. Ces honoraires sont eux-mêmes déductibles.">i</button></label>
+                    <input type="number" id="i-compta" value="450" min="0" step="50">
+                  </div>
+                  <div class="field">
+                    <label for="i-cfe">CFE <button type="button" class="i" data-tip="Cotisation foncière des entreprises, due en meublé seulement. 100 à 700 € selon la commune. Exonérée la première année, et si les recettes N-2 sont sous 5 000 €.">i</button></label>
+                    <input type="number" id="i-cfe" value="250" min="0" step="25">
+                  </div>
+                  <div class="field">
+                    <label for="i-assur">Assurance emprunteur <span class="hint">€/an</span></label>
+                    <input type="number" id="i-assur" value="600" min="0" step="50">
+                  </div>
+                </div>
+              </details>
+
+            </div>
+
+            <div class="results">
+              <div class="verdict">
+                <span class="eyebrow">Régime le moins imposé</span>
+                <div class="big" id="v-title">—</div>
+                <div class="why" id="v-why">—</div>
+              </div>
+
+              <div class="cards-intro">
+                <b>Le détail régime par régime</b>
+                <span>Le grand chiffre de chaque carte est <strong>l'impôt de la première année</strong> : impôt sur le revenu à ta tranche, plus 17,2 % de prélèvements sociaux. Le total sur toute la durée de détention figure en gras dans le détail juste en dessous.</span>
+              </div>
+
+              <div class="cards" id="cards"></div>
+
+              <div class="panel">
+                <h4>Impôt cumulé sur la durée de détention</h4>
+                <p class="caption">Impôt sur le revenu et prélèvements sociaux payés sur les loyers. Une barre courte est un bon résultat. Une barre négative signifie que le régime fait <em>baisser</em> l'impôt payé par ailleurs, via le déficit foncier.</p>
+                <div class="bars" id="bars"></div>
+              </div>
+
+              <div class="panel">
+                <h4>Alertes sur ce scénario</h4>
+                <div class="flags" id="flags"></div>
+              </div>
+
+              <div class="note" style="max-width:none">
+                <span class="tag">Ce que ce simulateur ne dit pas</span>
+                <p>Il compare <strong>uniquement l'impôt sur les loyers</strong>, pas la rentabilité de l'investissement. Le remboursement du capital du crédit n'y figure pas : ce n'est pas une charge, c'est de l'épargne qui se retrouve dans la valeur du bien. Seuls les <strong>intérêts</strong> comptent ici, parce qu'eux seuls sont déductibles. Pour l'impôt de sortie, voir la partie II.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Comment le simulateur calcule — et ce qu'il simplifie</summary>
+          <div class="details-body">
+            <p><strong>Amortissement.</strong> Le bâti est ventilé en quatre composants amortis sur des durées distinctes — gros œuvre 50 ans, façade 25 ans, installations techniques 20 ans, agencements 15 ans — et le mobilier sur 7 ans. Ce sont des usages admis, pas un barème officiel : l'administration demande seulement des durées cohérentes et justifiables. La règle de plafonnement de l'article 39 C et le report des amortissements différés sont appliqués année par année.</p>
+            <p><strong>Déficits.</strong> En meublé, un déficit hors amortissement se reporte 10 ans sur les seuls revenus meublés. En nu, le déficit foncier s'impute sur le revenu global à hauteur de 10 700 €/an — hors intérêts d'emprunt, qui ne sont imputables que sur les revenus fonciers — le surplus étant reportable 10 ans.</p>
+            <p><strong>Ce qui est simplifié :</strong> la tranche d'imposition est supposée constante, les loyers et les charges ne sont pas indexés, les travaux ultérieurs ne sont pas modélisés, et le décalage d'un an de l'imposition n'est pas simulé. Le résultat donne un ordre de grandeur fiable, pas un chiffre opposable à l'administration.</p>
+          </div>
+        </details>
+      </section>
+
+      <section id="lecture">
+        <h3>Comment lire le résultat</h3>
+        <ul>
+          <li><strong>Le meublé au réel gagne presque toujours.</strong> C'est normal : il déduit les mêmes charges que le nu, plus l'amortissement. La seule question est de savoir si l'écart justifie le comptable et la paperasse — et ce que ça coûtera à la revente, ce qui est l'objet de la partie II.</li>
+          <li><strong>Le micro-BIC ne gagne que si les charges sont faibles.</strong> L'abattement de 50 % est généreux dans l'absolu, mais un bien à crédit avec taxe foncière et copro dépasse souvent 50 % de charges réelles dès la première année. Le micro est surtout pertinent pour un bien payé comptant.</li>
+          <li><strong>Le nu au réel n'est jamais ridicule quand il y a des travaux.</strong> Le déficit foncier attaque le revenu global — donc le salaire — à hauteur de 10 700 € par an. Le meublé, lui, ne peut jamais réduire l'impôt sur le salaire.</li>
+        </ul>
+        <div class="note good">
+          <span class="tag">Règle de décision courte</span>
+          <p>Si les charges réelles plus l'amortissement dépassent 50 % des loyers — c'est le cas dès qu'il y a un crédit — <strong>le meublé au réel est le régime le plus efficace, et le comptable à 450 € se rembourse dès la première année</strong>.</p>
+        </div>
+      </section>
+
+      <section id="demarches">
+        <h3>Les démarches et le calendrier</h3>
+
+        <h4>Si tu loues nu</h4>
+        <p>Aucune démarche préalable. Tu signes le bail, tu encaisses les loyers, et tu déclares le montant brut au printemps suivant. Le micro-foncier s'applique automatiquement sous 15 000 € ; l'option pour le réel se fait en déposant une déclaration 2044 — mais <strong>tu t'engages pour trois ans</strong>.</p>
+
+        <h4>Si tu loues meublé</h4>
+        <div class="timeline">
+          <div class="tl">
+            <div class="when">Dans les 15 jours<br>suivant la mise en location</div>
+            <div class="what">
+              <b>Déclaration de début d'activité au guichet unique de l'INPI</b>
+              <p>En ligne sur <span class="mono">formalites.entreprises.gouv.fr</span>. Gratuit. Remplace l'ancien formulaire papier P0i, supprimé depuis le 1<sup>er</sup> janvier 2023 — tout Cerfa téléchargeable trouvé en ligne est obsolète.</p>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="when">1 à 4 semaines après</div>
+            <div class="what">
+              <b>Réception du numéro SIRET</b>
+              <p>Envoyé par l'INSEE. Indispensable pour déclarer les revenus BIC et pour la CFE. Sans SIRET, la déclaration de revenus bloque.</p>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="when">Avant le 31 décembre<br>de l'année de début</div>
+            <div class="what">
+              <b>Déclaration initiale de CFE (formulaire 1447-C)</b>
+              <p>L'année de création est <strong>totalement exonérée</strong>, mais la déclaration doit être faite, sinon la base d'imposition est fixée d'office.</p>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="when">Au plus tard à la date<br>de dépôt de la 1<sup>re</sup> liasse</div>
+            <div class="what">
+              <b>Option pour le régime réel, si tu le choisis</b>
+              <p>Pour une activité qui démarre, jusqu'à la date limite de dépôt de la première déclaration de résultats. Pour une activité en cours, avant la date limite de dépôt de celle de l'année précédente. L'option vaut <strong>un an, reconduite tacitement</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <span class="tag">Bonne nouvelle</span>
+          <p>Depuis la loi de finances pour 2022, l'option pour le réel n'enferme plus pour trois ans en meublé : elle est annuelle et tacitement reconduite. En location nue en revanche, <strong>l'option pour le réel foncier reste irrévocable pendant trois ans</strong>. C'est une asymétrie qui compte si tu hésites.</p>
+        </div>
+
+        <h4>Une fois lancée, chaque année</h4>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Quand</th><th>Quoi</th><th>Qui est concernée</th></tr></thead>
+            <tbody>
+              <tr><td class="num">Avril → juin</td><td>Déclaration de revenus. <b>2042-C-PRO</b> en meublé, <b>2044</b> en nu au réel, case 4BE en micro-foncier. Dates limites échelonnées par département.</td><td>Toutes</td></tr>
+              <tr><td class="num">Mi-mai</td><td><b>Liasse fiscale 2031 + tableaux 2033</b>, télétransmise en EDI. C'est ce que fait le comptable.</td><td>Meublé au réel</td></tr>
+              <tr><td class="num">Septembre</td><td>Avis de taxe foncière, payable à la mi-octobre.</td><td>Toutes</td></tr>
+              <tr><td class="num">Début novembre</td><td>Avis de CFE mis en ligne sur l'espace professionnel impots.gouv.fr. <b>Aucun avis papier n'est envoyé.</b></td><td>Meublé</td></tr>
+              <tr><td class="num">15 décembre</td><td>Paiement de la CFE.</td><td>Meublé</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note warn">
+          <span class="tag">Piège récurrent</span>
+          <p>La CFE n'est jamais envoyée par courrier. Chaque année, des loueurs découvrent une majoration de 5 % parce qu'ils n'ont pas créé leur espace professionnel sur impots.gouv.fr. <strong>À faire dès la réception du SIRET, pas en novembre.</strong></p>
+        </div>
+      </section>
+
+      <section id="couts">
+        <h3>Ce que coûte la gestion</h3>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Poste</th><th class="num">Nu</th><th class="num">Meublé micro</th><th class="num">Meublé réel</th></tr></thead>
+            <tbody>
+              <tr><td>Comptable</td><td class="num">0 €</td><td class="num">0 €</td><td class="num">300 à 600 € en ligne<br><span style="color:var(--ink-3)">600 à 1 000 € en cabinet</span></td></tr>
+              <tr><td>CFE</td><td class="num">0 €</td><td class="num">100 à 700 €</td><td class="num">100 à 700 €</td></tr>
+              <tr><td>Mobilier initial</td><td class="num">0 €</td><td class="num">3 000 à 8 000 €</td><td class="num">3 000 à 8 000 €</td></tr>
+              <tr><td>Renouvellement du mobilier</td><td class="num">0 €</td><td class="num">~500 €/an</td><td class="num">~500 €/an</td></tr>
+              <tr><td>Temps administratif</td><td class="num">1 h/an</td><td class="num">1 h/an</td><td class="num">3 à 5 h/an</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Le comptable n'est <strong>pas obligatoire légalement</strong>, même au régime réel. En pratique, la ventilation des composants, la gestion du stock d'amortissements différés et la liasse 2033 rendent l'exercice risqué pour une débutante. Les plateformes en ligne spécialisées sont le compromis raisonnable — et ces honoraires sont eux-mêmes déductibles.</p>
+        <div class="note crit">
+          <span class="tag">Ce qui a disparu</span>
+          <p>La <strong>réduction d'impôt pour frais de comptabilité et adhésion à un organisme de gestion agréé</strong> (jusqu'à 915 €) est supprimée à compter de l'exercice 2025 déclaré en 2026. Les comparatifs affichant « comptable net de réduction d'impôt » sont périmés.</p>
+        </div>
+      </section>
+
+      <section id="bail">
+        <h3>Le bail et le mobilier obligatoire</h3>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Point</th><th>Location nue</th><th>Location meublée</th></tr></thead>
+            <tbody>
+              <tr><td>Durée minimale</td><td>3 ans</td><td>1 an — ou 9 mois non reconductibles pour un étudiant</td></tr>
+              <tr><td>Préavis du locataire</td><td>3 mois (1 mois en zone tendue)</td><td><b>1 mois, toujours</b></td></tr>
+              <tr><td>Préavis de la bailleuse</td><td>6 mois, motivé</td><td>3 mois, motivé</td></tr>
+              <tr><td>Dépôt de garantie</td><td>1 mois de loyer</td><td>2 mois de loyer</td></tr>
+              <tr><td>Inventaire du mobilier</td><td>Sans objet</td><td>Obligatoire, annexé au bail</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Le décret n° 2015-981 du 31 juillet 2015 fixe la liste des <strong>onze éléments minimum</strong> : literie avec couette ou couverture ; dispositif d'occultation des fenêtres dans les chambres ; plaques de cuisson ; four ou micro-ondes ; réfrigérateur et congélateur ; vaisselle en nombre suffisant ; ustensiles de cuisine ; table et sièges ; étagères de rangement ; luminaires ; matériel d'entretien ménager adapté au logement.</p>
+        <div class="note warn">
+          <span class="tag">Risque concret</span>
+          <p>Un logement incomplet peut être <strong>requalifié en location nue par le juge</strong>. Conséquences en cascade : bail de 3 ans imposé rétroactivement, dépôt de garantie ramené à 1 mois, et surtout <strong>remise en cause de tout le régime BIC</strong> — donc des amortissements déduits. La parade est simple : un inventaire détaillé et photographié, annexé au bail et signé.</p>
+        </div>
+      </section>
+
+      <!-- ══════════════════ PARTIE II ══════════════════ -->
+      <div class="part-head" id="p2">
+        <span class="part-num">Partie II</span>
+        <h2>La vente
+          <span class="sub">L'impôt payé une seule fois, à la sortie. C'est là que se rattrape une partie de ce que l'amortissement a fait économiser.</span>
+        </h2>
+      </div>
+
+      <section id="pv-principe">
+        <h3>Comment se calcule la plus-value</h3>
+        <p>Bonne nouvelle d'abord : en LMNP, la plus-value relève du <strong>régime des particuliers</strong>, pas du régime professionnel. Le calcul est celui de n'importe quelle vente immobilière.</p>
+        <p>On part de la différence entre le prix de vente et le prix d'acquisition (majoré des frais de notaire et des travaux), puis on applique un abattement qui grandit avec la durée de détention. Ce qui reste est taxé à <strong>19 % d'impôt sur le revenu et 17,2 % de prélèvements sociaux</strong>.</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Durée de détention</th><th class="num">Abattement sur l'IR (19 %)</th><th class="num">Abattement sur les PS (17,2 %)</th></tr></thead>
+            <tbody>
+              <tr><td>Jusqu'à 5 ans</td><td class="num">0 %</td><td class="num">0 %</td></tr>
+              <tr><td>De la 6<sup>e</sup> à la 21<sup>e</sup> année</td><td class="num">6 %/an</td><td class="num">1,65 %/an</td></tr>
+              <tr><td>22<sup>e</sup> année</td><td class="num">4 % → <b>exonération totale</b></td><td class="num">1,60 %</td></tr>
+              <tr><td>De la 23<sup>e</sup> à la 30<sup>e</sup> année</td><td class="num">—</td><td class="num">9 %/an → <b>exonération totale</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>S'y ajoute une <strong>surtaxe progressive de 2 % à 6 %</strong> sur les plus-values nettes imposables supérieures à 50 000 €.</p>
+        <div class="note good">
+          <span class="tag">Un point rassurant</span>
+          <p>La durée de détention <strong>court depuis l'acquisition, quel que soit l'usage du bien</strong>. Le compteur n'est jamais remis à zéro parce qu'on est passé du meublé au nu, ou qu'on y a habité quelques années entre-temps.</p>
+        </div>
+      </section>
+
+      <section id="reforme">
+        <h3>La reprise des amortissements</h3>
+        <div class="note crit">
+          <span class="tag">Article 84 de la loi de finances 2025</span>
+          <p>Pour les cessions intervenues <strong>à compter du 15 février 2025</strong>, le prix d'acquisition retenu pour le calcul de la plus-value est <strong>diminué des amortissements déduits</strong> pendant la période de location meublée. Autrement dit : ce que l'amortissement a fait économiser pendant la détention est repris au moment de la vente.</p>
+          <p>Une réponse ministérielle publiée au Journal officiel de l'Assemblée nationale le <strong>24 mars 2026</strong> (question n° 10097) a tranché le point qui restait débattu : la réintégration vise <strong>aussi les amortissements pratiqués avant 2025</strong>.</p>
+        </div>
+        <p><strong>Ce qui échappe à la reprise :</strong></p>
+        <ul>
+          <li><strong>L'amortissement du mobilier</strong> — seul l'immeuble est concerné.</li>
+          <li><strong>Les amortissements en réserve</strong> jamais déduits. La loi vise les amortissements « admis en déduction » : ce qui est resté bloqué par la règle de l'article 39 C n'a jamais réduit l'impôt, et n'est donc pas repris.</li>
+          <li><strong>Les résidences services</strong> — étudiantes, seniors, EHPAD — expressément exclues par le texte.</li>
+          <li><strong>Une donation</strong> purge les amortissements : le donataire repart sur une base neuve.</li>
+        </ul>
+        <p>Ce que cela change dans l'arbitrage : l'amortissement reste avantageux — c'est un report d'imposition gratuit sur 10 ou 20 ans, et le taux de sortie, abattu par la durée de détention, est en général inférieur au taux d'entrée évité. Mais ce n'est plus un gain sec.</p>
+      </section>
+
+      <section id="trajectoires">
+        <h3>Les quatre trajectoires de sortie</h3>
+        <p>Une règle commande tout : <strong>l'exonération « résidence principale » s'apprécie au jour de la vente</strong>, jamais rétroactivement. Et la reprise des amortissements est déclenchée par le fait qu'ils ont été déduits, pas par l'usage du bien au moment de vendre.</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Trajectoire</th><th>Exonération RP</th><th>Amortissements repris</th><th>Résultat</th></tr></thead>
+            <tbody>
+              <tr><td>Meublé au réel → <b>vente en meublé</b></td><td>Non</td><td>Oui</td><td>Le cas de référence</td></tr>
+              <tr><td>Meublé au réel → <b>nu</b> → vente</td><td>Non</td><td><b>Oui quand même</b></td><td>Identique au précédent : repasser en nu ne sert à rien</td></tr>
+              <tr><td>Meublé au réel → <b>résidence principale</b> → vente</td><td><b>Oui, totale</b></td><td>Sans objet</td><td>Zéro impôt</td></tr>
+              <tr><td>Meublé au réel → RP → <b>nu</b> → vente</td><td>Non</td><td>Oui</td><td><b>Le pire des quatre</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>La quatrième ligne est le piège. Le passage par la résidence principale <strong>ne crée aucun crédit fiscal reportable</strong>. Si tu y habites trois ans puis que tu reloues en nu avant de vendre, tu perds l'exonération — tu n'y habites plus au jour de la cession — et tu gardes l'ardoise des amortissements. Le détour n'aura rien apporté, sinon d'avoir gelé le compteur d'amortissement pendant l'occupation.</p>
+        <div class="note warn">
+          <span class="tag">Sur la vente en résidence principale</span>
+          <p>L'occupation doit être <strong>réelle et effective</strong>. Emménager six mois après quinze ans d'amortissement pour vendre en exonération est un schéma que l'administration sait requalifier en abus de droit. Il n'existe pas de durée minimale légale, mais il existe une jurisprudence.</p>
+        </div>
+        <div class="note">
+          <span class="tag">Sur le retour en résidence principale</span>
+          <p>Sortir le bien de l'activité locative pour l'habiter <strong>ne déclenche aucune imposition immédiate</strong> : en LMNP, ce n'est pas un fait générateur. Il faut déclarer la cessation d'activité à l'INPI. Les déficits et les amortissements en réserve sont perdus s'ils ne resservent pas ensuite.</p>
+        </div>
+      </section>
+
+      <!-- ══════════════════ SIMULATEUR 2 ══════════════════ -->
+      <section id="sim2">
+        <h3>Simulateur — l'impôt à la revente</h3>
+        <p>Ce second simulateur <strong>reprend automatiquement les hypothèses saisies en partie I</strong> : prix, travaux, durée de détention et régime pratiqué. Il ne demande que deux choses de plus : dans quelle situation le bien est vendu, et de combien il se sera valorisé.</p>
+
+        <div class="sim">
+          <div class="sim-head">
+            <h4>Ce que tu paieras le jour de la vente</h4>
+            <span class="eyebrow" id="sim2-note">—</span>
+          </div>
+          <div class="sim-body solo">
+            <div class="results">
+
+              <div class="panel">
+                <h4>Dans quelle situation le bien est-il vendu ?</h4>
+                <p class="caption">C'est la question qui décide de tout. L'exonération « résidence principale » s'apprécie au jour de la vente.</p>
+                <div class="scenarios" id="scenarios">
+                  <button type="button" class="scen active" data-scen="meuble">
+                    <b>Encore loué en meublé</b><span>Le cas courant.</span>
+                  </button>
+                  <button type="button" class="scen" data-scen="nu">
+                    <b>Repassé en location nue</b><span>Est-ce que ça change quelque chose ?</span>
+                  </button>
+                  <button type="button" class="scen" data-scen="rp">
+                    <b>Redevenu ta résidence principale</b><span>Tu y habites au moment de vendre.</span>
+                  </button>
+                </div>
+                <div class="scen-explain" id="scen-explain">—</div>
+              </div>
+
+              <div class="panel">
+                <h4>Hypothèses de sortie</h4>
+                <div style="max-width:320px">
+                  <div class="field">
+                    <label for="i-reval">Revalorisation du bien <button type="button" class="i" data-tip="Hausse annuelle moyenne du prix. 1 à 2 % est une hypothèse prudente sur longue période. Mettre 0 pour raisonner à prix constant.">i</button> <span class="hint">% par an</span></label>
+                    <input type="number" id="i-reval" value="1.5" min="-5" max="10" step="0.25">
+                  </div>
+                </div>
+                <div class="recall" id="recall">—</div>
+                <p class="caption" id="pv-caption">—</p>
+              </div>
+
+              <div class="panel">
+                <h4>Impôt de plus-value selon le régime pratiqué pendant la location</h4>
+                <div class="tbl-scroll">
+                  <table id="pv-table">
+                    <thead><tr><th>Régime pratiqué</th><th class="num">Prix d'acquisition retenu</th><th class="num">Plus-value brute</th><th class="num">Impôt + prélèvements</th></tr></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <p class="caption" id="pv-note">—</p>
+              </div>
+
+              <div class="panel">
+                <h4>Le bilan des deux impôts</h4>
+                <p class="caption">Ce que le meublé au réel fait économiser sur les loyers pendant la détention, comparé à ce qu'il coûte en plus à la sortie. C'est le seul chiffre qui répond vraiment à la question « est-ce que ça vaut le coup ».</p>
+                <div class="bars" id="bilan-bars"></div>
+                <div class="flags" id="bilan-flags"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="demitour">
+        <h3>Faire demi-tour</h3>
+
+        <h4>Passer du meublé au nu</h4>
+        <p>Fiscalement simple : cessation de l'activité BIC déclarée au guichet unique, puis bascule en revenus fonciers. Trois points de vigilance :</p>
+        <ul>
+          <li><strong>Les amortissements déjà déduits restent repris à la revente.</strong> Passer en nu n'efface pas l'ardoise.</li>
+          <li><strong>Les déficits BIC et les amortissements en réserve sont perdus</strong> s'il n'y a plus de revenus meublés sur lesquels les imputer.</li>
+          <li><strong>Il faut attendre la fin du bail meublé</strong> et donner congé motivé trois mois avant l'échéance. On ne transforme pas un bail en cours.</li>
+        </ul>
+
+        <h4>Passer du nu au meublé</h4>
+        <div class="note crit">
+          <span class="tag">L'engagement de trois ans du déficit foncier</span>
+          <p>Si tu as imputé un déficit foncier sur ton revenu global, tu dois <strong>maintenir le bien en location nue jusqu'au 31 décembre de la troisième année suivant celle de l'imputation</strong>. Un déficit imputé sur les revenus 2026 impose une location nue jusqu'au 31 décembre 2029. Passer en meublé avant entraîne la <strong>remise en cause rétroactive</strong> de l'avantage, avec intérêts de retard.</p>
+        </div>
+        <p>Hors ce cas, la bascule est mécanique : fin du bail nu, meublement du logement, déclaration INPI dans les 15 jours, nouveau bail. Le bien entre alors dans la base amortissable <strong>à sa valeur vénale au jour de l'entrée dans le patrimoine locatif meublé</strong>, ce qui peut être plus favorable que le prix d'achat historique si le bien s'est apprécié.</p>
+
+        <h4>Changer de régime sans changer de mode de location</h4>
+        <ul>
+          <li><strong>Micro-BIC → réel :</strong> option annuelle, avant la date limite de dépôt de la déclaration de résultats. Réversible chaque année.</li>
+          <li><strong>Réel → micro-BIC :</strong> renonciation avant la même date, si le plafond de 83 600 € est respecté. Le stock d'amortissements en réserve est définitivement perdu.</li>
+          <li><strong>Micro-foncier → réel foncier :</strong> irrévocable pendant trois ans.</li>
+          <li><strong>Réel foncier → micro-foncier :</strong> possible au terme des trois ans, si les recettes sont sous 15 000 €.</li>
+        </ul>
+      </section>
+
+      <!-- ══════════════════ PARTIE III ══════════════════ -->
+      <div class="part-head" id="p3">
+        <span class="part-num">Partie III</span>
+        <h2>Cas particuliers
+          <span class="sub">Ce qui ne concerne pas un premier bien détenu seule, mais qu'il vaut mieux avoir lu une fois.</span>
+        </h2>
+      </div>
+
+      <section id="lmp">
+        <h3>Le basculement en loueur professionnel</h3>
+        <p>Le statut de <strong>loueur en meublé professionnel (LMP)</strong> n'est pas un choix : il s'impose dès que <strong>les deux conditions sont réunies simultanément</strong>.</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Condition</th><th>Seuil</th><th>Commentaire</th></tr></thead>
+            <tbody>
+              <tr><td>Recettes annuelles de location meublée</td><td class="num">&gt; 23 000 €</td><td>Recettes <b>brutes</b> encaissées, pas le bénéfice.</td></tr>
+              <tr><td>Part dans les revenus d'activité du foyer</td><td class="num">&gt; salaires + autres BIC/BNC</td><td>Comparaison au niveau du <b>foyer fiscal entier</b>, pas de la personne.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note crit">
+          <span class="tag">Le scénario « tu arrêtes de travailler »</span>
+          <p>C'est le vrai risque. Si tu cesses ton activité salariée — congé parental non indemnisé, création d'entreprise déficitaire, retraite anticipée — et que tes loyers meublés dépassent 23 000 €, ils deviennent mécaniquement ton premier revenu d'activité. <strong>Tu bascules en LMP sans avoir rien signé.</strong> Conséquence : affiliation obligatoire à la Sécurité sociale des indépendants, avec des cotisations de l'ordre de <strong>30 à 40 % du bénéfice</strong> au lieu des 17,2 % de prélèvements sociaux — et une cotisation minimale due même à résultat nul.</p>
+        </div>
+        <p>Avec un seul appartement, le seuil de 23 000 € n'est pas atteignable : le risque est théorique aujourd'hui, et devient réel au deuxième ou troisième bien. <strong>La règle à retenir : surveiller le cumul des recettes meublées dès qu'il approche 20 000 €.</strong></p>
+        <p>Le LMP n'est pas que négatif : les déficits deviennent imputables sur le revenu global sans plafond, les biens sortent de l'assiette de l'IFI, et la plus-value relève du régime professionnel — avec exonération totale si les recettes sont inférieures à 90 000 € HT sur les deux années précédentes et que l'activité dure depuis plus de cinq ans. Mais le coût social est immédiat et l'avantage lointain.</p>
+        <div class="note">
+          <span class="tag">Le troisième seuil, souvent oublié</span>
+          <p>En <strong>location de courte durée</strong>, le franchissement des 23 000 € de recettes déclenche l'affiliation à la Sécurité sociale des indépendants <em>même en restant LMNP</em>. Ce seuil ne s'applique pas à la location longue durée, qui reste aux prélèvements sociaux de 17,2 % quel que soit le montant.</p>
+        </div>
+      </section>
+
+      <section id="structures">
+        <h3>Faut-il une société ?</h3>
+        <p>Pour un premier bien détenu seule, la réponse est <strong>non</strong>. Voici pourquoi, et quand la question se pose vraiment.</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Forme</th><th>Location meublée possible ?</th><th>Pertinent quand</th></tr></thead>
+            <tbody>
+              <tr><td><b>Nom propre</b></td><td>Oui, sans restriction</td><td>Un ou quelques biens, détention individuelle. <b>C'est le cas par défaut.</b></td></tr>
+              <tr><td><b>Indivision</b></td><td>Oui</td><td>Achat à plusieurs sans structure. Simple à créer, mais toute décision importante exige l'unanimité.</td></tr>
+              <tr><td><b>SCI à l'impôt sur le revenu</b></td><td><b>Très mal</b></td><td>Une SCI est civile, la location meublée est commerciale. Au-delà de <b>10 % des recettes</b> en meublé, bascule automatique et irréversible à l'impôt sur les sociétés.</td></tr>
+              <tr><td><b>SARL de famille</b></td><td>Oui, c'est l'outil dédié</td><td>Détention familiale. Option pour l'impôt sur le revenu <b>sans limitation de durée</b> : chaque associé conserve les avantages du LMNP, amortissement compris.</td></tr>
+              <tr><td><b>SCI à l'impôt sur les sociétés</b></td><td>Oui</td><td>Patrimoine important, logique de capitalisation. Amortissement possible, mais <b>plus-value au régime professionnel</b> : aucun abattement pour durée de détention.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note warn">
+          <span class="tag">Erreur fréquente</span>
+          <p>« Je vais créer une SCI pour louer en meublé » est l'un des mauvais conseils les plus répandus. Une SCI à l'impôt sur le revenu qui loue meublé au-delà de 10 % de ses recettes bascule d'office à l'impôt sur les sociétés, <strong>sans retour possible</strong>, et perd les abattements pour durée de détention. Si l'objectif est de détenir à plusieurs en meublé, la <strong>SARL de famille</strong> est la structure adaptée.</p>
+        </div>
+      </section>
+
+      <section id="risques">
+        <h3>Les requalifications</h3>
+        <div class="flags" style="max-width:var(--measure)">
+          <div class="flag crit"><span class="dot"></span><span><strong>Meublé requalifié en nu</strong> — mobilier incomplet au regard du décret de 2015. Le juge impose un bail de 3 ans ; l'administration peut remettre en cause le régime BIC et les amortissements. <em>Parade : inventaire détaillé, photographié, annexé et signé.</em></span></div>
+          <div class="flag crit"><span class="dot"></span><span><strong>LMNP requalifié en LMP</strong> — franchissement automatique des deux seuils. Affiliation SSI, cotisations de 30 à 40 % du bénéfice. <em>Parade : suivre le cumul des recettes et la structure des revenus du foyer chaque année.</em></span></div>
+          <div class="flag warn"><span class="dot"></span><span><strong>Requalification en para-hôtellerie</strong> — activité soumise à la TVA dès lors que sont fournis au moins trois des quatre services de l'article 261 D, 4°-b du CGI : petit-déjeuner, nettoyage régulier <em>en cours de séjour</em>, fourniture du linge, réception de la clientèle. Le Conseil d'État a précisé en novembre 2025 qu'un ménage avant l'arrivée ou une boîte à clés ne suffisent pas. <em>Sans objet en location longue durée.</em></span></div>
+          <div class="flag warn"><span class="dot"></span><span><strong>Durées d'amortissement contestées</strong> — l'administration n'impose pas de barème, mais exige des durées cohérentes avec la réalité économique du bien. Une ventilation agressive est un motif de redressement classique. <em>Parade : rester dans les usages, faire valider par le comptable.</em></span></div>
+          <div class="flag"><span class="dot"></span><span><strong>Défaut de déclaration au guichet unique</strong> — pas de SIRET, donc impossibilité de déclarer les BIC. Régularisable, mais bloque la déclaration de revenus. <em>Parade : déclarer dans les 15 jours.</em></span></div>
+        </div>
+        <div class="note">
+          <span class="tag">Si un jour tu envisages la courte durée</span>
+          <p>Le cadre a été profondément resserré. L'abattement du micro-BIC est tombé à <strong>30 % avec un plafond de 15 000 €</strong> pour un meublé de tourisme non classé (50 % et 83 600 € s'il est classé). Depuis le <strong>20 mai 2026</strong>, un <strong>numéro d'enregistrement national à 13 chiffres</strong> est obligatoire : sans lui, l'annonce est retirée d'Airbnb, Booking et Abritel. S'y ajoutent, selon la commune, l'autorisation de changement d'usage, des quotas, et une exigence de DPE minimum. C'est un projet en soi.</p>
+        </div>
+      </section>
+
+      <footer class="src" id="sources">
+        <h3>Sources</h3>
+        <ul>
+          <li>Code général des impôts : art. 39 C (limitation de l'amortissement), art. 50-0 (micro-BIC), art. 150 VB III (reprise des amortissements), art. 155 IV (définition du LMP), art. 156 (report des déficits), art. 261 D 4°-b (para-hôtellerie), art. 1609 nonies G (surtaxe sur les plus-values)</li>
+          <li>Loi n° 2025-127 du 14 février 2025 de finances pour 2025, article 84 — cessions à compter du 15 février 2025</li>
+          <li>Réponse ministérielle, question écrite n° 10097, JOAN du 24 mars 2026 — portée temporelle de la reprise</li>
+          <li>Loi n° 2024-1039 du 19 novembre 2024 dite « loi Le Meur » — meublés de tourisme, enregistrement national, DPE</li>
+          <li>Loi de finances pour 2026 — revalorisation triennale des seuils micro à 83 600 € pour 2026-2028</li>
+          <li>Décret n° 2015-981 du 31 juillet 2015 — liste des éléments de mobilier obligatoires</li>
+          <li>Loi n° 89-462 du 6 juillet 1989, titre I<sup>er</sup> bis — régime du bail meublé</li>
+          <li>Conseil d'État, novembre 2025 — critères de la para-hôtellerie</li>
+          <li>impots.gouv.fr et entreprendre.service-public.gouv.fr</li>
+        </ul>
+        <p class="disclaimer">Document pédagogique établi le 24 août 2026. Il décrit un cadre général et ne constitue ni un conseil fiscal personnalisé ni une recommandation d'investissement. Les montants issus des simulateurs sont des ordres de grandeur, non des chiffres opposables à l'administration. Avant de trancher, faire valider le scénario retenu par un expert-comptable ou un notaire.</p>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var TAUX_PS = 0.172;
+  var PLAFOND_MICRO_BIC = 83600;
+  var PLAFOND_MICRO_FONCIER = 15000;
+  var PLAFOND_DEFICIT_FONCIER = 10700;
+
+  var COMPOSANTS = [
+    { part: 0.40, duree: 50 },
+    { part: 0.15, duree: 25 },
+    { part: 0.25, duree: 20 },
+    { part: 0.20, duree: 15 }
+  ];
+  var DUREE_MOBILIER = 7;
+
+  var IDS = ["i-prix","i-notaire","i-travaux","i-mobilier","i-loyer-nu","i-loyer-meuble",
+             "i-tf","i-copro","i-autres","i-emprunt","i-taux","i-duree-credit","i-tmi","i-horizon",
+             "i-terrain","i-vac-nu","i-vac-meuble","i-compta","i-cfe","i-assur","i-reval"];
+
+  var scenario = "meuble";
+
+  function n(id) {
+    var el = document.getElementById(id);
+    var v = parseFloat(el && el.value);
+    return isFinite(v) ? v : 0;
+  }
+
+  var eur = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  function f(v) { return eur.format(Math.round(Math.abs(v) < 0.5 ? 0 : v)); }
+  function fs(v) { return (v >= -0.5 ? "" : "−") + eur.format(Math.abs(Math.round(v))); }
+
+  function tableauCredit(capital, tauxAnnuel, dureeAns) {
+    var out = [];
+    if (capital <= 0 || dureeAns <= 0) return out;
+    var i = tauxAnnuel / 100 / 12;
+    var nb = Math.round(dureeAns * 12);
+    var mens = i > 0 ? capital * i / (1 - Math.pow(1 + i, -nb)) : capital / nb;
+    var reste = capital;
+    for (var a = 0; a < dureeAns; a++) {
+      var interets = 0;
+      for (var m = 0; m < 12; m++) {
+        if (reste <= 0) break;
+        var int_m = reste * i;
+        interets += int_m;
+        reste -= Math.min(mens - int_m, reste);
+      }
+      out.push({ interets: interets });
+    }
+    return out;
+  }
+
+  function amortImmeubleAnnee(baseBati, annee) {
+    var tot = 0;
+    for (var k = 0; k < COMPOSANTS.length; k++) {
+      if (annee <= COMPOSANTS[k].duree) tot += baseBati * COMPOSANTS[k].part / COMPOSANTS[k].duree;
+    }
+    return tot;
+  }
+
+  function surtaxe(pv) {
+    if (pv <= 50000) return 0;
+    var t = [
+      [60000,  function (p) { return 0.02 * p - (60000 - p) * 0.05; }],
+      [100000, function (p) { return 0.02 * p; }],
+      [110000, function (p) { return 0.03 * p - (110000 - p) * 0.10; }],
+      [150000, function (p) { return 0.03 * p; }],
+      [160000, function (p) { return 0.04 * p - (160000 - p) * 0.15; }],
+      [200000, function (p) { return 0.04 * p; }],
+      [210000, function (p) { return 0.05 * p - (210000 - p) * 0.20; }],
+      [250000, function (p) { return 0.05 * p; }],
+      [260000, function (p) { return 0.06 * p - (260000 - p) * 0.25; }]
+    ];
+    for (var k = 0; k < t.length; k++) if (pv <= t[k][0]) return Math.max(0, t[k][1](pv));
+    return 0.06 * pv;
+  }
+
+  function abattementIR(ans) {
+    if (ans < 6) return 0;
+    if (ans >= 22) return 1;
+    return Math.min(1, (ans - 5) * 0.06);
+  }
+  function abattementPS(ans) {
+    if (ans < 6) return 0;
+    if (ans >= 30) return 1;
+    if (ans <= 21) return (ans - 5) * 0.0165;
+    if (ans === 22) return 0.28;
+    return Math.min(1, 0.28 + (ans - 22) * 0.09);
+  }
+
+  function plusValue(prixVente, prixAcq, ans, exonere) {
+    var brute = Math.max(0, prixVente - prixAcq);
+    if (exonere) return { brute: brute, impot: 0, acq: prixAcq };
+    var baseIR = brute * (1 - abattementIR(ans));
+    var basePS = brute * (1 - abattementPS(ans));
+    return { brute: brute, impot: baseIR * 0.19 + basePS * TAUX_PS + surtaxe(baseIR), acq: prixAcq };
+  }
+
+  /* ══════════════════ moteur ══════════════════ */
+  function calcule() {
+    var prix = n("i-prix"), notaire = n("i-notaire"), travaux = n("i-travaux"),
+        mobilier = n("i-mobilier"), partTerrain = n("i-terrain") / 100,
+        loyerNuM = n("i-loyer-nu"), loyerMeubleM = n("i-loyer-meuble"),
+        vacNu = n("i-vac-nu"), vacMeuble = n("i-vac-meuble"),
+        tf = n("i-tf"), copro = n("i-copro"), autres = n("i-autres"),
+        compta = n("i-compta"), cfe = n("i-cfe"),
+        emprunt = n("i-emprunt"), taux = n("i-taux"), dureeCredit = n("i-duree-credit"), assur = n("i-assur"),
+        tmi = n("i-tmi") / 100, horizon = Math.max(1, Math.round(n("i-horizon"))), reval = n("i-reval") / 100;
+
+    var loyersNu = loyerNuM * Math.max(0, 12 - vacNu);
+    var loyersMeuble = loyerMeubleM * Math.max(0, 12 - vacMeuble);
+    var baseBati = (prix + notaire + travaux) * (1 - partTerrain);
+    var credit = tableauCredit(emprunt, taux, dureeCredit);
+
+    var chargesCommunes = tf + copro + autres;
+    var chargesMeubleReel = chargesCommunes + compta + cfe;
+    var chargesMeubleMicro = chargesCommunes + cfe;
+
+    var E = {
+      reelBic:   { impot: 0, ard: 0, deficit: 0, cumAmortImm: 0, an1Imposee: null },
+      microBic:  { impot: 0 },
+      reelFonc:  { impot: 0, report: 0 },
+      microFonc: { impot: 0 }
+    };
+    var an1 = {};
+
+    for (var a = 1; a <= horizon; a++) {
+      var fraisFin = (credit[a - 1] ? credit[a - 1].interets : 0) + (a <= dureeCredit ? assur : 0);
+
+      /* 1. meublé au réel */
+      var rb_avant = loyersMeuble - (chargesMeubleReel + fraisFin);
+      var amortImm = amortImmeubleAnnee(baseBati, a);
+      var amortMob = a <= DUREE_MOBILIER ? mobilier / DUREE_MOBILIER : 0;
+      var amortDispo = amortImm + amortMob + E.reelBic.ard;
+      var amortDeduit = Math.max(0, Math.min(amortDispo, rb_avant));
+      E.reelBic.ard = amortDispo - amortDeduit;
+      E.reelBic.cumAmortImm += amortDispo > 0 ? amortDeduit * (amortImm / amortDispo) : 0;
+
+      var rb_res = rb_avant - amortDeduit;
+      if (rb_res < 0) { E.reelBic.deficit += -rb_res; rb_res = 0; }
+      else if (E.reelBic.deficit > 0) {
+        var imp = Math.min(E.reelBic.deficit, rb_res);
+        E.reelBic.deficit -= imp; rb_res -= imp;
+      }
+      var rb_impot = rb_res * (tmi + TAUX_PS);
+      if (rb_impot > 1 && E.reelBic.an1Imposee === null) E.reelBic.an1Imposee = a;
+      E.reelBic.impot += rb_impot;
+
+      /* 2. meublé micro-BIC */
+      var mb_base = loyersMeuble * 0.5;
+      var mb_impot = mb_base * (tmi + TAUX_PS);
+      E.microBic.impot += mb_impot;
+
+      /* 3. nu au réel */
+      var rf_res = loyersNu - (chargesCommunes + fraisFin);
+      var rf_impot = 0;
+      if (rf_res >= 0) {
+        var apres = Math.max(0, rf_res - E.reelFonc.report);
+        E.reelFonc.report = Math.max(0, E.reelFonc.report - rf_res);
+        rf_impot = apres * (tmi + TAUX_PS);
+      } else {
+        var def = -rf_res;
+        var defHorsInt = Math.max(0, chargesCommunes - loyersNu);
+        var globalisable = Math.min(PLAFOND_DEFICIT_FONCIER, defHorsInt, def);
+        rf_impot = -globalisable * tmi;
+        E.reelFonc.report += def - globalisable;
+      }
+      E.reelFonc.impot += rf_impot;
+
+      /* 4. nu micro-foncier */
+      var mf_base = loyersNu * 0.7;
+      var mf_impot = mf_base * (tmi + TAUX_PS);
+      E.microFonc.impot += mf_impot;
+
+      if (a === 1) {
+        an1 = {
+          reelBic:   { loyers: loyersMeuble, base: rb_res, impot: rb_impot, amort: amortDeduit, ard: E.reelBic.ard,
+                       net: loyersMeuble - chargesMeubleReel - fraisFin - rb_impot },
+          microBic:  { loyers: loyersMeuble, base: mb_base, impot: mb_impot,
+                       net: loyersMeuble - chargesMeubleMicro - fraisFin - mb_impot },
+          reelFonc:  { loyers: loyersNu, base: Math.max(0, rf_res), impot: rf_impot,
+                       net: loyersNu - chargesCommunes - fraisFin - rf_impot },
+          microFonc: { loyers: loyersNu, base: mf_base, impot: mf_impot,
+                       net: loyersNu - chargesCommunes - fraisFin - mf_impot },
+          interets: fraisFin
+        };
+      }
+    }
+
+    var prixVente = prix * Math.pow(1 + reval, horizon);
+    var acqStandard = prix + notaire + travaux;
+    var exonere = (scenario === "rp");
+
+    return {
+      horizon: horizon, prixVente: prixVente, loyersNu: loyersNu, loyersMeuble: loyersMeuble,
+      an1: an1, E: E, tmi: n("i-tmi"),
+      pv: {
+        reelBic:  plusValue(prixVente, acqStandard - E.reelBic.cumAmortImm, horizon, exonere),
+        microBic: plusValue(prixVente, acqStandard, horizon, exonere),
+        nu:       plusValue(prixVente, acqStandard, horizon, exonere)
+      },
+      eligibles: { microBic: loyersMeuble <= PLAFOND_MICRO_BIC, microFonc: loyersNu <= PLAFOND_MICRO_FONCIER },
+      amortCumule: E.reelBic.cumAmortImm, ard: E.reelBic.ard, exonere: exonere
+    };
+  }
+
+  var DEFS = [
+    { key: "reelBic",   name: "Meublé au réel",   kind: "BIC · amortissement" },
+    { key: "microBic",  name: "Meublé micro-BIC", kind: "BIC · abattement 50 %" },
+    { key: "reelFonc",  name: "Nu au réel",       kind: "Foncier · charges réelles" },
+    { key: "microFonc", name: "Nu micro-foncier", kind: "Foncier · abattement 30 %" }
+  ];
+
+  var SCEN_TEXT = {
+    meuble: "<b>Le cas de référence.</b> Le bien est encore loué meublé au jour de la vente. Les amortissements de l'immeuble déduits pendant toute la location viennent réduire le prix d'acquisition retenu, donc augmenter la plus-value taxable (article 150 VB III du CGI, issu de l'article 84 de la loi de finances 2025).",
+    nu: "<b>Cela ne change rien.</b> La loi minore le prix d'acquisition du montant des amortissements « admis en déduction », sans exiger que le bien soit encore loué meublé au jour de la vente. Repasser en location nue avant de vendre n'efface donc pas l'ardoise : le résultat est identique au cas précédent. Le point n'est pas encore commenté par la doctrine administrative, mais c'est la lecture littérale du texte, et celle des praticiens.",
+    rp: "<b>Exonération totale.</b> La vente de la résidence principale est exonérée de plus-value, y compris pour un bien anciennement loué en meublé : s'il n'y a pas de plus-value imposable, la question de la reprise des amortissements ne se pose plus. Deux conditions : tu dois y habiter <b>de façon réelle et effective au jour de la vente</b>, et l'opération ne doit pas être de pure convenance fiscale."
+  };
+
+  /* ══════════════════ rendu ══════════════════ */
+  function rendu() {
+    var r = calcule();
+
+    document.getElementById("sim-note").textContent =
+      "Sur " + r.horizon + " an" + (r.horizon > 1 ? "s" : "") + " · tranche " + r.tmi + " %";
+    document.getElementById("sim2-note").textContent =
+      "Vente après " + r.horizon + " an" + (r.horizon > 1 ? "s" : "") + " de détention";
+
+    /* ─── simulateur 1 ─── */
+    var dispos = DEFS.filter(function (d) {
+      if (d.key === "microBic") return r.eligibles.microBic;
+      if (d.key === "microFonc") return r.eligibles.microFonc;
+      return true;
+    });
+    var tri = dispos.slice().sort(function (a, b) { return r.E[a.key].impot - r.E[b.key].impot; });
+    var best = tri[0], second = tri[1];
+
+    document.getElementById("v-title").textContent = best.name;
+    var why = "Impôt cumulé sur " + r.horizon + " ans : " + fs(r.E[best.key].impot) + ".";
+    if (second) {
+      var eco = r.E[second.key].impot - r.E[best.key].impot;
+      why += " Soit " + f(eco) + " de moins que « " + second.name + " », c'est-à-dire " + f(eco / r.horizon) + " par an.";
+    }
+    if (best.key === "reelBic") {
+      why += r.E.reelBic.an1Imposee
+        ? " Aucun impôt jusqu'à l'année " + (r.E.reelBic.an1Imposee - 1) + " incluse."
+        : " Aucun impôt sur toute la période.";
+    }
+    document.getElementById("v-why").textContent = why;
+
+    var cards = document.getElementById("cards");
+    cards.innerHTML = "";
+    DEFS.forEach(function (d) {
+      var a1 = r.an1[d.key];
+      var eligible = (d.key === "microBic") ? r.eligibles.microBic
+                   : (d.key === "microFonc") ? r.eligibles.microFonc : true;
+      var el = document.createElement("div");
+      el.className = "card" + (d.key === best.key ? " best" : "") + (eligible ? "" : " off");
+
+      var extra = "";
+      if (d.key === "reelBic") {
+        extra = '<div class="row"><span>Amortissement déduit</span><span>' + f(a1.amort) + '</span></div>'
+              + '<div class="row"><span>Mis en réserve</span><span>' + f(a1.ard) + '</span></div>'
+              + '<div class="row"><span>1<sup>re</sup> année imposée</span><span>'
+              + (r.E.reelBic.an1Imposee ? "an " + r.E.reelBic.an1Imposee : "aucune") + '</span></div>';
+      }
+
+      el.innerHTML =
+        '<div class="card-t"><span class="name">' + d.name + '</span><span class="kind">' + d.kind + '</span></div>' +
+        '<div class="headline ' + (a1.impot > 1 ? "neg" : "pos") + '">' + fs(a1.impot) + '</div>' +
+        '<div class="headline-lbl">' + (a1.impot < -1 ? "d'impôt en moins la 1<sup>re</sup> année" : "d'impôt la 1<sup>re</sup> année") + '</div>' +
+        '<div class="headline-sub">impôt sur le revenu + prélèvements sociaux, soit ' + fs(a1.impot / 12) + ' par mois</div>' +
+        '<div class="rows">' +
+          '<div class="row"><span>Loyers encaissés (an 1)</span><span>' + f(a1.loyers) + '</span></div>' +
+          '<div class="row"><span>Revenu imposable (an 1)</span><span>' + f(a1.base) + '</span></div>' +
+          extra +
+          '<div class="row"><span><b>Impôt total sur ' + r.horizon + ' ans</b></span><span><b>' + fs(r.E[d.key].impot) + '</b></span></div>' +
+          '<div class="row"><span>Loyers nets d\'impôt (an 1)</span><span>' + fs(a1.net) + '</span></div>' +
+        '</div>' +
+        (!eligible ? '<span class="pill bad">Plafond dépassé</span>'
+                   : (d.key === best.key ? '<span class="pill ok">Moins imposé</span>' : ''));
+      cards.appendChild(el);
+    });
+
+    var bars = document.getElementById("bars");
+    bars.innerHTML = "";
+    var maxAbs = Math.max.apply(null, DEFS.map(function (d) { return Math.abs(r.E[d.key].impot); }).concat([1]));
+    DEFS.forEach(function (d) {
+      var v = r.E[d.key].impot;
+      var eligible = (d.key === "microBic") ? r.eligibles.microBic
+                   : (d.key === "microFonc") ? r.eligibles.microFonc : true;
+      var row = document.createElement("div");
+      row.className = "bar-row";
+      row.style.opacity = eligible ? "1" : ".45";
+      row.innerHTML =
+        '<span class="lbl">' + d.name + '</span>' +
+        '<span class="bar-track"><span class="bar-fill ' + (v <= 0 || d.key === best.key ? "good" : "") +
+        '" style="width:' + (Math.abs(v) / maxAbs * 100) + '%"></span></span>' +
+        '<span class="val">' + fs(v) + '</span>';
+      bars.appendChild(row);
+    });
+
+    var flags = document.getElementById("flags");
+    flags.innerHTML = "";
+    var list = [];
+    if (!r.eligibles.microBic) {
+      list.push(["crit", "Les loyers meublés (" + f(r.loyersMeuble) + ") dépassent le plafond du micro-BIC de " + f(PLAFOND_MICRO_BIC) + ". Le régime réel devient obligatoire après deux années consécutives de dépassement."]);
+    }
+    if (!r.eligibles.microFonc) {
+      list.push(["warn", "Les loyers nus (" + f(r.loyersNu) + ") dépassent le plafond du micro-foncier de " + f(PLAFOND_MICRO_FONCIER) + ". En location nue, seul le régime réel reste possible — et l'option engage pour trois ans."]);
+    }
+    if (r.loyersMeuble > 23000) {
+      list.push(["crit", "Les recettes meublées dépassent 23 000 €. Première condition du statut LMP remplie : si ces loyers devenaient le premier revenu d'activité du foyer, le basculement serait automatique."]);
+    } else if (r.loyersMeuble > 20000) {
+      list.push(["warn", "Les recettes meublées approchent le seuil de 23 000 € du statut LMP. À surveiller en cas d'acquisition d'un second bien."]);
+    }
+    if (r.an1.interets > 0) {
+      list.push(["", "Année 1, les intérêts d'emprunt et l'assurance représentent " + f(r.an1.interets) + " de charges déductibles. C'est ce qui explique qu'aux régimes réels l'impôt soit déjà faible au début, indépendamment de l'amortissement."]);
+    }
+    if (r.E.reelBic.an1Imposee) {
+      list.push(["", "En meublé au réel, l'impôt commence à tomber en <b>année " + r.E.reelBic.an1Imposee + "</b>, quand les intérêts et la réserve d'amortissement ne suffisent plus à absorber le bénéfice."]);
+    } else {
+      list.push(["good", "En meublé au réel, aucun impôt sur les loyers pendant toute la durée simulée."]);
+    }
+    if (r.ard > 0) {
+      list.push(["", f(r.ard) + " d'amortissements restent en réserve au terme de la projection. Reportables sans limite de durée — et, n'ayant jamais été déduits, ils ne seront pas repris à la revente."]);
+    }
+    if (r.an1.reelFonc.impot < -1) {
+      list.push(["good", "En location nue au réel, la première année dégage un déficit foncier qui réduit l'impôt sur le revenu global de " + f(-r.an1.reelFonc.impot) + ". Contrepartie : obligation de maintenir le bien en location nue jusqu'au 31 décembre de la troisième année suivant l'imputation."]);
+    }
+    list.forEach(function (x) {
+      var d = document.createElement("div");
+      d.className = "flag " + x[0];
+      d.innerHTML = '<span class="dot"></span><span>' + x[1] + '</span>';
+      flags.appendChild(d);
+    });
+
+    /* ─── simulateur 2 ─── */
+    document.getElementById("scen-explain").innerHTML = SCEN_TEXT[scenario];
+    document.getElementById("recall").innerHTML =
+      "Repris de la partie I : prix <b>" + f(n("i-prix")) + "</b> · frais + travaux <b>" + f(n("i-notaire") + n("i-travaux"))
+      + "</b> · détention <b>" + r.horizon + " ans</b> · tranche <b>" + r.tmi + " %</b>";
+    document.getElementById("pv-caption").textContent =
+      "Revente estimée à " + f(r.prixVente) + ". Abattement acquis après " + r.horizon + " ans : "
+      + (abattementIR(r.horizon) * 100).toFixed(1).replace(/\.0$/, "").replace(".", ",") + " % sur l'impôt sur le revenu, "
+      + (abattementPS(r.horizon) * 100).toFixed(1).replace(/\.0$/, "").replace(".", ",") + " % sur les prélèvements sociaux.";
+
+    var tb = document.querySelector("#pv-table tbody");
+    tb.innerHTML = "";
+    [
+      { label: "Meublé au réel", note: r.amortCumule > 0 ? "amortissements repris : " + f(r.amortCumule) : "aucun amortissement déduit", pv: r.pv.reelBic },
+      { label: "Meublé micro-BIC", note: "aucun amortissement pratiqué", pv: r.pv.microBic },
+      { label: "Location nue", note: "les deux régimes", pv: r.pv.nu }
+    ].forEach(function (l) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + l.label + "<br><span style='color:var(--ink-3);font-size:13px'>" + l.note + "</span></td>" +
+        "<td class='num'>" + f(l.pv.acq) + "</td><td class='num'>" + f(l.pv.brute) + "</td>" +
+        "<td class='num'><b>" + f(l.pv.impot) + "</b></td>";
+      tb.appendChild(tr);
+    });
+
+    var surcout = r.pv.reelBic.impot - r.pv.microBic.impot;
+    var economie = Math.max(0, r.E.microBic.impot - r.E.reelBic.impot);
+    document.getElementById("pv-note").innerHTML = r.exonere
+      ? "Aucun impôt dû, quel que soit le régime pratiqué pendant la location : l'exonération de résidence principale prime sur tout le reste."
+      : "Le meublé au réel coûte <b>" + f(surcout) + "</b> d'impôt supplémentaire à la sortie, par rapport à un bien qui n'aurait jamais été amorti.";
+
+    /* bilan des deux impôts */
+    var bb = document.getElementById("bilan-bars");
+    bb.innerHTML = "";
+    var duo = [
+      { lbl: "Économisé sur les loyers", v: economie, cls: "good" },
+      { lbl: "Payé en plus à la vente", v: surcout, cls: "crit" }
+    ];
+    var m2 = Math.max(economie, surcout, 1);
+    duo.forEach(function (x) {
+      var row = document.createElement("div");
+      row.className = "bar-row";
+      row.innerHTML = '<span class="lbl">' + x.lbl + '</span>' +
+        '<span class="bar-track"><span class="bar-fill ' + x.cls + '" style="width:' + (x.v / m2 * 100) + '%"></span></span>' +
+        '<span class="val">' + f(x.v) + '</span>';
+      bb.appendChild(row);
+    });
+
+    var bf = document.getElementById("bilan-flags");
+    bf.innerHTML = "";
+    var solde = economie - surcout;
+    var verdict = r.exonere
+      ? ["good", "Vente en résidence principale : l'amortissement aura fait économiser <b>" + f(economie) + "</b> d'impôt sur les loyers, sans aucune contrepartie à la sortie. C'est le meilleur scénario possible."]
+      : (solde >= 0
+          ? ["good", "Sur l'ensemble, le meublé au réel reste gagnant de <b>" + f(solde) + "</b> par rapport au micro-BIC. Et l'avantage a été encaissé tôt, l'inconvénient payé tard : à durée égale, mieux vaut garder l'argent longtemps."]
+          : ["warn", "Sur ce scénario, la reprise à la sortie dépasse l'économie faite sur les loyers de <b>" + f(-solde) + "</b>. Cela arrive quand la détention est courte, ou la revalorisation forte. Allonger la durée de détention inverse en général le résultat, grâce aux abattements."]);
+    var dd = document.createElement("div");
+    dd.className = "flag " + verdict[0];
+    dd.innerHTML = '<span class="dot"></span><span>' + verdict[1] + '</span>';
+    bf.appendChild(dd);
+
+    if (!r.exonere && r.horizon < 22) {
+      var d2 = document.createElement("div");
+      d2.className = "flag";
+      d2.innerHTML = '<span class="dot"></span><span>Vendre après 22 ans supprimerait les 19 % d\'impôt sur le revenu, et après 30 ans les 17,2 % de prélèvements sociaux. Ici la détention est de ' + r.horizon + ' ans.</span>';
+      bf.appendChild(d2);
+    }
+  }
+
+  document.querySelectorAll(".scen").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      scenario = btn.getAttribute("data-scen");
+      document.querySelectorAll(".scen").forEach(function (b) { b.classList.toggle("active", b === btn); });
+      rendu();
+    });
+  });
+
+  IDS.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) { el.addEventListener("input", rendu); el.addEventListener("change", rendu); }
+  });
+
+  rendu();
+})();
+</script>
+</body>
+</html>
