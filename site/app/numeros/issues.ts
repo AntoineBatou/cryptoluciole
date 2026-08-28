@@ -37,7 +37,10 @@ export type Issue = {
     risques: string;
     importance: string;
   };
-  cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down" }[];
+  // varRef / sensRef : 2e colonne de variation, optionnelle — utilisée quand l'écart
+  // entre deux numéros dépasse ~2 semaines (ex. #4 : « depuis le #3 »). Libellé = coursRefLabel.
+  cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down"; varRef?: string; sensRef?: "up" | "down" }[];
+  coursRefLabel?: string; // en-tête de la 2e colonne, ex. "Depuis le #3 (4 juillet)"
   coursHeure?: string; // heure de prise des cours (ex. "17h24")
   coursAvis?: string; // encadré « Notre avis » sous le tableau des cours
   data: { titre: string; texte: string; points?: string[]; texteFin?: string };
@@ -370,6 +373,124 @@ export const issues: Issue[] = [
         slug: "mnav",
         def: "pour une DAT (comme Strategy), le rapport entre sa valeur en Bourse et la valeur totale des cryptos qu'elle détient. Au-dessus de 1 : l'entreprise vaut plus que ses bitcoins — elle peut émettre des actions « chères » et les convertir en bitcoin « au prix réel », donc lever des fonds crée de la valeur. À 1 : elle vaut pile ses bitcoins. En dessous de 1 : elle vaut moins que son trésor, et émettre des actions détruit alors de la valeur (autant acheter le bitcoin en direct).",
       },
+    ],
+  },
+  {
+    id: "4",
+    numero: 4,
+    date: "Vendredi 28 août 2026",
+    titre: "Les perps, décryptés",
+    excerpt:
+      "Le contrat perpétuel expliqué simplement, Revolut lance son stablecoin euro pendant que Tether quitte l'Europe, la SEC écrit ses propres règles, et comment encaisser le funding sans s'exposer au prix du bitcoin.",
+    notion: {
+      titre: "Le contrat perpétuel : parier sur un prix sans jamais posséder l'actif",
+      corps: [
+        { type: "p", texte: "À l'inverse d'un investissement classique où on achète un jeton, une action ou un actif, avec un contrat perpétuel — un « perp » —, tu ne détiens rien du tout : tu passes un accord dont le gain ou la perte dépend uniquement du mouvement d'un prix, mais ni l'acheteur ni le vendeur ne détient l'actif en question." },
+        { type: "def", terme: "Contrat perpétuel (« perp »)", slug: "contrat-perpetuel", texte: "Un contrat qui suit le prix d'un actif (bitcoin, ether…) sans qu'on le possède. On choisit un sens : à la hausse (long) ou à la baisse (short). Si le prix va dans ton sens, tu gagnes la différence ; sinon tu la perds. Particularité : il n'a pas de date d'expiration — d'où « perpétuel » — et surtout il n'y a pas de sous-jacent réel : lorsqu'on parie sur la hausse du BTC, on ne détient pas de BTC." },
+        { type: "p", texte: "Le mécanisme n'est pas une invention de la crypto : en Bourse, un contrat à terme (future) sur le pétrole ou le blé fait la même chose depuis toujours — deux parties fixent un prix de référence et, à l'échéance, ne se règlent que l'écart entre ce prix et le prix réel. Ce qui distingue le perp, c'est justement l'absence d'échéance : un future classique expire à une date connue et doit être renouvelé, là où un perp reste ouvert indéfiniment." },
+        { type: "st", texte: "Alors d'où sort l'argent gagné ?" },
+        { type: "p", texte: "Puisque personne ne détient de bitcoin, il faut bien que les gains viennent de quelque part. Ils viennent de la poche d'un autre parieur. Chaque contrat a deux côtés : un parieur à la hausse, un parieur à la baisse. Et les deux camps s'équilibrent toujours exactement, par construction — pour payer une position gagnante, il faut quelqu'un d'autre en face dans une position inverse." },
+        { type: "p", texte: "Si le bitcoin monte, l'acheteur gagne ce que le vendeur perd. Rien n'est créé, rien ne disparaît." },
+        { type: "st", texte: "En pratique : le levier" },
+        { type: "p", texte: "Tu n'as pas besoin d'avancer la totalité de la somme. Tu déposes une garantie — la marge — et la plateforme te laisse contrôler une position bien plus grosse." },
+        { type: "def", terme: "Levier", slug: "levier", texte: "Le rapport entre la taille de ta position et l'argent que tu as réellement déposé. Avec 100 € de garantie et un levier de 20×, tu pilotes une position de 2 000 € (100 € × 20 = 2 000 €)." },
+        { type: "p", texte: "Les gains comme les pertes se calculent sur les 2 000 €, pas sur tes 100 €. Un mouvement de 5 % dans le bon sens te fait gagner 100 € — tu doubles ta mise de base. Le même mouvement de 5 % dans le mauvais sens te fait perdre la totalité de ta mise." },
+        { type: "liste", items: ["40× au maximum sur le bitcoin, chez Hyperliquid", "25× sur l'ether", "20× sur Solana"] },
+        { type: "p", texte: "Plus l'actif est volatil, plus le levier autorisé est bas." },
+        { type: "st", texte: "Là où ça casse : la liquidation" },
+        { type: "p", texte: "Ta marge sert d'amortisseur : quand ce qu'il en reste passe sous un seuil minimum, la plateforme ferme la position d'office. C'est la liquidation." },
+        { type: "def", terme: "Liquidation", slug: "liquidation", texte: "Fermeture forcée d'une position par la plateforme quand la marge ne couvre plus suffisamment la perte. Elle est automatique : personne ne t'appelle, il n'y a rien à valider, et l'essentiel de ta mise est perdu." },
+        { type: "p", texte: "La règle à retenir tient en une division : 100 ÷ ton levier. Le résultat, c'est le mouvement de prix — en pourcentage, et dans le mauvais sens — qui suffit à effacer ta mise." },
+        { type: "liste", items: ["à 5×, il faut une baisse de 20 %", "à 20×, 5 % suffisent", "à 40×, 2,5 % suffisent"] },
+        { type: "p", texte: "En pratique, tu seras liquidé un peu avant d'atteindre ce niveau : Hyperliquid t'oblige à conserver en permanence un petit reliquat. Dans l'exemple à 20×, la fermeture intervient plutôt vers 3,75 % de baisse, et il te restera une vingtaine d'euros sur ton compte." },
+        { type: "p", texte: "Conséquence : le prix peut te donner raison quand même — s'il baisse de 5 % puis remonte, peu importe : la position a été fermée au passage, tu n'es plus dedans." },
+        { type: "st", texte: "Le funding rate : ce qui tient le prix en place" },
+        { type: "p", texte: "Comme personne ne détient l'actif, comment s'assurer que le prix du perp colle à celui de l'actif ? Sur Hyperliquid, le prix du perp est fixé par l'offre et la demande entre les utilisateurs : le carnet d'ordres fonctionne comme celui d'une plateforme d'échange classique, à ceci près qu'il est entièrement inscrit sur la blockchain." },
+        { type: "p", texte: "Or rien ne relie mécaniquement les deux prix. Imagine que le bitcoin vaille 80 000 $ et que tout le monde se précipite pour acheter le contrat à la hausse : le perp va rapidement coûter bien plus cher que le bitcoin lui-même. Il a donc fallu inventer un système pour recréer l'équilibre : le funding rate." },
+        { type: "def", terme: "Funding rate", slug: "funding-rate", texte: "Un paiement récurrent entre les deux camps du marché : le camp majoritaire paie l'autre. Ce n'est jamais la plateforme qui l'encaisse, l'argent circule d'un utilisateur à l'autre. Chez Hyperliquid, il est prélevé toutes les heures ; ailleurs, le standard est toutes les 8 heures." },
+        { type: "p", texte: "S'il y a beaucoup de demande à la hausse sur le bitcoin, le prix du contrat monte au-dessus du prix réel (une référence reconstituée à partir des grandes plateformes d'échange — Binance, OKX, Kraken, Huobi — et republiée toutes les 3 secondes). Le funding devient alors positif et les parieurs à la hausse paient une sorte de « taxe » aux parieurs à la baisse, toutes les heures tant que la position est ouverte." },
+        { type: "p", texte: "Parier à la hausse coûte donc de l'argent en continu, tandis que parier à la baisse en rapporte. Ce qui décourage les premiers, attire les seconds, et ramène mécaniquement les deux prix l'un vers l'autre. Voilà comment un contrat qui ne repose sur rien de tangible reste malgré tout collé au prix réel du bitcoin." },
+        { type: "st", texte: "Pourquoi ça compte maintenant" },
+        { type: "p", texte: "Les perps sont devenus le produit le plus utilisé de la crypto, très loin devant l'achat de jetons au comptant : on peut y gagner à la baisse, et il n'y a rien à détenir ni à stocker. Ce succès produit deux flux bien réels — les frais de transaction payés à chaque ordre, et le funding que le camp majoritaire verse à l'autre." },
+        { type: "avis", texte: "Le levier ne pardonne pas. À 40×, un mouvement contraire de 2,5 % suffit à effacer la mise — et le bitcoin franchit ce seuil environ cinq fois par mois. Ce n'est pas un outil pour investir sur la durée, mais pour tenter des coups courts, avec tout l'aléa que ça suppose. Le funding, lui, ouvre une piste nettement plus intéressante : encaisser un rendement sans s'exposer aux variations du bitcoin." },
+      ],
+    },
+    actus: [
+      {
+        titre: "Tether quitte l'Europe, Revolut en profite pour lancer son stablecoin euro",
+        corps: [
+          { type: "p", texte: "Pour être proposé aux clients européens, un stablecoin doit avoir un agrément MiCA. Tether, l'émetteur de l'USDT — le plus gros stablecoin du monde — a fait savoir qu'il ne le demanderait pas : ses dirigeants jugent les exigences européennes incompatibles avec leur modèle." },
+          { type: "p", texte: "Depuis, les plateformes régulées en Europe retirent l'USDT une par une. Coinbase avait ouvert le bal dès décembre 2024, et le mouvement était pratiquement terminé au 1er juillet 2026, la date limite fixée par le règlement." },
+          { type: "p", texte: "Revolut ferme la marche : le 31 août, l'USDT disparaît de son application pour les clients européens." },
+          { type: "p", texte: "Et cinq jours avant cette échéance, la fintech a lancé son propre stablecoin : EURR, adossé à l'euro (1 EURR = 1 €). Elle ne l'émet pas elle-même — c'est Bridge, la société d'infrastructure rachetée par Stripe, qui l'émet depuis le Luxembourg et gère les réserves sous le régime MiCA." },
+          { type: "p", texte: "Le déploiement commence par des clients sélectionnés au Danemark, en Pologne et au Portugal, avant le reste de l'Espace économique européen, annoncé pour plus tard cette année." },
+          { type: "st", texte: "Si tu détiens des USDT chez Revolut" },
+          { type: "liste", items: ["les transférer vers ton propre portefeuille", "les échanger contre des euros ou un autre stablecoin agréé", "ne rien faire — Revolut les convertira automatiquement dans la devise de ton compte après le 31 août"] },
+        ],
+        defs: [{ terme: "MiCA", slug: "mica", texte: "Le règlement européen qui encadre les crypto-actifs. Pour émettre un stablecoin dans l'Union, il impose un agrément, des réserves cantonnées et un droit au remboursement à tout moment. Sans agrément, un stablecoin ne peut plus être proposé aux clients européens." }],
+        avis: "Revolut ne fait pas que se mettre en règle : émettre un stablecoin, c'est placer l'argent déposé et en encaisser les intérêts — on expliquait ce modèle dans le numéro #3. Avec quelque 75 millions de clients déjà à l'aise avec ce type d'outils, la fintech a les moyens de devenir un acteur qui compte dans la crypto européenne.",
+        source: "PYMNTS, CoinDesk, Cointelegraph, crypto.news, Yahoo Finance",
+      },
+      {
+        titre: "La SEC a cessé d'attendre le Congrès et a écrit ses propres règles",
+        corps: [
+          { type: "p", texte: "Aux États-Unis, deux voies très différentes permettent d'encadrer la crypto : une loi doit être votée par le Congrès — la Chambre, puis le Sénat ; un règlement est écrit par une agence, ici la SEC (le gendarme de la Bourse américaine), sans passer par le moindre vote parlementaire." },
+          { type: "p", texte: "La loi attendue, c'est le Clarity Act : elle tranche qui surveille quoi entre la SEC et la CFTC (l'autorité des marchés de matières premières). Adoptée par la Chambre, passée en commission au Sénat, elle n'a pas été votée avant l'été. Un vote est programmé le 15 septembre, mais ce n'est pas le vote final : seulement l'autorisation d'ouvrir le débat, et elle exige 60 voix." },
+          { type: "p", texte: "Ce qui bloque est précis : le texte interdirait aux responsables fédéraux, président compris, d'émettre ou de parrainer un crypto-actif. Or Donald Trump a tiré plus de 1,4 milliard de dollars de la crypto en 2025 — près des deux tiers de ses revenus — notamment via World Liberty Financial, la société cofondée par des membres de sa famille. Des élus démocrates jugent la clause trop permissive : elle expirerait en 2029 et laisse, selon eux, assez d'échappatoires pour que rien ne change vraiment." },
+          { type: "p", texte: "Le marché n'y croit plus : sur Polymarket, la probabilité d'une signature en 2026 est tombée à environ 15 %." },
+          { type: "p", texte: "D'où la manœuvre du 18 août : la SEC a proposé seule « Regulation Crypto Assets », sa première grande réglementation crypto depuis dix ans." },
+          { type: "liste", items: ["une exemption de levée de fonds — un projet peut lever jusqu'à 75 M$ par période de 12 mois sans la procédure complète imposée aux titres financiers", "un safe harbor — passé un certain stade, la SEC s'engage à ne plus traiter le jeton d'un projet comme un titre financier"] },
+        ],
+        defs: [{ terme: "Safe harbor", slug: "safe-harbor", texte: "Littéralement « port d'abri ». Vendre un titre financier aux États-Unis impose des obligations lourdes (prospectus, enregistrement, rapports), et la SEC considérait jusqu'ici que la plupart des jetons en relevaient. Le safe harbor fixe le moment où ça s'arrête : dès que le projet tourne sans dépendre du travail de son équipe fondatrice, son jeton cesse d'être traité comme un titre financier." }],
+        avis: "Le secteur obtient enfin des repères écrits, et c'est la vraie nouvelle : les projets américains pourront lever des fonds sans être traités d'office comme des titres financiers — donc davantage de jetons accessibles, dans un cadre plus lisible, y compris depuis l'Europe. Mais un règlement d'agence n'a pas le poids d'une loi : il est plus rapide à obtenir, et tout aussi rapide à défaire. La clarté existe donc, mais elle reste réversible.",
+        source: "SEC.gov (proposition du 18 août 2026) ; CoinDesk ; Latham & Watkins ; Troutman ; Quartz ; Polymarket",
+      },
+    ],
+    protocole: {
+      nom: "La stratégie delta-neutre sur Hyperliquid",
+      slug: "hyperliquid",
+      bref: "Sur les perp DEX qui fonctionnent avec des funding fees, comme Hyperliquid, dès que la demande penche d'un côté, le camp majoritaire verse un funding à l'autre. Comme les acheteurs sont majoritaires la plupart du temps, ce sont généralement eux qui paient. D'où l'idée : se placer du côté qui encaisse, sans s'exposer à l'évolution du prix. Hyperliquid est la plus grosse plateforme de contrats perpétuels — 8,3 Md$ échangés en 24 h, près de 10 Md$ de positions ouvertes — et son carnet d'ordres est entièrement inscrit sur la blockchain.",
+      etapes: [
+        "Quand le marché s'emballe, le funding grimpe : jusqu'à 33 % par an sur le bitcoin ces six derniers mois, et jusqu'à 73 % sur l'ether. À ces niveaux, être vendeur rapporte gros — mais signifie normalement parier contre le bitcoin.",
+        "Sauf si on annule ce risque : on ouvre une position vendeuse (short) sur le perp bitcoin chez Hyperliquid, ET on achète le même montant de bitcoin au comptant sur une plateforme d'échange (Kraken, Binance…).",
+        "Si le bitcoin monte, le short perd exactement ce que le comptant gagne. S'il baisse, l'inverse. Les deux jambes s'annulent : on n'est plus exposé au prix. C'est ce qu'on appelle être delta-neutre.",
+        "Ce qui n'est pas annulé, c'est le funding : il continue de tomber sur la jambe vendeuse, quoi qu'il arrive au prix.",
+        "Exemple chiffré : 10 000 $ de bitcoin au comptant + 2 000 $ de marge chez Hyperliquid pour un short de 10 000 $ (levier 5×) = 12 000 $ engagés. Le levier ne sert pas à amplifier le gain — déjà annulé par la jambe au comptant — mais à éviter d'immobiliser 10 000 $ de plus : le funding se calcule sur la taille de la position, pas sur la marge déposée.",
+        "En contrepartie, à 5×, une hausse de 20 % du bitcoin liquide la position vendeuse.",
+      ],
+      rendement:
+        "Avec un funding à 30 % par an, la position de 10 000 $ rapporte 3 000 $ sur un an, soit environ 25 % des 12 000 $ réellement immobilisés. Sauf que ces niveaux ne durent pas : sur les six derniers mois, le funding du bitcoin chez Hyperliquid a rapporté 4,2 % par an en moyenne, et il est resté négatif un quart du temps — c'est-à-dire que le vendeur payait au lieu d'encaisser. Le rendement existe vraiment, mais il est irrégulier : c'est une stratégie d'opportunité, à ouvrir quand le funding est haut. Certains actifs offrent un funding plus stable que d'autres, et les taux varient fortement d'une plateforme à l'autre.",
+      risqueNiveau: "moyen",
+      risqueSens: "moyen",
+      risques:
+        "Pourquoi « moyen » et pas « élevé » ? Parce que le risque principal en crypto — celui du prix — est justement neutralisé. Même le pire scénario reste amorti : si le short est liquidé parce que le bitcoin s'envole, on perd sa marge, mais le bitcoin au comptant a gagné autant en face. On ne perd pas son capital, on perd sa couverture. Ce qui l'empêche d'être « faible », c'est le reste : neutraliser le prix ne neutralise ni les plateformes, ni le rendement. Et ce niveau suppose une exécution correcte : deux jambes strictement de même taille, ouvertes en même temps, et une marge surveillée — sinon il ne reste qu'une position à levier ordinaire. Trois risques concrets : le funding peut s'inverser (c'est alors toi qui paies) ; la jambe vendeuse peut être liquidée, et comme les deux jambes sont sur deux plateformes différentes, le gain sur le comptant ne renfloue pas automatiquement la marge du short — on se retrouve alors avec du bitcoin non couvert sans s'en rendre compte ; enfin, les fonds sont exposés à deux plateformes à la fois.",
+      importance:
+        "C'est exactement la stratégie qu'on a présentée dans le numéro #3 avec Ethena : détenir l'actif au comptant, le shorter en perp, encaisser le funding. Ethena n'a rien inventé — elle a industrialisé l'opération à grande échelle et emballé le résultat dans un jeton, l'USDe. Le funding est la matière première d'un des plus gros protocoles du secteur.",
+    },
+    cours: [
+      { actif: "BTC", nom: "Bitcoin", prix: "~79 415 $", var7j: "▲ +2,2 %", sens: "up", varRef: "▲ +25 %", sensRef: "up" },
+      { actif: "ETH", nom: "Ethereum", prix: "~2 491 $", var7j: "▲ +4,2 %", sens: "up", varRef: "▲ +39 %", sensRef: "up" },
+      { actif: "SOL", nom: "Solana", prix: "~106,5 $", var7j: "▲ +16,8 %", sens: "up", varRef: "▲ +30 %", sensRef: "up" },
+      { actif: "HYPE", nom: "Hyperliquid", prix: "~83,3 $", var7j: "▲ +12,8 %", sens: "up", varRef: "▲ +19 %", sensRef: "up" },
+      { actif: "BNB", prix: "~705 $", var7j: "▲ +5,0 %", sens: "up", varRef: "▲ +23 %", sensRef: "up" },
+    ],
+    coursRefLabel: "Depuis le #3 (4 juillet)",
+    coursAvis:
+      "Deux lectures très différentes selon la colonne. Sur sept jours, le bitcoin ne fait que consolider : le gros du mouvement date de la semaine précédente, quand la SEC a publié ses propres règles le 18 août. Solana et Hyperliquid, eux, continuent de grimper — signe classique d'un appétit pour le risque qui se déplace vers les actifs plus nerveux. Mais c'est la colonne de droite qui raconte l'été : tout est en hausse de 19 à 39 % depuis notre dernier numéro. Si tu étais en vacances, tu as raté un marché qui a effacé toute la baisse du printemps.",
+    data: {
+      titre: "Sur 5 dollars qui entrent dans un ETF Ethereum, 4 vont chez BlackRock",
+      texte:
+        "Les ETF Ethereum américains viennent d'enchaîner 9 séances positives d'affilée. La dernière, mercredi, a été la plus forte du mois : 234 millions de dollars en une journée. Sur l'ensemble d'août, ces fonds ont attiré 1,66 milliard de dollars.",
+      points: [
+        "Le 24 août, sur 116 M$ entrés dans l'ensemble des ETF Ethereum, 90,9 M$ sont allés dans un seul fonds : l'ETHA de BlackRock. Soit près de 80 %.",
+        "Même schéma sur la semaine du 17 au 21 août : 697 M$ d'entrées, dont 537 M$ pour BlackRock.",
+      ],
+      texteFin:
+        "Ce flux a alimenté la remontée de l'ether cet été. Mais il dit aussi autre chose : l'argent institutionnel qui arrive sur l'ethereum ne se répartit pas entre une dizaine d'acteurs. Il se concentre chez un seul gestionnaire, qui devient mécaniquement l'un des plus gros détenteurs d'ether de la planète.",
+    },
+    definitions: [
+      { terme: "Open interest", en: "positions ouvertes", slug: "open-interest", def: "Le montant total des paris encore ouverts sur un marché, à un instant donné. À ne pas confondre avec le volume : le volume dit combien on a échangé sur la journée, l'open interest dit combien d'argent est toujours engagé. Un volume élevé avec un open interest qui baisse signale que les traders soldent leurs positions ; un open interest qui grimpe signale au contraire que de l'argent frais entre — et que les liquidations potentielles grossissent d'autant." },
+      { terme: "Oracle", slug: "oracle", def: "Le mécanisme qui apporte à une blockchain une information qu'elle ne peut pas connaître seule, à commencer par le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer. Hyperliquid, par exemple, calcule son prix de référence à partir des cours de Binance, OKX, Kraken et Huobi, republiés toutes les 3 secondes. Qui contrôle l'oracle contrôle les liquidations." },
     ],
   },
 ];

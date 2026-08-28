@@ -152,6 +152,90 @@ export const TERMES: GlossaireTerme[] = [
       "Créer de nouveaux jetons. Pour un stablecoin : tu déposes des dollars et le protocole « frappe » l'équivalent en jetons ; à l'inverse, quand tu les rends, il les « rachète » (redeem) et te rend tes dollars.",
     numero: 3,
   },
+  {
+    slug: "contrat-perpetuel",
+    terme: "Contrat perpétuel (« perp »)",
+    definition:
+      "Un contrat qui suit le prix d'un actif (bitcoin, ether…) sans qu'on le possède. On choisit un sens : à la hausse (long) ou à la baisse (short). Si le prix va dans ton sens, tu gagnes la différence ; sinon tu la perds. Sa particularité : il n'a pas de date d'expiration, contrairement à un contrat à terme classique — d'où « perpétuel ».",
+    numero: 4,
+  },
+  {
+    slug: "levier",
+    terme: "Levier",
+    definition:
+      "Le rapport entre la taille de ta position et l'argent que tu as réellement déposé. Avec 100 € de garantie et un levier de 20×, tu pilotes une position de 2 000 € : gains et pertes se calculent sur les 2 000 €, pas sur tes 100 €. Repère utile : 100 ÷ ton levier donne le mouvement de prix, en pourcentage, qui suffit à effacer ta mise.",
+    numero: 4,
+  },
+  {
+    slug: "liquidation",
+    terme: "Liquidation",
+    definition:
+      "La fermeture forcée d'une position par la plateforme, quand la garantie déposée ne couvre plus suffisamment la perte. Elle est automatique : personne ne prévient, il n'y a rien à valider, et l'essentiel de la mise est perdu. La plateforme n'attend pas que la garantie soit à zéro pour couper : elle impose d'en conserver en permanence un petit reliquat, appelé marge de maintenance.",
+    numero: 4,
+  },
+  {
+    slug: "funding-rate",
+    terme: "Funding rate",
+    definition:
+      "Un paiement récurrent entre les deux camps d'un marché de contrats perpétuels : le camp majoritaire paie l'autre. Comme ces contrats n'expirent jamais, rien ne force leur prix à rejoindre celui de l'actif réel — le funding sert à recoller les deux. Si les acheteurs dominent, ils paient les vendeurs, ce qui décourage le déséquilibre. Ce n'est jamais la plateforme qui l'encaisse : l'argent circule d'un utilisateur à l'autre.",
+    numero: 4,
+  },
+  {
+    slug: "mica",
+    terme: "MiCA (Markets in Crypto-Assets)",
+    definition:
+      "Le règlement européen qui encadre les crypto-actifs. Pour émettre un stablecoin dans l'Union, il impose un agrément, des réserves cantonnées et un droit au remboursement à tout moment. Sans agrément, un stablecoin ne peut plus être proposé aux clients européens — ce qui a conduit plusieurs plateformes à retirer l'USDT de Tether à leurs utilisateurs européens en 2026.",
+    numero: 4,
+  },
+  {
+    slug: "safe-harbor",
+    terme: "Safe harbor",
+    definition:
+      "Littéralement « port d'abri ». Une zone de tolérance réglementaire : tant qu'un projet respecte les conditions fixées, le régulateur s'engage à ne pas le poursuivre. Dans la proposition de la SEC d'août 2026, un projet cesse d'être traité comme un contrat d'investissement — donc comme un titre financier — une fois qu'il fonctionne sans dépendre des efforts de son équipe fondatrice.",
+    numero: 4,
+  },
+  {
+    slug: "delta-neutre",
+    terme: "Delta-neutre",
+    definition:
+      "Une position construite pour ne plus dépendre du prix. On combine deux positions opposées de même taille — par exemple vendre un contrat perpétuel bitcoin tout en achetant la même quantité de bitcoin au comptant : ce que l'une perd, l'autre le gagne. Le prix n'a donc plus d'effet sur le résultat, et ce qui reste est le revenu produit par la position elle-même (ici le funding). Neutre au prix ne veut pas dire sans risque : le funding peut s'inverser, et la jambe vendeuse peut être liquidée si sa marge n'est pas réalimentée.",
+    numero: 4,
+  },
+  {
+    slug: "carnet-ordres",
+    terme: "Carnet d'ordres",
+    definition:
+      "La liste, en temps réel, de tous ceux qui veulent acheter et de tous ceux qui veulent vendre un actif, avec leur prix et leur quantité. Une transaction a lieu quand un acheteur et un vendeur tombent d'accord. C'est le fonctionnement historique des Bourses, repris par la plupart des plateformes d'échange crypto. La particularité d'Hyperliquid est que son carnet est inscrit sur la blockchain, et non dans les serveurs privés d'une entreprise.",
+    numero: 4,
+  },
+  {
+    slug: "market-making",
+    terme: "Market making",
+    definition:
+      "Le métier qui consiste à afficher en permanence un prix à l'achat et un prix à la vente, pour que quiconque veut échanger trouve toujours une contrepartie. Le market maker se rémunère sur l'écart entre ces deux prix (le spread). En contrepartie, il accepte de prendre l'autre côté de chaque transaction — y compris lorsque le marché part violemment contre lui.",
+    numero: 4,
+  },
+  {
+    slug: "etf",
+    terme: "ETF (fonds coté en Bourse)",
+    definition:
+      "Un fonds coté en Bourse qui détient un actif pour toi. Un ETF Bitcoin ou Ethereum achète et conserve de vrais bitcoins ou ethers ; en achetant une part du fonds depuis un compte-titres classique, on s'expose au cours de l'actif sans ouvrir de portefeuille crypto ni gérer de clés privées. C'est le véhicule par lequel passe l'essentiel de l'argent institutionnel, ce qui explique que les entrées et sorties de ces fonds pèsent sur les cours.",
+    numero: 4,
+  },
+  {
+    slug: "open-interest",
+    terme: "Open interest (positions ouvertes)",
+    definition:
+      "Le montant total des positions encore ouvertes sur un marché de dérivés, à un instant donné. À ne pas confondre avec le volume : le volume mesure ce qui a été échangé sur une période, l'open interest mesure ce qui reste engagé. Un volume élevé accompagné d'un open interest en baisse indique que les traders soldent leurs positions ; un open interest en hausse indique que de l'argent frais entre sur le marché — et que le montant susceptible d'être liquidé grossit d'autant.",
+    numero: 4,
+  },
+  {
+    slug: "oracle",
+    terme: "Oracle",
+    definition:
+      "Le mécanisme qui fournit à une blockchain une information qu'elle ne peut pas obtenir seule — au premier rang desquelles le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer depuis l'extérieur. Hyperliquid, par exemple, calcule son prix de référence comme une médiane pondérée des cours de Binance, OKX, Kraken et Huobi, republiée toutes les 3 secondes par ses validateurs. C'est un point critique de la DeFi : qui contrôle l'oracle contrôle les liquidations.",
+    numero: 4,
+  },
 ];
 
 // Retrouver un terme par son slug.

@@ -254,6 +254,9 @@ export default async function NumeroPage({
                   <th className="px-4 py-3 text-left font-semibold">Actif</th>
                   <th className="px-4 py-3 text-right font-semibold">Prix</th>
                   <th className="px-4 py-3 text-right font-semibold">7 jours</th>
+                  {n.coursRefLabel && (
+                    <th className="px-4 py-3 text-right font-semibold">{n.coursRefLabel}</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -273,6 +276,15 @@ export default async function NumeroPage({
                     >
                       {c.var7j}
                     </td>
+                    {n.coursRefLabel && (
+                      <td
+                        className={`px-4 py-3 text-right font-bold ${
+                          (c.sensRef ?? c.sens) === "up" ? "text-vert" : "text-rouge"
+                        }`}
+                      >
+                        {c.varRef ?? ""}
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
