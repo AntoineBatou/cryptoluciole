@@ -490,7 +490,7 @@ export const issues: Issue[] = [
     },
     definitions: [
       { terme: "Open interest", en: "positions ouvertes", slug: "open-interest", def: "Le montant total des paris encore ouverts sur un marché, à un instant donné. À ne pas confondre avec le volume : le volume dit combien on a échangé sur la journée, l'open interest dit combien d'argent est toujours engagé. Un volume élevé avec un open interest qui baisse signale que les traders soldent leurs positions ; un open interest qui grimpe signale au contraire que de l'argent frais entre — et que les liquidations potentielles grossissent d'autant." },
-      { terme: "Oracle", slug: "oracle", def: "Le mécanisme qui apporte à une blockchain une information qu'elle ne peut pas connaître seule, à commencer par le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer. Hyperliquid, par exemple, calcule son prix de référence à partir des cours de Binance, OKX, Kraken et Huobi, republiés toutes les 3 secondes. Qui contrôle l'oracle contrôle les liquidations." },
+      { terme: "Oracle", slug: "oracle", def: "Le mécanisme qui apporte à une blockchain une information qu'elle ne peut pas connaître seule, à commencer par le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer. Les principaux fournisseurs sont Chainlink, de loin le plus utilisé — il alimente Aave, Compound et l'essentiel de la DeFi —, Pyth, spécialisé dans les mises à jour en moins d'une seconde, ce qui en fait la référence des plateformes de perps, ainsi que RedStone et Chronicle." },
     ],
   },
 ];

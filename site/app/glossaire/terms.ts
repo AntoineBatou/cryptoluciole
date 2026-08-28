@@ -233,7 +233,7 @@ export const TERMES: GlossaireTerme[] = [
     slug: "oracle",
     terme: "Oracle",
     definition:
-      "Le mécanisme qui fournit à une blockchain une information qu'elle ne peut pas obtenir seule — au premier rang desquelles le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer depuis l'extérieur. Hyperliquid, par exemple, calcule son prix de référence comme une médiane pondérée des cours de Binance, OKX, Kraken et Huobi, republiée toutes les 3 secondes par ses validateurs. C'est un point critique de la DeFi : qui contrôle l'oracle contrôle les liquidations.",
+      "Le mécanisme qui fournit à une blockchain une information qu'elle ne peut pas obtenir seule — au premier rang desquelles le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer depuis l'extérieur. Les principaux fournisseurs sont Chainlink, de loin le plus utilisé (il alimente Aave, Compound et l'essentiel de la DeFi), Pyth, spécialisé dans les mises à jour en moins d'une seconde — ce qui en fait la référence des plateformes de contrats perpétuels —, ainsi que RedStone et Chronicle. C'est un point critique de la DeFi : qui contrôle l'oracle contrôle les liquidations.",
     numero: 4,
   },
 ];

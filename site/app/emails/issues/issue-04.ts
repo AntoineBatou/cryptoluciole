@@ -316,7 +316,7 @@ Le contrat perpétuel expliqué simplement, Revolut lance son stablecoin euro pe
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
       <tr>
         <td valign="top" width="20" style="font-size:16px; color:#F5A623; line-height:1.6;">•</td>
-        <td style="font-size:16px; line-height:1.6;"><a href="https://www.cryptoluciole.com/glossaire/oracle" style="color:#28B092; font-weight:700; text-decoration:none;">Oracle</a> — le mécanisme qui apporte à une blockchain une information qu'elle ne peut pas connaître seule, à commencer par le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer. Hyperliquid, par exemple, calcule son prix de référence à partir des cours de Binance, OKX, Kraken et Huobi, republiés toutes les 3 secondes. <strong>Qui contrôle l'oracle contrôle les liquidations.</strong></td>
+        <td style="font-size:16px; line-height:1.6;"><a href="https://www.cryptoluciole.com/glossaire/oracle" style="color:#28B092; font-weight:700; text-decoration:none;">Oracle</a> — le mécanisme qui apporte à une blockchain une information qu'elle ne peut pas connaître seule, à commencer par le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer. Les principaux fournisseurs sont <strong>Chainlink</strong>, de loin le plus utilisé — il alimente Aave, Compound et l'essentiel de la DeFi —, <strong>Pyth</strong>, spécialisé dans les mises à jour en moins d'une seconde, ce qui en fait la référence des plateformes de perps, ainsi que <strong>RedStone</strong> et <strong>Chronicle</strong>.</td>
       </tr>
     </table>
   </td></tr>
