@@ -23,7 +23,7 @@
 >
 > Deux lectures très différentes selon la colonne. Sur sept jours, le bitcoin ne fait que consolider : le gros du mouvement date de la semaine précédente, quand la SEC a publié ses propres règles le 18 août — l'actu qu'on détaille plus haut. Solana et Hyperliquid, eux, continuent de grimper, signe classique d'un appétit pour le risque qui se déplace vers les actifs plus nerveux.
 >
-> Mais c'est la colonne de droite qui raconte l'été : **tout est en hausse de 19 à 39 % depuis notre dernier numéro.** Si tu étais en vacances, tu as raté un marché qui a effacé toute la baisse du printemps.
+> Mais c'est la colonne de droite qui raconte l'été : **tout est en hausse de 19 à 39 % depuis notre dernier numéro.**
 
 ---
 

@@ -476,7 +476,7 @@ export const issues: Issue[] = [
     ],
     coursRefLabel: "Depuis le #3 (4 juillet)",
     coursAvis:
-      "Deux lectures très différentes selon la colonne. Sur sept jours, le bitcoin ne fait que consolider : le gros du mouvement date de la semaine précédente, quand la SEC a publié ses propres règles le 18 août. Solana et Hyperliquid, eux, continuent de grimper — signe classique d'un appétit pour le risque qui se déplace vers les actifs plus nerveux. Mais c'est la colonne de droite qui raconte l'été : tout est en hausse de 19 à 39 % depuis notre dernier numéro. Si tu étais en vacances, tu as raté un marché qui a effacé toute la baisse du printemps.",
+      "Deux lectures très différentes selon la colonne. Sur sept jours, le bitcoin ne fait que consolider : le gros du mouvement date de la semaine précédente, quand la SEC a publié ses propres règles le 18 août. Solana et Hyperliquid, eux, continuent de grimper — signe classique d'un appétit pour le risque qui se déplace vers les actifs plus nerveux. Mais c'est la colonne de droite qui raconte l'été : tout est en hausse de 19 à 39 % depuis notre dernier numéro.",
     data: {
       titre: "Sur 5 dollars qui entrent dans un ETF Ethereum, 4 vont chez BlackRock",
       texte:

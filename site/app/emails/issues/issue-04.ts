@@ -272,7 +272,7 @@ Le contrat perpétuel expliqué simplement, Revolut lance son stablecoin euro pe
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0fdf4; border-left:4px solid #28B092; border-radius:8px; margin-top:14px;">
       <tr><td style="padding:14px 18px; font-size:16px; line-height:1.6; color:#1A2332;">
         💡 <strong>Notre avis :</strong> deux lectures très différentes selon la colonne. Sur sept jours, le bitcoin ne fait que consolider : le gros du mouvement date de la semaine précédente, quand la SEC a publié ses propres règles le 18 août. Solana et Hyperliquid, eux, continuent de grimper — signe classique d'un appétit pour le risque qui se déplace vers les actifs plus nerveux.<br><br>
-        Mais c'est la colonne de droite qui raconte l'été : <strong>tout est en hausse de 19 à 39 % depuis notre dernier numéro</strong>. Si tu étais en vacances, tu as raté un marché qui a effacé toute la baisse du printemps.
+        Mais c'est la colonne de droite qui raconte l'été : <strong>tout est en hausse de 19 à 39 % depuis notre dernier numéro</strong>.
       </td></tr>
     </table>
     <p style="margin:8px 0 0 0; font-size:11px; line-height:1.5; color:#94a3b8;">Prix au 28 août 2026 ; variations sur 7 jours et depuis le numéro #3 du 4 juillet 2026 (DeFiLlama / CoinGecko).</p>
