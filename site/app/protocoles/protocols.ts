@@ -302,17 +302,12 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Ethena Labs est fondée en 2023 par Guy Young, ancien de la finance traditionnelle (fonds d'investissement). L'équipe est identifiée et publique — un point positif, beaucoup de protocoles de cette taille restent anonymes.",
+              "Ethena Labs est fondée en 2023 par Guy Young, ancien de la finance traditionnelle (fonds d'investissement). L'équipe est identifiée et publique — un point positif, beaucoup de protocoles de cette taille restent anonymes. La présence de gérants d'actifs traditionnels comme Franklin Templeton ou Fidelity au capital est notable, mais elle ne dit rien de la solidité du mécanisme lui-même.",
           },
           {
             type: "p",
             texte:
               "L'origine de l'idée est publique elle aussi : Arthur Hayes, fondateur de la plateforme BitMEX, décrivait dès 2023 dans un article de blog un « dollar synthétique » construit exactement de cette façon. Ethena l'a construit, et Hayes en est devenu investisseur via son family office Maelstrom.",
-          },
-          {
-            type: "p",
-            texte:
-              "Côté financement, environ 156 M$ levés en cinq tours depuis juillet 2023 : Dragonfly Capital en amorçage, puis Brevan Howard Digital, Galaxy Digital, Franklin Templeton et la branche capital-risque de Fidelity. La présence de gérants d'actifs traditionnels de ce calibre est notable — mais attention, une bonne table d'investisseurs ne dit rien de la solidité du mécanisme lui-même.",
           },
           {
             type: "note",
@@ -343,7 +338,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             items: [
               "1. Tu déposes de la crypto (ether, bitcoin, jetons de staking) ou des stablecoins, et tu reçois des USDe en échange, à hauteur d'un dollar par jeton.",
               "2. Le collatéral est confié à des dépositaires spécialisés (Copper, Ceffu, Cobo) qui le conservent hors des plateformes d'échange, mais permettent de s'en servir comme garantie sur ces plateformes.",
-              "3. Ethena ouvre en face une position de vente à découvert sur contrats perpétuels, du même montant. Les deux jambes s'annulent : la position vaut la même chose en dollars, que le marché monte ou descende.",
+              "3. Ethena ouvre en face un short (un pari à la baisse) sur contrats perpétuels — les « perps » — du même montant. Les deux positions s'annulent : l'ensemble vaut la même chose en dollars, que le marché monte ou descende.",
               "4. Cette position rapporte, principalement grâce au funding — la commission que les parieurs à la hausse versent aux parieurs à la baisse.",
               "5. Ce rendement ne va PAS automatiquement aux détenteurs d'USDe. Il faut « staker » ses USDe pour recevoir du sUSDe, qui capte le rendement.",
             ],
@@ -362,7 +357,19 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Prenons 1 000 $ d'ether et une vente à découvert de 1 000 $ d'ether. Si l'ether monte de 20 %, l'ether détenu vaut 1 200 $ mais la position à découvert perd 200 $ : total 1 000 $. S'il chute de 30 %, l'ether détenu ne vaut plus que 700 $, mais la position à découvert gagne 300 $ : toujours 1 000 $. La garantie derrière chaque USDe reste stable en dollars — c'est cela qui tient le prix, pas une promesse de rachat par une banque.",
+              "Prenons un ether à 4 000 $. Ethena détient pour 1 000 $ d'ether (soit 0,25 ether) et vend en face pour 1 000 $ d'ether.",
+          },
+          {
+            type: "liste",
+            items: [
+              "L'ether monte de 20 %, à 4 800 $ : l'ether détenu vaut 1 200 $ (1 000 × 1,2), le short perd 200 $ → total 1 000 $.",
+              "L'ether chute de 30 %, à 2 800 $ : l'ether détenu ne vaut plus que 700 $ (1 000 × 0,7), le short gagne 300 $ → total 1 000 $.",
+            ],
+          },
+          {
+            type: "p",
+            texte:
+              "Quoi qu'il arrive au cours, la garantie derrière chaque USDe reste stable en dollars. C'est cela qui tient le prix, pas une promesse de rachat par une banque.",
           },
           {
             type: "note",
@@ -389,7 +396,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Le mécanisme du sUSDe mérite qu'on s'y arrête : son prix n'est pas fixe. Un sUSDe vaut de plus en plus d'USDe au fil du temps, à mesure que le rendement s'accumule dedans. C'est le même principe que le stETH de Lido. Ne t'inquiète donc pas si tu vois un sUSDe coté au-dessus de 1 $ : c'est normal, c'est le rendement déjà encaissé.",
+              "Le prix du sUSDe n'est pas fixe : un sUSDe vaut de plus en plus d'USDe au fil du temps, à mesure que le rendement s'accumule dedans. C'est le même principe que le stETH de Lido. Ne t'inquiète pas si tu vois un sUSDe coté au-dessus de 1 $ : c'est le rendement déjà encaissé.",
           },
           {
             type: "note",
@@ -409,9 +416,15 @@ export const PROTOCOLES: ProtocoleFiche[] = [
               "À l'origine, une source unique : le funding des contrats perpétuels sur l'ether et le bitcoin. En marché haussier, les parieurs à la hausse sont majoritaires et paient cher pour le rester — le rendement peut alors atteindre 20, 30 %, parfois davantage. En marché calme ou baissier, ce flux s'assèche, et il peut même s'inverser : c'est alors Ethena qui paie.",
           },
           {
+            type: "def",
+            terme: "Basis trade",
+            texte:
+              "La stratégie fondatrice d'Ethena : acheter un actif au comptant et vendre le perp correspondant en face, pour encaisser le funding sans s'exposer aux variations de l'actif.",
+          },
+          {
             type: "p",
             texte:
-              "C'est exactement ce qui s'est produit à partir de fin 2025. Les taux de funding se sont comprimés durablement, et la part du basis trade crypto dans la garantie de l'USDe est tombée jusqu'à environ 1 % au cours de l'été 2026 (elle est remontée autour de 13 % fin août, dans le sillage de l'amélioration du sentiment de marché). Autrement dit : la stratégie fondatrice du protocole a cessé, pendant plusieurs mois, d'être l'essentiel de son moteur.",
+              "Le scénario du funding qui s'assèche n'est pas théorique : il s'est produit à partir de fin 2025. Les taux de funding se sont comprimés durablement, et la part du basis trade crypto dans la garantie de l'USDe est tombée jusqu'à environ 1 % au cours de l'été 2026 (elle est remontée autour de 13 % fin août, dans le sillage de l'amélioration du sentiment de marché). Autrement dit : la stratégie fondatrice du protocole a cessé, pendant plusieurs mois, d'être l'essentiel de son moteur.",
           },
           {
             type: "st",
@@ -423,7 +436,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
               "Des stablecoins liquides classiques, placés pour un rendement modeste mais sûr.",
               "Du prêt en DeFi (déposer des stablecoins sur des marchés de prêt et encaisser les intérêts).",
               "Des positions du même type sur d'autres actifs que la crypto : l'or tokenisé (PAXG, XAUT) a été étudié pour son funding structurellement plus élevé et sa quasi-absence de corrélation avec le bitcoin.",
-              "Et depuis le 28 août 2026, une nouvelle verticale annoncée : les contrats perpétuels sur ACTIONS. L'intérêt ouvert sur ces marchés a été multiplié par dix depuis mars 2026 pour atteindre ~6,2 Md$ — un gisement de funding neuf, hors du cycle crypto.",
+              "Et depuis le 28 août 2026, un nouveau terrain : les contrats perpétuels sur actions. L'open interest (le montant total des positions ouvertes) y a été multiplié par dix depuis mars 2026, à ~6,2 Md$ — un gisement de funding hors du cycle crypto.",
             ],
           },
           {
@@ -446,14 +459,14 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Le 27 août 2026, une proposition de gouvernance a été mise au vote pour changer cela : activer un « robinet de frais » qui prélèverait entre 5 % et plus de 15 % du revenu brut du protocole, dont 95 % serviraient à racheter de l'ENA sur le marché. Le tout déclenché par paliers de croissance de l'USDe, à partir de 7,5 Md$ en circulation.",
+              "Le 27 août 2026, une proposition de gouvernance a été mise au vote pour changer cela : activer le fee switch (le « robinet à frais » du protocole), un prélèvement pouvant aller de 5 % à plus de 15 % du revenu brut, reversé pour l'essentiel au rachat d'ENA sur le marché. Le tout déclenché par paliers de croissance de l'USDe, à partir de 7,5 Md$ en circulation.",
           },
           {
             type: "note",
             ton: "alerte",
             titre: "Le problème de ce calendrier",
             texte:
-              "Le premier palier est fixé à 7,5 Md$ d'USDe en circulation, alors que le protocole tourne autour de 4 Md$ fin août 2026. Le déclencheur est donc quelque 50 % au-dessus du niveau actuel — la mesure est annoncée aujourd'hui, mais ne s'appliquerait pas avant une forte reprise. Et surtout : chaque dollar redirigé vers le rachat d'ENA est un dollar qui ne va pas au rendement du sUSDe, or c'est ce rendement qui attire les dépôts nécessaires pour atteindre le palier. Les deux leviers se contrarient.",
+              "Le premier palier est fixé à 7,5 Md$ d'USDe en circulation, alors que le protocole tourne autour de 4 Md$ fin août 2026 (voir le chiffre à jour en haut de fiche) : il faudrait que l'USDe en circulation double, ou presque (7,5 ÷ 4 ≈ 1,9), pour que la mesure s'applique. Elle est annoncée aujourd'hui, mais ne mordrait pas avant une forte reprise. Et surtout : chaque dollar redirigé vers le rachat d'ENA est un dollar qui ne va pas au rendement du sUSDe, or c'est ce rendement qui attire les dépôts nécessaires pour atteindre le palier. Les deux leviers se contrarient.",
           },
         ],
       },
@@ -472,7 +485,14 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "C'est le risque de base. Si les parieurs à la baisse deviennent majoritaires, la position d'Ethena coûte de l'argent au lieu d'en rapporter. Un fonds de réserve, dimensionné à environ 1 % de la taille du protocole, sert d'amortisseur — utile pour un passage à vide de quelques semaines, insuffisant pour une année entière. La compression de 2025-2026 a montré que ce scénario n'est pas théorique.",
+              "C'est le risque de base. Si les parieurs à la baisse deviennent majoritaires, la position d'Ethena coûte de l'argent au lieu d'en rapporter. C'est ce qui s'est produit pendant une grande partie de 2026.",
+          },
+          {
+            type: "note",
+            ton: "info",
+            titre: "L'amortisseur, et sa limite",
+            texte:
+              "Un fonds de réserve est dimensionné à environ 1 % de la taille du protocole. Sur 4 Md$, cela fait ~40 M$ : de quoi absorber un passage à vide de quelques semaines, pas une année entière de funding négatif.",
           },
           {
             type: "st",
@@ -481,7 +501,14 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Les positions sont ouvertes sur Binance, Bybit, OKX, Deribit. Le collatéral, lui, est chez des dépositaires tiers, ce qui limite la casse en cas de faillite d'une plateforme — c'est une vraie précaution, apprise de l'effondrement de FTX. Mais la concentration reste forte, et une plateforme majeure qui ferme ses portes du jour au lendemain immobiliserait une part importante du dispositif. Ce n'est pas un risque de code, c'est un risque de contrepartie : le genre que les audits de smart contracts ne détectent pas.",
+              "Les positions sont ouvertes sur Binance, Bybit, OKX et Deribit. Ce n'est pas un risque de code, c'est un risque de contrepartie — le genre que les audits de smart contracts ne détectent pas.",
+          },
+          {
+            type: "liste",
+            items: [
+              "Ce qui protège : le collatéral n'est pas sur les plateformes mais chez des dépositaires tiers. Une vraie précaution, apprise de l'effondrement de FTX.",
+              "Ce qui reste exposé : la concentration. Une plateforme majeure qui ferme du jour au lendemain immobiliserait une part importante du dispositif, collatéral en sécurité ou non.",
+            ],
           },
           {
             type: "st",
@@ -499,7 +526,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "En cas de mouvement violent, l'USDe peut s'écarter de son dollar sur le marché secondaire, le temps que les arbitragistes rétablissent l'équilibre. Lors de la cascade de liquidations du 10 octobre 2025 — la plus grosse de l'histoire de la crypto — l'USDe est resté surcollatéralisé, mais l'épisode a fait fuir les capitaux : la valeur déposée dans le protocole est passée d'environ 14,8 Md$ en octobre 2025 à moins de 4 Md$ au printemps 2026. Le protocole n'a pas cassé ; la confiance, elle, a été repricée.",
+              "En cas de mouvement violent, l'USDe peut s'écarter de son dollar sur le marché secondaire, le temps que les arbitragistes rétablissent l'équilibre. Lors de la cascade de liquidations du 10 octobre 2025 — la plus grosse de l'histoire de la crypto — l'USDe est resté surcollatéralisé, mais l'épisode a fait fuir les capitaux : la valeur déposée dans le protocole est passée d'environ 14,8 Md$ en octobre 2025 à moins de 4 Md$ au printemps 2026. Le protocole n'a pas cassé, mais les déposants sont partis.",
           },
           {
             type: "st",
@@ -525,12 +552,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Ethena a réussi quelque chose que personne n'avait fait : rendre accessible en un clic une stratégie qui était jusqu'ici réservée aux salles de marché. C'est le meilleur exemple de ce que la DeFi sait faire de mieux — emballer une opération financière complexe dans un jeton que n'importe qui peut détenir.",
-          },
-          {
-            type: "p",
-            texte:
-              "C'est aussi, pour la même raison, le meilleur exemple du danger de cette facilité : la complexité n'a pas disparu, elle a juste été cachée sous une interface. Un jeton qui affiche « 1 $ » à l'écran ressemble à tous les autres jetons qui affichent 1 $. Le travail de l'épargnant est de savoir lequel il tient.",
+              "L'intérêt d'Ethena est d'avoir rendu accessible en un clic une stratégie jusque-là réservée aux salles de marché. Son danger tient à la même facilité : la complexité n'a pas disparu, elle a été cachée sous une interface. Un jeton qui affiche 1 $ à l'écran ressemble à tous les autres jetons qui affichent 1 $ — à toi de savoir lequel tu tiens.",
           },
         ],
       },
@@ -581,19 +603,19 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Hyperliquid est né en 2023, porté par Jeff Yan et un associé connu sous le pseudonyme Iliensinc, tous deux venus du trading haute fréquence — Jeff Yan est passé par Hudson River Trading, l'une des plus grosses firmes de trading algorithmique au monde. Ce n'est pas un détail : la plateforme est conçue par des gens dont le métier était de trader sur des carnets d'ordres, pas d'écrire des smart contracts.",
+              "Hyperliquid est né en 2023, porté par Jeff Yan et un associé connu sous le pseudonyme Iliensinc, tous deux venus du trading haute fréquence — Jeff Yan est passé par Hudson River Trading, l'une des plus grosses firmes de trading algorithmique au monde. La plateforme est conçue par des gens dont le métier était de trader sur des carnets d'ordres, pas d'écrire des smart contracts.",
           },
           {
             type: "p",
             texte:
-              "Le fait le plus singulier du projet tient en une phrase : l'équipe n'a jamais levé un centime auprès d'investisseurs extérieurs. Pas de fonds de capital-risque au capital, donc aucune allocation de jetons à débloquer au détriment des utilisateurs — une anomalie dans un secteur où les fonds détiennent couramment 20 à 40 % de la réserve initiale.",
+              "L'équipe n'a jamais levé un centime auprès d'investisseurs extérieurs. Pas de fonds de capital-risque au capital, donc aucune allocation de jetons à débloquer au détriment des utilisateurs — une anomalie dans un secteur où les fonds détiennent couramment 20 à 40 % de l'offre initiale.",
           },
           {
             type: "note",
             ton: "info",
             titre: "L'airdrop de novembre 2024",
             texte:
-              "À la place d'une levée de fonds, Hyperliquid a distribué 31 % de la réserve totale de HYPE à ses premiers utilisateurs, sans période de blocage. C'est l'une des plus grosses distributions gratuites de l'histoire de la crypto — plus de 620 M$ au cours de l'époque. Le pari : aligner les utilisateurs plutôt que des investisseurs. Il a plutôt bien fonctionné.",
+              "À la place d'une levée de fonds, Hyperliquid a distribué 31 % de l'offre totale de HYPE à ses premiers utilisateurs, sans période de blocage. C'est l'un des plus gros airdrops de l'histoire de la crypto — plus de 620 M$ au cours de l'époque. Le pari : aligner les utilisateurs plutôt que des investisseurs. Il a plutôt bien fonctionné.",
           },
         ],
       },
@@ -603,7 +625,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Pour comprendre l'intérêt d'Hyperliquid, il faut comprendre le problème qu'elle résout. Les plateformes décentralisées classiques, comme Uniswap, utilisent des pools de liquidité : une formule mathématique fixe le prix en fonction des quantités déposées. C'est ingénieux, mais mal adapté aux dérivés, où les traders professionnels veulent poser et retirer des ordres à un prix précis, des centaines de fois par minute.",
+              "Les plateformes décentralisées classiques, comme Uniswap, utilisent des pools de liquidité : une formule mathématique fixe le prix en fonction des quantités déposées. C'est ingénieux, mais mal adapté aux dérivés, où les traders professionnels veulent poser et retirer des ordres à un prix précis, des centaines de fois par minute.",
           },
           {
             type: "def",
@@ -621,7 +643,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             type: "liste",
             items: [
               "HyperCore — le moteur de trading. Le carnet d'ordres y vit entièrement sur la chaîne, avec une validation en moins d'une seconde et des ordres qui ne coûtent pas de frais de transaction. C'est ce qui rend l'expérience comparable à celle d'une plateforme centralisée.",
-              "HyperEVM — la couche pour les applications. Compatible avec Ethereum, elle permet à d'autres développeurs de construire par-dessus (prêt, staking, coffres automatisés) en lisant en direct l'état du carnet d'ordres.",
+              "HyperEVM — la couche pour les applications. Compatible avec Ethereum, elle permet à d'autres développeurs de construire par-dessus (prêt, staking, vaults automatisés) en lisant en direct l'état du carnet d'ordres.",
             ],
           },
           {
@@ -633,16 +655,16 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           },
           {
             type: "st",
-            texte: "Le funding, et ce qu'on peut en faire",
+            texte: "Le funding sur Hyperliquid",
           },
           {
             type: "p",
             texte:
-              "Comme sur toute plateforme de perpétuels, un paiement récurrent circule entre les parieurs à la hausse et ceux à la baisse pour recoller le prix du contrat sur le prix réel : le funding. Sur Hyperliquid, il est versé toutes les heures, et le protocole n'en prélève rien — il passe intégralement d'un camp à l'autre.",
+              "Sur Hyperliquid, le funding est versé toutes les heures, et le protocole n'en prélève rien : il passe intégralement d'un camp à l'autre.",
           },
           {
             type: "def",
-            terme: "Funding (taux de financement)",
+            terme: "Funding rate",
             slug: "funding-rate",
             texte:
               "La commission périodique que verse le camp majoritaire à l'autre. En crypto, les parieurs à la hausse sont habituellement les plus nombreux : ce sont donc eux qui paient. C'est ce flux qui rend possible la stratégie delta-neutre — détenir l'actif au comptant, parier à la baisse dessus pour le même montant, et encaisser le funding sans subir le mouvement du prix.",
@@ -652,29 +674,36 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             ton: "info",
             titre: "Le lien avec Ethena",
             texte:
-              "C'est exactement le mécanisme que nous avons détaillé dans le numéro #4. Hyperliquid n'a rien inventé de cette stratégie : elle en fournit le terrain de jeu. Ethena, elle, l'a industrialisée à grande échelle et emballée dans un jeton, l'USDe — voir notre fiche Ethena. Retiens la distinction : Hyperliquid est l'endroit où l'opération se fait, Ethena est l'un des acteurs qui la font.",
+              "C'est le mécanisme détaillé dans le numéro #4. Hyperliquid n'a rien inventé de cette stratégie, elle en fournit le terrain de jeu ; Ethena l'a industrialisée et emballée dans un jeton, l'USDe (voir notre fiche Ethena).",
           },
         ],
       },
       {
-        titre: "Le HLP — devenir le teneur de marché",
+        titre: "Le HLP — devenir market maker",
         blocs: [
           {
             type: "p",
             texte:
-              "Le HLP est le coffre communautaire d'Hyperliquid : tu y déposes des stablecoins, et le coffre s'en sert pour tenir le marché — poser en continu des ordres d'achat et de vente — et pour reprendre les positions des traders liquidés.",
+              "Le HLP est le vault communautaire d'Hyperliquid (le « coffre » du protocole) : tu y déposes des stablecoins, et le vault s'en sert pour faire le marché — poser en continu des ordres d'achat et de vente — et pour reprendre les positions des traders liquidés.",
           },
           {
             type: "def",
-            terme: "Teneur de marché (market maker)",
+            terme: "Market making",
             slug: "market-making",
             texte:
-              "Un acteur qui affiche en permanence un prix d'achat et un prix de vente, et gagne l'écart entre les deux. L'analogie : le bureau de change d'aéroport, qui achète l'euro un peu moins cher qu'il ne le vend, des milliers de fois par jour. Il ne parie pas sur le sens du marché ; il vit du passage.",
+              "Afficher en permanence un prix d'achat et un prix de vente, et gagner l'écart entre les deux — le spread. L'analogie : le bureau de change d'aéroport, qui achète l'euro un peu moins cher qu'il ne le vend, des milliers de fois par jour. Il ne parie pas sur le sens du marché ; il vit du passage.",
           },
           {
             type: "p",
-            texte:
-              "Trois sources de gain pour le HLP : l'écart entre le prix d'achat et le prix de vente ; la structure des frais, qui récompense celui qui pose un ordre plutôt que celui qui le consomme ; et la reprise des positions liquidées, souvent à prix avantageux — d'autant que les traders à fort effet de levier perdent en moyenne, et que le HLP est en face d'eux.",
+            texte: "Trois sources de gain pour le HLP :",
+          },
+          {
+            type: "liste",
+            items: [
+              "Le spread — l'écart entre son prix d'achat et son prix de vente, encaissé à chaque passage.",
+              "La structure des frais — elle récompense celui qui pose un ordre dans le carnet plutôt que celui qui le consomme.",
+              "La reprise des positions liquidées, souvent à prix avantageux : les traders à fort levier perdent en moyenne, et le HLP est en face d'eux.",
+            ],
           },
           {
             type: "note",
@@ -691,16 +720,16 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "HYPE est le jeton de la chaîne, et son modèle est l'un des plus simples du secteur : 99 % des revenus du protocole partent dans un fonds qui rachète du HYPE sur le marché et le détruit. Le rachat est quotidien et automatisé — aucune décision humaine, aucun vote nécessaire. Le fonds a accumulé plus de 45 millions de jetons.",
+              "HYPE est le jeton de la chaîne, et son modèle est l'un des plus simples du secteur : 99 % des revenus du protocole partent dans un fonds qui rachète du HYPE sur le marché et le détruit. Le rachat est quotidien et automatisé — aucune décision humaine, aucun vote nécessaire. Mi-2026, ce fonds avait accumulé plus de 45 millions de HYPE.",
           },
           {
             type: "liste",
             items: [
               "Rachat et destruction — 99 % des revenus, en continu.",
-              "Réduction de frais — les firmes de trading doivent immobiliser du HYPE pour obtenir des tarifs préférentiels.",
+              "Réduction de frais — les firmes de trading doivent staker du HYPE pour obtenir des tarifs préférentiels.",
               "Carburant de la chaîne — toute opération sur HyperEVM consomme du HYPE.",
-              "Sécurité — les validateurs immobilisent du HYPE pour valider les blocs.",
-              "Gouvernance — les votes sont pondérés par les jetons immobilisés.",
+              "Sécurité — les validateurs stakent du HYPE pour valider les blocs.",
+              "Gouvernance — les votes sont pondérés par les jetons stakés.",
             ],
           },
           {
@@ -708,7 +737,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             ton: "alerte",
             titre: "La pression vendeuse à connaître",
             texte:
-              "Les fondateurs et contributeurs débloquent environ 9,9 millions de HYPE par mois jusqu'en 2028. Le rachat automatique ne compense cette pression que si les revenus progressent assez vite — ce qui n'est pas le cas actuellement (voir ci-dessous). Signal d'alignement à mettre au crédit de l'équipe : après avoir libéré 1,2 million de jetons en janvier 2026, elle a réduit son propre déblocage du mois suivant d'environ 90 %.",
+              "Les fondateurs et contributeurs débloquent environ 9,9 millions de HYPE par mois jusqu'en 2028. Le rachat automatique ne compense cette pression que si les revenus progressent assez vite — ce qui n'est plus le cas depuis le T3 2025 (voir ci-dessous). Signal d'alignement à mettre au crédit de l'équipe : après avoir libéré 1,2 million de jetons en janvier 2026, elle a réduit son propre déblocage du mois suivant d'environ 90 %.",
           },
         ],
       },
@@ -718,24 +747,60 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Depuis octobre 2025, n'importe qui immobilisant 500 000 HYPE peut déployer son propre marché de perpétuels sur le carnet d'ordres d'Hyperliquid — et garder jusqu'à la moitié des frais générés. C'est ce qu'on appelle HIP-3.",
+              "Depuis octobre 2025, n'importe qui peut déployer son propre marché de perpétuels sur le carnet d'ordres d'Hyperliquid, et garder jusqu'à la moitié des frais qu'il génère. Il faut pour cela staker 500 000 HYPE — une somme qui se chiffre en dizaines de millions de dollars au cours actuel — autant dire que les déployeurs sont des sociétés, pas des particuliers. C'est ce qu'on appelle HIP-3.",
           },
           {
             type: "p",
             texte:
-              "L'effet a dépassé toutes les prévisions. Ces marchés déployés par des tiers pesaient environ 2 % du volume de la plateforme début 2026 ; ils en représentent aujourd'hui à peu près la moitié. Et surtout, ils ont fait sortir Hyperliquid du périmètre crypto : on y trade désormais le pétrole, l'or, l'argent, le S&P 500, le Nasdaq et des actions individuelles. Un déployeur a même obtenu une licence officielle de S&P Dow Jones pour son marché sur le S&P 500.",
+              "Ces marchés déployés par des tiers pesaient environ 2 % du volume de la plateforme début 2026 ; ils en représentent aujourd'hui à peu près la moitié. Et surtout, ils ont fait sortir Hyperliquid du périmètre crypto : on y trade désormais le pétrole, l'or, l'argent, le S&P 500, le Nasdaq et des actions individuelles. Un déployeur a même obtenu une licence officielle de S&P Dow Jones pour son marché sur le S&P 500.",
           },
           {
             type: "p",
             texte:
-              "L'illustration la plus parlante date de février 2026. Un choc géopolitique éclate un week-end, alors que les bourses de matières premières sont fermées — comme elles le sont chaque samedi et dimanche. Les traders qui voulaient se positionner sur le pétrole n'avaient nulle part où aller… sauf sur les perpétuels pétrole d'Hyperliquid, ouverts en permanence. Plus d'1,2 Md$ de volume en une journée, et une couverture dans le Wall Street Journal. Une plateforme DeFi servant de référence de prix mondiale un dimanche : c'est nouveau.",
+              "L'illustration la plus parlante date de février 2026. Un choc géopolitique éclate un week-end, bourses de matières premières fermées. Les traders qui voulaient se positionner sur le pétrole n'avaient nulle part où aller… sauf sur les perpétuels pétrole d'Hyperliquid, ouverts en permanence. Plus d'1,2 Md$ de volume en une journée, et une couverture dans le Wall Street Journal.",
+          },
+          {
+            type: "p",
+            texte:
+              "Deux effets se cumulent. Le déployeur garde la moitié des frais ; et il peut activer un « growth mode » qui abaisse les frais de plus de 90 % pour attirer les traders sur son marché. Sur 1 Md$ de volume, ce que le protocole encaisse devient :",
+          },
+          {
+            type: "liste",
+            items: [
+              "Marché natif — 450 000 $ (0,045 % de frais, gardés en entier).",
+              "Marché HIP-3 classique — 225 000 $ (mêmes frais, mais la moitié va au déployeur).",
+              "Marché HIP-3 en growth mode — 22 500 $ (0,0045 % de frais, dont la moitié) : vingt fois moins qu'un marché natif.",
+            ],
+          },
+          {
+            type: "p",
+            texte:
+              "C'est là que le volume a migré. Le résultat se lit dans les comptes du protocole :",
+          },
+          {
+            type: "tableau",
+            entetes: ["", "T3 2025", "T2 2026", "Écart"],
+            lignes: [
+              ["Revenu brut du protocole", "~357 M$", "~202 M$", "−155 M$ (−43 %)"],
+              ["Dont rachat de HYPE", "~290 M$", "~149 M$", "−141 M$ (−51 %)"],
+            ],
+          },
+          {
+            type: "p",
+            texte:
+              "Le tout pendant que l'activité battait des records : ~13 Md$ de positions ouvertes le 23 août 2026, environ 63 % de tout le marché des perpétuels décentralisés.",
+          },
+          {
+            type: "p",
+            texte:
+              "La plateforme en a conscience : Jeff Yan a proposé de tripler les frais HIP-3. La mesure divise — certains analystes y voient un signal haussier pour le jeton, d'autres estiment que les frais bas sont précisément l'arme d'Hyperliquid face à Binance et aux courtiers traditionnels. À ce stade, elle n'a aucun calendrier.",
           },
           {
             type: "note",
             ton: "avis",
-            titre: "Notre lecture : le revers de la médaille",
+            titre: "Notre lecture",
             texte:
-              "C'est ici que le dossier se corse, et c'est le point que beaucoup d'analyses enthousiastes passent sous silence. Comme les déployeurs conservent la moitié des frais, la bascule du volume vers HIP-3 fait mécaniquement baisser ce que le protocole encaisse — et donc ce qu'il consacre au rachat de HYPE. Le revenu brut trimestriel est passé d'environ 357 M$ au troisième trimestre 2025 à ~202 M$ au deuxième trimestre 2026, soit −43 %, et le rachat de jetons a chuté d'environ 290 M$ à ~149 M$ sur la même période (−51 %). Le tout PENDANT que l'activité battait des records : ~13 Md$ de positions ouvertes le 23 août 2026, environ 63 % de tout le marché des perpétuels décentralisés. Autrement dit, la plateforme gagne la bataille des parts de marché et perd, en même temps, en capacité à soutenir son jeton. C'est une distinction essentielle : Hyperliquid le produit et HYPE l'investissement ne racontent pas la même histoire en ce moment.",
+              "Hyperliquid le produit et HYPE l'investissement ne racontent pas la même histoire en ce moment, et méritent d'être jugés séparément. Céder la moitié des frais n'est pas forcément une erreur : la plateforme n'aurait jamais listé elle-même des perpétuels sur le pétrole ou le S&P 500, et ces revenus-là ne dépendent pas du cycle crypto. Le problème est le décalage — la perte de marge est immédiate, le bénéfice est futur et hypothétique, et les déblocages de jetons, eux, continuent chaque mois.",
           },
         ],
       },
@@ -749,23 +814,28 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Environ 27 validateurs sécurisent la chaîne, contre des centaines de milliers sur Ethereum. Et ce petit groupe ne fait pas que valider les blocs : ce sont eux qui publient les prix utilisés pour te liquider. Là où la plupart des plateformes s'appuient sur un oracle externe comme Chainlink, Hyperliquid fait soumettre le prix par ses propres validateurs et en prend la médiane. L'avantage est réel — zéro latence, pas de dépendance à un tiers. L'inconvénient l'est tout autant : le même petit groupe sécurise la chaîne et fournit les prix qui déclenchent les liquidations.",
+              "Environ 27 validateurs sécurisent la chaîne, contre des centaines de milliers sur Ethereum. Et ce petit groupe ne fait pas que valider les blocs : ce sont eux qui publient les prix utilisés pour te liquider.",
+          },
+          {
+            type: "p",
+            texte:
+              "Là où la plupart des plateformes s'appuient sur un oracle externe comme Chainlink, Hyperliquid fait soumettre le prix par ses propres validateurs et en prend la médiane. Zéro latence, aucune dépendance à un tiers — mais juge et partie.",
           },
           {
             type: "note",
             ton: "alerte",
             titre: "L'incident JELLY (mars 2025) — le cas d'école",
             texte:
-              "Un attaquant manipule le cours d'un memecoin, JELLY. Le coffre HLP se retrouve avec une position toxique et environ 13,5 M$ de pertes latentes. En quelques minutes, les validateurs se réunissent, votent le retrait du marché et fixent eux-mêmes un prix de règlement antérieur à la manipulation. Les utilisateurs sont indemnisés et le HLP termine la journée en bénéfice. Deux lectures coexistent, et elles sont toutes les deux justes : la réaction a été rapide et entièrement publique, mais elle prouve aussi qu'un petit groupe peut changer les règles d'un marché en temps réel. Plus transparent qu'une plateforme centralisée, loin de la neutralité d'Ethereum.",
+              "Un attaquant manipule le cours d'un memecoin, JELLY. Le vault HLP se retrouve avec une position toxique et environ 13,5 M$ de pertes latentes. En quelques minutes, les validateurs se réunissent, votent le retrait du marché et fixent eux-mêmes un prix de règlement antérieur à la manipulation. Les utilisateurs sont indemnisés et le HLP termine la journée en bénéfice. Deux lectures coexistent, et elles sont toutes les deux justes : la réaction a été rapide et entièrement publique, mais elle prouve aussi qu'un petit groupe peut changer les règles d'un marché en temps réel. Plus transparent qu'une plateforme centralisée, loin de la neutralité d'Ethereum.",
           },
           {
             type: "st",
-            texte: "2. La dette irrécouvrable",
+            texte: "2. Le bad debt",
           },
           {
             type: "p",
             texte:
-              "N'importe qui peut déposer une garantie et prendre du levier, sans vérification d'identité ni recours juridique possible. Sur les marchés peu liquides — ceux déployés via HIP-3, notamment — il arrive que le prix saute d'un coup au-delà du seuil de liquidation d'un gros trader, sans qu'aucun ordre ne s'exécute entre les deux : la position est fermée trop tard, et la perte que personne ne couvre reste à la charge du protocole. À mettre au crédit de la plateforme : elle a traversé la cascade de liquidations du 10 octobre 2025, la plus grosse de l'histoire de la crypto, en restant solvable.",
+              "N'importe qui peut déposer une garantie et prendre du levier, sans vérification d'identité ni recours juridique possible. Sur les marchés peu liquides — ceux déployés via HIP-3, notamment — il arrive que le prix saute d'un coup au-delà du seuil de liquidation d'un gros trader, sans qu'aucun ordre ne s'exécute entre les deux : la position est fermée trop tard, et la perte que personne ne couvre reste à la charge du protocole. C'est ce qu'on appelle du bad debt. À mettre au crédit de la plateforme : elle a traversé la cascade de liquidations du 10 octobre 2025, la plus grosse de l'histoire de la crypto, en restant solvable.",
           },
           {
             type: "st",
@@ -774,7 +844,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Côté décentralisé, Aster et Lighter attaquent avec des distributions de jetons agressives — mais leurs parts de marché s'effondrent une fois la distribution passée. La vraie menace est ailleurs : Binance reste de loin le premier acteur mondial des dérivés, et des plateformes régulées américaines commencent à proposer de vrais perpétuels, alors même que l'accès direct à Hyperliquid reste fermé aux résidents américains.",
+              "Côté décentralisé, Aster et Lighter attaquent avec des airdrops agressifs — mais leurs parts de marché s'effondrent une fois l'airdrop passé. La vraie menace est ailleurs : Binance reste de loin le premier acteur mondial des dérivés, et des plateformes régulées américaines commencent à proposer de vrais perpétuels, alors même que l'accès direct à Hyperliquid reste fermé aux résidents américains.",
           },
           {
             type: "st",
@@ -790,7 +860,7 @@ export const PROTOCOLES: ProtocoleFiche[] = [
             ton: "avis",
             titre: "Pourquoi « modéré »",
             texte:
-              "La plateforme fonctionne, elle a encaissé sans casser des chocs qui en auraient tué d'autres, l'équipe est compétente et son jeton est adossé à de vrais revenus — c'est rare. Ce qui l'empêche de descendre plus bas : 27 validateurs qui sont à la fois juges et oracles, un cadre réglementaire non stabilisé, et une trajectoire de revenus actuellement baissière malgré des volumes record. Le risque de trader dessus n'est pas le même que celui de détenir HYPE — ce sont deux décisions distinctes.",
+              "La plateforme fonctionne, elle a encaissé sans casser des chocs qui en auraient tué d'autres, l'équipe est compétente et son jeton est adossé à de vrais revenus — c'est rare. Ce qui l'empêche de descendre plus bas : 27 validateurs qui sont à la fois juges et oracles, un cadre réglementaire non stabilisé, et une trajectoire de revenus baissière depuis le T3 2025 malgré des volumes record. Le risque de trader dessus n'est pas le même que celui de détenir HYPE — ce sont deux décisions distinctes.",
           },
         ],
       },
@@ -800,19 +870,19 @@ export const PROTOCOLES: ProtocoleFiche[] = [
           {
             type: "p",
             texte:
-              "Hyperliquid a réglé la question qui bloquait la DeFi depuis des années : peut-on offrir l'expérience d'une plateforme centralisée — rapide, liquide, avec un vrai carnet d'ordres — sans demander aux utilisateurs de confier leurs fonds à une entreprise ? La réponse est oui, à condition d'accepter un compromis clair : une chaîne beaucoup plus centralisée qu'Ethereum.",
+              "Hyperliquid a tranché une question qui bloquait la DeFi depuis des années : peut-on offrir l'expérience d'une plateforme centralisée — rapide, liquide, avec un vrai carnet d'ordres — sans demander aux utilisateurs de confier leurs fonds à une entreprise ? La réponse est oui, au prix d'une chaîne beaucoup plus centralisée qu'Ethereum.",
           },
           {
             type: "p",
             texte:
-              "Et la suite est peut-être plus importante encore. Avec les marchés déployés par des tiers, la plateforme est en train de devenir une infrastructure sur laquelle on peut lister n'importe quel actif — pétrole, actions, indices — sans autorisation préalable. Les volumes des marchés traditionnels écrasent ceux de la crypto ; si une fraction seulement bascule, le sujet dépasse largement le secteur.",
+              "Avec les marchés déployés par des tiers, elle devient en plus une infrastructure sur laquelle on peut lister n'importe quel actif — pétrole, actions, indices — sans autorisation préalable. C'est ce qui la rend intéressante à suivre même si tu ne trades pas.",
           },
         ],
       },
     ],
     pointsCles: [
       "Hyperliquid est une blockchain construite pour une seule chose : faire tourner un carnet d'ordres aussi vite qu'une plateforme centralisée.",
-      "Aucun investisseur extérieur, aucune allocation de jetons aux fonds : 31 % de la réserve a été distribuée aux utilisateurs.",
+      "Aucun investisseur extérieur, aucune allocation de jetons aux fonds : 31 % de l'offre totale a été distribuée aux utilisateurs.",
       "Déposer dans le HLP, c'est entrer dans un fonds de trading — le résultat peut être négatif, ce n'est pas un rendement.",
       "HIP-3 a fait exploser les volumes ET baisser les revenus du protocole (−43 % depuis le pic) : les déployeurs gardent la moitié des frais.",
       "Le vrai point faible n'est pas technique mais politique : 27 validateurs qui fournissent aussi les prix qui te liquident.",
