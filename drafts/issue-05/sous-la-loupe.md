@@ -106,7 +106,7 @@ Sur les douze derniers mois, ces pools ont passé l'essentiel du temps **entre 1
 
 Presque tous les protocoles de prêt te servent un taux calculé par une formule ou voté par une DAO : tu le subis, et il peut doubler du jour au lendemain si la demande d'emprunt s'emballe. Liquity fait l'inverse — il te laisse choisir ton taux, qui ne bouge ensuite que si tu le décides, contre un risque nommé et compréhensible.
 
-Et le résultat n'est pas cosmétique : **2,36 % en moyenne contre 6 à 8 % chez Sky ou Spark** — f(x), lui, ne facture aucun intérêt annuel, mais sur un modèle différent (droit d'entrée et de sortie).
+Et le résultat n'est pas cosmétique : **2,36 % en moyenne contre 9 à 15 % chez Sky selon le collatéral** — f(x), lui, ne facture aucun intérêt annuel, mais sur un modèle différent (droit d'entrée et de sortie).
 
 ---
 

@@ -493,6 +493,313 @@ export const issues: Issue[] = [
       { terme: "Oracle", slug: "oracle", def: "Le mécanisme qui apporte à une blockchain une information qu'elle ne peut pas connaître seule, à commencer par le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer. Les principaux fournisseurs sont Chainlink, de loin le plus utilisé — il alimente Aave, Compound et l'essentiel de la DeFi —, Pyth, spécialisé dans les mises à jour en moins d'une seconde, ce qui en fait la référence des plateformes de perps, ainsi que RedStone et Chronicle." },
     ],
   },
+  {
+    id: "5",
+    numero: 5,
+    date: "Jeudi 10 septembre 2026",
+    titre: "Emprunter contre ses cryptos",
+    excerpt: "Le CDP expliqué simplement, Strategy vend bas et rachète haut, le pétrole pousse la Fed vers une hausse des taux, et Liquity V2 — le protocole où c'est toi qui fixes ton taux.",
+    notion: {
+      titre: "Le CDP : emprunter contre ses cryptos au lieu de les vendre",
+      corps: [
+        {
+          type: "p",
+          texte: "Au #4, on expliquait comment parier sur le prix du bitcoin sans jamais le détenir. Cette semaine, l'inverse : comment te servir des cryptos que tu détiens comme garantie pour emprunter."
+        },
+        {
+          type: "st",
+          texte: "Le principe"
+        },
+        {
+          type: "p",
+          texte: "Tu bloques des cryptos que tu possèdes pour obtenir un prêt. Le protocole garde tes bitcoins ou tes ethers, et te prête en échange des stablecoins, que tu peux dépenser librement. Il est certain d'être remboursé pour une raison simple : il te prête toujours moins, en valeur, que ce que tu as déposé. Le jour où tu rembourses, tu récupères ton dépôt."
+        },
+        {
+          type: "def",
+          terme: "CDP",
+          slug: "cdp",
+          texte: "Une position de dette garantie par un dépôt. Ton dépôt n'est pas prêté à quelqu'un d'autre : il reste à toi, simplement immobilisé jusqu'au remboursement."
+        },
+        {
+          type: "p",
+          texte: "L'équivalent existe depuis longtemps en banque privée française : le crédit lombard. Tu nantis ton portefeuille de titres auprès de ta banque, elle te consent une ligne de liquidités, et tu n'as rien vendu. Même logique — et, comme en banque, l'établissement peut vendre les titres si leur valeur passe sous un seuil."
+        },
+        {
+          type: "st",
+          texte: "Comment ça marche, étape par étape"
+        },
+        {
+          type: "p",
+          texte: "Prenons un exemple : tu déposes 100 $ de bitcoin sur un protocole de CDP. Ta crypto devient ta garantie, on appelle cela ton collatéral."
+        },
+        {
+          type: "def",
+          terme: "Collatéral",
+          slug: "collateral",
+          texte: "L'actif que tu bloques en garantie de ton emprunt. Tu ne peux plus y toucher tant que la dette n'est pas remboursée."
+        },
+        {
+          type: "p",
+          texte: "Tu choisis ensuite combien tu empruntes. Le rapport entre ce que tu empruntes et ce que tu as déposé s'appelle le LTV. Chaque protocole fixe un plafond, le LLTV : le LTV maximum au-delà duquel ta position est liquidée."
+        },
+        {
+          type: "def",
+          terme: "LTV",
+          slug: "ltv",
+          texte: "Ta dette rapportée à la valeur de ta garantie. Emprunter 60 $ contre 100 $ de dépôt, c'est un LTV de 60 % (60 ÷ 100). Le LLTV est le plafond à ne pas franchir : souvent de l'ordre de 80 % pour un actif liquide comme le bitcoin ou l'ether."
+        },
+        {
+          type: "p",
+          texte: "Avec un plafond à 80 %, tu peux emprunter jusqu'à 80 $. Admettons que tu n'en empruntes que 60 $, par sécurité. Le protocole émet alors les 60 $ de stablecoins : il ne pioche pas dans une réserve existante, il crée les jetons à cet instant, adossés à ton dépôt. C'est le mint."
+        },
+        {
+          type: "def",
+          terme: "Mint",
+          slug: "mint",
+          texte: "La création de nouveaux jetons par un protocole, à la demande. À l'inverse, quand tu rembourses, les jetons sont détruits (burn) : ils cessent d'exister."
+        },
+        {
+          type: "p",
+          texte: "Ton collatéral peut baisser. Ta dette, elle, reste figée à 60 $ : elle est libellée en dollars. Ici, tu es liquidé si ton bitcoin tombe à 75 $ — à ce moment-là, ta dette de 60 $ atteint 80 % de ton collatéral (60 ÷ 75 = 0,80). Soit une baisse de 25 % par rapport à ton dépôt de départ."
+        },
+        {
+          type: "def",
+          terme: "Liquidation",
+          slug: "liquidation",
+          texte: "La vente forcée de ta garantie par le protocole, automatiquement et sans préavis, dès que ton LTV dépasse le plafond. Sur un CDP, tu ne perds pas ton dépôt : une fois la dette remboursée et la pénalité prélevée, ce qui reste te revient."
+        },
+        {
+          type: "liste",
+          items: [
+            "Le protocole vend ton collatéral — une partie seulement ou la totalité selon les protocoles, de quoi rembourser les 60 $ de dette ;",
+            "Il prélève une pénalité, de l'ordre de 5 à 10 % de la dette, soit 3 à 6 $ ici ;",
+            "Le reste te revient : une dizaine de dollars de bitcoin, auxquels s'ajoutent les 60 $ empruntés — soit environ 70 $ là où ton bitcoin en valait 75."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Le vrai coût n'est pas la pénalité : c'est que la vente a eu lieu au plus bas, et que tu ne profiteras pas du rebond."
+        },
+        {
+          type: "p",
+          texte: "Tu paies un intérêt sur le montant emprunté tant que la position est ouverte. Sur la quasi-totalité des CDP, ce taux t'est imposé — voté par une DAO ou calculé par une formule. Liquity fait exception. D'un protocole à l'autre, l'écart est énorme : du quasi-gratuit à plus de 10 % par an. Et en ce moment, c'est cher presque partout, pour une raison simple : personne ne prête un dollar en DeFi moins cher que ce que rapporte un dollar placé sans risque."
+        },
+        {
+          type: "p",
+          texte: "Tu rembourses quand tu veux : tu rends les 60 $ plus les intérêts courus, le protocole détruit les jetons, et tu récupères tes 100 $ de bitcoin — quelle que soit leur valeur du jour."
+        },
+        {
+          type: "st",
+          texte: "À quoi ça sert : trois usages"
+        },
+        {
+          type: "p",
+          texte: "1. Dépenser sans vendre. Ton bitcoin vaut 100, tu empruntes 60 et tu les dépenses. Demain il vaut 200 : tu vends juste de quoi rembourser les 60, il te reste 140. Si tu avais vendu 60 de bitcoin au départ, il ne t'en resterait que 40 — qui vaudraient 80 aujourd'hui. 140 contre 80."
+        },
+        {
+          type: "def",
+          terme: "Long (haussier)",
+          slug: "long",
+          texte: "Être positionné pour gagner si le prix monte. Emprunter du stablecoin contre du bitcoin, c'est parier que ton collatéral va monter face au dollar : ta dette reste figée en dollars, donc la hausse de l'actif suffit à la solder."
+        },
+        {
+          type: "p",
+          texte: "2. Prendre du levier. Le stablecoin emprunté sert à racheter de la crypto, qu'on redépose en garantie. Tu déposes 100, tu empruntes 60, tu rachètes 60 de bitcoin : te voilà exposé à 160 avec 100 de capital. Face à un contrat perpétuel, deux avantages : le coût est connu d'avance (tenir une position à la hausse sur le bitcoin coûte actuellement 10,63 % annualisés de funding), et tu détiens de vrais bitcoins. Le prix à payer est réel : il faut immobiliser bien plus que ce qu'on emprunte."
+        },
+        {
+          type: "p",
+          texte: "3. Emprunter à un taux pour placer à un taux plus élevé — le carry trade. Sur f(x) Protocol, tu déposes des bitcoins et empruntes des fxUSD (0,5 % à l'ouverture, 0,2 % à la fermeture), que tu places à 6,71 % dans le pool de stabilité. Avec 100 000 $ déposés et 60 000 $ empruntés : 4 030 $ de gains sur l'année, moins 420 $ de frais, soit environ 3 610 $ — sans avoir vendu un seul bitcoin."
+        },
+        {
+          type: "p",
+          texte: "Ce rendement n'est pas magique : le pool de stabilité sert à absorber les liquidations. Tu es payé pour ce service, et pour le risque qui va avec. Trois réserves : ton bitcoin reste liquidable, le 6,71 % n'est pas garanti, et f(x) est un petit protocole (~126 M$) face à des Sky ou Morpho qui comptent en milliards."
+        },
+        {
+          type: "avis",
+          texte: "on décrit ici une stratégie pour l'expliquer, pas pour la recommander. Chaque fois que tu vises un rendement, pose-toi la même question : qui paie, et pour quel risque ?"
+        }
+      ]
+    },
+    actus: [
+      {
+        titre: "Strategy a vendu du bitcoin à 60 200 $, elle en rachète à 80 320 $",
+        corps: [
+          {
+            type: "p",
+            texte: "Fin juin, Strategy — la société de Michael Saylor — avait besoin de liquidités pour payer les dividendes de ses titres STRC. Elle a vendu 3 588 BTC en deux fois, le 30 juin et le 6 juillet, à environ 60 200 $ de moyenne."
+          },
+          {
+            type: "p",
+            texte: "Sept semaines plus tard, du 24 au 30 août, elle est revenue à l'achat : 4 603 BTC pour 369,7 M$, soit environ 80 320 $ par bitcoin. L'écart fait +33 %, soit environ 20 100 $ de plus par bitcoin racheté. Le rachat a été financé par une émission de 4,53 millions d'actions MSTR."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : Strategy a vendu bas et racheté haut. Racheter les 3 588 bitcoins cédés cet été lui a coûté environ 72 M$ de plus que ce qu'ils lui avaient rapporté."
+          },
+          {
+            type: "liste",
+            items: [
+              "La vente portait sur moins de 0,5 % de la réserve, qui atteint 845 050 BTC — à cette échelle, l'opération ne change rien au bilan ;",
+              "Au #3, on décrivait le Digital Credit Capital Framework, ce cadre par lequel Strategy s'autorise à céder du bitcoin pour honorer ses engagements. Ce n'est pas un accident : c'est le dispositif qui a fonctionné comme annoncé."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Avoir besoin de dollars sans vouloir se séparer de son bitcoin, c'est précisément ce à quoi le CDP répond. Une société cotée ne peut pas simplement faire ça : la comptabilité et l'audit d'abord, une dette contractée auprès d'un contrat automatisé étant difficile à faire valider par des commissaires aux comptes ; la liquidation ensuite, un collatéral vendu de force par un protocole lui retirant la maîtrise du moment et du montant."
+          }
+        ],
+        avis: "on ne juge pas la décision : payer un dividende dû n'est pas facultatif, et 3 588 bitcoins sur 845 050 ne pèsent rien. Ce qui se voit ici, c'est le coût du calendrier : moins de deux mois ont suffi à rendre le rachat 33 % plus cher. Et le bitcoin s'échange aujourd'hui autour de 77 300 $, soit bien sous le prix de ce rachat — et à peine au-dessus du prix de revient moyen de toute la réserve, 75 412 $ selon le dernier dépôt de la société.",
+        source: "Communiqués et dépôts SEC de Strategy · CryptoBriefing",
+        defs: [
+          {
+            terme: "STRC (Digital Credit)",
+            slug: "dat",
+            texte: "Des titres émis par Strategy qui versent un dividende régulier, un peu comme une obligation. C'est de l'argent qui doit sortir chaque trimestre, quoi qu'il arrive, alors que le bitcoin détenu en face ne rapporte rien tant qu'on ne le vend pas."
+          }
+        ]
+      },
+      {
+        titre: "Le pétrole s'envole, et la Fed pourrait remonter ses taux",
+        corps: [
+          {
+            type: "p",
+            texte: "L'escalade militaire entre les États-Unis et l'Iran a fait repasser le baril de Brent au-dessus de 100 $ le 9 septembre, en hausse de près de 3 % sur la seule journée, après que Téhéran a annoncé avoir frappé deux navires américains et huit pétroliers dans le Golfe. Un pétrole cher renchérit le transport, l'énergie et la production : c'est de l'inflation qui arrive dans les mois qui suivent."
+          },
+          {
+            type: "liste",
+            items: [
+              "Le 11 septembre, la publication du CPI d'août — la mesure officielle de l'inflation américaine ;",
+              "Le 16 septembre, la décision de la Fed sur une éventuelle hausse de son taux directeur, aujourd'hui à 3,50-3,75 %."
+            ]
+          },
+          {
+            type: "def",
+            terme: "Taux directeur",
+            slug: "taux-directeur",
+            texte: "Le taux auquel la banque centrale prête aux banques. C'est le prix de départ de l'argent : tout le reste s'en déduit, du crédit immobilier au rendement d'une obligation d'État."
+          },
+          {
+            type: "p",
+            texte: "On parle d'une hausse, pas d'une baisse — à rebours de ce que le marché anticipait depuis des mois. Au 9 septembre, les relevés donnaient entre 56 % et 65 % de probabilité d'une hausse de 0,25 point."
+          },
+          {
+            type: "p",
+            texte: "Ce que ça changerait : une obligation d'État mieux rémunérée rend moins attractif un actif qui ne verse rien par lui-même, bitcoin compris. Attention, rappel : si tu as réalisé un emprunt sur un CDP et que le prix de ton collatéral baisse, ton LTV remonte tout seul — tu te rapproches du seuil de liquidation sans avoir rien fait. À l'inverse, un maintien des taux retirerait cette pression, sans garantie non plus : le marché lui donne un peu plus d'une chance sur trois."
+          }
+        ],
+        avis: "un CPI plus doux que prévu le 11 suffirait à tout renverser : personne ne sait ce que fera la Fed le 16. Ce qui est certain, c'est que le prix de l'argent redevient le sujet, en bourse comme en DeFi. C'est ce qui donne sa valeur pratique à la notion vue plus haut : le LTV que tu choisis n'est pas un réglage abstrait, c'est la marge que tu te laisses le jour où une tension géopolitique fait décrocher ton collatéral.",
+        source: "CNBC · Yahoo Finance · Vantage Markets"
+      },
+      {
+        titre: "Hyperliquid pourrait ouvrir ses marchés aux Américains",
+        corps: [
+          {
+            type: "p",
+            texte: "D'après Bloomberg, Hyperliquid Labs discute avec Payward, la maison-mère de Kraken, pour donner accès à ses marchés depuis les États-Unis. Le véhicule serait Bitnomial, une filiale de Payward rachetée début 2026, qui dispose déjà des agréments américains de bourse, de compensation et de courtage."
+          },
+          {
+            type: "p",
+            texte: "Le dossier est politique autant que technique : le 19 août, Donald Trump a déclaré que la CFTC travaillait à faire entrer Hyperliquid aux États-Unis « de manière pleinement conforme et légale » — en nommant Hyperliquid, et elle seule, devant des représentants de Coinbase, Kraken, du Nasdaq et du CME."
+          },
+          {
+            type: "liste",
+            items: [
+              "La structure a été présentée à la CFTC, mais l'approbation n'est pas obtenue : une ancienne juriste de la SEC estime le processus à 10 à 12 mois ;",
+              "Ni Hyperliquid ni Payward n'ont commenté ;",
+              "Les termes financiers ne sont pas connus."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Hyperliquid traite plus de 4 milliards de dollars de volume par jour sans opérateur central : on s'y connecte avec un portefeuille, sans compte ni vérification d'identité. C'est exactement ce fonctionnement qui l'a tenue hors des États-Unis jusqu'ici — un cadre réglementé suppose quelqu'un d'identifiable pour répondre au régulateur."
+          }
+        ],
+        avis: "pour Hyperliquid, ce serait une très bonne affaire : le modèle qui se dessine n'est pas d'ouvrir son propre site aux Américains, mais de laisser des acteurs agréés brancher leurs clients sur son infrastructure — et ces marchés délégués sont déjà sa deuxième source de revenus. Pour l'utilisateur de ces marchés-là, en revanche, les garanties changent : pour être conforme, l'opérateur doit pouvoir filtrer les inscrits, fermer une position et déplacer un collatéral. La promesse « personne ne peut toucher à tes fonds » ne vaudrait plus pour qui passe par cette porte.",
+        source: "Bloomberg · Blockhead · CoinDesk",
+        lien: {
+          label: "Voir la fiche Hyperliquid",
+          href: "/protocoles/hyperliquid"
+        }
+      }
+    ],
+    protocole: {
+      nom: "Liquity V2",
+      bref: "Un protocole de CDP sur Ethereum. Tu y déposes de l'ether, du wstETH ou du rETH — pas de bitcoin — et tu empruntes en échange le stablecoin maison, le BOLD. Mise en ligne en janvier 2025, contrats actuels redéployés en mai 2025. 95,6 M$ déposés. Contrats immuables et sans gouvernance, audités par six cabinets dont un en vérification formelle, plus un concours ouvert de cinq semaines (800 chercheurs, 350 000 $ de primes).",
+      etapes: [
+        "Ce qui rend Liquity différent tient en une phrase : c'est l'emprunteur qui fixe le taux d'intérêt qu'il paiera, entre 0,5 % et 25 % par an, modifiable à tout moment.",
+        "La contrepartie s'appelle la redemption : n'importe qui peut apporter 1 BOLD au protocole et repartir avec 1 $ de collatéral. C'est ce qui tient le prix du BOLD collé au dollar.",
+        "Et le protocole ponctionne d'abord les emprunteurs qui ont fixé le taux le plus bas. Payer moins cher, c'est accepter de se faire rembourser d'office avant les autres ; payer plus cher, c'est acheter la tranquillité.",
+        "Exemple : Alix fixe 5 % (2,50 $ par an sur 50 BOLD), Bruno fixe 9 % (4,50 $). Une redemption de 20 $ tape Alix la première : elle ne perd pas d'argent, mais n'a plus que 80 $ d'ether exposés à la hausse au lieu de 100. Bruno, lui, n'a rien vu passer.",
+        "Résultat mesurable : les taux réellement payés aujourd'hui sont de 3,21 % sur la branche ETH, 1,09 % sur wstETH et 5,77 % sur rETH — soit 2,36 % en moyenne sur 34,3 M BOLD de dette."
+      ],
+      rendement: "L'autre côté du marché : déposer ses BOLD dans les pools de stabilité rapporte aujourd'hui 2,17 % (ETH), 3,88 % (wstETH) et 3,94 % (rETH). Cet argent vient entièrement des emprunteurs, par deux canaux — les intérêts qu'ils paient, et le collatéral récupéré avec une décote quand l'un d'eux se fait liquider. Aucune société ne prélève sa part : les 100 % repartent vers les utilisateurs. Sur les douze derniers mois, ces pools ont passé l'essentiel du temps entre 1 % et 5 %, avec une médiane de 3 % à 4,3 % selon la branche.",
+      risqueNiveau: "moyen",
+      risqueSens: "moyen",
+      risques: "Ce qui rassure : personne ne peut changer les règles pendant que ton argent est là. Ce qui l'empêche de descendre à « faible » : ce qui ne peut pas être modifié ne peut pas non plus être corrigé. Trois semaines après le lancement de janvier 2025, un bug critique a été découvert dans les pools de stabilité malgré six audits — contrats immuables obligent, le protocole a dû être entièrement redéployé, sans perte de fonds. La liquidation est bien réelle (LTV plafonné à 90,91 % sur ETH, 83,33 % sur wstETH et rETH). La redemption est le risque propre à Liquity : une position ouverte à taux bas et jamais surveillée peut se retrouver largement remboursée d'office. Tout est adossé à l'ether, sans diversification du collatéral. Et le protocole reste petit (95,6 M$), donc moins liquide pour entrer et sortir en montant.",
+      importance: "Presque tous les protocoles de prêt te servent un taux calculé par une formule ou voté par une DAO : tu le subis, et il peut doubler du jour au lendemain. Liquity fait l'inverse. Et le résultat n'est pas cosmétique : 2,36 % en moyenne contre 9 à 15 % chez Sky selon le collatéral — f(x), lui, ne facture aucun intérêt annuel, mais sur un modèle différent."
+    },
+    cours: [
+      {
+        actif: "BTC",
+        nom: "Bitcoin",
+        prix: "~77 268 $",
+        var7j: "−3,2 %",
+        sens: "down"
+      },
+      {
+        actif: "ETH",
+        nom: "Ethereum",
+        prix: "~2 440 $",
+        var7j: "−0,8 %",
+        sens: "down"
+      },
+      {
+        actif: "SOL",
+        nom: "Solana",
+        prix: "~100,2 $",
+        var7j: "−2,6 %",
+        sens: "down"
+      },
+      {
+        actif: "HYPE",
+        nom: "Hyperliquid",
+        prix: "~81,1 $",
+        var7j: "−3,0 %",
+        sens: "down"
+      },
+      {
+        actif: "BNB",
+        nom: "",
+        prix: "~710 $",
+        var7j: "−1,3 %",
+        sens: "down"
+      }
+    ],
+    coursAvis: "Semaine rouge sur toute la ligne : le bitcoin s'échange autour de 77 300 $, après être monté jusqu'à 81 000 $ le 4 septembre — soit près de 5 % perdus depuis ce sommet. Deux causes se cumulent : le pétrole repassé au-dessus de 100 $ sur fond d'escalade entre les États-Unis et l'Iran, et l'attente du chiffre de l'inflation américaine. Quand le marché redoute une hausse des taux, il vend d'abord ce qui ne rapporte rien par soi-même.",
+    data: {
+      titre: "480 M$ de frais en dix semaines",
+      texte: "C'est ce que les utilisateurs de Robinhood Chain ont payé depuis le lancement de la chaîne, le 1er juillet. Et la trajectoire mérite un coup d'œil de près :",
+      points: [
+        "Le volume monte : 12,2 Md$ échangés sur les sept derniers jours, contre 8,9 Md$ la semaine précédente ;",
+        "Les frais quotidiens, eux, redescendent : 13,0 M$ sur 24 h, contre un pic à 19,1 M$ le 2 septembre ;",
+        "Les dépôts progressent : 897 M$ immobilisés sur la chaîne, contre 820 M$ une semaine plus tôt."
+      ],
+      texteFin: "Le carburant, ce sont les memecoins lancés sur Pons — alors que la chaîne avait été bâtie pour tout autre chose. Robinhood est d'abord un courtier en Bourse : sa blockchain devait servir à faire circuler des actions tokenisées. Un détail qui compte : Robinhood paie le gaz de ses utilisateurs depuis le lancement, une promotion de 90 jours qui s'arrête vers le 29 septembre. Que restera-t-il du volume quand l'utilisateur paiera son gaz lui-même ? Sur ce terrain, la place est déjà prise : Solana concentre plus de 96 % des échanges d'actions tokenisées, avec 4,9 Md$ traités au premier semestre 2026."
+    },
+    definitions: [
+      {
+        terme: "Pool de stabilité",
+        slug: "pool-de-stabilite",
+        def: "La réserve dans laquelle un protocole puise pour absorber les liquidations. Tu y déposes un stablecoin ; le jour où un emprunteur passe sous son seuil, ton dépôt sert à solder sa dette et tu récupères son collatéral, avec une décote en ta faveur. C'est de là que vient le rendement — et c'est aussi le risque : tu peux te retrouver avec de l'ether au lieu de tes stablecoins, précisément le jour où le marché s'effondre."
+      },
+      {
+        terme: "CPI",
+        en: "Consumer Price Index",
+        slug: "cpi",
+        def: "L'indice des prix à la consommation américain, la mesure officielle de l'inflation là-bas. Publié chaque mois, il conditionne les décisions de la banque centrale : une inflation qui remonte pousse à monter les taux, ce qui rend les actifs sans rendement — bitcoin compris — relativement moins attractifs."
+      }
+    ]
+  },
 ];
 
 // Petite fonction utilitaire : retrouver un numéro par son id.
