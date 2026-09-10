@@ -64,11 +64,20 @@ const headers = {
 };
 const emailHeaders = { "List-Unsubscribe": `<${UNSUB}>` };
 
+// En mode TEST, on suffixe l'objet d'un horodatage : Gmail regroupe sinon les
+// tests successifs en conversation et replie la partie répétée derrière un
+// bouton « ··· », ce qui ressemble à tort à une troncature (constaté le 04/07).
+// L'envoi réel (--send) garde l'objet exact du numéro.
+const sendSubject =
+  mode === "--test"
+    ? `${subject} [test ${new Date().toISOString().slice(5, 16).replace("T", " ")}]`
+    : subject;
+
 async function sendOne(to) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers,
-    body: JSON.stringify({ from: FROM, reply_to: REPLY_TO, to, subject, html, headers: emailHeaders }),
+    body: JSON.stringify({ from: FROM, reply_to: REPLY_TO, to, subject: sendSubject, html, headers: emailHeaders }),
   });
   return { status: res.status, body: await res.text() };
 }

@@ -62,6 +62,33 @@ puis une **note globale /10**) :
    où mettre des puces).
 6. **Fidélité à la voix de Marc** — avis net mais nuancé, honnête sur les incertitudes,
    pas condescendant (on explique le jargon, pas les évidences de culture générale).
+7. **Architecture pédagogique** — dimension ajoutée le 2026-09-07 après que Marc a rejeté un
+   texte que j'avais noté 8,5/10 : ma grille ne regardait pas la CONSTRUCTION. À contrôler
+   explicitement sur toute section qui explique un mécanisme :
+   - **Progression** : principe en langage courant → mécanique dans l'ordre chronologique des
+     opérations → usages/stratégies. Jamais mélangés. Aucune notion introduite avant que le
+     lecteur en ait besoin, aucun retour en arrière (ex. « le protocole émet les stablecoins »
+     placé AVANT « tu choisis combien tu empruntes » : faute).
+   - **Définitions au fil de l'eau** : tout terme technique est défini À L'ENDROIT où il
+     apparaît. Un lien vers le glossaire ne remplace PAS la définition. « On l'a vu dans un
+     numéro précédent » ne compte pas.
+   - **Un exemple chiffré par idée**, en chiffres ronds calculables de tête (base 100). Les
+     chiffres de FAITS restent exacts — ne pas confondre les deux.
+   - 🔴 **Ruptures de fil / digressions** — Marc a explicitement demandé que tu saches les
+     débusquer. Un aparté inséré au milieu d'une chaîne d'explication est lu par le lecteur
+     comme un maillon de cette chaîne. Test à appliquer paragraphe par paragraphe : « la phrase
+     d'après découle-t-elle de celle-ci ? » Si non, c'est une digression → elle doit partir en
+     note de fin ou dans une autre section. Signale-la même si le contenu est bon.
+   - 🔴 **Conclusion négative reposant sur un relevé incomplet** — quand le texte affirme qu'une
+     stratégie « ne marche plus aujourd'hui », vérifie que les DEUX jambes du montage (le coût ET
+     le rendement) ont été balayées chez tous les acteurs principaux. Une conclusion négative
+     porte sur l'ensemble du marché : elle exige plus de preuves qu'une conclusion positive.
+     ⚠️ À ne PAS transformer en « toute stratégie doit être présentée comme rentable » : expliquer
+     pourquoi quelque chose ne vaut pas le coup est un contenu légitime et souvent utile. Ce que
+     tu traques, c'est la recherche bâclée, pas la conclusion négative.
+   - **« De l'ordre de X » qui masque une dispersion** — quand un chiffre unique est donné en
+     ordre de grandeur alors que les acteurs vont du simple au décuple, c'est la dispersion qui
+     est l'information. Réclame un tableau comparatif.
 
 **Seuil de passage = 8/10.** En dessous, ça repart en correction.
 

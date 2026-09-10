@@ -149,7 +149,7 @@ export const TERMES: GlossaireTerme[] = [
     slug: "mint",
     terme: "Mint (frapper)",
     definition:
-      "Créer de nouveaux jetons. Pour un stablecoin : tu déposes des dollars et le protocole « frappe » l'équivalent en jetons ; à l'inverse, quand tu les rends, il les « rachète » (redeem) et te rend tes dollars.",
+      "Créer de nouveaux jetons. Pour un stablecoin adossé à des dollars : tu déposes des dollars et le protocole « frappe » l'équivalent en jetons ; quand tu les rends, il les « rachète » (redeem) et te rend tes dollars. Le mécanisme est le même sur un CDP, avec une différence de taille : ce que tu déposes n'est pas du dollar mais une crypto volatile mise en garantie, et les jetons frappés sont une dette que tu devras rembourser pour récupérer ton dépôt.",
     numero: 3,
   },
   {
@@ -170,7 +170,7 @@ export const TERMES: GlossaireTerme[] = [
     slug: "liquidation",
     terme: "Liquidation",
     definition:
-      "La fermeture forcée d'une position par la plateforme, quand la garantie déposée ne couvre plus suffisamment la perte. Elle est automatique : personne ne prévient, il n'y a rien à valider, et l'essentiel de la mise est perdu. La plateforme n'attend pas que la garantie soit à zéro pour couper : elle impose d'en conserver en permanence un petit reliquat, appelé marge de maintenance.",
+      "La vente forcée d'une garantie, quand elle ne couvre plus suffisamment la dette ou la perte. Elle est automatique : personne ne prévient, il n'y a rien à valider. Le mot recouvre deux situations qu'il ne faut pas confondre. Sur un contrat perpétuel, la position est fermée et l'essentiel de la mise est perdu ; la plateforme n'attend pas que la garantie soit à zéro pour couper, elle impose d'en conserver un petit reliquat appelé marge de maintenance. Sur un CDP, en revanche, c'est le collatéral qui est vendu pour solder l'emprunt : une pénalité est prélevée, mais ce qui reste après remboursement de la dette te revient. On ne perd donc pas tout — on perd la pénalité, et surtout le bénéfice d'un éventuel rebond.",
     numero: 4,
   },
   {
@@ -235,6 +235,55 @@ export const TERMES: GlossaireTerme[] = [
     definition:
       "Le mécanisme qui fournit à une blockchain une information qu'elle ne peut pas obtenir seule — au premier rang desquelles le prix d'un actif. Une blockchain ne « voit » pas le cours du bitcoin : il faut le lui livrer depuis l'extérieur. Les principaux fournisseurs sont Chainlink, de loin le plus utilisé (il alimente Aave, Compound et l'essentiel de la DeFi), Pyth, spécialisé dans les mises à jour en moins d'une seconde — ce qui en fait la référence des plateformes de contrats perpétuels —, ainsi que RedStone et Chronicle. C'est un point critique de la DeFi : qui contrôle l'oracle contrôle les liquidations.",
     numero: 4,
+  },
+  {
+    slug: "cdp",
+    terme: "CDP (Collateralized Debt Position)",
+    definition:
+      "Une position de dette garantie par un dépôt. Tu bloques une crypto que tu possèdes, et le protocole te prête des stablecoins en échange — toujours moins, en valeur, que ce que tu as déposé. Ton dépôt n'est pas prêté à quelqu'un d'autre : il reste à toi, simplement immobilisé jusqu'au remboursement. L'équivalent en banque privée s'appelle le crédit lombard. Les protocoles les plus connus sont Sky (ex-MakerDAO), Liquity et Spark.",
+    numero: 5,
+  },
+  {
+    slug: "collateral",
+    terme: "Collatéral",
+    definition:
+      "L'actif que tu bloques en garantie d'un emprunt. Il reste ta propriété, mais tu ne peux plus y toucher tant que la dette n'est pas remboursée. S'il perd trop de valeur, le protocole peut le vendre pour se rembourser : c'est la liquidation.",
+    numero: 5,
+  },
+  {
+    slug: "ltv",
+    terme: "LTV (Loan-to-Value)",
+    definition:
+      "Ta dette rapportée à la valeur de ta garantie. Emprunter 60 $ contre 100 $ de dépôt, c'est un LTV de 60 %. Point important : tu ne le contrôles qu'à moitié — si le prix de ton collatéral baisse, ton LTV remonte tout seul. Chaque protocole fixe un plafond, le LLTV, au-delà duquel la position est liquidée.",
+    numero: 5,
+  },
+  {
+    slug: "long",
+    terme: "Long (être long)",
+    definition:
+      "Parier à la hausse : on est long quand on gagne si le prix monte et qu'on perd s'il baisse. Détenir du bitcoin, c'est déjà être long. L'inverse — parier à la baisse — s'appelle être short. Sur les contrats perpétuels, les deux positions se prennent avec du levier, ce qui les expose à la liquidation.",
+    numero: 5,
+  },
+  {
+    slug: "taux-directeur",
+    terme: "Taux directeur",
+    definition:
+      "Le taux auquel la banque centrale prête aux banques. C'est le prix de départ de l'argent : tout le reste s'en déduit, du crédit immobilier au rendement d'une obligation d'État. Quand il monte, emprunter coûte plus cher partout et placer « sans risque » rapporte davantage — ce qui rend les actifs qui ne versent rien par eux-mêmes, bitcoin compris, relativement moins attractifs. Aux États-Unis, il est fixé par la Fed et se situe à 3,50-3,75 % (septembre 2026).",
+    numero: 5,
+  },
+  {
+    slug: "pool-de-stabilite",
+    terme: "Pool de stabilité",
+    definition:
+      "La réserve dans laquelle un protocole puise pour absorber les liquidations. Tu y déposes un stablecoin ; le jour où un emprunteur passe sous son seuil, ton dépôt sert à solder sa dette et tu récupères son collatéral, avec une décote en ta faveur. C'est de là que vient le rendement — et c'est aussi le risque : tu peux te retrouver avec de l'ether au lieu de tes stablecoins, précisément le jour où le marché s'effondre. Liquity en fait un usage central, avec un pool séparé par collatéral.",
+    numero: 5,
+  },
+  {
+    slug: "cpi",
+    terme: "CPI (Consumer Price Index)",
+    definition:
+      "L'indice des prix à la consommation américain, la mesure officielle de l'inflation aux États-Unis. Publié chaque mois, il conditionne les décisions de la Réserve fédérale : une inflation qui remonte pousse à relever les taux, ce qui rend les actifs qui ne versent aucun revenu — bitcoin compris — relativement moins attractifs. C'est pour cette raison qu'une publication de CPI fait souvent bouger le marché crypto le jour même.",
+    numero: 5,
   },
 ];
 
