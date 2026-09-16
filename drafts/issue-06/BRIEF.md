@@ -196,8 +196,31 @@ protocole SOUS LA LOUPE → `/protocoles/<slug>`.
 - ⛔ **Ne pas** utiliser l'éditeur Broadcast Resend — API `/emails` uniquement
 - 🔴 L'envoi en masse est **irréversible** (19 abonnés). À faire depuis une **connexion
   stable** (hôtel, pas 4G en déplacement), jamais sans mail de test validé.
-- 🔑 `RESEND_API_KEY` et `RESEND_AUDIENCE_ID` vivent dans `site/.env.local` (gitignored,
-  donc **absent d'une session cloud**) → à ajouter en variables d'environnement côté cloud.
+### 🔑 Les clés d'envoi en session cloud
+`site/.env.local` est gitignored → **absent d'une session cloud**. Le script
+`site/scripts/send-newsletter.mjs` a besoin de `RESEND_API_KEY` et `RESEND_AUDIENCE_ID`
+(le second n'est pas un secret : c'est juste l'identifiant de la liste d'abonnés).
+
+✅ **Marc a mis ces deux valeurs de côté avant son départ** (2026-09-16) — elles sont
+accessibles depuis sa tablette. **Il suffit de les lui demander** le jour de l'envoi.
+
+Le `loadEnv()` du script est enveloppé dans un `try/catch` : si `.env.local` n'existe pas,
+le script ne plante pas et se rabat sur `process.env`. Deux voies fonctionnent donc :
+
+```bash
+# soit recréer le fichier
+printf 'RESEND_API_KEY=...\nRESEND_AUDIENCE_ID=...\n' > site/.env.local
+
+# soit exporter à la volée
+export RESEND_API_KEY=... RESEND_AUDIENCE_ID=...
+```
+
+⚠️ Ne **jamais** committer `site/.env.local` (gitignored via `site/.gitignore` : `.env*`) —
+le dépôt est **public**. Si une clé finit par apparaître en clair dans un transcript,
+le prévenir à Marc : elle se régénère en deux clics dans le dashboard Resend.
+
+ℹ️ `PHAROS_API_KEY` n'est **pas** nécessaire pour envoyer : elle ne sert qu'au site
+(notes de risque des fiches stablecoins) et Vercel l'a déjà côté production.
 
 ---
 
