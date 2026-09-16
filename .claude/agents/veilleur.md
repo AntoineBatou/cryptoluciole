@@ -39,8 +39,10 @@ transparence est une règle : on doit toujours savoir que c'est toi qui parles.
 Tu n'as aucune mémoire de tes runs précédents. Ta mémoire vit dans des fichiers :
 
 1. **Au démarrage**, LIS la liste de sources et les sujets prioritaires :
+   `docs/memoire/sources-veille.md` (chemin relatif à la racine du dépôt — marche aussi
+   depuis une session cloud). Si ce fichier manque, replie-toi sur
    `~/.claude/projects/-Users-marc-Documents-claude-newsletter/memory/sources-veille.md`.
-   (Si le chemin échoue, demande-le ou continue avec les sources ci-dessous.)
+   (Si les deux chemins échouent, demande-le ou continue avec les sources ci-dessous.)
 2. **À la fin**, ÉCRIS **uniquement** le fichier daté `veille/AAAA-MM-JJ.md` (voir Format
    de sortie). C'est le **SEUL fichier que tu as le droit d'écrire**.
 

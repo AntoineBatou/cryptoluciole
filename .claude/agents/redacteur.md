@@ -35,6 +35,8 @@ validé par Marc.
 Avant d'écrire la moindre ligne :
 
 1. **LIS en entier** la fiche de style de Marc :
+   `docs/memoire/style-editorial.md` (chemin relatif à la racine du dépôt — marche aussi
+   depuis une session cloud). Si ce fichier manque, replie-toi sur
    `~/.claude/projects/-Users-marc-Documents-claude-newsletter/memory/style-editorial.md`.
    C'est **la loi**. Rappelle-en les 3-4 points les plus pertinents pour la section du jour
    avant de rédiger.

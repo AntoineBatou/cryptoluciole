@@ -209,16 +209,17 @@ protocole SOUS LA LOUPE → `/protocoles/<slug>`.
 - Les 4 agents (`veilleur`, `redacteur`, `verificateur`, `fact-checker`) et le skill
   `/veille` sont versionnés dans `.claude/` → disponibles en session cloud.
 
-### 🔴 Point ouvert : la mémoire n'est pas versionnée
-Les agents `redacteur`, `verificateur` et `veilleur` pointent vers un chemin **absolu et local** :
+### ✅ Mémoire versionnée
+La mémoire est mirrorée dans **`docs/memoire/`** (fiche de style, glossaire, journal de bord,
+sources de veille, + le `CLAUDE.md` global de Marc). Les agents `redacteur`, `verificateur`
+et `veilleur` pointent dessus en priorité, avec repli sur le chemin local du Mac.
+→ Le setup fonctionne à l'identique depuis une session cloud.
 
-```
-~/.claude/projects/-Users-marc-Documents-claude-newsletter/memory/style-editorial.md
-```
+⚠️ C'est un **miroir**, pas la source de vérité (voir `docs/memoire/README.md`). Si une leçon
+de style est capitalisée pendant le déplacement, elle s'écrit dans `docs/memoire/` : penser
+à la recopier vers `~/.claude/.../memory/` au retour sur le Mac.
 
-Ce dossier **n'existe pas** en session cloud. Conséquence : le rédacteur perdrait la fiche
-de style de Marc et le vérificateur n'aurait plus de barème.
-
-La copie de `memory/` dans `docs/memoire/` **n'a pas pu être faite** (action bloquée, voir
-la conversation du 2026-09-16). **À régler avec Marc avant le départ**, sinon la qualité
-de style ne sera pas tenue à distance.
+### 🔴 Seul point restant : les secrets
+`site/.env.local` est gitignored (et doit le rester — **dépôt public**). Les clés
+`RESEND_API_KEY` et `RESEND_AUDIENCE_ID` devront être ajoutées en variables d'environnement
+de la session cloud pour pouvoir envoyer.

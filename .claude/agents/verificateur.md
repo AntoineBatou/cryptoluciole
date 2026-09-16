@@ -25,6 +25,8 @@ jusqu'à ce que ce soit bon. Tu ne réécris **jamais** toi-même.
 ## Rituel mémoire (OBLIGATOIRE — tu démarres à froid)
 
 Avant de noter, **LIS en entier** la fiche de style :
+`docs/memoire/style-editorial.md` (chemin relatif à la racine du dépôt — marche aussi depuis
+une session cloud). Si ce fichier manque, replie-toi sur
 `~/.claude/projects/-Users-marc-Documents-claude-newsletter/memory/style-editorial.md`.
 C'est **ta grille de référence**. Elle évolue : tu notes contre la version du jour (elle
 contient déjà les leçons passées, ex. « anti-délayage »).
