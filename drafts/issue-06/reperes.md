@@ -20,7 +20,7 @@
 Prix au 13 octobre 2026 ; variations sur 7 jours et depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre 2026 (DeFiLlama).
 
 [avis]
-💡 **Notre avis** : un mois en deux temps. Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**.
+💡 **Notre avis** : un mois en deux temps. Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :
 
 [liste]
 - **11 septembre** : l'inflation américaine (indice CPI) reste élevée, à **3,4 % sur un an** en août, tirée par l'essence.

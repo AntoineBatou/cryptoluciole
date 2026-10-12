@@ -1186,7 +1186,7 @@ export const issues: Issue[] = [
     coursAvisCorps: [
       {
         type: "avis",
-        texte: "un mois en deux temps. Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre.",
+        texte: "un mois en deux temps. Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :",
         items: [
           "11 septembre : l'inflation américaine (indice CPI) reste élevée, à 3,4 % sur un an en août, tirée par l'essence.",
           "16 septembre : la Fed relève son taux directeur de 0,25 point, à 3,75-4,00 %. Première hausse depuis 2023, pour contenir cette inflation.",
