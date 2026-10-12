@@ -24,7 +24,7 @@ Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur
 Bonjour à toi 👋,
 
 [p]
-Content de te retrouver après un mois de pause : le dernier numéro date du 10 septembre. On reprend avec un sujet annoncé dès le [#1](https://www.cryptoluciole.com/numeros/1) sans avoir été expliqué : **les marchés de prédiction**, où le prix d'un pari se lit comme une probabilité.
+Content de te retrouver après un mois de pause : le dernier numéro date du 10 septembre. On reprend avec un sujet annoncé dès notre [numéro 1](https://www.cryptoluciole.com/numeros/1) sans avoir été expliqué : **les marchés de prédiction**, où le prix d'un pari se lit comme une probabilité.
 
 [p]
 Côté actus, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, et Robinhood Chain sans gas offert.

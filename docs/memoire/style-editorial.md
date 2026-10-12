@@ -537,6 +537,8 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
     + l'API** : « un seul compte / même collatéral pour tout » était faux aujourd'hui (Marc l'a
     repéré grâce à sa pratique).
 
+- **Renvoyer à un numéro passé : « notre numéro 5 » + lien, jamais « le #5 » seul (2026-10-13).** Écrire « dans notre [numéro 1](https://www.cryptoluciole.com/numeros/1) », « depuis notre numéro 5 », avec le lien à chaque occurrence ; en-tête de tableau : « Depuis notre n°5 ». Marc : « #5 » seul n'indique pas clairement qu'on parle de notre newsletter.
+
 ## Note de vocabulaire (échanges privés, pas le texte)
 - Marc écrit souvent « stacking » → le terme correct est **staking**.
 - Règle FR rappelée et validée : « se rappeler qqch » (sans « de »).

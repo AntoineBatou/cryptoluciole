@@ -7,13 +7,13 @@
 ---
 
 [p]
-Au #5, on observait l'activité de **Robinhood Chain**, la blockchain lancée par le courtier le 1er juillet. Elle était portée surtout par les **memecoins** (des jetons sans autre usage que la spéculation) lancés sur Pons, une plateforme de création de jetons.
+Dans notre [numéro 5](https://www.cryptoluciole.com/numeros/5), on observait l'activité de **Robinhood Chain**, la blockchain lancée par le courtier le 1er juillet. Elle était portée surtout par les **memecoins** (des jetons sans autre usage que la spéculation) lancés sur Pons, une plateforme de création de jetons.
 
 [p]
 On se demandait ce qu'il en resterait une fois que l'utilisateur paierait lui-même son **gas** (les frais versés au réseau pour chaque transaction). Robinhood l'offrait depuis le lancement ; l'offre a pris fin le 29 septembre.
 
 [p]
-Depuis le #5, l'activité a nettement reculé :
+Depuis ce [numéro 5](https://www.cryptoluciole.com/numeros/5), l'activité a nettement reculé :
 
 [liste]
 - les commissions payées aux applications de la chaîne (Uniswap, Pons…), en plus du gas, sont passées d'environ 13 M$ par jour à **2 à 2,5 M$ par jour**, soit **à peu près −80 %** ;

@@ -13,7 +13,7 @@ Qui va gagner l'élection ? La Fed va-t-elle relever ses taux ? La France va-t-e
 Une plateforme où l'on achète et vend des contrats liés au résultat d'un événement : élection, match, décision de la Fed, prix du bitcoin à une date donnée…
 
 [p]
-Au #1, on t'annonçait qu'Hyperliquid se lançait à son tour, sans expliquer comment ça marche. On rattrape ça cette semaine.
+Dans notre [numéro 1](https://www.cryptoluciole.com/numeros/1), on t'annonçait qu'Hyperliquid se lançait à son tour, sans expliquer comment ça marche. On rattrape ça cette semaine.
 
 [st] **Le principe**
 

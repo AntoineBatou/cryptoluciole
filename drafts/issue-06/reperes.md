@@ -6,7 +6,7 @@
 ---
 
 [tableau]
-| Crypto | Prix | 7 jours | Depuis le #5 (10 sept.) |
+| Crypto | Prix | 7 jours | Depuis notre n°5 (10 sept.) |
 |---|---|---|---|
 | **BTC** Bitcoin | ~81 919 $ | 🔴 ▼ −4,8 % | 🟢 ▲ +5,3 % |
 | **ETH** Ethereum | ~2 456 $ | 🔴 ▼ −9,6 % | ⚪ ≈ 0 % |
@@ -17,10 +17,10 @@
 *(Pastilles 🔴/🟢/⚪ = repère de brouillon uniquement : à l'assemblage, texte coloré rouge `#dc2626` / vert `#16a34a` / gris `#94a3b8`, sans emoji. HYPE « ≈ 0 % » : gris, sans flèche.)*
 
 [note-tableau]
-Prix au 13 octobre 2026 ; variations sur 7 jours et depuis le numéro #5 du 10 septembre 2026 (DeFiLlama).
+Prix au 13 octobre 2026 ; variations sur 7 jours et depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre 2026 (DeFiLlama).
 
 [avis]
-💡 **Notre avis** : un mois en deux temps. Depuis le #5, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**.
+💡 **Notre avis** : un mois en deux temps. Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**.
 
 [liste]
 - **11 septembre** : l'inflation américaine (indice CPI) reste élevée, à **3,4 % sur un an** en août, tirée par l'essence.

@@ -17,3 +17,4 @@
 - [Adresse de test email](adresse-test-email.md) — adresse de test Resend (anonymisée ici — PAS le userEmail système)
 - [Mémoire miroir cloud](memoire-miroir-cloud.md) — docs/memoire/ suit dans git pour travailler depuis une tablette ; resync + ré-anonymisation obligatoires
 - [Avis tranchés = plus-value](feedback-analyse-tranchee.md) — Marc veut des « Notre avis » analytiques : gagnants, durable vs temporaire, bonne métrique
+- [Renvoi aux numéros passés](feedback-renvoi-numeros.md) — écrire « notre numéro 5 » + lien /numeros/5, jamais « le #5 » seul

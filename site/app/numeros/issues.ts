@@ -828,7 +828,7 @@ export const issues: Issue[] = [
         },
         {
           type: "p",
-          texte: "Au #1, on t'annonçait qu'Hyperliquid se lançait à son tour, sans expliquer comment ça marche. On rattrape ça cette semaine."
+          texte: "Dans notre numéro 1, on t'annonçait qu'Hyperliquid se lançait à son tour, sans expliquer comment ça marche. On rattrape ça cette semaine."
         },
         {
           type: "st",
@@ -1105,7 +1105,7 @@ export const issues: Issue[] = [
         corps: [
           {
             type: "p",
-            texte: "Au #5, on observait l'activité de Robinhood Chain, la blockchain lancée par le courtier le 1er juillet. Elle était portée surtout par les memecoins (des jetons sans autre usage que la spéculation) lancés sur Pons, une plateforme de création de jetons."
+            texte: "Dans notre numéro 5, on observait l'activité de Robinhood Chain, la blockchain lancée par le courtier le 1er juillet. Elle était portée surtout par les memecoins (des jetons sans autre usage que la spéculation) lancés sur Pons, une plateforme de création de jetons."
           },
           {
             type: "p",
@@ -1113,7 +1113,7 @@ export const issues: Issue[] = [
           },
           {
             type: "p",
-            texte: "Depuis le #5, l'activité a nettement reculé :"
+            texte: "Depuis ce numéro 5, l'activité a nettement reculé :"
           },
           {
             type: "liste",
@@ -1182,11 +1182,11 @@ export const issues: Issue[] = [
         sensRef: "up"
       }
     ],
-    coursRefLabel: "Depuis le #5 (10 sept.)",
+    coursRefLabel: "Depuis notre n°5 (10 sept.)",
     coursAvisCorps: [
       {
         type: "avis",
-        texte: "un mois en deux temps. Depuis le #5, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre.",
+        texte: "un mois en deux temps. Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre.",
         items: [
           "11 septembre : l'inflation américaine (indice CPI) reste élevée, à 3,4 % sur un an en août, tirée par l'essence.",
           "16 septembre : la Fed relève son taux directeur de 0,25 point, à 3,75-4,00 %. Première hausse depuis 2023, pour contenir cette inflation.",
