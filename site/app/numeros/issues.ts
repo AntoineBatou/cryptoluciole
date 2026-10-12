@@ -10,7 +10,8 @@ export type NotionEl =
   | { type: "st"; texte: string }
   | { type: "def"; terme: string; slug: string; texte: string }
   | { type: "liste"; items: string[] }
-  | { type: "avis"; texte: string };
+  | { type: "avis"; texte: string; items?: string[]; suite?: string[] }
+  | { type: "image"; src: string; legende: string };
 
 // Le "type" décrit la forme d'un numéro (les garde-fous TypeScript).
 export type Issue = {
@@ -23,7 +24,8 @@ export type Issue = {
   notion: { titre: string; blocs?: { label: string; texte: string }[]; corps?: NotionEl[] };
   // une actu peut porter des encadrés de définition (termes liés au glossaire).
   actus: { titre: string; texte?: string; corps?: NotionEl[]; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[]; lien?: { label: string; href: string } }[];
-  protocole: {
+  // protocole : optionnel — un numéro peut ne pas avoir de SOUS LA LOUPE (ex. #6).
+  protocole?: {
     nom: string;
     slug?: string; // -> /protocoles/<slug>
     bref: string;
@@ -39,11 +41,15 @@ export type Issue = {
   };
   // varRef / sensRef : 2e colonne de variation, optionnelle — utilisée quand l'écart
   // entre deux numéros dépasse ~2 semaines (ex. #4 : « depuis le #3 »). Libellé = coursRefLabel.
-  cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down"; varRef?: string; sensRef?: "up" | "down" }[];
+  cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down"; varRef?: string; sensRef?: "up" | "down" | "flat" }[];
   coursRefLabel?: string; // en-tête de la 2e colonne, ex. "Depuis le #3 (4 juillet)"
   coursHeure?: string; // heure de prise des cours (ex. "17h24")
   coursAvis?: string; // encadré « Notre avis » sous le tableau des cours
-  data: { titre: string; texte: string; points?: string[]; texteFin?: string };
+  coursAvisCorps?: NotionEl[]; // variante riche (puces, plusieurs paragraphes), ex. #6
+  // data.corps : suite riche de ÇA BRILLE (graphiques, sous-titres, avis), rendue sous la carte (#6+).
+  data: { titre: string; texte: string; points?: string[]; texteFin?: string; corps?: NotionEl[] };
+  // À toi de jouer (optionnel) : appel à répondre + sondage A/B.
+  jeu?: { cta: string; question: string; a: string; b: string };
   definitions: { terme: string; en?: string; def: string; avis?: string; slug?: string }[];
 };
 
@@ -800,6 +806,470 @@ export const issues: Issue[] = [
       }
     ]
   },
+  // ===== #6 — généré depuis drafts/issue-06 (pas de SOUS LA LOUPE) =====
+  {
+    id: "6",
+    numero: 6,
+    date: "Mardi 13 octobre 2026",
+    titre: "Les marchés de prédiction",
+    excerpt: "Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, Robinhood Chain sans gas offert et la carte des actions tokenisées par blockchain.",
+    notion: {
+      titre: "Les marchés de prédiction : quand un prix devient une probabilité",
+      corps: [
+        {
+          type: "p",
+          texte: "Qui va gagner l'élection ? La Fed va-t-elle relever ses taux ? La France va-t-elle battre l'Espagne ? Sur un marché de prédiction, on mise de l'argent sur la réponse à ce genre de questions. Le plus connu dans la crypto s'appelle Polymarket ; son grand concurrent, Kalshi, est une bourse américaine régulée qui fonctionne surtout en dollars."
+        },
+        {
+          type: "def",
+          terme: "Marché de prédiction",
+          slug: "marche-de-prediction",
+          texte: "Une plateforme où l'on achète et vend des contrats liés au résultat d'un événement : élection, match, décision de la Fed, prix du bitcoin à une date donnée…"
+        },
+        {
+          type: "p",
+          texte: "Au #1, on t'annonçait qu'Hyperliquid se lançait à son tour, sans expliquer comment ça marche. On rattrape ça cette semaine."
+        },
+        {
+          type: "st",
+          texte: "Le principe"
+        },
+        {
+          type: "p",
+          texte: "Tu achètes un contrat lié à une question, à laquelle on peut répondre par oui ou par non à une date connue : « L'équipe de France gagnera-t-elle le match du 10 novembre ? ». Tu peux choisir d'acheter le OUI ou le NON."
+        },
+        {
+          type: "p",
+          texte: "Ce n'est pas un bookmaker qui fixe la cote et parie contre toi : le prix se forme entre participants, comme en Bourse, selon l'offre et la demande, et continue d'évoluer pendant toute la durée du contrat, sachant que valeur du OUI + valeur du NON = 1 $. Tu peux revendre ton contrat à tout moment avant la fin."
+        },
+        {
+          type: "p",
+          texte: "Une fois la réponse connue : si la réponse est oui, chaque contrat OUI vaut 1 dollar ; sinon, il ne vaut plus rien. Le contrat NON fonctionne à l'inverse."
+        },
+        {
+          type: "st",
+          texte: "Le prix est une probabilité"
+        },
+        {
+          type: "p",
+          texte: "Reprenons l'exemple du match (marché « La France remportera-t-elle le match ? »). Imaginons que, quelques jours avant celui-ci, le contrat OUI s'échange à 0,62 USDC. Tu veux parier sur la victoire de la France : tu achètes 100 OUI, tu paies 62 USDC (100 × 0,62)."
+        },
+        {
+          type: "liste",
+          items: [
+            "La France gagne : tes 100 contrats valent 100 USDC. Tu gagnes 38 USDC (100 − 62).",
+            "La France ne gagne pas : ils valent zéro. Tu perds tes 62 USDC."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Ta perte maximale est donc ta mise, et ton gain maximal est connu dès l'achat."
+        },
+        {
+          type: "p",
+          texte: "Le prix étant uniquement déterminé par l'offre et la demande (et non par un bookmaker), ce prix de 0,62 se lit directement comme une probabilité : le marché des parieurs sur cette plateforme estime à 62 % les chances que la France gagne. Si plus de gens pensent qu'elle va gagner, ils achètent du OUI, le prix monte, et la probabilité affichée avec."
+        },
+        {
+          type: "def",
+          terme: "Probabilité implicite",
+          slug: "probabilite-implicite",
+          texte: "La probabilité qu'un prix « sous-entend ». Un contrat qui paie 1 $ et s'échange à 0,62 $ traduit une estimation collective de 62 % de chances. Ce n'est pas une prévision scientifique : c'est ce que les participants sont prêts à payer, compte tenu de ce qu'ils savent."
+        },
+        {
+          type: "p",
+          texte: "En théorie, prix et probabilité ne font qu'un. En pratique, l'écart existe, pour trois raisons :"
+        },
+        {
+          type: "liste",
+          items: [
+            "les frais prélevés par la plateforme ;",
+            "l'écart entre prix d'achat et prix de vente : on achète souvent un peu au-dessus de 0,62 et on revend un peu en dessous ;",
+            "les petits marchés, où quelques acheteurs suffisent à déplacer le prix."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Sur une question très suivie, le prix reste un bon repère. Sur une question peu suivie, beaucoup moins."
+        },
+        {
+          type: "st",
+          texte: "OUI + NON = 1"
+        },
+        {
+          type: "p",
+          texte: "Chaque contrat a deux côtés. Les deux prix s'additionnent à 1. Si le OUI vaut 0,62, le NON vaut 0,38. À eux deux, ils totalisent exactement 1 USDC (0,62 + 0,38). À la fin, ce dollar revient en entier au camp gagnant."
+        },
+        {
+          type: "st",
+          texte: "D'où vient l'argent ?"
+        },
+        {
+          type: "p",
+          texte: "De la poche des perdants. Un marché de prédiction ne produit rien : chaque dollar gagné par un camp a été perdu par l'autre."
+        },
+        {
+          type: "st",
+          texte: "Comment le marché se termine"
+        },
+        {
+          type: "p",
+          texte: "À sa création, chaque marché fixe sa règle : la question exacte, l'échéance, et la source qui fera foi (un résultat officiel, une publication de la Fed…). À l'échéance, on constate le résultat, et le marché est « résolu » : les contrats gagnants passent à 1, les perdants à 0, et chacun reçoit ce qui lui revient."
+        },
+        {
+          type: "p",
+          texte: "Reste une question : qui constate le résultat ? Une blockchain ne sait pas qui a gagné un match : il faut le lui dire. C'est le rôle de l'oracle."
+        },
+        {
+          type: "def",
+          terme: "Oracle",
+          slug: "oracle",
+          texte: "Le mécanisme qui fournit à une blockchain une information qu'elle ne peut pas obtenir seule. Il faut distinguer deux cas. Quand le marché porte sur un prix (par exemple « Le bitcoin vaudra-t-il plus de 80 000 $ le 1er janvier ? »), l'information vient de flux automatiques (Chainlink ou Pyth). Quand il porte sur un fait du monde réel (qui a gagné l'élection ?), il faut quelqu'un pour l'établir."
+        },
+        {
+          type: "p",
+          texte: "Sur Polymarket, c'est un oracle décentralisé, UMA. Un proposeur agréé par UMA propose le résultat en déposant une caution. Si personne ne le conteste dans un court délai (et tout le monde peut contester), il est validé ; s'il est contesté, ce sont les détenteurs du jeton UMA qui votent."
+        },
+        {
+          type: "p",
+          texte: "D'où un risque propre à ces marchés : on peut avoir raison sur l'événement et perdre quand même, si la question est ambiguë ou si le vote tranche mal."
+        },
+        {
+          type: "p",
+          texte: "En mars 2025, un marché Polymarket demandait si l'Ukraine accepterait l'accord sur les minerais proposé par les États-Unis : il a été résolu OUI alors qu'aucun accord n'avait été signé, à l'issue d'un vote UMA contesté où un seul gros détenteur de jetons pesait environ un quart des voix, selon un chercheur. Polymarket a refusé de rembourser. Avant d'acheter, la règle de résolution se lit aussi attentivement que la question."
+        },
+        {
+          type: "p",
+          texte: "Bon à savoir : sur Polymarket, on parie en USDC depuis un wallet, et toutes les positions sont visibles sur la blockchain. La plateforme est en revanche bloquée en France : l'ANJ a ordonné en juillet 2026 aux fournisseurs d'accès de bloquer le site, ce que Polymarket conteste en justice."
+        },
+        {
+          type: "avis",
+          texte: "un marché de prédiction n'est pas un placement, il s'agit d'un pari. Mais au delà de cet aspect, son prix est utile : il donne en temps réel l'estimation d'une foule qui engage son propre argent, souvent plus réactive que les sondages ou les commentaires d'experts. À lire comme un indicateur, pas comme une certitude — surtout sur les petits marchés. C'est un formidable outil d'analyse du sentiment de marché."
+        },
+        {
+          type: "p",
+          texte: "Polymarket reste une application où l'on parie. Hyperliquid a pris une autre voie : c'est notre première actu."
+        }
+      ]
+    },
+    actus: [
+      {
+        titre: "HIP-4 : où en sont les marchés de prédiction d'Hyperliquid ?",
+        corps: [
+          {
+            type: "p",
+            texte: "Hyperliquid, la plateforme d'échange de perps, propose des marchés de prédiction depuis le 2 mai (le dispositif HIP-4). Au début, seule son équipe pouvait en créer. Depuis le 29 août, d'autres acteurs le peuvent aussi."
+          },
+          {
+            type: "p",
+            texte: "Le 11 octobre, on comptait 309 marchés ouverts :"
+          },
+          {
+            type: "liste",
+            items: [
+              "147 créés par Outcome, un projet spécialisé dans les marchés de prédiction ;",
+              "93 par trade.xyz, connu sur Hyperliquid pour ses perps qui suivent le cours d'actions, de l'or ou du pétrole ;",
+              "61 par Skew, un autre créateur ;",
+              "8 seulement par Hyperliquid."
+            ]
+          },
+          {
+            type: "p",
+            texte: "L'essentiel de l'offre vient d'acteurs externes, qui se servent d'Hyperliquid comme d'une infrastructure. Le créateur d'un marché touche une part des frais payés par les parieurs : c'est ce qui l'incite à en ouvrir."
+          },
+          {
+            type: "p",
+            texte: "On y parie sur deux grandes familles de questions. Le sport arrive en tête (NFL, football, base-ball), puis les prix : « le bitcoin sera-t-il au-dessus de tel prix vendredi ? ». S'y ajoutent quelques introductions en Bourse et cérémonies de récompenses."
+          },
+          {
+            type: "st",
+            texte: "Qui tranche le résultat ?"
+          },
+          {
+            type: "p",
+            texte: "Sur Polymarket, un proposeur agréé propose le résultat, et on ne passe au vote que si quelqu'un le conteste. Ici, c'est le créateur du marché (le deployer) qui l'annonce lui-même. Il est encadré de trois façons :"
+          },
+          {
+            type: "liste",
+            items: [
+              "chaque marché suit un modèle (type de question, source qui fait foi) approuvé par le vote des validateurs, les acteurs qui font tourner la blockchain d'Hyperliquid ;",
+              "pour devenir créateur, il faut bloquer des HYPE pendant au moins 183 jours (environ 6 mois) ;",
+              "si son marché ne respecte pas le modèle, les validateurs peuvent voter pour lui confisquer une partie de cette mise."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Autrement dit : pas de contestation ouverte à tous ; on fait confiance à un acteur désigné, tenu par l'argent qu'il a mis en jeu."
+          },
+          {
+            type: "p",
+            texte: "Côté parieur, tout se fait au même endroit que les perps, et les paris se règlent en USDC. Pas de levier ni de liquidation : tu paies ton pari en entier à l'achat."
+          },
+          {
+            type: "st",
+            texte: "Et ça marche ?"
+          },
+          {
+            type: "p",
+            texte: "Pas encore vraiment. Le football a porté les premiers mois (28 % du volume depuis le lancement). Ensuite : environ 0,5 M$ échangés par jour en août, près de 2 M$ le 31 août, deux jours après l'arrivée des créateurs extérieurs, environ 1,7 M$ par jour en septembre, puis 1,25 M$ début octobre. L'arrivée de créateurs autres qu'Hyperliquid a relancé l'activité, mais depuis, elle reflue."
+          },
+          {
+            type: "p",
+            texte: "En septembre, HIP-4 a traité environ 51 M$, contre 2,3 à 4,7 Md$ pour Polymarket selon la mesure retenue : de l'ordre de 1 à 2 %, et Kalshi est bien au-delà."
+          },
+          {
+            type: "p",
+            texte: "Et ce volume est en partie dopé : Outcome, qui concentre l'essentiel de l'activité, verse des primes à ses parieurs pour les attirer."
+          },
+          {
+            type: "st",
+            texte: "L'intérêt pour un trader"
+          },
+          {
+            type: "p",
+            texte: "Tu as un perp acheteur sur le bitcoin et tu crains une baisse d'ici vendredi. Sans fermer ton perp, tu achètes depuis le même compte 1 000 NON à 0,20 USDC (1 000 × 0,20 = 200 USDC) sur « le bitcoin sera-t-il au-dessus de tel prix vendredi ? » :"
+          },
+          {
+            type: "liste",
+            items: [
+              "si vendredi le bitcoin termine sous ce prix, tes NON valent 1 000 USDC, soit 800 USDC de gain net (1 000 − 200) : de quoi compenser une partie de ta perte sur le perp ;",
+              "s'il reste au-dessus, même après avoir baissé, ils ne valent rien : 200 USDC perdus, comme une assurance qui n'a pas servi."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Le pari est tout ou rien, à une date donnée : il ne protège pas en proportion de la baisse. Ce montage est possible dès aujourd'hui, avec ses limites :"
+          },
+          {
+            type: "liste",
+            items: [
+              "rien n'indique à ce jour que la plateforme tienne compte de ta protection : ton perp exige la même marge ;",
+              "les USDC dépensés en paris ne servent plus de marge à ton perp, et ton pari ne compte pas comme collatéral ;",
+              "faire de tout ton compte un seul collatéral, paris compris : Hyperliquid l'annonce pour plus tard."
+            ]
+          }
+        ],
+        avis: "le mécanisme fonctionne, mais l'usage ne suit pas encore. Comme le résume un analyste, c'est moins un concurrent de Polymarket qu'une protection ponctuelle posée à côté de ton perp. Et si Hyperliquid tient sa promesse d'un collatéral commun, ça deviendra vraiment intéressant : la même somme servira à la fois à prendre position et à se couvrir, au lieu d'être bloquée deux fois.",
+        source: "documentation Hyperliquid · API Hyperliquid (marchés ouverts au 11/10) · TokenPost (7/10) · crypto.news (3/09) · DeFi Rate · ChainCatcher · KuCoin/Odaily",
+        lien: {
+          label: "→ Voir la fiche Hyperliquid",
+          href: "/protocoles/hyperliquid"
+        }
+      },
+      {
+        titre: "IA et sécurité des wallets : un chercheur d'Ethereum propose un « bunker mode »",
+        corps: [
+          {
+            type: "p",
+            texte: "Le 6 octobre, OpenAI a publié plusieurs centaines de résultats mathématiques obtenus par une IA, sans rien sur la cryptographie des blockchains. C'est la vitesse de ces progrès qui a fait réagir, le lendemain, Justin Drake, chercheur à la Fondation Ethereum : il a appelé à se préparer « calmement » à un « bunker mode »."
+          },
+          {
+            type: "p",
+            texte: "Selon lui, l'IA pourrait casser ECDSA, la signature qui protège les wallets, avant les ordinateurs quantiques. Au pire, « en mois, pas en années »."
+          },
+          {
+            type: "st",
+            texte: "Ce qui serait menacé"
+          },
+          {
+            type: "def",
+            terme: "Clé privée",
+            slug: "cle-privee",
+            texte: "Le secret qui sert à signer chaque envoi depuis une adresse : qui la connaît peut la vider. Ta phrase de récupération permet de la retrouver."
+          },
+          {
+            type: "p",
+            texte: "De ta clé privée, on calcule une clé publique, puis, par un hachage (une empreinte qu'on ne calcule que dans un sens), ton adresse. Casser ECDSA, ce serait remonter de la clé publique à la clé privée. Drake parlerait de cassage le jour où on pourrait le faire en une semaine environ, avec un gros parc de cartes graphiques."
+          },
+          {
+            type: "p",
+            texte: "Sur Ethereum, ta clé publique n'apparaît sur la blockchain qu'au moment où ton adresse envoie une transaction : une adresse qui n'a fait que recevoir mais n'a jamais signé de transaction garde sa clé cachée. Mais presque tous les comptes actifs ont déjà envoyé : leur clé publique est visible."
+          },
+          {
+            type: "st",
+            texte: "Le « bunker mode »"
+          },
+          {
+            type: "p",
+            texte: "Il s'agit de déplacer ses fonds, sans précipitation, vers des adresses neuves qui n'ont jamais envoyé de transaction, en commençant par les gros détenteurs (plateformes d'échange, émetteurs de stablecoins). À long terme, il faudrait une cryptographie fondée uniquement sur le hachage, qui offre beaucoup moins de prise à ce type d'attaque."
+          },
+          {
+            type: "p",
+            texte: "Vitalik Buterin, cofondateur d'Ethereum, prend le risque au sérieux mais déconseille de se précipiter pour déplacer ses fonds : il dit avoir perdu plus d'argent dans des migrations ratées que dans tous les piratages réunis."
+          }
+        ],
+        avis: "rien n'est cassé à ce jour, il ne s'agit que d'hypothèses de scénario à venir. Le réflexe simple (sur Ethereum) : garder une adresse de stockage n'ayant jamais signé de transaction, distincte de celle qui sert aux opérations.",
+        source: "Forklog (8/10) · CryptoSlate (8/10) · Cointelegraph via TradingView · Yahoo Finance / Cryptonews"
+      },
+      {
+        titre: "Robinhood Chain : la spéculation reculait déjà avant la fin du gas offert",
+        corps: [
+          {
+            type: "p",
+            texte: "Au #5, on observait l'activité de Robinhood Chain, la blockchain lancée par le courtier le 1er juillet. Elle était portée surtout par les memecoins (des jetons sans autre usage que la spéculation) lancés sur Pons, une plateforme de création de jetons."
+          },
+          {
+            type: "p",
+            texte: "On se demandait ce qu'il en resterait une fois que l'utilisateur paierait lui-même son gas (les frais versés au réseau pour chaque transaction). Robinhood l'offrait depuis le lancement ; l'offre a pris fin le 29 septembre."
+          },
+          {
+            type: "p",
+            texte: "Depuis le #5, l'activité a nettement reculé :"
+          },
+          {
+            type: "liste",
+            items: [
+              "les commissions payées aux applications de la chaîne (Uniswap, Pons…), en plus du gas, sont passées d'environ 13 M$ par jour à 2 à 2,5 M$ par jour, soit à peu près −80 % ;",
+              "le volume échangé sur sept jours est tombé de 12,2 Md$ à 6,4 Md$ : à peu près divisé par deux ;",
+              "les dépôts, eux, ont progressé, de 897 M$ à environ 1,04 Md$, et tournent autour du milliard depuis le 20 septembre."
+            ]
+          },
+          {
+            type: "p",
+            texte: "L'essentiel du recul s'est produit avant la fin du gas offert : les commissions étaient déjà tombées d'environ 13 à 5-6 M$ par jour fin septembre. La baisse s'est poursuivie ensuite, sans qu'on puisse dire quelle part revient à la fin de l'offre et quelle part à l'essoufflement des memecoins."
+          },
+          {
+            type: "p",
+            texte: "Quant aux actions tokenisées (des actions de Bourse représentées par un jeton sur la blockchain), la raison d'être de la chaîne, elles ont bien décollé : leur volume de transferts y est passé de 1,2 Md$ en juillet à 19,3 Md$ en septembre, et les montants réellement détenus d'une dizaine de millions début juillet à 137 M$. On compare avec les autres blockchains plus bas, dans ÇA BRILLE."
+          }
+        ],
+        avis: "l'activité a fondu mais les dépôts ont augmenté : de l'argent reste sur la chaîne même quand la spéculation reflue. Reste sa promesse de départ, les actions tokenisées : on y en échange beaucoup, mais on y en garde encore peu. C'est sur ce terrain qu'il faudra la juger.",
+        source: "DeFiLlama (frais, volume et dépôts, relevés le 12/10) · Memeburn · crypto.news · Cryptonews · documentation Robinhood Chain"
+      }
+    ],
+    cours: [
+      {
+        actif: "BTC",
+        nom: "Bitcoin",
+        prix: "~81 919 $",
+        var7j: "▼ −4,8 %",
+        sens: "down",
+        varRef: "▲ +5,3 %",
+        sensRef: "up"
+      },
+      {
+        actif: "ETH",
+        nom: "Ethereum",
+        prix: "~2 456 $",
+        var7j: "▼ −9,6 %",
+        sens: "down",
+        varRef: "≈ 0 %",
+        sensRef: "flat"
+      },
+      {
+        actif: "SOL",
+        nom: "Solana",
+        prix: "~106,05 $",
+        var7j: "▼ −12,3 %",
+        sens: "down",
+        varRef: "▲ +5,0 %",
+        sensRef: "up"
+      },
+      {
+        actif: "HYPE",
+        nom: "Hyperliquid",
+        prix: "~82,30 $",
+        var7j: "▼ −12,9 %",
+        sens: "down",
+        varRef: "▼ −0,6 %",
+        sensRef: "down"
+      },
+      {
+        actif: "BNB",
+        prix: "~735 $",
+        var7j: "▼ −6,8 %",
+        sens: "down",
+        varRef: "▲ +2,6 %",
+        sensRef: "up"
+      }
+    ],
+    coursRefLabel: "Depuis le #5 (10 sept.)",
+    coursAvisCorps: [
+      {
+        type: "avis",
+        texte: "un mois en deux temps. Depuis le #5, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre.",
+        items: [
+          "11 septembre : l'inflation américaine (indice CPI) reste élevée, à 3,4 % sur un an en août, tirée par l'essence.",
+          "16 septembre : la Fed relève son taux directeur de 0,25 point, à 3,75-4,00 %. Première hausse depuis 2023, pour contenir cette inflation.",
+          "2 octobre : l'emploi ralentit, avec seulement 29 000 emplois créés en septembre et un chômage à 4,2 %.",
+          "Semaine du 6 octobre : le compte rendu de la dernière réunion de la Fed laisse entrevoir une autre hausse d'ici la fin de l'année. Dans la foulée, les ETF bitcoin perdent environ 680 M$ et plus de 1 Md$ de positions à levier sont liquidées (fermées de force) en 24 h, ce qui accélère la baisse."
+        ],
+        suite: [
+          "Le lien avec la crypto : des taux plus hauts rendent plus attractifs les placements qui versent un intérêt, au détriment du bitcoin, qui n'en verse aucun.",
+          "À nos yeux, la Fed est coincée : relever encore ses taux freinerait un emploi déjà fragile, s'arrêter laisserait filer l'inflation. Les marchés parient sur une pause le 28 octobre, mais le prochain chiffre d'inflation tombe le 14 octobre : un chiffre au-dessus des 3,6-3,7 % attendus pourrait relancer l'idée d'une nouvelle hausse. La Fed elle-même prévoit encore une hausse d'ici la fin de l'année : inutile de compter sur une baisse des taux en 2026."
+        ]
+      }
+    ],
+    data: {
+      titre: "3,3 Md$ d'actions tokenisées : analyse de l'état du marché",
+      texte: "3,3 Md$ : c'est la valeur des actions tokenisées détenues au 12 octobre, contre 2,26 Md$ début juillet. Deux mesures permettent de classer les blockchains, et elles ne disent pas la même chose :",
+      points: [
+        "le volume additionne chaque transfert : la même action échangée 100 fois compte 100 fois. Il se gonfle donc facilement avec des primes (frais offerts, bonus) ;",
+        "la valeur détenue mesure ce qui reste réellement dans les wallets (elle bouge aussi avec le cours des actions)."
+      ],
+      corps: [
+        {
+          type: "st",
+          texte: "Le volume : trois leaders depuis juin"
+        },
+        {
+          type: "image",
+          src: "/numeros/6/ca-brille-actions-tokenisees.png",
+          legende: "Part de chaque blockchain dans le volume mensuel de transferts d'actions tokenisées, de juin à mi-octobre 2026 (octobre : du 1er au 12)."
+        },
+        {
+          type: "p",
+          texte: "Solana menait en juin. En juillet et en août, place à BNB Chain : Binance y a lancé en juin bStocks, sa gamme d'actions tokenisées. Un seul jeton, QQQB (qui suit l'indice Nasdaq-100), a représenté environ 82 % des échanges d'actions tokenisées de juillet, selon CoinDesk (qui mesure les échanges, pas les transferts de nos graphiques). Binance avait aussi supprimé une partie de ses frais jusqu'au 31 août."
+        },
+        {
+          type: "p",
+          texte: "En septembre, sans la gratuité, le volume de BNB Chain a été divisé par deux (de 29 à 14,3 Md$), et Robinhood Chain a pris la tête avec 47 % du volume."
+        },
+        {
+          type: "st",
+          texte: "La valeur détenue : un autre classement"
+        },
+        {
+          type: "image",
+          src: "/numeros/6/ca-brille-valeur-detenue.png",
+          legende: "Part de chaque blockchain dans la valeur d'actions tokenisées détenue en fin de mois, de juin à mi-octobre 2026 (octobre : au 12). Mêmes couleurs que le graphique du volume ; « Autres » : surtout Avalanche et Arbitrum."
+        },
+        {
+          type: "p",
+          texte: "Dit simplement : sur BNB Chain, le volume a été divisé par deux à la fin de la gratuité, mais la valeur détenue est restée, et elle a plus que doublé depuis juillet. À l'inverse, Robinhood Chain, première en volume en septembre, ne pèse que 4 à 5 % de ce qui est détenu."
+        },
+        {
+          type: "avis",
+          texte: "côté volume, c'est un jeu de chaises musicales, et ce sont les primes qui tiennent la musique. En quatre mois, trois leaders différents se sont succédé. Deux d'entre eux ont profité d'une incitation : la gratuité chez Binance, le gas offert chez Robinhood, où une partie des échanges d'actions passait en plus par des paires avec des memecoins, très spéculatives. Chez Binance, le volume a été divisé par deux dès la fin de l'offre. Être n°1 du volume un mois donné ne dit presque rien de la suite.",
+          items: [
+            "Le grand gagnant aujourd'hui, c'est BNB Chain, grâce à Binance plus qu'à la technologie. Sa valeur détenue a plus que doublé, et elle est restée après la fin de la gratuité. Sa force, c'est la distribution : des millions de clients à qui Binance propose ces actions en un clic, et qui peuvent les utiliser comme collatéral sur son exchange. Ses limites : ce sont des certificats émis par une société affiliée à Binance, pas des actions détenues en propre ; ; tout dépend d'un seul acteur ; ; le volume est très concentré sur un seul jeton, QQQB..",
+            "Solana n'est pas renversée, elle est diluée. Elle perd la domination du volume, mais sa valeur détenue progresse de 44 % depuis juillet (de 348 à 500 M$). C'est l'écosystème le plus ouvert : plusieurs émetteurs (xStocks, Ondo…) et des actions tokenisées utilisables dans sa DeFi. Moins spectaculaire, mais un usage plus organique : à nos yeux, le profil le plus durable.",
+            "Robinhood Chain a un atout pas encore joué : des millions de clients courtage, avec des actions déjà en portefeuille. Mais sa chaîne a surtout attiré la spéculation sur les memecoins, et on n'y détient que 137 M$ d'actions tokenisées (4 % du total). Son avenir dépend de la capacité de Robinhood à pousser ses clients vers sa chaîne."
+          ],
+          suite: [
+            "Temporaire ou durable ? Le volume de BNB Chain est en partie temporaire, on l'a vu retomber ; celui de Robinhood Chain reste à éprouver. Leur modèle, lui, peut durer : il repose sur une base de clients existants. La vraie question n'est pas « quelle chaîne ? » mais « qui a les clients ? ». Et à 3,3 Md$, tout le secteur reste une goutte d'eau face aux Bourses classiques."
+          ]
+        }
+      ]
+    },
+    definitions: [
+      {
+        terme: "Probabilité implicite",
+        def: "la probabilité qu'un prix « sous-entend ». Sur un marché de prédiction, un contrat qui paie 1 $ et s'échange à 0,62 $ traduit une estimation de 62 % : c'est l'avis des participants de cette plateforme, pas une prévision scientifique.",
+        slug: "probabilite-implicite"
+      },
+      {
+        terme: "Clé privée",
+        def: "le secret qui sert à signer chaque envoi depuis une adresse : qui la connaît peut vider cette adresse. Ta phrase de récupération permet de la retrouver ; ni l'une ni l'autre ne se communique, à personne.",
+        slug: "cle-privee"
+      }
+    ],
+    jeu: {
+      cta: "Une question sur ce numéro, un point qui reste flou, un sujet que tu aimerais qu'on creuse ? Réponds directement à ce mail : je lis tout, et je réponds.",
+      question: "Un marché de prédiction, pour toi, c'est plutôt…",
+      a: "Un pari, avec de l'argent en jeu",
+      b: "Un indicateur, à consulter sans miser"
+    }
+  }
 ];
 
 // Petite fonction utilitaire : retrouver un numéro par son id.

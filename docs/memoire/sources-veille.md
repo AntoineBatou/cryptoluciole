@@ -1,6 +1,6 @@
 ---
 name: sources-veille
-description: "Sources de veille + sujets prioritaires de Marc pour CryptoLuciole (news, data, protocoles, définitions)"
+description: "Sources de veille (MAJ 2026-10-10) + sujets prioritaires de Marc pour CryptoLuciole (news, data, protocoles, définitions)"
 metadata: 
   node_type: memory
   type: reference
@@ -43,6 +43,31 @@ protocoles/définitions, tout le contenu), EN PLUS des recherches web et de
 ## Sources EN — analyses DeFi actionnables (ajoutées 2026-07-04)
 
 - **The DeFi Investor** — newsletter Substack (EN) : `https://www.thedefinvestor.com` (RSS Substack : `https://www.thedefinvestor.com/feed`). Aussi sur **X/Twitter : `@TheDeFinvestor`** (`https://x.com/TheDeFinvestor`) et **Substack : `https://substack.com/@thedefinvestor`** (des dizaines de milliers d'abonnés, tenu par un analyste crypto). **Hebdomadaire**, gratuite (abo payant optionnel). Angle = **stratégies DeFi actionnables** : stablecoins, airdrops/farming, tokenisation d'actions, protocoles (Hyperliquid…), analyses de tendances. **Très aligné avec l'edge du projet** (DeFi vulgarisée ET actionnable, pas « les news en plus court »). Découverte par Marc le 2026-07-04, qualifiée « superbe ». C'est **probablement la source de l'angle Open USD** du #3 (partage du rendement des réserves). ⚠️ Média d'opinion/stratégie → recouper systématiquement tout chiffre avant de citer. Pas encore testée par le veilleur.
+
+## Sources ajoutées après la veille de reprise du 2026-10-10 (toutes promues sur décision de Marc)
+
+**Sources primaires (à privilégier pour le fact-check)**
+- **federalreserve.gov** — communiqués FOMC + minutes. Source primaire pour les décisions de taux.
+- **senate.gov / congress.gov** — votes et état des textes (CLARITY Act). Seule source fiable pour la liste exacte des votants.
+- **ESMA** — esma.europa.eu. Source primaire MiCA (avis du 8 oct. 2026 sur les stablecoins non conformes).
+- **DefiLlama Hacks** — defillama.com/hacks. Base des incidents (montants, dates) : à utiliser avant la presse.
+- **DeFiLlama `/protocol/<slug>` et `/tvl/<slug>`** — TVL d'un protocole (voir [[fact-check-sources-primaires]]).
+- **API Pendle `markets/active`** — taux implicites des pools Pendle. ⚠️ Vérifier la date des données (un relevé du 10/08 est ressorti en octobre).
+- **Doc Robinhood Chain** — docs officielles de la chaîne (gaz, paramètres).
+- **`llms-full.txt` de la doc Hyperliquid** — version texte intégrale de la doc, pratique pour un agent. ⚠️ La page HIP-4 lue le 10/10 semblait antérieure à la phase 2.
+- **Rapport CertiK « Skynet » 2026** — taille du marché des prédictions (15,8 → 63,5 Md$). Pas encore ouvert directement.
+
+**Médias généralistes / spécialisés**
+- **CoinDesk** — coindesk.com (policy & markets).
+- **The Block** — theblock.co/regulation (régulation US) ; a couvert l'alerte « bunker mode » de Justin Drake (7 oct. 2026).
+- **CNBC** — cnbc.com (macro, Fed, CLARITY).
+- **ChainCatcher** — chaincatcher.com. Bon suivi de HIP-4 (volumes, deployers tiers).
+- **Memeburn**, **DefiRate**, **TradeTheOutcome** — marchés de prédiction. ⚠️ DefiRate et les chiffres de taille de marché : risque de double comptage.
+
+**Agrégateurs / digests (à recouper systématiquement)**
+- **Rio Times** — riotimesonline.com. Clôtures hebdo BTC/ETH.
+- **Bitcoin News Digest** — bitcoinnewsdigest.substack.com. Digest quotidien BTC, suivi des wallets saisis.
+- **Zebpay Weekly Crypto Report** — zebpay.com/in/blog. Calendrier macro (CPI), liquidations. Plateforme commerciale.
 
 ## Sujets prioritaires de Marc (par ordre d'intérêt)
 

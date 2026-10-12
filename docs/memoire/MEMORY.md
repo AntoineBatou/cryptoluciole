@@ -16,3 +16,4 @@
 - [PDF dossier — mode d'emploi](pdf-dossier-playbook.md) — recette réutilisable pour le PDF « type livre » d'un dossier (Paged.js + les 2 pièges : version Chrome, feuille -s ignorée)
 - [Adresse de test email](adresse-test-email.md) — adresse de test Resend (anonymisée ici — PAS le userEmail système)
 - [Mémoire miroir cloud](memoire-miroir-cloud.md) — docs/memoire/ suit dans git pour travailler depuis une tablette ; resync + ré-anonymisation obligatoires
+- [Avis tranchés = plus-value](feedback-analyse-tranchee.md) — Marc veut des « Notre avis » analytiques : gagnants, durable vs temporaire, bonne métrique

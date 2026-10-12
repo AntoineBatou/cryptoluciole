@@ -285,6 +285,27 @@ export const TERMES: GlossaireTerme[] = [
       "L'indice des prix à la consommation américain, la mesure officielle de l'inflation aux États-Unis. Publié chaque mois, il conditionne les décisions de la Réserve fédérale : une inflation qui remonte pousse à relever les taux, ce qui rend les actifs qui ne versent aucun revenu — bitcoin compris — relativement moins attractifs. C'est pour cette raison qu'une publication de CPI fait souvent bouger le marché crypto le jour même.",
     numero: 5,
   },
+  {
+    slug: "marche-de-prediction",
+    terme: "Marché de prédiction",
+    definition:
+      "Une plateforme où l'on achète et vend des contrats liés au résultat d'un événement : élection, match, décision de la Fed, prix du bitcoin à une date donnée… Chaque question se répond par oui ou par non. Le prix du contrat se forme entre participants, selon l'offre et la demande, et la valeur du OUI plus celle du NON font toujours 1 $. Une fois la réponse connue, le contrat gagnant vaut 1 $ et le perdant ne vaut plus rien. Les plus connus sont Polymarket et Kalshi.",
+    numero: 6,
+  },
+  {
+    slug: "probabilite-implicite",
+    terme: "Probabilité implicite",
+    definition:
+      "La probabilité qu'un prix « sous-entend ». Sur un marché de prédiction, un contrat qui paie 1 $ et s'échange à 0,62 $ traduit une estimation collective de 62 % de chances. Ce n'est pas une prévision scientifique : c'est ce que les participants de cette plateforme sont prêts à payer, compte tenu de ce qu'ils savent. En pratique, les frais, l'écart entre prix d'achat et prix de vente et le petit nombre de participants sur certains marchés éloignent un peu le prix de cette probabilité.",
+    numero: 6,
+  },
+  {
+    slug: "cle-privee",
+    terme: "Clé privée",
+    definition:
+      "Le secret qui sert à signer chaque envoi depuis une adresse : qui la connaît peut vider cette adresse. Ta phrase de récupération permet de la retrouver. De la clé privée, on calcule une clé publique, puis, par hachage (une empreinte qu'on ne calcule que dans un sens), ton adresse. Retrouver la clé privée à partir de la clé publique est aujourd'hui hors de portée : c'est ce qui protège les wallets.",
+    numero: 6,
+  },
 ];
 
 // Retrouver un terme par son slug.

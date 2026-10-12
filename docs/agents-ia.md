@@ -93,7 +93,7 @@ Aujourd'hui : **aucun agent dans `newsletter/.claude/`** (seul `settings.local.j
 - **Déclenchement** : skill **`/veille`** (commande fixe). Manuel pour l'instant (pas de
   cron — Claude Code ne lance rien seul en arrière-plan).
 
-### Agent 2 — Le Rédacteur ✍️ (modèle : Opus 4.8)
+### Agent 2 — Le Rédacteur ✍️ (modèle : Opus)
 
 - **Rôle** : rédige **une section à la fois**, sur demande, dans la voix de Marc.
 - **Forme réelle** : la **session principale (Claude principal)** échange avec Marc (choix
@@ -211,7 +211,7 @@ Besoin d'un protocole
 ## Critères d'acceptation
 
 1. 4 fichiers agents créés dans `newsletter/.claude/agents/` avec le bon modèle déclaré
-   (veilleur=Haiku, rédacteur=Opus 4.8, vérificateur=Opus, fact-checker=Sonnet).
+   (veilleur=Haiku, rédacteur=Opus, vérificateur=Opus, fact-checker=Sonnet).
 2. Skill `/veille` fonctionnel : produit `veille/AAAA-MM-JJ.md` classé par catégorie +
    met à jour `sources-veille.md`.
 3. Le rédacteur sous-agent rédige une section isolée en lisant `style-editorial.md`, sans
@@ -254,7 +254,7 @@ Besoin d'un protocole
 | Déclenchement quotidien | Manuel (skill `/veille`), pas de cron pour l'instant |
 | Veilleur vs analyste-defi | Agent **neuf** dans newsletter ; analyste-defi reste séparé, pour la partie protocole |
 | Périmètre | Les **4 agents** spécifiés d'un coup |
-| Modèles | Veilleur=Haiku · Rédacteur=Opus 4.8 · Vérificateur=Opus · Fact-checker=Sonnet |
+| Modèles | Veilleur=Haiku · Rédacteur=Opus · Vérificateur=Opus · Fact-checker=Sonnet |
 | Sortie veille | Fichier daté `veille/AAAA-MM-JJ.md` + maj `sources-veille.md` |
 | Déclenchement agents | Mix : skill `/veille` + rédacteur/vérif/fact en sous-agents Task |
 | Boucle d'apprentissage | Vérificateur **propose** la leçon, Claude principal **écrit** la fiche |

@@ -37,3 +37,11 @@ qui recopie des chiffres périmés — voir l'épisode des taux Sky dans [[etat-
 Un chiffre noté dans un dossier de faits n'est pas acquis : le #5 en contenait trois faux
 (voir [[etat-projet]]). **Re-vérifier au moment d'écrire**, surtout si le chiffre porte une
 conclusion (comparaison, classement, « X gagne plus que Y »).
+
+## Actions tokenisées : mesurer la VALEUR DÉTENUE, pas le volume (décidé 2026-10-12)
+- Marc : « si on trade 100 fois la même action ça rentre 100 fois ? » → oui ; le volume se gonfle (wash
+  trading, primes, paires memecoins) et les parts de marché en volume citées par la presse sont souvent
+  sans source. Métrique de référence = **valeur détenue** (« distributed value ») sur rwa.xyz, lisible
+  sans login par émetteur et par réseau : `app.rwa.xyz/stocks`, `/platforms/<xstocks|bstocks|robinhood>`,
+  `/networks/<robinhood|solana>`. Limite : la répartition d'Ondo par chaîne et les parts de marché
+  sont derrière login.

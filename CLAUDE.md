@@ -9,7 +9,7 @@ qu'on construit les agents.
 | Agent | Modèle | Comment le lancer | État |
 |-------|--------|-------------------|------|
 | 🔦 **Veilleur** (lit large, classe, ne rédige pas) | Haiku | **`/veille`** → écrit `veille/AAAA-MM-JJ.md` + remonte nouvelles sources | ✅ construit |
-| ✍️ **Rédacteur** (une section à la fois, ton style) | Opus 4.8 | dis « on rédige » / « on attaque la section X » → je lance le sous-agent `redacteur` ; sortie dans `drafts/` | ✅ construit |
+| ✍️ **Rédacteur** (une section à la fois, ton style) | Opus | dis « on rédige » / « on attaque la section X » → je lance le sous-agent `redacteur` ; sortie dans `drafts/` | ✅ construit |
 | ✅ **Vérificateur** (note /10, seuil 8, max 3 boucles) | Opus | lancé auto après le rédacteur : note → fait reprendre en silence jusqu'à ≥8 (max 3) → Marc ne lit que la version propre + bilan | ✅ construit |
 | 🔍 **Fact-checker** (lit tout, web, ne change rien) | Sonnet | lancé avant l'envoi : vérifie chiffres + actualité, rapport ✅/⚠️/❓ + GO/NO-GO dans `factcheck/`, ne corrige rien (c'est moi qui corrige après) | ✅ construit |
 

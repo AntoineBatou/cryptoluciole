@@ -29,7 +29,7 @@
 **Pas de veilleur** — Marc fournit les sujets lui-même (économie de tokens, décidé en début de session).
 
 Parcours retenu, inchangé par ailleurs :
-1. **Rédacteur** (Opus 4.8) → une section à la fois
+1. **Rédacteur** (Opus) → une section à la fois
 2. **Vérificateur** (Opus) → note /10, seuil 8, reboucle en silence (max 3)
 3. Validation de Marc → section suivante
 4. Assemblage `site/app/emails/issues/issue-06.ts` + `site/app/numeros/issues.ts`
@@ -246,3 +246,38 @@ de style est capitalisée pendant le déplacement, elle s'écrit dans `docs/memo
 `site/.env.local` est gitignored (et doit le rester — **dépôt public**). Les clés
 `RESEND_API_KEY` et `RESEND_AUDIENCE_ID` devront être ajoutées en variables d'environnement
 de la session cloud pour pouvoir envoyer.
+
+---
+
+## 12. 🔄 MISE À JOUR DU 2026-10-10 — reprise après un mois (décisions de Marc)
+
+Le #6 n'est pas parti le 17/09 (vacances). Veille de reprise : `veille/2026-10-10.md`.
+
+- **Pas de date d'envoi fixée** — on rédige section par section, envoi dès que prêt.
+- **Actus macro FOMC + CLARITY abandonnées comme actus** (périmées : 3,5 semaines).
+  - Fed (hausse surprise +25 pb le 16/09, 3,75-4,00 %), inflation, chômage → intégrés dans le
+    **« 💡 Notre avis » de LES REPÈRES**, un peu plus long que d'habitude (résumé macro).
+  - CLARITY Act (cloture ratée 49-50 le 15/09) → une phrase dans l'intro au plus.
+- **DANS LE FAISCEAU = 3 actus** :
+  1. **HIP-4, ce qui a changé depuis juin** (phase 2 permissionless depuis le 29/08, Outcome +
+     trade.xyz ; en septembre la reprise des volumes vient des deployers externes). Stake
+     500 000 HYPE = majorité des sources mais NON confirmé par la doc officielle → ne pas citer
+     sans fact-check.
+  2. **Justin Drake (Fondation Ethereum) et le « bunker mode »** (7/10) : l'IA pourrait casser
+     ECDSA avant le quantique ; pire cas = clé privée retrouvée depuis la clé publique en ~1
+     semaine. Pédagogie : clé privée → clé publique → adresse (hash) ; une adresse qui n'a
+     jamais signé cache sa clé publique. Avis mesuré : rien n'est cassé, avis perso de Drake,
+     Vitalik déconseille la précipitation. ⚠️ « 7 M BTC exposés » = source unique.
+  3. **Robinhood Chain après la fin du gaz offert (29/09)** — court, tient la promesse du #5.
+- **SOUS LA LOUPE = Pendle** (validé). Taux à récupérer en direct (API), pas d'actu récente trouvée.
+- **ÇA BRILLE** : piste Kalshi ~59 Md$ en septembre vs « 63,5 Md$ pour tout 2025 » (CertiK,
+  source secondaire) — à confirmer.
+- **REPÈRES** : ajouter la colonne « Depuis le #5 (10 sept.) » (écart d'un mois).
+- **À toi de jouer** : à rétablir.
+- **Réservé pour le #7** : ESMA/USDT (échéance 8 janv. 2027) ; Open USD lancé le 1/10 (suivi du #3).
+
+## 13. MISE À JOUR DU 2026-10-13
+- Validés par Marc : ON ÉCLAIRE, actu 1 HIP-4, actu 2 Drake, actu 3 Robinhood Chain, ÇA BRILLE (actions tokenisées par blockchain, graphique + tableau rwa.xyz, remplace Kalshi).
+- **Pas de SOUS LA LOUPE au #6** : Pendle reporté au #7 (numéro déjà dense ; Pendle mérite une vraie pédagogie PT/YT). Fiche site Pendle à créer pour le #7 (wiki d'abord ou /analyse).
+- Réservé #7 : Pendle (SOUS LA LOUPE), ESMA/USDT, Open USD, Kalshi (ÇA BRILLE possible).
+- Reste #6 : LES REPÈRES (+ colonne « Depuis le #5 » + avis macro), DÉFINITIONS, À toi de jouer, intro « Au menu », assemblage.

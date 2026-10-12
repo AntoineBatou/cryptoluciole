@@ -62,7 +62,27 @@ function CorpsBlocks({ corps }: { corps: NotionEl[] }) {
               className="mb-4 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80"
             >
               💡 <strong>Notre avis :</strong> {el.texte}
+              {el.items && (
+                <ul className="mt-2 list-disc space-y-2 pl-5">
+                  {el.items.map((it, j) => (
+                    <li key={j}>{it}</li>
+                  ))}
+                </ul>
+              )}
+              {el.suite?.map((s, j) => (
+                <p key={j} className="mt-2">
+                  {s}
+                </p>
+              ))}
             </div>
+          );
+        if (el.type === "image")
+          return (
+            <figure key={i} className="mb-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={el.src} alt={el.legende} className="w-full rounded-xl" />
+              <figcaption className="mt-1 text-xs text-nuit/50">{el.legende}</figcaption>
+            </figure>
           );
         return (
           <p key={i} className="mb-4 leading-relaxed text-nuit/80">
@@ -95,8 +115,8 @@ export default async function NumeroPage({
 
   // Soit plusieurs badges (protocole à tranches, ex. Re), soit un seul (ex. Lido).
   const badges =
-    n.protocole.badges ??
-    (n.protocole.risqueSens
+    n.protocole?.badges ??
+    (n.protocole?.risqueSens
       ? [
           {
             label: "Niveau",
@@ -193,7 +213,8 @@ export default async function NumeroPage({
           </div>
         </section>
 
-        {/* SOUS LA LOUPE */}
+        {/* SOUS LA LOUPE (absent de certains numéros) */}
+        {n.protocole && (
         <section className="mb-12">
           <Pill tone="teal">🔍 Sous la loupe</Pill>
           <h2 className="mb-4 mt-4 text-2xl font-extrabold text-nuit">
@@ -237,6 +258,7 @@ export default async function NumeroPage({
             </p>
           )}
         </section>
+        )}
 
         {/* LES REPÈRES (cours) */}
         <section className="mb-12">
@@ -279,7 +301,11 @@ export default async function NumeroPage({
                     {n.coursRefLabel && (
                       <td
                         className={`px-4 py-3 text-right font-bold ${
-                          (c.sensRef ?? c.sens) === "up" ? "text-vert" : "text-rouge"
+                          (c.sensRef ?? c.sens) === "up"
+                            ? "text-vert"
+                            : (c.sensRef ?? c.sens) === "flat"
+                              ? "text-nuit/40"
+                              : "text-rouge"
                         }`}
                       >
                         {c.varRef ?? ""}
@@ -293,6 +319,11 @@ export default async function NumeroPage({
           {n.coursAvis && (
             <div className="mt-4 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80">
               💡 <strong>Notre avis :</strong> {n.coursAvis}
+            </div>
+          )}
+          {n.coursAvisCorps && (
+            <div className="mt-4">
+              <CorpsBlocks corps={n.coursAvisCorps} />
             </div>
           )}
         </section>
@@ -315,6 +346,11 @@ export default async function NumeroPage({
             <p className="mt-2 leading-relaxed text-white/70">{n.data.texteFin}</p>
           )}
         </section>
+        {n.data.corps && (
+          <section className="-mt-8 mb-12">
+            <CorpsBlocks corps={n.data.corps} />
+          </section>
+        )}
 
         {/* DÉFINITIONS */}
         <section className="mb-12">
@@ -347,6 +383,21 @@ export default async function NumeroPage({
             ))}
           </ul>
         </section>
+
+        {/* À TOI DE JOUER (optionnel) */}
+        {n.jeu && (
+          <section className="mb-12">
+            <h2 className="mb-3 text-lg font-extrabold text-nuit">✉️ À toi de jouer</h2>
+            <p className="mb-4 leading-relaxed text-nuit/80">{n.jeu.cta}</p>
+            <div className="rounded-xl bg-green-50 p-5 leading-relaxed text-nuit/80">
+              🗳️ <strong>{n.jeu.question}</strong>
+              <br />
+              <strong className="text-teal">A.</strong> {n.jeu.a}
+              <br />
+              <strong className="text-teal">B.</strong> {n.jeu.b}
+            </div>
+          </section>
+        )}
 
         <p className="border-t border-black/10 pt-6 text-xs leading-relaxed text-nuit/50">
           ⚠️ Contenu purement pédagogique — pas un conseil en investissement. Fais tes propres recherches.

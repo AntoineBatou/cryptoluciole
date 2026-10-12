@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 90507c6d-d393-4d8b-99c7-5a756f3f0a77
+  modified: 2026-10-12T21:06:52.335Z
 ---
 
 ## ⚠️ RITUEL OBLIGATOIRE (zéro raté)
@@ -333,6 +334,14 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
      apparaît**.
   3. **Les usages / stratégies**, une fois seulement que 1 et 2 sont acquis.
   Ne jamais introduire une notion avant que le lecteur ait besoin d'elle.
+  **Rechute le 2026-10-10 (ON ÉCLAIRE #6, marchés de prédiction), pourtant notée 8/10** : le
+  « principe » donnait d'emblée ce que vaut le contrat à la fin (1 $ ou rien), puis revenait à
+  l'achat et à l'échange. Marc a réordonné lui-même : « on commence par le début et on ne parle de
+  la valeur de 1 qu'à la fin ». Ordre qu'il a retenu = **la vie de l'objet dans l'ordre où le
+  lecteur la vit** : la question → je choisis OUI ou NON → j'échange avec d'autres participants
+  (pas un bookmaker) → l'événement a lieu → ce que vaut mon contrat. Piège à surveiller : être
+  tenté de « définir » un produit par son dénouement parce que c'est ce qui le caractérise ;
+  le lecteur, lui, le découvre par le début.
 
 - **Définir TOUS les termes techniques au fil de l'eau, sans exception (2026-09-07).** Marc a
   reproché l'absence de définition de **mint**, **LLTV** et **seuil de liquidation** dans un
@@ -483,6 +492,50 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
   la suivante. Quand le calendrier presse, proposer de réduire le périmètre (moins d'actus,
   décaler l'envoi) plutôt que de sauter son passage. Et si j'ai enchaîné plusieurs sections,
   le dire explicitement et lui donner l'état exact de ce qu'il a relu ou non.
+
+- **Ce que la relecture de Marc sur ON ÉCLAIRE #6 a montré (2026-10-10, texte noté 8/10 avant).**
+  Ses retouches à la main, à relire comme des exemples plutôt que comme des interdits :
+  1. **Donner la règle clé là où le lecteur en a besoin pour la première fois.** Il a remonté
+     « valeur du OUI + valeur du NON = 1 $ » dans le principe, au moment où l'on dit que le prix
+     évolue, au lieu de la garder pour une section dédiée plus bas.
+  2. **Rendre visible le « parce que ».** Il a écrit « le prix étant déterminé par l'offre et la
+     demande (et non par un bookmaker), il se lit comme une probabilité ». La v2 affirmait le
+     résultat sans le lien de cause.
+  3. **Préciser QUI pense quoi.** « Le marché estime » → « le marché des parieurs sur cette
+     plateforme estime » : une probabilité implicite est l'avis d'un groupe précis, pas une vérité.
+  4. **L'exemple part de l'intention du lecteur** : « tu veux parier sur la victoire de la France :
+     tu achètes 100 OUI » plutôt que « si tu en achètes 100 ».
+  5. **Couper le mécanisme de second rang, même juste.** Il a supprimé l'arbitrage (0,92 → 1), la
+     création d'une paire de contrats, le parallèle PMU et la « somme nulle légèrement négative ».
+     Le lecteur débutant a besoin de la règle (OUI + NON = 1), pas de la plomberie qui la maintient.
+     Se demander pour chaque paragraphe technique : *Grégoire en a-t-il besoin pour comprendre la
+     suite ?* — si non, une ligne ou rien.
+  6. **Distinguer les cas plutôt que généraliser.** Dans l'encadré oracle, il a séparé les marchés
+     sur un prix (flux automatiques) des marchés sur un fait réel (il faut quelqu'un pour trancher).
+  7. **Une comparaison entre deux acteurs tient en deux lignes** quand elle sert de chute ; la grille
+     à cinq rubriques était trop lourde.
+
+- **Une actu = une ANALYSE, pas une description (leçon de l'actu HIP-4 #6, 2026-10-12).** La v2
+  (notée 8,5/10) décrivait le dispositif (qui crée les marchés, qui tranche) ; Marc : « il manque
+  une analyse qui était le but de cette news ». Pour une actu de suivi (« où en est X ? »), répondre
+  aux questions du lecteur : **est-ce que ça marche ?** (évolution chiffrée, comparaison avec les
+  concurrents, ce qui gonfle les chiffres — primes, incitations) et **qu'est-ce que ça m'apporte ?**
+  (cas d'usage concret chiffré + ses limites réelles aujourd'hui vs promesses). Le « Notre avis »
+  tranche sur l'intérêt réel, et peut ouvrir sur ce qui rendrait la chose vraiment intéressante.
+  Autres leçons de la même actu :
+  - **Ne jamais présenter une ouverture/nouveauté datée comme d'actualité si elle a des semaines** :
+    titre en « point d'étape » (« où en sont… ? »), et poser les deux dates (lancement vs ouverture)
+    pour que le lecteur ne confonde pas.
+  - **Un mot vague comme « l'ouverture » doit dire de quoi** (« l'arrivée de créateurs autres
+    qu'Hyperliquid »).
+  - **Compresser un mécanisme peut le rendre faux** : « sur Polymarket, un vote tranche » → faux
+    (oracle optimiste : proposition, vote seulement si contestation). Résumer, oui, mais en gardant
+    la condition.
+  - **Un exemple de couverture binaire doit montrer le tout-ou-rien** (gain fixe si sous le seuil à
+    l'échéance, mise perdue sinon, même après une baisse) — jamais « ta perte est compensée ».
+  - **Les affirmations de l'article source (OAK) sur le produit se revérifient dans la doc officielle
+    + l'API** : « un seul compte / même collatéral pour tout » était faux aujourd'hui (Marc l'a
+    repéré grâce à sa pratique).
 
 ## Note de vocabulaire (échanges privés, pas le texte)
 - Marc écrit souvent « stacking » → le terme correct est **staking**.
