@@ -1153,45 +1153,45 @@ export const issues: Issue[] = [
       {
         actif: "BTC",
         nom: "Bitcoin",
-        prix: "~81 919 $",
-        var7j: "▼ −5 %",
+        prix: "~83 574 $",
+        var7j: "▼ −3 %",
         sens: "down",
-        varRef: "▲ +5 %",
+        varRef: "▲ +7 %",
         sensRef: "up"
       },
       {
         actif: "ETH",
         nom: "Ethereum",
-        prix: "~2 456 $",
-        var7j: "▼ −10 %",
+        prix: "~2 513 $",
+        var7j: "▼ −7 %",
         sens: "down",
-        varRef: "≈ 0 %",
-        sensRef: "flat"
+        varRef: "▲ +2 %",
+        sensRef: "up"
       },
       {
         actif: "SOL",
         nom: "Solana",
-        prix: "~106 $",
-        var7j: "▼ −12 %",
+        prix: "~107 $",
+        var7j: "▼ −11 %",
         sens: "down",
-        varRef: "▲ +5 %",
+        varRef: "▲ +6 %",
         sensRef: "up"
       },
       {
         actif: "HYPE",
         nom: "Hyperliquid",
         prix: "~82 $",
-        var7j: "▼ −13 %",
+        var7j: "▼ −12 %",
         sens: "down",
         varRef: "▼ −1 %",
         sensRef: "down"
       },
       {
         actif: "BNB",
-        prix: "~735 $",
-        var7j: "▼ −7 %",
+        prix: "~742 $",
+        var7j: "▼ −5 %",
         sens: "down",
-        varRef: "▲ +3 %",
+        varRef: "▲ +4 %",
         sensRef: "up"
       }
     ],
@@ -1203,7 +1203,7 @@ export const issues: Issue[] = [
       },
       {
         type: "p",
-        texte: "Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :"
+        texte: "Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 7 %, mais la dernière semaine est rouge. Hyperliquid y perd 12 % et revient à son niveau du 10 septembre. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :"
       },
       {
         type: "liste",

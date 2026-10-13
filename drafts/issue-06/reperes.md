@@ -8,11 +8,11 @@
 [tableau]
 | Crypto | Prix | 7 jours | Depuis notre n°5 (10 sept.) |
 |---|---|---|---|
-| **BTC** Bitcoin | ~81 919 $ | 🔴 ▼ −5 % | 🟢 ▲ +5 % |
-| **ETH** Ethereum | ~2 456 $ | 🔴 ▼ −10 % | ⚪ ≈ 0 % |
-| **SOL** Solana | ~106 $ | 🔴 ▼ −12 % | 🟢 ▲ +5 % |
-| **HYPE** Hyperliquid | ~82 $ | 🔴 ▼ −13 % | 🔴 ▼ −1 % |
-| **BNB** | ~735 $ | 🔴 ▼ −7 % | 🟢 ▲ +3 % |
+| **BTC** Bitcoin | ~83 574 $ | 🔴 ▼ −3 % | 🟢 ▲ +7 % |
+| **ETH** Ethereum | ~2 513 $ | 🔴 ▼ −7 % | 🟢 ▲ +2 % |
+| **SOL** Solana | ~107 $ | 🔴 ▼ −11 % | 🟢 ▲ +6 % |
+| **HYPE** Hyperliquid | ~82 $ | 🔴 ▼ −12 % | 🔴 ▼ −1 % |
+| **BNB** | ~742 $ | 🔴 ▼ −5 % | 🟢 ▲ +4 % |
 
 *(Pastilles 🔴/🟢/⚪ = repère de brouillon uniquement : à l'assemblage, texte coloré rouge `#dc2626` / vert `#16a34a` / gris `#94a3b8`, sans emoji. HYPE « ≈ 0 % » : gris, sans flèche.)*
 
@@ -22,7 +22,7 @@ Prix au 13 octobre 2026 ; variations sur 7 jours et depuis notre [numéro 5](htt
 [st] **Ce qui a fait bouger les prix**
 
 [p]
-Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :
+Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 7 %**, mais la dernière semaine est rouge. Hyperliquid y perd 12 % et **revient à son niveau du 10 septembre**. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :
 
 [liste]
 - **11 septembre** : l'inflation américaine (indice CPI) reste élevée, à **3,4 % sur un an** en août, tirée par l'essence.
@@ -56,7 +56,7 @@ Le lien avec la crypto : des taux plus hauts rendent plus attractifs les placeme
 ### Chiffres et `[À VÉRIFIER]`
 Les chiffres de marché viennent de `drafts/issue-06/sources/reperes-notes.md`. Deux éléments viennent de la consigne du coordinateur : la date du CPI d'août (11/09) et la phrase sur les projections de la Fed.
 - **Cours `[À VÉRIFIER le jour de l'envoi]`** : tout le tableau date du 12/10 à 22:40 UTC. À rafraîchir via l'API DeFiLlama (`cours-defillama.md`). La base « depuis le #5 » est le 10/09 à midi UTC : BTC 77 831 $ · ETH 2 462 $ · SOL 101,0 $ · HYPE 82,82 $ · BNB 716 $. Mettre aussi à jour la date de la note de bas de tableau.
-- **L'ouverture de l'avis dépend du tableau** : « le bitcoin gagne 6 % », « Hyperliquid y perd 13 % » et « revient à son niveau du 10 septembre ». Si HYPE ne reste pas proche de 0 % depuis le #5, il faut changer la cellule (couleur et flèche) ET la phrase.
+- **L'ouverture de l'avis dépend du tableau** : « le bitcoin gagne 6 % », « Hyperliquid y perd 12 % » et « revient à son niveau du 10 septembre ». Si HYPE ne reste pas proche de 0 % depuis le #5, il faut changer la cellule (couleur et flèche) ET la phrase.
 - **Date du CPI d'août (11/09)** `[À VÉRIFIER]` : elle n'est pas dans `reperes-notes.md`. Elle concorde avec le #5 (« Le CPI du 11 fera pencher la balance »).
 - **« La Fed elle-même prévoit encore une hausse d'ici la fin de l'année »** : cela correspond aux projections du 16/09 (« encore une hausse en 2026 et une en 2027 », CNBC/Fed) et au compte rendu du 7/10. À recouper au fact-check.
 - **« Les marchés parient sur une pause le 28 octobre »** : environ 81 % au 12/10. Volatil, donc non chiffré dans le texte ; à revérifier au fact-check.
