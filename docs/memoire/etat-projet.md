@@ -89,6 +89,7 @@ app/emails/issues/issue-0X.ts --dry-run`.
 
 ## Journal des numéros (le plus récent en haut)
 
+- **#6 — PUBLIÉ le 2026-10-13** (« Les marchés de prédiction »). Envoyé à **19 abonnés** via l'API Resend (19 envoyés, 0 échec), cours rafraîchis le 13/10 à midi. Toujours **19 contacts actifs, 0 désinscrit** : aucun nouvel inscrit depuis le 30/08 (6 semaines) → la croissance est à l'arrêt, chantier acquisition à ouvrir. Prochain : #7 (Pendle en SOUS LA LOUPE, ESMA/USDT, Open USD).
 - **#5 — PUBLIÉ le 2026-09-10** (« Emprunter contre ses cryptos »). Envoyé à **19 abonnés**
   via Resend (`--send`, 19/19, 0 échec). Fichiers : `site/app/emails/issues/issue-05.ts`
   (66,8 Ko) + `ALL_ISSUES` + archive site `issues.ts` (`id:"5"`). Contenu : ON ÉCLAIRE **le
