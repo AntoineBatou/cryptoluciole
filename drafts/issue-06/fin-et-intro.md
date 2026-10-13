@@ -16,7 +16,7 @@
 3. `CryptoLuciole #6 — Marchés de prédiction : ce que dit le prix`
 
 **Excerpt pour l'archive du site (`excerpt`)** :
-Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, Robinhood Chain sans gas offert et la carte des actions tokenisées par blockchain.
+Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, un bilan de l'activité de la Robinhood Chain et la carte des actions tokenisées par blockchain.
 
 ---
 
@@ -24,17 +24,14 @@ Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur
 Bonjour à toi 👋,
 
 [p]
-Content de te retrouver après un mois de pause : le dernier numéro date du 10 septembre. On reprend avec un sujet annoncé dès notre [numéro 1](https://www.cryptoluciole.com/numeros/1) sans avoir été expliqué : **les marchés de prédiction**, où le prix d'un pari se lit comme une probabilité.
-
-[p]
-Côté actus, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, et Robinhood Chain sans gas offert.
+Content de te retrouver après un mois de pause : le dernier numéro date du 10 septembre. On reprend avec un sujet annoncé dès notre [numéro 1](https://www.cryptoluciole.com/numeros/1) sans avoir été expliqué : **les marchés de prédiction**.
 
 [menu]
 **Au menu :**
-- 🔦 **On éclaire** — les marchés de prédiction, quand un prix devient une probabilité
-- ✨ **Dans le faisceau** — les marchés de prédiction d'Hyperliquid · le « bunker mode » de Justin Drake · Robinhood Chain après la fin du gas offert
+- 🔦 **On éclaire** — les marchés de prédiction, comment ça marche
+- ✨ **Dans le faisceau** — les marchés de prédiction d'Hyperliquid · le « *bunker mode* » de Justin Drake · un bilan de l'activité de la Robinhood Chain
 - 💡 **Ça brille** — 3,3 Md$ d'actions tokenisées, blockchain par blockchain
-- 📊 **Les repères** — un mois en deux temps, la Fed en toile de fond
+- 📊 **Les repères** — les cours du mois, et le poids de la Fed
 - 📖 **Définitions** — probabilité implicite, clé privée
 - ✉️ **À toi de jouer** — ta question et un sondage
 

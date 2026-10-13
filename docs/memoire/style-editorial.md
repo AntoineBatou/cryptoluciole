@@ -539,6 +539,16 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
 
 - **Renvoyer à un numéro passé : « notre numéro 5 » + lien, jamais « le #5 » seul (2026-10-13).** Écrire « dans notre [numéro 1](https://www.cryptoluciole.com/numeros/1) », « depuis notre numéro 5 », avec le lien à chaque occurrence ; en-tête de tableau : « Depuis notre n°5 ». Marc : « #5 » seul n'indique pas clairement qu'on parle de notre newsletter.
 
+- **Confort visuel : la densité monte, donc les ancrages visuels doivent suivre (2026-10-13, relecture du #6 vs #1).** Marc trouvait le #6 moins « confort à l'œil » que le #1 alors que la charte était identique : ×3-4 de texte, plus de ⬡ dorés, avis-pavés, phrases bourrées de chiffres. **Pas de longueur cible** (Marc veut monter en complexité au fil des numéros, sans perdre de contenu) : on compense par la mise en forme. Règles :
+  - ON ÉCLAIRE : sous-titres en **amorce dorée « ⬡ Le principe. »** en début de paragraphe (comme au #1), mot-clé du titre coloré teal (`<em style="color:#28B092; font-style:normal;">`).
+  - **Italique sur les termes anglais** à la 1re occurrence (*perps*, *bunker mode*, *deployer*).
+  - **Plus de 3 chiffres dans une phrase → liste à puces** (ex. chronologie de volumes).
+  - **L'encadré « Notre avis » = l'opinion seulement**, court et percutant. Le factuel/contexte (chronologie macro, constat) va en texte normal AU-DESSUS, sous un sous-titre (ex. REPÈRES : « Ce qui a fait bouger les prix » → puces datées → avis « la Fed est coincée »). Un avis peut commencer directement par des puces-verdicts en gras.
+- **Pas de formules creuses « qui font IA »** : « un mois en deux temps, la Fed en toile de fond » refusé par Marc (« ça veut rien dire »). Le menu/les titres disent concrètement ce qu'on trouve (« les cours du mois, et le poids de la Fed »).
+- **Intro ≠ menu** : l'intro ne réannonce pas les actus (le menu le fait). Intro = Bonjour + 1 phrase sur le sujet principal, sans le détailler. Menu : se mettre à la place du lecteur (« un bilan de l'activité de la Robinhood Chain » plutôt que « Robinhood Chain sans gas offert »).
+- **Registre pro, pas « parlé bébé »** : « on y en échange beaucoup, mais on y en garde peu » → « le volume est élevé, mais la valeur détenue reste faible ».
+- **REPÈRES : prix arrondis au dollar, variations au pour cent** (ex. ~106 $, −12 %) : les décimales nuisent à la lisibilité (Marc, 2026-10-13).
+
 ## Note de vocabulaire (échanges privés, pas le texte)
 - Marc écrit souvent « stacking » → le terme correct est **staking**.
 - Règle FR rappelée et validée : « se rappeler qqch » (sans « de »).

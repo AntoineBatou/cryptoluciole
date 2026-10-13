@@ -27,7 +27,7 @@ Depuis ce [numéro 5](https://www.cryptoluciole.com/numeros/5), l'activité a ne
 Quant aux actions tokenisées (des actions de Bourse représentées par un jeton sur la blockchain), la raison d'être de la chaîne, elles ont bien décollé : leur volume de transferts y est passé de 1,2 Md$ en juillet à 19,3 Md$ en septembre, et les montants réellement détenus d'une dizaine de millions début juillet à 137 M$. On compare avec les autres blockchains plus bas, dans ÇA BRILLE.
 
 [avis]
-💡 **Notre avis** : l'activité a fondu mais les dépôts ont augmenté : de l'argent reste sur la chaîne même quand la spéculation reflue. Reste sa promesse de départ, les actions tokenisées : on y en échange beaucoup, mais on y en garde encore peu. C'est sur ce terrain qu'il faudra la juger.
+💡 **Notre avis** : l'activité a fondu mais les dépôts ont augmenté : de l'argent reste sur la chaîne même quand la spéculation reflue. Reste sa promesse de départ, les actions tokenisées : le volume est élevé, mais la valeur détenue sur la chaîne reste faible. C'est sur ce terrain qu'il faudra la juger.
 
 **Source** : DeFiLlama (frais, volume et dépôts, relevés le 12/10) · Memeburn · crypto.news · Cryptonews · documentation Robinhood Chain
 

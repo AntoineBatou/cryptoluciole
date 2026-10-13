@@ -812,7 +812,7 @@ export const issues: Issue[] = [
     numero: 6,
     date: "Mardi 13 octobre 2026",
     titre: "Les marchés de prédiction",
-    excerpt: "Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, Robinhood Chain sans gas offert et la carte des actions tokenisées par blockchain.",
+    excerpt: "Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, un bilan de l'activité de la Robinhood Chain et la carte des actions tokenisées par blockchain.",
     notion: {
       titre: "Les marchés de prédiction : quand un prix devient une probabilité",
       corps: [
@@ -1010,7 +1010,20 @@ export const issues: Issue[] = [
           },
           {
             type: "p",
-            texte: "Pas encore vraiment. Le football a porté les premiers mois (28 % du volume depuis le lancement). Ensuite : environ 0,5 M$ échangés par jour en août, près de 2 M$ le 31 août, deux jours après l'arrivée des créateurs extérieurs, environ 1,7 M$ par jour en septembre, puis 1,25 M$ début octobre. L'arrivée de créateurs autres qu'Hyperliquid a relancé l'activité, mais depuis, elle reflue."
+            texte: "Pas encore vraiment. Le football a porté les premiers mois (28 % du volume depuis le lancement). Ensuite, en volume échangé par jour :"
+          },
+          {
+            type: "liste",
+            items: [
+              "août : environ 0,5 M$ ;",
+              "31 août, deux jours après l'arrivée des créateurs extérieurs : près de 2 M$, sur cette seule journée ;",
+              "septembre : environ 1,7 M$ ;",
+              "début octobre : 1,25 M$."
+            ]
+          },
+          {
+            type: "p",
+            texte: "L'arrivée de créateurs autres qu'Hyperliquid a relancé l'activité, mais depuis, elle reflue."
           },
           {
             type: "p",
@@ -1132,7 +1145,7 @@ export const issues: Issue[] = [
             texte: "Quant aux actions tokenisées (des actions de Bourse représentées par un jeton sur la blockchain), la raison d'être de la chaîne, elles ont bien décollé : leur volume de transferts y est passé de 1,2 Md$ en juillet à 19,3 Md$ en septembre, et les montants réellement détenus d'une dizaine de millions début juillet à 137 M$. On compare avec les autres blockchains plus bas, dans ÇA BRILLE."
           }
         ],
-        avis: "l'activité a fondu mais les dépôts ont augmenté : de l'argent reste sur la chaîne même quand la spéculation reflue. Reste sa promesse de départ, les actions tokenisées : on y en échange beaucoup, mais on y en garde encore peu. C'est sur ce terrain qu'il faudra la juger.",
+        avis: "l'activité a fondu mais les dépôts ont augmenté : de l'argent reste sur la chaîne même quand la spéculation reflue. Reste sa promesse de départ, les actions tokenisées : le volume est élevé, mais la valeur détenue sur la chaîne reste faible. C'est sur ce terrain qu'il faudra la juger.",
         source: "DeFiLlama (frais, volume et dépôts, relevés le 12/10) · Memeburn · crypto.news · Cryptonews · documentation Robinhood Chain"
       }
     ],
@@ -1141,16 +1154,16 @@ export const issues: Issue[] = [
         actif: "BTC",
         nom: "Bitcoin",
         prix: "~81 919 $",
-        var7j: "▼ −4,8 %",
+        var7j: "▼ −5 %",
         sens: "down",
-        varRef: "▲ +5,3 %",
+        varRef: "▲ +5 %",
         sensRef: "up"
       },
       {
         actif: "ETH",
         nom: "Ethereum",
         prix: "~2 456 $",
-        var7j: "▼ −9,6 %",
+        var7j: "▼ −10 %",
         sens: "down",
         varRef: "≈ 0 %",
         sensRef: "flat"
@@ -1158,45 +1171,56 @@ export const issues: Issue[] = [
       {
         actif: "SOL",
         nom: "Solana",
-        prix: "~106,05 $",
-        var7j: "▼ −12,3 %",
+        prix: "~106 $",
+        var7j: "▼ −12 %",
         sens: "down",
-        varRef: "▲ +5,0 %",
+        varRef: "▲ +5 %",
         sensRef: "up"
       },
       {
         actif: "HYPE",
         nom: "Hyperliquid",
-        prix: "~82,30 $",
-        var7j: "▼ −12,9 %",
+        prix: "~82 $",
+        var7j: "▼ −13 %",
         sens: "down",
-        varRef: "▼ −0,6 %",
+        varRef: "▼ −1 %",
         sensRef: "down"
       },
       {
         actif: "BNB",
         prix: "~735 $",
-        var7j: "▼ −6,8 %",
+        var7j: "▼ −7 %",
         sens: "down",
-        varRef: "▲ +2,6 %",
+        varRef: "▲ +3 %",
         sensRef: "up"
       }
     ],
     coursRefLabel: "Depuis notre n°5 (10 sept.)",
     coursAvisCorps: [
       {
-        type: "avis",
-        texte: "un mois en deux temps. Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :",
+        type: "st",
+        texte: "Ce qui a fait bouger les prix"
+      },
+      {
+        type: "p",
+        texte: "Depuis notre numéro 5 du 10 septembre, le bitcoin gagne 5 %, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et revient à son niveau du 10 septembre. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :"
+      },
+      {
+        type: "liste",
         items: [
           "11 septembre : l'inflation américaine (indice CPI) reste élevée, à 3,4 % sur un an en août, tirée par l'essence.",
           "16 septembre : la Fed relève son taux directeur de 0,25 point, à 3,75-4,00 %. Première hausse depuis 2023, pour contenir cette inflation.",
           "2 octobre : l'emploi ralentit, avec seulement 29 000 emplois créés en septembre et un chômage à 4,2 %.",
           "Semaine du 6 octobre : le compte rendu de la dernière réunion de la Fed laisse entrevoir une autre hausse d'ici la fin de l'année. Dans la foulée, les ETF bitcoin perdent environ 680 M$ et plus de 1 Md$ de positions à levier sont liquidées (fermées de force) en 24 h, ce qui accélère la baisse."
-        ],
-        suite: [
-          "Le lien avec la crypto : des taux plus hauts rendent plus attractifs les placements qui versent un intérêt, au détriment du bitcoin, qui n'en verse aucun.",
-          "À nos yeux, la Fed est coincée : relever encore ses taux freinerait un emploi déjà fragile, s'arrêter laisserait filer l'inflation. Les marchés parient sur une pause le 28 octobre, mais le prochain chiffre d'inflation tombe le 14 octobre : un chiffre au-dessus des 3,6-3,7 % attendus pourrait relancer l'idée d'une nouvelle hausse. La Fed elle-même prévoit encore une hausse d'ici la fin de l'année : inutile de compter sur une baisse des taux en 2026."
         ]
+      },
+      {
+        type: "p",
+        texte: "Le lien avec la crypto : des taux plus hauts rendent plus attractifs les placements qui versent un intérêt, au détriment du bitcoin, qui n'en verse aucun."
+      },
+      {
+        type: "avis",
+        texte: "la Fed est coincée. Relever encore ses taux freinerait un emploi déjà fragile, s'arrêter laisserait filer l'inflation. Les marchés parient sur une pause le 28 octobre, mais le prochain chiffre d'inflation tombe le 14 octobre : un chiffre au-dessus des 3,6-3,7 % attendus pourrait relancer l'idée d'une nouvelle hausse. La Fed elle-même prévoit encore une hausse d'ici la fin de l'année : inutile de compter sur une baisse des taux en 2026."
       }
     ],
     data: {
@@ -1238,15 +1262,16 @@ export const issues: Issue[] = [
           texte: "Dit simplement : sur BNB Chain, le volume a été divisé par deux à la fin de la gratuité, mais la valeur détenue est restée, et elle a plus que doublé depuis juillet. À l'inverse, Robinhood Chain, première en volume en septembre, ne pèse que 4 à 5 % de ce qui est détenu."
         },
         {
+          type: "p",
+          texte: "Côté volume, c'est un jeu de chaises musicales, et ce sont les primes qui tiennent la musique. En quatre mois, trois leaders différents se sont succédé. Deux d'entre eux ont profité d'une incitation : la gratuité chez Binance, le gas offert chez Robinhood, où une partie des échanges d'actions passait en plus par des paires avec des memecoins, très spéculatives. Chez Binance, le volume a été divisé par deux dès la fin de l'offre. Être n°1 du volume un mois donné ne dit presque rien de la suite."
+        },
+        {
           type: "avis",
-          texte: "côté volume, c'est un jeu de chaises musicales, et ce sont les primes qui tiennent la musique. En quatre mois, trois leaders différents se sont succédé. Deux d'entre eux ont profité d'une incitation : la gratuité chez Binance, le gas offert chez Robinhood, où une partie des échanges d'actions passait en plus par des paires avec des memecoins, très spéculatives. Chez Binance, le volume a été divisé par deux dès la fin de l'offre. Être n°1 du volume un mois donné ne dit presque rien de la suite.",
+          texte: "Temporaire ou durable ? Le volume de BNB Chain est en partie temporaire, on l'a vu retomber ; celui de Robinhood Chain reste à éprouver. Leur modèle, lui, peut durer : il repose sur une base de clients existants. La vraie question n'est pas « quelle chaîne ? » mais « qui a les clients ? ». Et à 3,3 Md$, tout le secteur reste une goutte d'eau face aux Bourses classiques.",
           items: [
             "Le grand gagnant aujourd'hui, c'est BNB Chain, grâce à Binance plus qu'à la technologie. Sa valeur détenue a plus que doublé, et elle est restée après la fin de la gratuité. Sa force, c'est la distribution : des millions de clients à qui Binance propose ces actions en un clic, et qui peuvent les utiliser comme collatéral sur son exchange. Ses limites : ce sont des certificats émis par une société affiliée à Binance, pas des actions détenues en propre ; ; tout dépend d'un seul acteur ; ; le volume est très concentré sur un seul jeton, QQQB..",
             "Solana n'est pas renversée, elle est diluée. Elle perd la domination du volume, mais sa valeur détenue progresse de 44 % depuis juillet (de 348 à 500 M$). C'est l'écosystème le plus ouvert : plusieurs émetteurs (xStocks, Ondo…) et des actions tokenisées utilisables dans sa DeFi. Moins spectaculaire, mais un usage plus organique : à nos yeux, le profil le plus durable.",
             "Robinhood Chain a un atout pas encore joué : des millions de clients courtage, avec des actions déjà en portefeuille. Mais sa chaîne a surtout attiré la spéculation sur les memecoins, et on n'y détient que 137 M$ d'actions tokenisées (4 % du total). Son avenir dépend de la capacité de Robinhood à pousser ses clients vers sa chaîne."
-          ],
-          suite: [
-            "Temporaire ou durable ? Le volume de BNB Chain est en partie temporaire, on l'a vu retomber ; celui de Robinhood Chain reste à éprouver. Leur modèle, lui, peut durer : il repose sur une base de clients existants. La vraie question n'est pas « quelle chaîne ? » mais « qui a les clients ? ». Et à 3,3 Md$, tout le secteur reste une goutte d'eau face aux Bourses classiques."
           ]
         }
       ]

@@ -43,7 +43,16 @@ Côté parieur, tout se fait au même endroit que les perps, et les paris se rè
 [st] **Et ça marche ?**
 
 [p]
-Pas encore vraiment. Le football a porté les premiers mois (28 % du volume depuis le lancement). Ensuite : environ 0,5 M$ échangés par jour en août, près de 2 M$ le 31 août, deux jours après l'arrivée des créateurs extérieurs, environ 1,7 M$ par jour en septembre, puis 1,25 M$ début octobre. **L'arrivée de créateurs autres qu'Hyperliquid a relancé l'activité, mais depuis, elle reflue.**
+Pas encore vraiment. Le football a porté les premiers mois (28 % du volume depuis le lancement). Ensuite, en volume échangé par jour :
+
+[liste]
+- **août** : environ 0,5 M$ ;
+- **31 août**, deux jours après l'arrivée des créateurs extérieurs : près de 2 M$, sur cette seule journée ;
+- **septembre** : environ 1,7 M$ ;
+- **début octobre** : 1,25 M$.
+
+[p]
+**L'arrivée de créateurs autres qu'Hyperliquid a relancé l'activité, mais depuis, elle reflue.**
 
 [p]
 En septembre, HIP-4 a traité environ 51 M$, contre 2,3 à 4,7 Md$ pour Polymarket selon la mesure retenue : **de l'ordre de 1 à 2 %**, et Kalshi est bien au-delà.

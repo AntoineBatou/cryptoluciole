@@ -8,19 +8,21 @@
 [tableau]
 | Crypto | Prix | 7 jours | Depuis notre n°5 (10 sept.) |
 |---|---|---|---|
-| **BTC** Bitcoin | ~81 919 $ | 🔴 ▼ −4,8 % | 🟢 ▲ +5,3 % |
-| **ETH** Ethereum | ~2 456 $ | 🔴 ▼ −9,6 % | ⚪ ≈ 0 % |
-| **SOL** Solana | ~106,05 $ | 🔴 ▼ −12,3 % | 🟢 ▲ +5,0 % |
-| **HYPE** Hyperliquid | ~82,30 $ | 🔴 ▼ −12,9 % | 🔴 ▼ −0,6 % |
-| **BNB** | ~735 $ | 🔴 ▼ −6,8 % | 🟢 ▲ +2,6 % |
+| **BTC** Bitcoin | ~81 919 $ | 🔴 ▼ −5 % | 🟢 ▲ +5 % |
+| **ETH** Ethereum | ~2 456 $ | 🔴 ▼ −10 % | ⚪ ≈ 0 % |
+| **SOL** Solana | ~106 $ | 🔴 ▼ −12 % | 🟢 ▲ +5 % |
+| **HYPE** Hyperliquid | ~82 $ | 🔴 ▼ −13 % | 🔴 ▼ −1 % |
+| **BNB** | ~735 $ | 🔴 ▼ −7 % | 🟢 ▲ +3 % |
 
 *(Pastilles 🔴/🟢/⚪ = repère de brouillon uniquement : à l'assemblage, texte coloré rouge `#dc2626` / vert `#16a34a` / gris `#94a3b8`, sans emoji. HYPE « ≈ 0 % » : gris, sans flèche.)*
 
 [note-tableau]
 Prix au 13 octobre 2026 ; variations sur 7 jours et depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre 2026 (DeFiLlama).
 
-[avis]
-💡 **Notre avis** : un mois en deux temps. Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :
+[st] **Ce qui a fait bouger les prix**
+
+[p]
+Depuis notre [numéro 5](https://www.cryptoluciole.com/numeros/5) du 10 septembre, **le bitcoin gagne 5 %**, mais la dernière semaine est rouge. Hyperliquid y perd 13 % et **revient à son niveau du 10 septembre**. Derrière ces mouvements, ce sont surtout les nouvelles macroéconomiques américaines qui ont pesé sur les prix ce mois-ci :
 
 [liste]
 - **11 septembre** : l'inflation américaine (indice CPI) reste élevée, à **3,4 % sur un an** en août, tirée par l'essence.
@@ -31,8 +33,8 @@ Prix au 13 octobre 2026 ; variations sur 7 jours et depuis notre [numéro 5](htt
 [p]
 Le lien avec la crypto : des taux plus hauts rendent plus attractifs les placements qui versent un intérêt, au détriment du bitcoin, qui n'en verse aucun.
 
-[p]
-À nos yeux, **la Fed est coincée** : relever encore ses taux freinerait un emploi déjà fragile, s'arrêter laisserait filer l'inflation. Les marchés parient sur une pause le 28 octobre, mais le prochain chiffre d'inflation tombe le 14 octobre : un chiffre au-dessus des 3,6-3,7 % attendus pourrait relancer l'idée d'une nouvelle hausse. La Fed elle-même prévoit encore une hausse d'ici la fin de l'année : inutile de compter sur une baisse des taux en 2026.
+[avis]
+💡 **Notre avis** : **la Fed est coincée**. Relever encore ses taux freinerait un emploi déjà fragile, s'arrêter laisserait filer l'inflation. Les marchés parient sur une pause le 28 octobre, mais le prochain chiffre d'inflation tombe le 14 octobre : un chiffre au-dessus des 3,6-3,7 % attendus pourrait relancer l'idée d'une nouvelle hausse. La Fed elle-même prévoit encore une hausse d'ici la fin de l'année : inutile de compter sur une baisse des taux en 2026.
 
 ---
 

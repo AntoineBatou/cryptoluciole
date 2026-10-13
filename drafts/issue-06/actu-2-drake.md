@@ -1,13 +1,13 @@
-# ✨ DANS LE FAISCEAU — #6 — Actu 2 : Justin Drake et le « bunker mode »
+# ✨ DANS LE FAISCEAU — #6 — Actu 2 : Justin Drake et le « *bunker mode* »
 
 > ✍️ Brouillon du Rédacteur (v2 + retouches, vérificateur 8,5/10, boucle 1 du vérificateur) — à valider par Marc. Notation des blocs : `[p]` paragraphe · `[st]` sous-titre · `[def | slug]` encadré de définition · `[liste]` puces · `[avis]` encadré vert « 💡 Notre avis ».
 
-**Titre (proposition)** : ✦ IA et sécurité des wallets : un chercheur d'Ethereum propose un « bunker mode »
+**Titre (proposition)** : ✦ IA et sécurité des wallets : un chercheur d'Ethereum propose un « *bunker mode* »
 
 ---
 
 [p]
-Le 6 octobre, OpenAI a publié plusieurs centaines de résultats mathématiques obtenus par une IA, sans rien sur la cryptographie des blockchains. C'est la vitesse de ces progrès qui a fait réagir, le lendemain, **Justin Drake**, chercheur à la Fondation Ethereum : il a appelé à se préparer « calmement » à un « bunker mode ».
+Le 6 octobre, OpenAI a publié plusieurs centaines de résultats mathématiques obtenus par une IA, sans rien sur la cryptographie des blockchains. C'est la vitesse de ces progrès qui a fait réagir, le lendemain, **Justin Drake**, chercheur à la Fondation Ethereum : il a appelé à se préparer « calmement » à un « *bunker mode* ».
 
 [p]
 Selon lui, l'IA pourrait casser **ECDSA**, la signature qui protège les wallets, **avant les ordinateurs quantiques**. Au pire, « en mois, pas en années ». 
@@ -23,7 +23,7 @@ De ta clé privée, on calcule une **clé publique**, puis, par un **hachage** (
 [p]
 Sur Ethereum, ta clé publique n'apparaît sur la blockchain qu'au moment où ton adresse **envoie** une transaction : **une adresse qui n'a fait que recevoir mais n'a jamais signé de transaction garde sa clé cachée.** Mais presque tous les comptes actifs ont déjà envoyé : leur clé publique est visible. 
 
-[st] **Le « bunker mode »**
+[st] **Le « *bunker mode* »**
 
 [p]
 Il s'agit de déplacer ses fonds, sans précipitation, vers des **adresses neuves qui n'ont jamais envoyé de transaction**, en commençant par les gros détenteurs (plateformes d'échange, émetteurs de stablecoins). À long terme, il faudrait une cryptographie fondée uniquement sur le hachage, qui offre beaucoup moins de prise à ce type d'attaque.
@@ -52,7 +52,7 @@ Il s'agit de déplacer ses fonds, sans précipitation, vers des **adresses neuve
 | Post-quantique | — | entre guillemets, non défini (les ordinateurs quantiques sont cités plus haut) ; « lattices » et ML-DSA volontairement absents |
 
 ### Points `[À VÉRIFIER]` (pour le fact-check)
-- **Citations de Drake** (« calmement », « bunker mode », « en mois, pas en années ») : paraphrases tirées de la presse, sans transcription du fil X. À confirmer sur X.
+- **Citations de Drake** (« calmement », « *bunker mode* », « en mois, pas en années ») : paraphrases tirées de la presse, sans transcription du fil X. À confirmer sur X.
 - **Propos de Buterin** : rendus au style indirect (déconseille de déplacer ses fonds aujourd'hui ; migrations ratées > piratages). À vérifier sur X avant de mettre quoi que ce soit entre guillemets.
 - **« Plusieurs centaines de résultats »** : les notes donnent 722 ; arrondi volontaire. On peut remettre le nombre exact.
 - **Seuil de « cassage » selon Drake** (une semaine, gros parc de cartes graphiques) : c'est sa définition du seuil, pas une capacité actuelle, d'après la presse.

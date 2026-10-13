@@ -37,9 +37,11 @@ La valeur détenue : un autre classement
 [p]
 Dit simplement : sur BNB Chain, le volume a été divisé par deux à la fin de la gratuité, mais **la valeur détenue est restée**, et elle a plus que doublé depuis juillet. À l'inverse, Robinhood Chain, première en volume en septembre, ne pèse que **4 à 5 % de ce qui est détenu**.
 
-[avis]
-💡 **Notre avis** : côté volume, c'est un jeu de chaises musicales, et ce sont les primes qui tiennent la musique. En quatre mois, trois leaders différents se sont succédé. Deux d'entre eux ont profité d'une incitation : la gratuité chez Binance, le gas offert chez Robinhood, où une partie des échanges d'actions passait en plus par des paires avec des memecoins, très spéculatives. Chez Binance, le volume a été divisé par deux dès la fin de l'offre. Être n°1 du volume un mois donné ne dit presque rien de la suite.
+[texte]
+Côté volume, c'est un jeu de chaises musicales, et ce sont les primes qui tiennent la musique. En quatre mois, trois leaders différents se sont succédé. Deux d'entre eux ont profité d'une incitation : la gratuité chez Binance, le gas offert chez Robinhood, où une partie des échanges d'actions passait en plus par des paires avec des memecoins, très spéculatives. Chez Binance, le volume a été divisé par deux dès la fin de l'offre. **Être n°1 du volume un mois donné ne dit presque rien de la suite.**
 
+[avis]
+💡 **Notre avis** :
 - **Le grand gagnant aujourd'hui, c'est BNB Chain, grâce à Binance plus qu'à la technologie.** Sa valeur détenue a plus que doublé, et elle est restée après la fin de la gratuité. Sa force, c'est la distribution : des millions de clients à qui Binance propose ces actions en un clic, et qui peuvent les utiliser comme **collatéral** sur son exchange.
   Ses limites :
   - ce sont des certificats émis par une société affiliée à Binance, pas des actions détenues en propre ;
