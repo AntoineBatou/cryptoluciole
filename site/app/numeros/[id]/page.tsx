@@ -76,6 +76,38 @@ function CorpsBlocks({ corps }: { corps: NotionEl[] }) {
               ))}
             </div>
           );
+        if (el.type === "tableau")
+          return (
+            <div key={i} className="mb-4 overflow-x-auto rounded-xl border border-black/10">
+              <table className="w-full min-w-[28rem] text-left text-sm">
+                <thead className="bg-teal text-white">
+                  <tr>
+                    {el.entetes.map((h, j) => (
+                      <th key={j} className="px-3 py-2.5 align-bottom font-semibold">
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {el.lignes.map((ligne, j) => (
+                    <tr key={j} className={j % 2 ? "bg-brume/40" : "bg-white"}>
+                      {ligne.map((c, k) => (
+                        <td
+                          key={k}
+                          className={`border-t border-black/5 px-3 py-2.5 align-top leading-snug ${
+                            k === 0 ? "font-semibold text-nuit" : "text-nuit/80"
+                          }`}
+                        >
+                          {c}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
         if (el.type === "image")
           return (
             <figure key={i} className="mb-4">
@@ -194,6 +226,13 @@ export default async function NumeroPage({
                 )}
                 <div className="mt-3 rounded-lg border-l-4 border-teal bg-green-50 p-4 leading-relaxed text-nuit/80">
                   💡 <strong>Notre avis :</strong> {a.avis}
+                  {a.avisItems && (
+                    <ul className="mt-2 list-disc space-y-2 pl-5">
+                      {a.avisItems.map((it, j) => (
+                        <li key={j}>{it}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 {a.lien && (
                   <p className="mt-2">
@@ -224,14 +263,27 @@ export default async function NumeroPage({
             <strong className="text-teal">En bref.</strong> {n.protocole.bref}
           </p>
           <p className="mb-2 font-semibold text-teal">Comment ça marche.</p>
-          <ul className="mb-4 list-disc space-y-2 pl-5 text-nuit/80">
-            {n.protocole.etapes.map((e, i) => (
-              <li key={i}>{e}</li>
-            ))}
-          </ul>
-          <p className="mb-4 leading-relaxed text-nuit/80">
-            <strong className="text-teal">Le rendement.</strong> {n.protocole.rendement}
-          </p>
+          {n.protocole.etapes.length > 0 && (
+            <ul className="mb-4 list-disc space-y-2 pl-5 text-nuit/80">
+              {n.protocole.etapes.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          )}
+          {n.protocole.etapesCorps && <CorpsBlocks corps={n.protocole.etapesCorps} />}
+          {n.protocole.rendement ? (
+            <p className="mb-4 leading-relaxed text-nuit/80">
+              <strong className="text-teal">{n.protocole.rendementLabel ?? "Le rendement."}</strong>{" "}
+              {n.protocole.rendement}
+            </p>
+          ) : (
+            n.protocole.rendementCorps && (
+              <p className="mb-2 mt-6 font-semibold text-teal">
+                {n.protocole.rendementLabel ?? "Le rendement."}
+              </p>
+            )
+          )}
+          {n.protocole.rendementCorps && <CorpsBlocks corps={n.protocole.rendementCorps} />}
           <p className="mb-3 flex flex-wrap items-center gap-2">
             <strong className="text-teal">Les risques.</strong>{" "}
             {badges.map((b) => (
@@ -243,10 +295,24 @@ export default async function NumeroPage({
               </span>
             ))}
           </p>
-          <p className="mb-4 leading-relaxed text-nuit/80">{n.protocole.risques}</p>
+          {n.protocole.risques && (
+            <p className="mb-4 leading-relaxed text-nuit/80">{n.protocole.risques}</p>
+          )}
+          {n.protocole.risquesItems && (
+            <ul className="mb-4 list-disc space-y-2 pl-5 leading-relaxed text-nuit/80">
+              {n.protocole.risquesItems.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+          )}
           <p className="leading-relaxed text-nuit/80">
             <strong className="text-teal">Pourquoi ça compte.</strong> {n.protocole.importance}
           </p>
+          {n.protocole.importanceSuite?.map((s, i) => (
+            <p key={i} className="mt-4 leading-relaxed text-nuit/80">
+              {s}
+            </p>
+          ))}
           {n.protocole.slug && (
             <p className="mt-4">
               <Link
@@ -275,7 +341,7 @@ export default async function NumeroPage({
                 <tr>
                   <th className="px-4 py-3 text-left font-semibold">Actif</th>
                   <th className="px-4 py-3 text-right font-semibold">Prix</th>
-                  <th className="px-4 py-3 text-right font-semibold">7 jours</th>
+                  <th className="px-4 py-3 text-right font-semibold">{n.cours7jLabel ?? "7 jours"}</th>
                   {n.coursRefLabel && (
                     <th className="px-4 py-3 text-right font-semibold">{n.coursRefLabel}</th>
                   )}
@@ -285,7 +351,11 @@ export default async function NumeroPage({
                 {n.cours.map((c, i) => (
                   <tr key={c.actif} className={i % 2 ? "bg-brume/40" : "bg-white"}>
                     <td className="px-4 py-3">
-                      <strong className={c.sens === "up" ? "text-vert" : "text-rouge"}>
+                      <strong
+                        className={
+                          c.sens === "up" ? "text-vert" : c.sens === "flat" ? "text-nuit/40" : "text-rouge"
+                        }
+                      >
                         {c.actif}
                       </strong>{" "}
                       {c.nom && <span className="text-nuit/40">{c.nom}</span>}
@@ -293,7 +363,7 @@ export default async function NumeroPage({
                     <td className="px-4 py-3 text-right font-bold text-nuit">{c.prix}</td>
                     <td
                       className={`px-4 py-3 text-right font-bold ${
-                        c.sens === "up" ? "text-vert" : "text-rouge"
+                        c.sens === "up" ? "text-vert" : c.sens === "flat" ? "text-nuit/40" : "text-rouge"
                       }`}
                     >
                       {c.var7j}
@@ -335,6 +405,18 @@ export default async function NumeroPage({
           </div>
           <div className="mt-2 text-xl font-extrabold text-white">{n.data.titre}</div>
           <p className="mt-2 leading-relaxed text-white/70">{n.data.texte}</p>
+          {n.data.def && (
+            <div className="mt-3 rounded-lg bg-white/10 px-4 py-3 text-sm leading-relaxed text-white/75">
+              📖{" "}
+              <Link
+                href={`/glossaire/${n.data.def.slug}`}
+                className="font-bold text-white underline hover:text-luciole"
+              >
+                {n.data.def.terme}
+              </Link>{" "}
+              — {n.data.def.texte}
+            </div>
+          )}
           {n.data.points && (
             <ul className="mt-2 list-disc space-y-1 pl-5 leading-relaxed text-white/70">
               {n.data.points.map((p, i) => (

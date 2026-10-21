@@ -36,7 +36,7 @@ contient déjà les leçons passées, ex. « anti-délayage »).
 Lis le brouillon (dans `drafts/…`) et évalue ces **6 dimensions** (chacune /10 dans ta tête,
 puis une **note globale /10**) :
 
-1. **Clarté / pédagogie** — le lecteur (débutant curieux) comprend où va l'argent, d'où
+1. **Clarté / pédagogie** — le lecteur (a déjà les bases crypto, veut monter en compétence — ne pas noter à la baisse l'absence d'explication des fondamentaux type wallet/stablecoin/swap) comprend où va l'argent, d'où
    vient le rendement, le risque concret ? Jargon crypto défini inline ?
 2. **Concision / anti-délayage** — pas de remplissage, pas de phrase de lancement
    rhétorique, pas de reformulations empilées d'une évidence, pas de fioritures « pour

@@ -899,6 +899,39 @@ export const PROTOCOLES: ProtocoleFiche[] = [
     iaGenere: true,
     sourceNumero: 4,
   },
+  {
+    // Fiche minimale « en construction » : la version détaillée (Mode B) viendra du wiki
+    // (/analyse à lancer d'abord). Pas de chiffre volatil ici : PAPER émis, montants
+    // reversés aux stakers, etc. iront en LIVE (DeFiLlama) dans la fiche complète.
+    slug: "papertrade",
+    nom: "Papertrade",
+    type: "Perps synthétiques sur HyperEVM",
+    chains: "HyperEVM (Hyperliquid)",
+    resume:
+      "Papertrade est une plateforme de perps lancée le 10 octobre 2026 sur HyperEVM, la couche d'Hyperliquid qui accueille les applications tierces. On y prend position sur le bitcoin ou l'ether jusqu'à ×1000. Son modèle ressemble à celui d'un casino : la banque n'est financée que par les pertes des joueurs, et chaque perdant reçoit un ticket sur les pertes futures des autres.",
+    enBref: [
+      { label: "Type", valeur: "Perps synthétiques sur HyperEVM (Hyperliquid)" },
+      { label: "Lancement", valeur: "10 octobre 2026" },
+      { label: "Équipe", valeur: "Deux fondateurs semi-pseudonymes" },
+      { label: "Levier maximum", valeur: "×1000" },
+    ],
+    sections: [
+      {
+        titre: "Fiche en construction",
+        blocs: [
+          {
+            type: "note",
+            ton: "info",
+            titre: "Fiche complète en cours de rédaction",
+            texte:
+              "En attendant, Papertrade est décrypté dans notre numéro 7 (rubrique Sous la loupe) : son mécanisme de perp synthétique, d'où vient l'argent, la manipulation du jour du lancement et ses risques, que nous classons au niveau élevé.",
+          },
+        ],
+      },
+    ],
+    iaGenere: false,
+    sourceNumero: 7,
+  },
 ];
 
 export function getProtocole(slug: string): ProtocoleFiche | undefined {

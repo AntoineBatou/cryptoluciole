@@ -11,7 +11,9 @@ export type NotionEl =
   | { type: "def"; terme: string; slug: string; texte: string }
   | { type: "liste"; items: string[] }
   | { type: "avis"; texte: string; items?: string[]; suite?: string[] }
-  | { type: "image"; src: string; legende: string };
+  | { type: "image"; src: string; legende: string }
+  // Tableau simple (#7+) : en-têtes + lignes de cellules (texte brut).
+  | { type: "tableau"; entetes: string[]; lignes: string[][] };
 
 // Le "type" décrit la forme d'un numéro (les garde-fous TypeScript).
 export type Issue = {
@@ -23,7 +25,8 @@ export type Issue = {
   // notion : ancien format (blocs ⬡, #1) OU nouveau format aéré (corps, #2+).
   notion: { titre: string; blocs?: { label: string; texte: string }[]; corps?: NotionEl[] };
   // une actu peut porter des encadrés de définition (termes liés au glossaire).
-  actus: { titre: string; texte?: string; corps?: NotionEl[]; avis: string; source: string; defs?: { terme: string; slug: string; texte: string }[]; lien?: { label: string; href: string } }[];
+  // avisItems (#7+) : « Notre avis » en puces, affichées sous `avis` (qui peut alors être vide).
+  actus: { titre: string; texte?: string; corps?: NotionEl[]; avis: string; avisItems?: string[]; source: string; defs?: { terme: string; slug: string; texte: string }[]; lien?: { label: string; href: string } }[];
   // protocole : optionnel — un numéro peut ne pas avoir de SOUS LA LOUPE (ex. #6).
   protocole?: {
     nom: string;
@@ -38,16 +41,25 @@ export type Issue = {
     badges?: { label: string; niveau: string; sens: "faible" | "moyen" | "eleve" }[];
     risques: string;
     importance: string;
+    // Variantes riches (#7+), toutes optionnelles — les numéros 1-5 n'en ont pas besoin.
+    etapesCorps?: NotionEl[]; // « Comment ça marche » en blocs (sous-titres, encadrés, listes)
+    rendementLabel?: string; // libellé du bloc rendement (défaut « Le rendement »)
+    rendementCorps?: NotionEl[]; // bloc rendement en plusieurs paragraphes / listes
+    risquesItems?: string[]; // risques en puces, sous `risques`
+    importanceSuite?: string[]; // paragraphes supplémentaires de « Pourquoi ça compte »
   };
   // varRef / sensRef : 2e colonne de variation, optionnelle — utilisée quand l'écart
   // entre deux numéros dépasse ~2 semaines (ex. #4 : « depuis le #3 »). Libellé = coursRefLabel.
-  cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down"; varRef?: string; sensRef?: "up" | "down" | "flat" }[];
+  cours: { actif: string; nom?: string; prix: string; var7j: string; sens: "up" | "down" | "flat"; varRef?: string; sensRef?: "up" | "down" | "flat" }[];
+  // cours7jLabel (#7+) : remplace l'en-tête « 7 jours » quand l'écart réel diffère (ex. « Depuis notre n°6 (8 jours) »).
+  cours7jLabel?: string;
   coursRefLabel?: string; // en-tête de la 2e colonne, ex. "Depuis le #3 (4 juillet)"
   coursHeure?: string; // heure de prise des cours (ex. "17h24")
   coursAvis?: string; // encadré « Notre avis » sous le tableau des cours
   coursAvisCorps?: NotionEl[]; // variante riche (puces, plusieurs paragraphes), ex. #6
   // data.corps : suite riche de ÇA BRILLE (graphiques, sous-titres, avis), rendue sous la carte (#6+).
-  data: { titre: string; texte: string; points?: string[]; texteFin?: string; corps?: NotionEl[] };
+  // data.def : encadré de définition affiché DANS la carte, sous le texte (#7+).
+  data: { titre: string; texte: string; def?: { terme: string; slug: string; texte: string }; points?: string[]; texteFin?: string; corps?: NotionEl[] };
   // À toi de jouer (optionnel) : appel à répondre + sondage A/B.
   jeu?: { cta: string; question: string; a: string; b: string };
   definitions: { terme: string; en?: string; def: string; avis?: string; slug?: string }[];
@@ -1293,6 +1305,762 @@ export const issues: Issue[] = [
       question: "Un marché de prédiction, pour toi, c'est plutôt…",
       a: "Un pari, avec de l'argent en jeu",
       b: "Un indicateur, à consulter sans miser"
+    }
+  },
+  {
+    id: "7",
+    numero: 7,
+    date: "Mercredi 21 octobre 2026",
+    titre: "Les smart accounts",
+    excerpt: "Les smart accounts expliqués, où en sont les mesures crypto du budget 2027, MSCI face à Strategy, le nouveau mode de notation de Bittensor, Papertrade sous la loupe et 15 Md$ de positions ouvertes sur Hyperliquid.",
+    notion: {
+      titre: "Les smart accounts : un wallet qui applique tes règles",
+      corps: [
+        {
+          type: "p",
+          texte: "Depuis mai 2025, ton wallet peut devenir un smart account. Décryptons ensemble comment cela fonctionne et ce que ça apporte."
+        },
+        {
+          type: "st",
+          texte: "Le principe"
+        },
+        {
+          type: "p",
+          texte: "Le wallet que tu utilises est ce qu'on appelle un EOA. Celui qui détient la clé privée peut tout faire, chaque action demande sa propre signature, et le gas se paie en ETH."
+        },
+        {
+          type: "def",
+          terme: "EOA (Externally Owned Account)",
+          slug: "eoa",
+          texte: "Le compte « classique » d'une blockchain comme Ethereum : une adresse contrôlée par une seule clé privée, sans aucune règle supplémentaire. C'est le cas de la plupart des wallets (MetaMask, Rabby…) dans leur configuration d'origine."
+        },
+        {
+          type: "p",
+          texte: "Un smart account est un compte dont les règles sont écrites dans un smart contract. C'est ce contrat qui décide :"
+        },
+        {
+          type: "liste",
+          items: [
+            "qui peut signer (une clé, plusieurs (multisig), une empreinte digitale…) ;",
+            "jusqu'à quel montant et pendant combien de temps ;",
+            "avec quel jeton on paie le gas, et qui le paie."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Ces règles ne sont pas figées à la création : le code fixe ce qui est possible, et tu ajustes ensuite les réglages (ajouter un signataire, changer un plafond) par une transaction. Cette idée de rendre le compte programmable porte un nom : l'abstraction de compte."
+        },
+        {
+          type: "p",
+          texte: "L'EOA est comme un coffre à clé unique : qui a la clé maîtrise tout, qui la perd perd tout. Le smart account se rapproche plutôt d'un compte bancaire, avec ses plafonds, ses procurations et ses cartes à usage limité."
+        },
+        {
+          type: "st",
+          texte: "Deux façons d'y passer"
+        },
+        {
+          type: "liste",
+          items: [
+            "ERC-4337 (mars 2023) : tu ouvres un nouveau compte. Le smart account est un contrat dès sa création, avec une nouvelle adresse. Tu y transfères tes fonds depuis ton ancien wallet.",
+            "EIP-7702 (mai 2025) : tu équipes ton compte actuel. Arrivé avec la mise à jour Pectra d'Ethereum, ce standard rend possible une opération nouvelle : la délégation. Tu signes, avec ta clé privée, une autorisation qui dit « mon adresse exécute désormais le code de tel smart contract ». Ton adresse devient alors un smart account : même adresse, mêmes fonds, rien à transférer."
+          ]
+        },
+        {
+          type: "def",
+          terme: "Délégation (EIP-7702)",
+          slug: "delegation-7702",
+          texte: "La signature qui relie ton adresse à un smart contract. EIP-7702 est la règle d'Ethereum qui l'autorise ; la délégation est l'acte que tu signes. Sans délégation, ton compte reste un EOA classique. Avec ERC-4337, il n'y en a pas : le compte est un contrat dès le départ."
+        },
+        {
+          type: "p",
+          texte: "Avec EIP-7702, ta clé privée d'origine garde tous ses pouvoirs : elle peut toujours tout signer seule, et aucune délégation ne peut la lui retirer. Conséquence : si ta seed phrase fuite, le smart account ne te protège pas. Son intérêt est ailleurs : le confort, et une clé que tu sors moins souvent au quotidien."
+        },
+        {
+          type: "p",
+          texte: "Une fois le compte en place, les fonctions sont presque les mêmes avec les deux standards. La vraie différence, c'est qui garde le dernier mot :"
+        },
+        {
+          type: "tableau",
+          entetes: [
+            "",
+            "ERC-4337",
+            "EIP-7702"
+          ],
+          lignes: [
+            [
+              "Adresse",
+              "Nouvelle",
+              "La tienne"
+            ],
+            [
+              "Clé maîtresse",
+              "Aucune : seules les règles du contrat comptent",
+              "Ta clé d'origine, pour toujours"
+            ],
+            [
+              "Plusieurs signataires, gardiens",
+              "Protègent vraiment",
+              "Contournables par ta clé d'origine"
+            ],
+            [
+              "Usage type",
+              "Sécurité",
+              "Confort, sans migrer"
+            ]
+          ]
+        },
+        {
+          type: "p",
+          texte: "Dit simplement : ERC-4337 apporte une vraie sécurité, car aucune clé maîtresse ne subsiste ; EIP-7702 apporte le confort du smart account sur ton compte actuel."
+        },
+        {
+          type: "p",
+          texte: "Et Safe ? Safe (ex-Gnosis Safe, 2018) est un smart account plus ancien que ces deux standards, conçu pour le multisig. Il se range du côté d'ERC-4337 : nouvelle adresse, aucune clé maîtresse, et des signataires multiples qui protègent vraiment. Il peut d'ailleurs utiliser l'infrastructure d'ERC-4337 (paymasters, batching) grâce à un module."
+        },
+        {
+          type: "st",
+          texte: "Ce que ça change, concrètement"
+        },
+        {
+          type: "p",
+          texte: "Batching de transactions. Tu veux déposer 1 000 USDC dans un vault. Avec un EOA, il faut deux transactions : l'approve, puis le dépôt. Deux signatures, deux fois du gas. Avec un smart account, les deux opérations partent dans une seule transaction : on parle de batch (regroupement). L'approve peut alors porter sur le montant exact du dépôt et être consommé aussitôt, sans laisser d'autorisation ouverte derrière toi."
+        },
+        {
+          type: "p",
+          texte: "Payer le gas en USDC. Tu as 500 USDC et 0 ETH sur ton wallet. Avec un EOA, tu es bloqué : pour envoyer tes USDC, il faut d'abord faire venir de l'ETH pour le gas. Avec un smart account, les frais peuvent être prélevés directement sur tes USDC, ou pris en charge par l'application que tu utilises. C'est le rôle du paymaster."
+        },
+        {
+          type: "def",
+          terme: "Paymaster",
+          slug: "paymaster",
+          texte: "Un smart contract qui avance le gas à ta place. Soit il se rembourse en prélevant l'équivalent dans un autre jeton (des USDC, par exemple), soit il est financé par une application qui offre les frais à ses utilisateurs."
+        },
+        {
+          type: "p",
+          texte: "Laisser une appli agir pour toi, sans lui confier tes fonds. Tu veux acheter de l'ETH automatiquement chaque semaine. Aujourd'hui, deux options :"
+        },
+        {
+          type: "liste",
+          items: [
+            "signer chaque achat à la main ;",
+            "déposer tes USDC chez un service qui les gère à ta place."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Avec un smart account, tu accordes à l'appli une session key : 50 USDC par semaine, uniquement pour acheter de l'ETH sur Uniswap, pendant 3 mois. Tes fonds restent dans ton wallet, et l'appli ne peut rien faire d'autre."
+        },
+        {
+          type: "def",
+          terme: "Session key",
+          slug: "session-key",
+          texte: "Une clé temporaire, aux pouvoirs limités, que ton smart account accorde à une application : un plafond de montant, une durée, parfois une liste d'opérations autorisées. Une fois la limite atteinte ou la durée écoulée, elle ne sert plus à rien."
+        },
+        {
+          type: "p",
+          texte: "Ne plus dépendre d'une seule seed phrase. Selon le wallet, un smart account peut aussi changer la façon dont tu contrôles ton compte :"
+        },
+        {
+          type: "liste",
+          items: [
+            "pour te connecter, une passkey : ton empreinte ou la reconnaissance faciale de ton téléphone, sans seed phrase à recopier ;",
+            "pour récupérer ton compte, des gardiens : par exemple 3 appareils ou personnes de confiance, dont 2 suffisent pour remplacer ta clé si tu perds ton téléphone. C'est ce qu'on appelle le social recovery."
+          ]
+        },
+        {
+          type: "def",
+          terme: "Passkey et social recovery",
+          slug: "passkey",
+          texte: "La passkey est une clé de connexion générée et stockée dans la puce sécurisée de ton téléphone ou de ton ordinateur ; elle se déverrouille par empreinte, visage ou code de l'appareil. Le social recovery permet de remplacer cette clé si tu la perds, avec l'accord d'un nombre minimum de gardiens désignés à l'avance."
+        },
+        {
+          type: "p",
+          texte: "Ces protections existent avec les deux standards, mais elles ne servent vraiment que sur un compte sans clé maîtresse (ERC-4337, Safe). Sur un compte EIP-7702, ta clé d'origine peut toujours tout faire seule : si ta seed phrase fuite, les gardiens n'y changent rien."
+        },
+        {
+          type: "p",
+          texte: "Préparer l'après-quantique. Un ordinateur quantique assez puissant pourrait un jour retrouver une clé privée à partir de la clé publique, visible dès ta première transaction. Sur un EOA, Ethereum impose un seul type de signature, celui qui est menacé. Sur un smart account, la vérification de la signature est du code : on peut y brancher des signatures conçues pour résister au quantique. C'est possible en théorie sur un compte ERC-4337, pas encore en pratique. Avec EIP-7702, en revanche, ça ne protège pas : ta clé d'origine reste maîtresse, et elle n'est pas résistante au quantique."
+        },
+        {
+          type: "st",
+          texte: "Le revers : le piège de la délégation"
+        },
+        {
+          type: "p",
+          texte: "Une délégation EIP-7702 confie toute ton adresse au contrat désigné. Une seule signature suffit, il faut donc être vigilant face aux contrats malveillants. Le risque est de signer une délégation sur un faux site."
+        },
+        {
+          type: "st",
+          texte: "L'activer prudemment"
+        },
+        {
+          type: "p",
+          texte: "Quelques wallets qui proposent des smart accounts :"
+        },
+        {
+          type: "liste",
+          items: [
+            "MetaMask : propose de basculer ton compte en smart account (via EIP-7702, même adresse) quand une application demande une transaction groupée, sur un réseau compatible.",
+            "Safe : le smart account multisig historique, avec plusieurs signataires (par exemple 2 signatures sur 3 pour valider un paiement). Très utilisé pour les gros montants et les trésoreries de projets. Nouvelle adresse.",
+            "Ambire : wallet construit autour des smart accounts, compatible EIP-7702.",
+            "Base Account (ex-Coinbase Smart Wallet) : smart account ERC-4337 avec connexion par passkey, sans seed phrase."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Si on te propose de « mettre à niveau » ton wallet, trois réflexes :"
+        },
+        {
+          type: "liste",
+          items: [
+            "Une demande d'upgrade reçue par mail, message ou sur un site = du phishing. Ton wallet ne te contacte pas pour ça.",
+            "Ne délègue qu'au contrat officiel proposé par ton wallet, depuis son interface.",
+            "Si ton wallet affiche une délégation vers un contrat inconnu, refuse."
+          ]
+        },
+        {
+          type: "avis",
+          texte: "pour un usage DeFi régulier, le smart account est un vrai progrès : moins de signatures, moins d'approves qui traînent, des plafonds qui limitent la casse. L'activer via le parcours officiel de ton wallet vaut le coup."
+        },
+        {
+          type: "st",
+          texte: "Ce qu'il faut retenir"
+        },
+        {
+          type: "liste",
+          items: [
+            "Un smart account est un wallet programmable : plafonds, opérations groupées, gas payé en USDC, récupération sans seed phrase selon le wallet.",
+            "Deux voies : ERC-4337 crée un nouveau compte sans clé maîtresse, donc vraiment plus sûr ; EIP-7702 équipe ton compte actuel pour le confort, mais ta seed phrase y garde tous les pouvoirs."
+          ]
+        }
+      ]
+    },
+    actus: [
+      {
+        titre: "Budget 2027 : où en sont les mesures crypto ?",
+        corps: [
+          {
+            type: "p",
+            texte: "Les députés examinent depuis début octobre le projet de loi de finances pour 2027 (PLF), qui fixe les impôts de l'an prochain. Plusieurs amendements visent les cryptos. Voici où ils en sont, en gardant en tête qu'à ce stade rien n'est définitif."
+          },
+          {
+            type: "st",
+            texte: "Ce qui a été voté, rejeté ou reste en suspens"
+          },
+          {
+            type: "tableau",
+            entetes: [
+              "Mesure",
+              "Où on en est",
+              "Ce que ça changerait pour toi"
+            ],
+            lignes: [
+              [
+                "Taxer les échanges crypto → stablecoins (USDC, EURC…)",
+                "Votée par les députés en séance (16/10)",
+                "Sécuriser ses gains en stablecoin deviendrait imposable, à partir du 1er janvier 2027"
+              ],
+              [
+                "Reporter les moins-values crypto sur 10 ans, comme pour les actions",
+                "Rejetée en séance (16/10, 75 contre, 18 pour)",
+                "Rien : la règle actuelle reste"
+              ],
+              [
+                "Augmenter la flat tax",
+                "Plusieurs amendements rejetés en séance (16/10)",
+                "Rien"
+              ],
+              [
+                "Déclarer ses wallets en self-custody au-delà de 100 000 €",
+                "Débattue en séance le 16/10, résultat à confirmer (adoptée en commission le 9/10)",
+                "Une déclaration de plus si tu gères toi-même tes clés au-delà de ce montant"
+              ],
+              [
+                "Soumettre les cryptos à l'exit tax au-delà de 800 000 €",
+                "Sans effet pour l'instant : adoptée en commission (8/10), à revoter en séance",
+                "Ne concerne que les gros patrimoines qui quittent la France"
+              ]
+            ]
+          },
+          {
+            type: "p",
+            texte: "La mesure sur les stablecoins, d'abord. Aujourd'hui, échanger une crypto contre une autre, stablecoins compris, n'est pas imposable : c'est le sursis d'imposition."
+          },
+          {
+            type: "def",
+            terme: "Sursis d'imposition",
+            slug: "sursis-imposition",
+            texte: "L'impôt n'est pas supprimé, il est reporté : l'échange n'est pas taxé au moment où il a lieu, et la plus-value n'est calculée que lors de la conversion en euros ou de l'achat d'un bien. C'est le régime actuel des échanges entre cryptos en France."
+          },
+          {
+            type: "p",
+            texte: "L'amendement voté supprimerait ce sursis pour les échanges contre des stablecoins adossés à une seule monnaie, ce que MiCA appelle des « tokens de monnaie électronique » (EMT), comme l'USDC ou l'EURC de Circle."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : passer ton ETH en USDC après une hausse serait taxé comme une vente en euros. Exemple simplifié : tu as acheté de l'ETH pour 100, tu le passes en USDC quand il vaut 200. Tu aurais 100 de plus-value imposable (200 − 100), même sans repasser en euros. (Le calcul réel porte sur l'ensemble de ton portefeuille crypto, pas sur cette seule ligne.)"
+          },
+          {
+            type: "p",
+            texte: "Reste une question ouverte : quid des stablecoins qui ne sont pas agréés MiCA ? Le texte vise la définition juridique d'un EMT, pas l'agrément de l'émetteur : l'USDT pourrait donc être concerné. Pour les stablecoins décentralisés comme le BOLD, adossé à de la crypto, ou l'USDe, adossé à des positions delta neutre, le texte ne permet pas de trancher."
+          },
+          {
+            type: "p",
+            texte: "Le report des moins-values, ensuite. Aujourd'hui, une perte sur tes cryptos ne s'impute que sur les gains de la même année. Si tu perds 1 000 € en 2026 et gagnes 1 000 € en 2027, tu paies l'impôt sur les 1 000 € de 2027. Avec le report, tu n'aurais rien payé (1 000 − 1 000 = 0). Le rejet maintient l'écart avec les actions, dont les pertes se reportent sur 10 ans."
+          },
+          {
+            type: "st",
+            texte: "La suite du calendrier"
+          },
+          {
+            type: "liste",
+            items: [
+              "20 octobre : le vote de l'ensemble de la partie recettes est reporté sans date (près de 2 800 amendements restaient à examiner). Les députés passent au budget de la Sécurité sociale.",
+              "27 octobre : reprise du budget de l'État.",
+              "Avant le 17 novembre : la première lecture complète doit être bouclée."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Deux scénarios peuvent tout changer :"
+          },
+          {
+            type: "liste",
+            items: [
+              "si la partie recettes est rejetée, le texte part au Sénat dans sa version initiale, sans aucun des amendements des députés ;",
+              "si le gouvernement utilise le 49.3, le texte passe sans vote (sauf motion de censure), avec les seuls amendements qu'il a choisi de garder."
+            ]
+          }
+        ],
+        avis: "",
+        avisItems: [
+          "La mesure qui compte, c'est celle sur les stablecoins. Elle vise le geste le plus courant : prendre ses gains en USDC ou en EURC sans repasser en euros. Combinée au rejet du report, elle ferait taxer les gains plus tôt sans permettre de reporter les pertes.",
+          "Un vote en séance n'est qu'une étape. La mesure sur les stablecoins peut disparaître avec la partie recettes ou au Sénat. À nos yeux, c'est le texte final qui dira s'il y a quelque chose à changer dans sa manière de gérer ses cryptos."
+        ],
+        source: "Cryptoast (direct PLF 2027 et article du 20/10) · amendements I-3898, I-3653, I-CF821, I-CF1822 (Assemblée nationale)"
+      },
+      {
+        titre: "MSCI change ses règles : Strategy pourrait sortir de ses indices en novembre",
+        corps: [
+          {
+            type: "p",
+            texte: "MSCI, l'un des grands fournisseurs d'indices boursiers que répliquent les ETFs, se demande depuis un an s'il faut garder les DAT (Digital Asset Treasuries, ces sociétés cotées qui accumulent des cryptos en trésorerie) dans ses indices. Dans notre dossier sur les trésoreries crypto, on écrivait que la menace était « suspendue, pas levée ». Elle revient."
+          },
+          {
+            type: "p",
+            texte: "Le 6 janvier, MSCI avait renoncé à exclure ces sociétés en gardant une mesure provisoire pour celles dont les crypto pèsent au moins 50 % des actifs : elles restaient dans les indices, mais sans prise en compte de leurs nouvelles actions émises."
+          },
+          {
+            type: "p",
+            texte: "MSCI avait également lancé une consultation plus large, qui a débouché sur une proposition en août, puis sur une décision le 15 octobre instituant une nouvelle méthode pour repérer les « sociétés non opérationnelles »."
+          },
+          {
+            type: "def",
+            terme: "Société non opérationnelle",
+            slug: "societe-non-operationnelle",
+            texte: "Pour MSCI, une société dont la valeur repose surtout sur des actifs qu'elle détient (bitcoin, uranium, or…) plutôt que sur une activité qui produit des revenus. MSCI la considère comme plus proche d'un fonds d'investissement que d'une entreprise, et peut l'écarter de ses indices actions. Pour rappel, les mesures visent tout bilan dominé par un stock : Yellow Cake, qui détient de l'uranium physique, est concerné au même titre que les sociétés qui détiennent du bitcoin."
+          },
+          {
+            type: "st",
+            texte: "Ce qui change"
+          },
+          {
+            type: "p",
+            texte: "Le seuil de 50 % de crypto disparaît, remplacé par un test en deux étapes :"
+          },
+          {
+            type: "liste",
+            items: [
+              "un filtre sur les actifs opérationnels : la société possède-t-elle assez d'actifs qui servent à une activité réelle ? (Chez Strategy, l'activité logicielle pèse très peu face aux bitcoins.)",
+              "si elle échoue, cinq ratios financiers sont examinés pour trancher (il faudrait en déclencher quatre sur cinq pour être classé non opérationnel)."
+            ]
+          },
+          {
+            type: "p",
+            texte: "La règle regarde les deux derniers exercices annuels :"
+          },
+          {
+            type: "liste",
+            items: [
+              "un candidat n'entre pas s'il échoue sur l'un des deux ;",
+              "un membre actuel n'est retiré que s'il échoue sur les deux."
+            ]
+          },
+          {
+            type: "st",
+            texte: "Qui est concerné, et quand"
+          },
+          {
+            type: "p",
+            texte: "Une simulation de MSCI publiée en mai citait Strategy et Metaplanet, en plus de Yellow Cake ; SharpLink, qui détient de l'ETH, pourrait aussi être touchée. Rien n'est tranché société par société : la liste des sociétés potentiellement concernées sera publiée le 11 novembre, pour une application en novembre."
+          },
+          {
+            type: "p",
+            texte: "Strategy (environ 848 000 BTC, action en baisse d'environ 54 % sur un an) conteste et juge l'approche « discriminatoire » ; dans une lettre de septembre, la société estimait qu'une exclusion n'aurait pas d'impact significatif sur son activité, mais nuirait à la réputation de MSCI."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : une exclusion ne coûterait pas un seul bitcoin à Strategy. Elle obligerait les ETFs qui suivent les indices MSCI à revendre l'action, et lui retirerait ces acheteurs automatiques. C'est donc la valeur de l'action qui en pâtirait, et avec elle la prime, c'est-à-dire l'écart entre la valeur de l'action en Bourse et celle de ses bitcoins (ce que mesure la mNAV). Chez Strategy, la mNAV tourne aujourd'hui autour de 0,9 (relevé du 20 octobre) : l'action vaut même un peu moins que ses bitcoins, la prime a disparu."
+          }
+        ],
+        avis: "",
+        avisItems: [
+          "Pour Strategy, une exclusion serait durable. Le délai des deux exercices aide une société qui change de modèle, pas elle. Une fois sortie, Strategy redeviendrait candidate et devrait présenter deux exercices propres pour revenir : impossible tant que son bilan reste du bitcoin.",
+          "Pour les petites trésoreries, la porte se ferme. Entrer dans un indice était leur espoir d'attirer des acheteurs réguliers ; un seul exercice raté suffit désormais à les en écarter.",
+          "Le coup porte sur le financement, pas sur le trésor. Le modèle repose sur la capacité à lever des fonds en vendant des actions plus cher que les bitcoins qu'elles représentent (on le détaille dans notre dossier sur les trésoreries crypto). C'est la mNAV qu'il faut surveiller après le 11 novembre, plus que le nombre de bitcoins."
+        ],
+        source: "The Block (15/10) · CoinAcademy (16/10) · annonces MSCI · dépôts et lettre de Strategy"
+      },
+      {
+        titre: "Bittensor : des subnets dix fois plus grands, notés par un seul acteur",
+        corps: [
+          {
+            type: "p",
+            texte: "Bittensor est une blockchain qui rémunère du travail d'intelligence artificielle avec son token, le TAO. Elle est découpée en subnets : chacun est un marché spécialisé dans une tâche (générer du texte, entraîner un modèle, fournir de la puissance de calcul…)."
+          },
+          {
+            type: "p",
+            texte: "Sur chaque subnet, deux rôles :"
+          },
+          {
+            type: "liste",
+            items: [
+              "les mineurs produisent le travail ;",
+              "les validateurs le notent, en publiant des weights (poids), c'est-à-dire une note attribuée à chaque mineur."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Les TAO nouvellement créés à chaque bloc sont ensuite répartis selon ces notes. (Rien à voir avec les validateurs d'une blockchain en proof of stake : ici, ils évaluent un travail, ils ne valident pas des blocs.)"
+          },
+          {
+            type: "def",
+            terme: "Yuma Consensus",
+            slug: "yuma-consensus",
+            texte: "Le mécanisme standard de Bittensor pour transformer les notes des validateurs en récompenses. Plusieurs validateurs notent les mêmes mineurs, et c'est le consensus entre leurs notes, pondéré par le stake de chacun, qui compte. Un validateur isolé ou malhonnête pèse donc peu : s'il surnote un mineur ami, les autres ne suivent pas."
+          },
+          {
+            type: "st",
+            texte: "Ce que change Null Consensus"
+          },
+          {
+            type: "p",
+            texte: "Début octobre (mise à jour publiée le 7 octobre), Bittensor a ajouté un second mode, Null Consensus. Il est optionnel : c'est le propriétaire de chaque subnet qui décide de l'activer, et Yuma reste le mode par défaut, y compris pour les nouveaux subnets."
+          },
+          {
+            type: "p",
+            texte: "Pourquoi ce mode ? Yuma a un coût : pour comparer les notes de tous les validateurs, le réseau fait un calcul qui grossit très vite avec leur nombre (de façon quadratique : deux fois plus de validateurs, environ quatre fois plus de calcul). C'est ce qui plafonne un subnet à 256 participants. Null supprime ce calcul, et donc ce plafond. Il vise les subnets où le travail se mesure sans débat, comme de la puissance de calcul fournie : là, croiser plusieurs notes apporte peu, et le nombre de participants compte davantage."
+          },
+          {
+            type: "tableau",
+            entetes: [
+              "",
+              "Yuma Consensus",
+              "Null Consensus"
+            ],
+            lignes: [
+              [
+                "Qui note les mineurs",
+                "Tous les validateurs, consensus pondéré par le stake",
+                "Un seul : le validateur qui détient le plus de stake sur le subnet"
+              ],
+              [
+                "Garde-fou",
+                "Le consensus entre validateurs : une note isolée est corrigée par celles des autres",
+                "Aucun : le calcul de consensus est contourné"
+              ],
+              [
+                "Participants max par subnet",
+                "256",
+                "2 500 (à partager si le subnet a plusieurs mécanismes d'émission)"
+              ],
+              [
+                "Par défaut ?",
+                "Oui",
+                "Non, activé par le propriétaire du subnet"
+              ]
+            ]
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : un subnet peut accueillir environ dix fois plus de participants (2 500 ÷ 256 ≈ 10), mais il dépend alors de l'honnêteté d'un seul validateur. C'est utile pour les tâches qui demandent beaucoup de mineurs, par exemple un subnet de puissance de calcul qui veut réunir 2 000 machines au lieu de 250. En contrepartie, plus rien ne corrige ce validateur s'il favorise certains mineurs."
+          },
+          {
+            type: "liste",
+            items: [
+              "Ceux qui ont staké leurs TAO auprès d'un validateur du subnet continuent de toucher leur part.",
+              "Revenir à Yuma est possible, mais suppose de redescendre à 256 participants au plus."
+            ]
+          },
+          {
+            type: "st",
+            texte: "Six mois après une crise sur la centralisation"
+          },
+          {
+            type: "p",
+            texte: "En avril, Covenant AI, l'un des plus gros opérateurs de subnets, a quitté Bittensor en dénonçant une « décentralisation de façade » : selon lui, le cofondateur du réseau contrôlait de fait le triumvirat, l'organe qui décide des mises à jour. Le cofondateur a démenti plusieurs de ces accusations. La question de la concentration du pouvoir sur le réseau était donc déjà posée."
+          }
+        ],
+        avis: "",
+        avisItems: [
+          "Le propriétaire choisit, le plus gros validateur note. Le propriétaire qui active Null y gagne de la capacité : plus de mineurs, donc plus de travail produit. Le pouvoir de noter, lui, revient au validateur qui détient le plus de stake, et rien ne garantit que ce soit le propriétaire. Ce n'est pas forcément un défaut si la tâche exige beaucoup de participants et que ce validateur est compétent.",
+          "Six mois après des accusations de centralisation de la gouvernance, le réseau ajoute un mode qui centralise, lui, la notation. L'option a au moins le mérite d'être choisie subnet par subnet, sans toucher au reste du réseau.",
+          "La métrique à suivre : combien de subnets passent en Null, et lesquels. Quelques petits subnets, c'est une option de niche. Si ceux qui reçoivent le plus de TAO basculent, la critique prendra du poids."
+        ],
+        source: "notes de version Opentensor (Runtime 475) · The Block, Cointelegraph, Decrypt (avril 2026, départ de Covenant AI)"
+      }
+    ],
+    protocole: {
+      nom: "Papertrade",
+      slug: "papertrade",
+      bref: "Papertrade est une plateforme de perps lancée le 10 octobre sur HyperEVM, la couche d'Hyperliquid qui accueille les applications tierces (voir notre fiche Hyperliquid). On n'y trade que deux marchés, le bitcoin et l'ether, avec un levier jusqu'à ×1000. Son modèle ressemble à celui d'un casino : la banque n'est financée que par les pertes des joueurs, avec la particularité que chaque perdant reçoit un jeton qui, une fois staké, rapporte une part des pertes futures des autres.",
+      etapes: [],
+      etapesCorps: [
+        {
+          type: "p",
+          texte: "Tu déposes des USDC en marge, tu choisis le bitcoin ou l'ether, un sens (long ou short) et un levier. Mais aucune position n'est ouverte sur un marché : Papertrade lit le prix d'Hyperliquid et calcule lui-même ton résultat. C'est un perp synthétique."
+        },
+        {
+          type: "def",
+          terme: "Perp synthétique",
+          slug: "perp-synthetique",
+          texte: "Un perp qui n'existe que dans les comptes du protocole : il suit un prix de référence, sans qu'aucun ordre soit passé sur un marché, et la plateforme règle elle-même gains et pertes."
+        },
+        {
+          type: "p",
+          texte: "Sur Papertrade, le prix de référence est le milieu du BBO du carnet d'ordres d'Hyperliquid. Et comme rien ne s'échange réellement, il n'y a ni funding, ni frais d'ouverture, ni slippage."
+        },
+        {
+          type: "def",
+          terme: "BBO (Best Bid and Offer)",
+          slug: "bbo",
+          texte: "Le meilleur prix d'achat (bid) et le meilleur prix de vente (offer) proposés à un instant donné dans un carnet d'ordres. Le mid est leur milieu : acheteur à 99,8, vendeur à 100,2, le mid vaut 100."
+        },
+        {
+          type: "p",
+          texte: "À ×1000, 100 USDC ouvrent une position de 100 000 $ (100 × 1 000), et environ 0,1 % de mouvement contre toi suffit à effacer la marge et à liquider la position : c'est la règle « 100 ÷ ton levier » de notre numéro 4."
+        },
+        {
+          type: "st",
+          texte: "La faille : un prix facile à pousser"
+        },
+        {
+          type: "p",
+          texte: "Déplacer le mid d'Hyperliquid (donc le prix de référence sur Papertrade) coûte peu, et à ×1000 ça rapporte gros. Pas à pas, avec un carnet volontairement élargi :"
+        },
+        {
+          type: "liste",
+          items: [
+            "Le mid est à 100. Sur Papertrade, tu ouvres un long de 1 M$ avec 1 000 $ de marge (×1000).",
+            "Sur Hyperliquid (carnet à 99,8 / 100,2), tu places un ordre d'achat à 100,0. Le mid passe à 100,1, soit +0,1 %, sans que ton ordre soit exécuté.",
+            "Tu clôtures ton long sur Papertrade : 1 000 $ de gain avant décote (1 000 000 × 0,1 %), environ 700 $ après. Tu gagnes environ 70 % de ta mise en quelques secondes : c'est pourquoi la décote ne suffit pas à protéger la LP.",
+            "Puis tu annules ton ordre sur Hyperliquid."
+          ]
+        },
+        {
+          type: "p",
+          texte: "C'est ce qui s'est passé le jour du lancement, avec un wallet :"
+        },
+        {
+          type: "liste",
+          items: [
+            "les ordres posés : de gros achats sur le carnet ETH d'Hyperliquid, environ 6 000 ETH, soit près de 15 M$ (The Block) ;",
+            "l'effet : un mid relevé de 0,1 à 0,2 %, encaissé par de gros longs à ×1000 sur Papertrade ;",
+            "le gain : environ 1,28 M$ en huit heures, sur environ 300 trades ;",
+            "reperdu le soir même : environ 450 k$. Une trentaine de positions short à ×660, laissées ouvertes plus de trois heures, ont été liquidées. À ce levier, un mouvement d'environ 0,15 % contre soi suffit : un mouvement ordinaire du marché, sans aucune manipulation."
+          ]
+        },
+        {
+          type: "p",
+          texte: "La LP, partie de zéro, a pu payer parce qu'elle s'était déjà remplie de plusieurs millions de pertes en quelques heures. Pas un bug : le mécanisme a marché comme écrit ; il manquait les garde-fous classiques (comparer avec un second prix, lisser sur une durée). L'équipe a depuis resserré les plafonds de position."
+        }
+      ],
+      rendementLabel: "D'où vient l'argent ?",
+      rendement: "",
+      rendementCorps: [
+        {
+          type: "p",
+          texte: "Tous les traders ont la même contrepartie : une réserve d'USDC, la LP. Partie de zéro, elle n'accepte aucun dépôt et se remplit uniquement :"
+        },
+        {
+          type: "liste",
+          items: [
+            "des marges des traders liquidés ;",
+            "des pertes des positions clôturées dans le rouge."
+          ]
+        },
+        {
+          type: "p",
+          texte: "C'est elle qui paie les gagnants, mais pas en totalité. Elle applique d'abord une décote sur le gain : plus le prix a peu bougé entre l'ouverture et la clôture, plus la décote est forte. Un gain tiré d'un mouvement de 0,1 % est donc davantage rogné qu'un gain tiré d'un mouvement de 2 %. Le but : décourager les gains sur de tout petits écarts, les plus faciles à provoquer. Elle prélève ensuite 2 % de frais sur ce qui reste."
+        },
+        {
+          type: "p",
+          texte: "Si la LP est vide, tu récupères ta marge et ton profit attend dans une file d'attente, réglé dans l'ordre d'arrivée. La LP ne peut donc jamais s'endetter."
+        },
+        {
+          type: "p",
+          texte: "Le protocole repose ainsi sur une thèse : les traders à fort levier finissent par perdre, et leurs pertes suffisent à alimenter la réserve qui sert de contrepartie, sans avoir besoin de liquidity providers extérieurs."
+        },
+        {
+          type: "p",
+          texte: "Les perdants reçoivent du PAPER, le jeton du protocole : 100 PAPER par dollar perdu au départ, puis de moins en moins (environ 17 par dollar mi-octobre). Le PAPER n'est pas encore vendable : sa seule utilité est d'être staké."
+        },
+        {
+          type: "p",
+          texte: "Les stakers sont payés en USDC, au prorata du PAPER qu'ils ont staké, à partir de deux sources :"
+        },
+        {
+          type: "liste",
+          items: [
+            "l'excédent de la LP : au-delà d'environ 5 M$, la réserve ne grossit plus, et ce qu'elle gagne en plus est reversé aux stakers ;",
+            "la moitié des 2 % de frais prélevés sur les gains des traders (l'autre moitié va aux développeurs)."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Ces versements ne tombent que si personne n'attend dans la file et que la LP reste au-dessus de son plafond. Au 20 octobre, environ 58 M$ avaient été versés ainsi (DefiLlama)."
+        },
+        {
+          type: "p",
+          texte: "Dit simplement : le PAPER est un droit sur les pertes futures des autres traders."
+        }
+      ],
+      risqueNiveau: "élevé",
+      risqueSens: "eleve",
+      risques: "",
+      risquesItems: [
+        "Pour le trader : un ×1000 se fait liquider sur un mouvement de quelques secondes.",
+        "Pour le staker : ses revenus sont conditionnés par les pertes des traders.",
+        "Le contrôle : un multisig 2-sur-3 (les deux fondateurs, semi-pseudonymes, et un tiers) peut suspendre le trading, geler un marché ou changer les frais. Audit annoncé, sans rapport public."
+      ],
+      importance: "Papertrade est un cas d'école : un dérivé synthétique ne vaut que ce que vaut sa source de prix, et plus le levier est haut, moins il faut la déformer pour qu'une manipulation paie. C'était déjà la question des marchés de prédiction d'Hyperliquid dans notre numéro 6 : qui fixe le prix de règlement, et combien coûte-t-il de le fausser ?",
+      importanceSuite: [
+        "L'affluence retombe déjà : l'argent déposé sur la plateforme est passé d'environ 102 M$ au lendemain du lancement à environ 45 M$ le 21 octobre (DeFiLlama).",
+        "À nos yeux, ce n'est pas un outil de trading mais un jeu dont l'avantage de la maison est en grande partie reversé aux stakers. Et le PAPER n'est pas un rendement : c'est un pari sur l'affluence future de la plateforme."
+      ]
+    },
+    cours: [
+      {
+        actif: "BTC",
+        nom: "Bitcoin",
+        prix: "~83 979 $",
+        var7j: "▲ +0,9 %",
+        sens: "up"
+      },
+      {
+        actif: "ETH",
+        nom: "Ethereum",
+        prix: "~2 477 $",
+        var7j: "▼ −1,0 %",
+        sens: "down"
+      },
+      {
+        actif: "SOL",
+        nom: "Solana",
+        prix: "~107 $",
+        var7j: "▲ +0,4 %",
+        sens: "up"
+      },
+      {
+        actif: "HYPE",
+        nom: "Hyperliquid",
+        prix: "~81 $",
+        var7j: "▼ −0,9 %",
+        sens: "down"
+      },
+      {
+        actif: "BNB",
+        prix: "~746 $",
+        var7j: "▲ +0,8 %",
+        sens: "up"
+      }
+    ],
+    cours7jLabel: "Depuis notre n°6 (8 jours)",
+    coursAvisCorps: [
+      {
+        type: "st",
+        texte: "Ce qui a fait bouger les prix"
+      },
+      {
+        type: "p",
+        texte: "Une semaine en aller-retour : le bitcoin est retombé à environ 80 000 $ le 15 octobre, puis il est remonté. Au final, la sélection est quasi stable depuis notre numéro 6 (entre −1,0 % et +0,9 %), l'ether un peu en retrait. Comme la semaine dernière, c'est d'abord l'inflation américaine qui a pesé, puis ses effets sur le marché, avant un rebond en fin de période :"
+      },
+      {
+        type: "liste",
+        items: [
+          "14 octobre : l'inflation (indice CPI) monte à 3,7 % sur un an en septembre, contre 3,4 % en août et 3,6 % attendus. L'essence explique plus de la moitié de la hausse du mois.",
+          "15 octobre : le bitcoin retombe à environ 80 000 $, son plus bas depuis la mi-septembre. Près de 1 Md$ de positions à levier sont liquidées (fermées de force) en 24 h.",
+          "Semaine du 12 au 16 octobre : les ETF bitcoin perdent environ 230 M$, ceux sur l'ether 320 M$. Rapportées à leur taille, bien plus petite, ces sorties pèsent nettement plus lourd côté ether : c'est une piste pour expliquer pourquoi il recule davantage.",
+          "19-21 octobre : le rebond. Il est probablement dû à la baisse du pétrole : elle apaise la crainte d'inflation et fait remonter les actions américaines, que le bitcoin suit en ce moment. Les ETF bitcoin en profitent, avec environ +527 M$ d'entrées nettes le 19 octobre."
+        ]
+      },
+      {
+        type: "p",
+        texte: "Prochaine étape : la décision de la Fed le 28 octobre. Elle a déjà relevé ses taux le 16 septembre, une première depuis 2023. Les marchés n'y attendent pas de hausse des taux, mais parient sur une hausse d'ici la fin de l'année."
+      },
+      {
+        type: "avis",
+        texte: "avec une inflation qui accélère encore, le vrai sujet du 28 octobre est de savoir si la Fed confirmera une hausse en décembre. Une baisse des taux n'est pas à l'horizon, et le contexte reste défavorable aux actifs sans rendement comme le bitcoin."
+      }
+    ],
+    data: {
+      titre: "15 Md$ de positions ouvertes sur Hyperliquid, dont un quart sur l'or, le pétrole et les actions",
+      texte: "Environ 15 Md$ : c'est l'open interest d'Hyperliquid relevé le 20 octobre. C'est un niveau élevé, mais en retrait par rapport au record d'environ 18 Md$ du 23 septembre.",
+      def: {
+        terme: "Open interest (positions ouvertes)",
+        slug: "open-interest",
+        texte: "la valeur totale des positions encore ouvertes à un instant donné. Ce n'est pas un volume : une position compte une fois tant qu'elle reste ouverte, qu'elle ait été ouverte hier ou il y a trois mois. Ce n'est pas non plus l'argent déposé : avec 1 000 $ de marge et un levier ×10, tu ouvres une position de 10 000 $ (1 000 × 10), et c'est ce montant qui entre dans l'open interest."
+      },
+      corps: [
+        {
+          type: "st",
+          texte: "D'où viennent ces 15 Md$"
+        },
+        {
+          type: "liste",
+          items: [
+            "≈ 11,1 Md$ sur les perps natifs, ceux qu'Hyperliquid liste lui-même. Le bitcoin (3,4 Md$) et l'ether (2,6 Md$) en font plus de la moitié ;",
+            "≈ 4 Md$ sur les marchés HIP-3, des perps déployés par des sociétés tierces sur le carnet d'ordres d'Hyperliquid (voir notre fiche Hyperliquid). La grosse majorité passe par un seul déployeur, trade.xyz (≈ 3,9 Md$), sur les actifs suivants :"
+          ]
+        },
+        {
+          type: "liste",
+          items: [
+            "≈ 3 Md$ sur des actions et des indices boursiers : le S&P 500 en tête, puis SK Hynix, Google, Micron, Nvidia… ;",
+            "≈ 0,8 Md$ sur les matières premières : l'or, le pétrole, l'argent."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Environ un quart des positions ouvertes sur Hyperliquid porte sur des marchés créés par d'autres que lui, et en grande majorité sur des actifs de la finance traditionnelle."
+        },
+        {
+          type: "avis",
+          texte: "",
+          items: [
+            "Le signal est plus solide que le volume : l'open interest compte des positions qui restent ouvertes, pas des allers-retours qui gonflent les chiffres (voir notre numéro 6).",
+            "Le vrai enjeu est la dépendance à trade.xyz : presque toute la croissance hors crypto repose sur un seul déployeur à ce stade."
+          ]
+        }
+      ]
+    },
+    definitions: [
+      {
+        terme: "Abstraction de compte",
+        def: "rendre programmables les règles d'un compte. Au lieu d'une seule clé imposée par la blockchain, un smart contract décide qui peut signer, jusqu'à quel montant et comment se paie le gas. C'est ce qui rend possibles les smart accounts, et une piste, encore théorique, vers des signatures résistantes au quantique.",
+        slug: "abstraction-de-compte"
+      },
+      {
+        terme: "Open interest",
+        def: "la valeur totale des positions encore ouvertes sur un marché de dérivés, levier compris. Il mesure ce qui reste ouvert, pas ce qui s'échange (le volume) ni ce qui est déposé (la marge).",
+        slug: "open-interest"
+      }
+    ],
+    jeu: {
+      cta: "Une question sur ce numéro, un point qui reste flou, un sujet que tu aimerais qu'on creuse ? Réponds directement à ce mail : je lis tout, et je réponds.",
+      question: "Les smart accounts, tu en es où ?",
+      a: "J'en utilise déjà un, ou mon wallet a basculé",
+      b: "Pas encore, je garde mon wallet classique"
     }
   }
 ];

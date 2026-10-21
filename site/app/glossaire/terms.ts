@@ -226,7 +226,7 @@ export const TERMES: GlossaireTerme[] = [
     slug: "open-interest",
     terme: "Open interest (positions ouvertes)",
     definition:
-      "Le montant total des positions encore ouvertes sur un marché de dérivés, à un instant donné. À ne pas confondre avec le volume : le volume mesure ce qui a été échangé sur une période, l'open interest mesure ce qui reste engagé. Un volume élevé accompagné d'un open interest en baisse indique que les traders soldent leurs positions ; un open interest en hausse indique que de l'argent frais entre sur le marché — et que le montant susceptible d'être liquidé grossit d'autant.",
+      "La valeur totale des positions encore ouvertes sur un marché de dérivés, à un instant donné. Ce n'est pas un volume : le volume mesure ce qui a été échangé sur une période, l'open interest ce qui reste ouvert. Ce n'est pas non plus l'argent déposé : avec 1 000 $ de marge et un levier ×10, on ouvre une position de 10 000 $, et c'est ce montant qui entre dans l'open interest. Un volume élevé accompagné d'un open interest en baisse indique que les traders soldent leurs positions ; un open interest en hausse indique que de nouvelles positions s'ouvrent, et que le montant susceptible d'être liquidé grossit d'autant.",
     numero: 4,
   },
   {
@@ -305,6 +305,111 @@ export const TERMES: GlossaireTerme[] = [
     definition:
       "Le secret qui sert à signer chaque envoi depuis une adresse : qui la connaît peut vider cette adresse. Ta phrase de récupération permet de la retrouver. De la clé privée, on calcule une clé publique, puis, par hachage (une empreinte qu'on ne calcule que dans un sens), ton adresse. Retrouver la clé privée à partir de la clé publique est aujourd'hui hors de portée : c'est ce qui protège les wallets.",
     numero: 6,
+  },
+  {
+    slug: "eoa",
+    terme: "EOA (Externally Owned Account)",
+    definition:
+      "Le compte « classique » d'une blockchain comme Ethereum : une adresse contrôlée par une seule clé privée, sans aucune règle supplémentaire. C'est le cas de la plupart des wallets (MetaMask, Rabby…) dans leur configuration d'origine. Celui qui détient la clé privée peut tout faire, chaque action demande sa propre signature, et le gas se paie en ETH.",
+    numero: 7,
+  },
+  {
+    slug: "smart-account",
+    terme: "Smart account",
+    definition:
+      "Un compte dont les règles sont écrites dans un smart contract. C'est ce contrat qui décide qui peut signer (une clé, plusieurs (multisig), une empreinte digitale…), jusqu'à quel montant et pendant combien de temps, avec quel jeton on paie le gas, et qui le paie. Ces règles ne sont pas figées à la création : le code fixe ce qui est possible, et tu ajustes ensuite les réglages (ajouter un signataire, changer un plafond) par une transaction. Deux façons d'y passer : ERC-4337 (un nouveau compte) ou EIP-7702 (ton compte actuel équipé d'un smart contract).",
+    numero: 7,
+  },
+  {
+    slug: "abstraction-de-compte",
+    terme: "Abstraction de compte",
+    definition:
+      "L'idée de rendre programmables les règles d'un compte. Sur un compte classique (EOA), la blockchain impose une seule règle : la clé privée signe, et elle peut tout faire. Avec l'abstraction de compte, c'est un smart contract qui fixe les règles : qui peut signer (une clé, plusieurs, une passkey), jusqu'à quel montant, pendant combien de temps, avec quel jeton on paie le gas. Les smart accounts en sont l'application concrète, via ERC-4337 (un nouveau compte) ou EIP-7702 (ton compte actuel équipé d'un smart contract). Comme la vérification de la signature devient du code, on pourrait aussi y brancher des signatures conçues pour résister au quantique : c'est possible en théorie, pas encore en pratique.",
+    numero: 7,
+  },
+  {
+    slug: "erc-4337",
+    terme: "ERC-4337",
+    definition:
+      "Le standard (mars 2023) avec lequel tu ouvres un nouveau compte : le smart account est un contrat dès sa création, avec une nouvelle adresse, et tu y transfères tes fonds depuis ton ancien wallet. Aucune clé maîtresse : seules les règles du contrat comptent, si bien que plusieurs signataires ou des gardiens y protègent vraiment.",
+    numero: 7,
+  },
+  {
+    slug: "eip-7702",
+    terme: "EIP-7702",
+    definition:
+      "Le standard (mai 2025, arrivé avec la mise à jour Pectra d'Ethereum) avec lequel tu équipes ton compte actuel : tu signes, avec ta clé privée, une délégation qui dit « mon adresse exécute désormais le code de tel smart contract ». Ton adresse devient alors un smart account : même adresse, mêmes fonds, rien à transférer. Mais ta clé privée d'origine garde tous ses pouvoirs : si ta seed phrase fuite, le smart account ne te protège pas.",
+    numero: 7,
+  },
+  {
+    slug: "delegation-7702",
+    terme: "Délégation (EIP-7702)",
+    definition:
+      "La signature qui relie ton adresse à un smart contract. EIP-7702 est la règle d'Ethereum qui l'autorise ; la délégation est l'acte que tu signes. Sans délégation, ton compte reste un EOA classique. Avec ERC-4337, il n'y en a pas : le compte est un contrat dès le départ. Une délégation confie toute ton adresse au contrat désigné : le risque est de signer une délégation sur un faux site.",
+    numero: 7,
+  },
+  {
+    slug: "paymaster",
+    terme: "Paymaster",
+    definition:
+      "Un smart contract qui avance le gas à ta place. Soit il se rembourse en prélevant l'équivalent dans un autre jeton (des USDC, par exemple), soit il est financé par une application qui offre les frais à ses utilisateurs.",
+    numero: 7,
+  },
+  {
+    slug: "session-key",
+    terme: "Session key",
+    definition:
+      "Une clé temporaire, aux pouvoirs limités, que ton smart account accorde à une application : un plafond de montant, une durée, parfois une liste d'opérations autorisées. Une fois la limite atteinte ou la durée écoulée, elle ne sert plus à rien.",
+    numero: 7,
+  },
+  {
+    slug: "passkey",
+    terme: "Passkey et social recovery",
+    definition:
+      "La passkey est une clé de connexion générée et stockée dans la puce sécurisée de ton téléphone ou de ton ordinateur ; elle se déverrouille par empreinte, visage ou code de l'appareil. Le social recovery permet de remplacer cette clé si tu la perds, avec l'accord d'un nombre minimum de gardiens désignés à l'avance.",
+    numero: 7,
+  },
+  {
+    slug: "sursis-imposition",
+    terme: "Sursis d'imposition",
+    definition:
+      "L'impôt n'est pas supprimé, il est reporté : l'échange n'est pas taxé au moment où il a lieu, et la plus-value n'est calculée que lors de la conversion en euros ou de l'achat d'un bien. C'est le régime actuel des échanges entre cryptos en France.",
+    numero: 7,
+  },
+  {
+    slug: "societe-non-operationnelle",
+    terme: "Société non opérationnelle",
+    definition:
+      "Pour MSCI, une société dont la valeur repose surtout sur des actifs qu'elle détient (bitcoin, uranium, or…) plutôt que sur une activité qui produit des revenus. MSCI la considère comme plus proche d'un fonds d'investissement que d'une entreprise, et peut l'écarter de ses indices actions. Les mesures visent tout bilan dominé par un stock : Yellow Cake, qui détient de l'uranium physique, est concerné au même titre que les sociétés qui détiennent du bitcoin.",
+    numero: 7,
+  },
+  {
+    slug: "subnet",
+    terme: "Subnet (Bittensor)",
+    definition:
+      "Sur Bittensor, chacun des sous-réseaux entre lesquels la blockchain est découpée : chaque subnet est un marché spécialisé dans une tâche (générer du texte, entraîner un modèle, fournir de la puissance de calcul…). Les mineurs y produisent le travail, les validateurs le notent, et les TAO nouvellement créés sont répartis selon ces notes.",
+    numero: 7,
+  },
+  {
+    slug: "yuma-consensus",
+    terme: "Yuma Consensus",
+    definition:
+      "Le mécanisme standard de Bittensor pour transformer les notes des validateurs en récompenses. Plusieurs validateurs notent les mêmes mineurs, et c'est le consensus entre leurs notes, pondéré par le stake de chacun, qui compte. Un validateur isolé ou malhonnête pèse donc peu : s'il surnote un mineur ami, les autres ne suivent pas.",
+    numero: 7,
+  },
+  {
+    slug: "perp-synthetique",
+    terme: "Perp synthétique",
+    definition:
+      "Un perp qui n'existe que dans les comptes du protocole : il suit un prix de référence, sans qu'aucun ordre soit passé sur un marché, et la plateforme règle elle-même gains et pertes.",
+    numero: 7,
+  },
+  {
+    slug: "bbo",
+    terme: "BBO (Best Bid and Offer)",
+    definition:
+      "Le meilleur prix d'achat (bid) et le meilleur prix de vente (offer) proposés à un instant donné dans un carnet d'ordres. Le mid est leur milieu : acheteur à 99,8, vendeur à 100,2, le mid vaut 100.",
+    numero: 7,
   },
 ];
 

@@ -77,7 +77,7 @@ until you add a key (`gbrain config set embedding_model <id>` + export the key).
 
 Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double : bâtir une audience sérieuse (monétisable plus tard) ET apprendre le dev web + l'IA agentique.
 
-- **Lecteur-type** : « Grégoire », ~32 ans, débutant qui veut comprendre ET savoir *comment faire*.
+- **Lecteur-type** : « Grégoire », ~32 ans, **a déjà les bases** (wallet, stablecoins, swap, staking) et veut monter en compétence : comprendre les mécanismes ET savoir *comment faire*. **Le niveau monte au fil des numéros** (décidé 2026-10-19 : les purs débutants n'accrochent pas) — on ne réexplique plus les fondamentaux, mais on définit toujours le jargon technique au fil de l'eau.
 - **Edge** : profondeur DeFi vulgarisée et **actionnable**, pas « les news en plus court ».
 - **Approche tech (C — hybride)** : envoi via **Resend** (audience + emails) + **site web à construire à neuf** (cryptoluciole.com) pour l'archive des numéros + l'inscription, puis plus tard de la data crypto. **Le site reprend la charte CryptoLuciole** (= celle de la newsletter, ci-dessous). ⚠️ **trackpaw n'est PAS la base du site** : c'est seulement, plus tard, une *source de data* (chiffres) à afficher — jamais le squelette ni le design. Agents de veille : étendre `../analyste-defi` (Phase 4).
 - **Cadence** : 1×/semaine au départ (mardi+jeudi à terme). **2 actus par numéro** (pas 3).

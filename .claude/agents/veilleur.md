@@ -109,7 +109,7 @@ soit tu cites le lien exact de l'article, soit tu n'inclus pas l'item.
 ## Filtre de pertinence (le plus important)
 
 Pour CHAQUE info, demande-toi : **« est-ce intéressant pour NOTRE angle ? »** — DeFi
-profond, vulgarisé et actionnable pour un débutant curieux (« Grégoire », ~32 ans). Garde
+profond, vulgarisé et actionnable pour un lecteur qui a déjà les bases et veut monter en compétence (« Grégoire », ~32 ans). Garde
 ce qui éclaire un mécanisme, un risque, un mouvement de marché explicable, une nouveauté
 DeFi. Écarte le bruit (pump anonyme, shilling, rumeur non sourcée). Mieux vaut **5 items
 solides que 30 vagues**. Marque d'un 🔥 les 2-3 items les plus forts du jour.
