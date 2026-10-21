@@ -90,7 +90,7 @@ La LP, partie de zéro, a pu payer parce qu'elle s'était déjà remplie de plus
 [liste]
 - Pour le trader : un ×1000 se fait liquider sur un mouvement de quelques secondes.
 - Pour le staker : ses revenus sont conditionnés par les pertes des traders.
-- Le contrôle : un multisig 2-sur-3 (les deux fondateurs, semi-pseudonymes, et un tiers) peut suspendre le trading, geler un marché ou changer les frais. Audit annoncé, sans rapport public. [À VÉRIFIER le jour de l'envoi]
+- Le contrôle : un multisig 2-sur-3 (les deux fondateurs, semi-pseudonymes, et un tiers) peut suspendre le trading, geler un marché ou changer les frais. Un audit (Guardian) a été publié le 17 octobre, mais la manipulation du prix y est classée comme risque connu, hors du périmètre corrigé. (Corrigé le 21/10 après envoi : l'email disait « Audit annoncé, sans rapport public ».)
 
 [st] Pourquoi ça compte
 

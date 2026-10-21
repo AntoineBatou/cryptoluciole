@@ -1931,7 +1931,7 @@ export const issues: Issue[] = [
       risquesItems: [
         "Pour le trader : un ×1000 se fait liquider sur un mouvement de quelques secondes.",
         "Pour le staker : ses revenus sont conditionnés par les pertes des traders.",
-        "Le contrôle : un multisig 2-sur-3 (les deux fondateurs, semi-pseudonymes, et un tiers) peut suspendre le trading, geler un marché ou changer les frais. Audit annoncé, sans rapport public."
+        "Le contrôle : un multisig 2-sur-3 (les deux fondateurs, semi-pseudonymes, et un tiers) peut suspendre le trading, geler un marché ou changer les frais. Un audit (Guardian) a été publié le 17 octobre, mais la manipulation du prix y est classée comme risque connu, hors du périmètre corrigé."
       ],
       importance: "Papertrade est un cas d'école : un dérivé synthétique ne vaut que ce que vaut sa source de prix, et plus le levier est haut, moins il faut la déformer pour qu'une manipulation paie. C'était déjà la question des marchés de prédiction d'Hyperliquid dans notre numéro 6 : qui fixe le prix de règlement, et combien coûte-t-il de le fausser ?",
       importanceSuite: [
