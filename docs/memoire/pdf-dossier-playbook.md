@@ -26,7 +26,7 @@ Le bouton « Télécharger le dossier (PDF) » de la couverture apparaît automa
 ## Pourquoi Paged.js et pas Chrome brut
 Chrome `--print-to-pdf` d'une page web = marges blanches, titres coupés en deux, veuves.
 Paged.js pagine comme un livre : numéros de page, figures entières plafonnées à une page,
-tableaux qui coulent (en-tête répété), zéro coupure. Chaîne = `pagedjs-cli` (devDep).
+tableaux qui coulent (en-tête répété), zéro coupure. Chaîne = `pagedjs-cli@0.4.3` lancé via `npx` par le script (plus une devDep depuis le 2026-10-26 : sa chaîne puppeteer 20 déclenchait les alertes Dependabot ; ne PAS le réinstaller dans package.json).
 
 ## ⚠️ LES DEUX PIÈGES (font perdre des heures)
 1. **Version de Chrome.** `pagedjs-cli` embarque puppeteer ~20.9 qui parle CDP à un

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Génère le PDF « type livre » d'un dossier via Paged.js (pagedjs-cli).
+# pagedjs-cli n'est PAS une dépendance du site (sortie le 2026-10-26 : sa chaîne
+# puppeteer 20 = failles Dependabot, et l'outil ne sert qu'en local) → lancé à la
+# demande via npx, version figée 0.4.3 (assortie au Chrome 115 ci-dessous).
 # Le rendu suit la page en ligne (source de vérité = dossiers.ts) + les règles
 # d'impression de app/globals.css (@page, @media print : numéros de page,
 # figures plafonnées, tableaux qui coulent, zéro titre coupé/veuve).
@@ -52,5 +55,5 @@ done
 # 3) Génération Paged.js --------------------------------------------------
 mkdir -p "$(dirname "$OUT")"
 echo "→ Pagination Paged.js → $OUT"
-node_modules/.bin/pagedjs-cli "http://localhost:$PORT/dossiers/$SLUG" -t 90000 -o "$OUT"
+npx -y pagedjs-cli@0.4.3 "http://localhost:$PORT/dossiers/$SLUG" -t 90000 -o "$OUT"
 echo "✓ $(du -h "$OUT" | cut -f1) — $OUT"
