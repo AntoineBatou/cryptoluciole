@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 90507c6d-d393-4d8b-99c7-5a756f3f0a77
+  modified: 2026-10-27T18:47:34.575Z
 ---
 
 À utiliser **à chaque fois qu'on cherche des sources** (news, data, idées de
@@ -68,6 +69,13 @@ protocoles/définitions, tout le contenu), EN PLUS des recherches web et de
 - **Rio Times** — riotimesonline.com. Clôtures hebdo BTC/ETH.
 - **Bitcoin News Digest** — bitcoinnewsdigest.substack.com. Digest quotidien BTC, suivi des wallets saisis.
 - **Zebpay Weekly Crypto Report** — zebpay.com/in/blog. Calendrier macro (CPI), liquidations. Plateforme commerciale.
+
+## Sources ajoutées après la veille du 2026-10-27 (promues par Marc)
+
+- **Farside Investors** — farside.co.uk. Flux quotidiens des ETF BTC/ETH par émetteur. **Source primaire** des flux ETF (à préférer à la presse).
+- **The Defiant — DeFi Daily** — thedefiant.io/newsletter/defi-daily. Newsletter quotidienne DeFi (EN), bonne couverture protocoles. Média → recouper les chiffres.
+- **Coin Hebdo (CoinAcademy)** — coinacademy.fr/actu/coin-hebdo/. Récap hebdo FR : pratique pour vérifier qu'on n'a rien raté de la semaine.
+- **OAK Research** (compte de Marc, connecté dans Chrome) — oakresearch.io/fr : récap quotidien, Alpha Feed, recherches premium. **Usage = repérage de pistes uniquement, ne JAMAIS recopier** (contenu payant) ; recouper chaque fait par source primaire. Notes du jour dans `veille/AAAA-MM-JJ-oak.md`.
 
 ## Sujets prioritaires de Marc (par ordre d'intérêt)
 

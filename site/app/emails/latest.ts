@@ -16,6 +16,7 @@ import { issue04 } from "./issues/issue-04";
 import { issue05 } from "./issues/issue-05";
 import { issue06 } from "./issues/issue-06";
 import { issue07 } from "./issues/issue-07";
+import { issue08 } from "./issues/issue-08";
 
 // Expéditeur = adresse du domaine vérifié dans Resend (send.cryptoluciole.com).
 export const NEWSLETTER_FROM = "CryptoLuciole <mail@send.cryptoluciole.com>";
@@ -29,7 +30,7 @@ export const UNSUBSCRIBE_MAILTO =
 export const WELCOME_SUBJECT =
   "Bienvenue chez CryptoLuciole 🪲 — voici le dernier numéro";
 
-const ALL_ISSUES: IssueEmail[] = [issue01, issue02, issue03, issue04, issue05, issue06, issue07];
+const ALL_ISSUES: IssueEmail[] = [issue01, issue02, issue03, issue04, issue05, issue06, issue07, issue08];
 
 // Le plus récent = celui dont le "number" est le plus grand.
 export const latestIssue: IssueEmail = ALL_ISSUES.reduce((a, b) =>

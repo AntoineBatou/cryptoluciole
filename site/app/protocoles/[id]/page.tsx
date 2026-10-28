@@ -272,7 +272,9 @@ export default async function ProtocolePage({
                 scoreColors[p.score.sens]
               }`}
             >
-              Score maison {p.score.valeur}/{p.score.sur} — {p.score.mention}
+              {p.score.valeur != null
+                ? `Score maison ${p.score.valeur}/${p.score.sur} — ${p.score.mention}`
+                : `Risque ${p.score.mention}`}
             </span>
           )}
         </div>

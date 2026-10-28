@@ -47,6 +47,10 @@ export type Issue = {
     rendementCorps?: NotionEl[]; // bloc rendement en plusieurs paragraphes / listes
     risquesItems?: string[]; // risques en puces, sous `risques`
     importanceSuite?: string[]; // paragraphes supplémentaires de « Pourquoi ça compte »
+    // (#8+) : paragraphe affiché sous les puces de risques, et suite riche de
+    // « Pourquoi ça compte » (listes, encadré « Notre avis »), sous importanceSuite.
+    risquesFin?: string;
+    importanceCorps?: NotionEl[];
   };
   // varRef / sensRef : 2e colonne de variation, optionnelle — utilisée quand l'écart
   // entre deux numéros dépasse ~2 semaines (ex. #4 : « depuis le #3 »). Libellé = coursRefLabel.
@@ -2061,6 +2065,725 @@ export const issues: Issue[] = [
       question: "Les smart accounts, tu en es où ?",
       a: "J'en utilise déjà un, ou mon wallet a basculé",
       b: "Pas encore, je garde mon wallet classique"
+    }
+  },
+  {
+    id: "8",
+    numero: 8,
+    date: "Mercredi 28 octobre 2026",
+    titre: "La preuve de travail utile",
+    excerpt: "La preuve de travail utile expliquée avec Pearl et Flop, Papertrade qui réécrit ses règles, Glamsterdam en pause, la fronde contre les actions tokenisées, Derive sous la loupe et 2,4 Md$ volés en crypto depuis janvier.",
+    notion: {
+      titre: "La preuve de travail utile ou Proof of Useful Work : et si le minage servait à quelque chose ?",
+      corps: [
+        {
+          type: "p",
+          texte: "Les mineurs de Bitcoin dépensent une quantité énorme d'électricité pour des calculs qui ne servent qu'à faire tourner le réseau. De nouvelles blockchains veulent que ce calcul serve aussi à quelque chose, par exemple à l'IA."
+        },
+        {
+          type: "st",
+          texte: "La preuve de travail, en clair"
+        },
+        {
+          type: "p",
+          texte: "Sur Bitcoin, pour ajouter un bloc et toucher la récompense, les mineurs font une course : leurs machines enchaînent des milliards d'essais au hasard, comme des tickets de loterie, jusqu'à ce que l'un d'eux tombe juste : il peut alors publier son bloc et toucher sa rémunération."
+        },
+        {
+          type: "p",
+          texte: "Ces calculs sont volontairement inutiles. Leur seul rôle est de prouver qu'on a dépensé un effort coûteux : pour tricher sur le registre, il faudrait refaire cet effort plus vite que tous les autres mineurs réunis, ce qui coûterait une fortune."
+        },
+        {
+          type: "p",
+          texte: "C'est un peu comme courir sur un tapis roulant : l'effort est réel et mesurable, mais on n'arrive nulle part."
+        },
+        {
+          type: "st",
+          texte: "La preuve de travail utile (Proof of Useful Work, PoUW)"
+        },
+        {
+          type: "p",
+          texte: "La preuve de travail utile garde la même course, mais remplace les essais jetables par un calcul dont quelqu'un a besoin. Aujourd'hui, le calcul le plus demandé est celui des modèles d'IA. Le mineur fait ce calcul utile, et son résultat sert à la fois à faire tourner le réseau et à un second usage (par exemple, un calcul pour un modèle d'IA)."
+        },
+        {
+          type: "p",
+          texte: "Pour reprendre l'image : au lieu de courir sur un tapis, le mineur court et livre des colis. L'effort prouve toujours qu'il a travaillé, mais le travail sert aussi à un client. Toute la difficulté est là : il faut vérifier que le colis est bien arrivé, c'est-à-dire prouver que le calcul utile a vraiment été fait."
+        },
+        {
+          type: "def",
+          terme: "Preuve de travail utile (Proof of Useful Work, PoUW)",
+          slug: "proof-of-useful-work",
+          texte: "Preuve de travail dont le calcul exigé des mineurs peut aussi servir hors du réseau."
+        },
+        {
+          type: "tableau",
+          entetes: [
+            "",
+            "Preuve de travail (PoW)",
+            "Preuve de travail utile (PoUW)"
+          ],
+          lignes: [
+            [
+              "À quoi sert le calcul",
+              "Uniquement à sécuriser le réseau",
+              "À sécuriser le réseau et à un usage extérieur (l'IA)"
+            ],
+            [
+              "Ce que produit le mineur",
+              "Des essais jetés une fois le bloc trouvé",
+              "Un calcul qui peut resservir (ex. la réponse d'un modèle d'IA)"
+            ],
+            [
+              "Ce qu'il faut vérifier",
+              "Que l'effort a été fourni (facile)",
+              "Que l'effort a été fourni et qu'il était utile (difficile)"
+            ],
+            [
+              "Exemples",
+              "Bitcoin",
+              "Pearl (utilité non vérifiée), Flop (utilité vérifiée, pas encore lancé)"
+            ]
+          ]
+        },
+        {
+          type: "st",
+          texte: "Pearl, en gros"
+        },
+        {
+          type: "p",
+          texte: "Pearl, lancé en avril 2026, fait miner avec des multiplications de matrices, le calcul de base de l'IA (il s'agit de multiplier de grands tableaux de nombres). Quand ce calcul vient d'un vrai modèle d'IA en train de répondre à une question, le même effort sert deux fois."
+        },
+        {
+          type: "p",
+          texte: "La limite : le réseau ne vérifie pas que le calcul sert vraiment. Un mineur peut multiplier des nombres pris au hasard et être payé quand même, comme sur Bitcoin."
+        },
+        {
+          type: "st",
+          texte: "Flop, en gros"
+        },
+        {
+          type: "p",
+          texte: "Flop, le projet d'Arthur Hayes (cofondateur de BitMEX), va plus loin. Les mineurs y font tourner de vrais modèles d'IA pour des clients qui paient leurs requêtes, et, selon sa documentation, le réseau doit vérifier que chaque réponse vient bien du modèle demandé."
+        },
+        {
+          type: "p",
+          // FACTCHECK: statut de Flop le jour de l'envoi (premiers tests / devnet lancé ?) et lancement définitif visé au T1 2027.
+          texte: "Flop n'est pas encore lancé : le réseau n'en est qu'aux premiers tests et son lancement définitif est visé au premier trimestre 2027."
+        },
+        {
+          type: "avis",
+          texte: "l'idée répond à la principale critique du minage (usage élevé d'électricité uniquement pour faire tourner le réseau). Mais tout repose sur un point : prouver que le calcul est réellement utile. Pearl ne le vérifie pas ; Flop promet de le faire, sans être encore lancé."
+        }
+      ]
+    },
+    actus: [
+      {
+        titre: "Papertrade réécrit ses règles, dix jours après son lancement",
+        corps: [
+          {
+            type: "p",
+            texte: "Sur Papertrade, présenté dans notre numéro 7, on trade des perps ×1000 contre une réserve, et les perdants reçoivent le PAPER, un jeton qui, staké, touche une part des pertes suivantes."
+          },
+          {
+            type: "p",
+            // FACTCHECK: date de l'annonce, 19 ou 20 octobre (Bankless dit « lundi » = 19/10 ; le post X serait du 20/10).
+            texte: "Le 19 octobre, l'équipe a annoncé trois changements, en vigueur depuis le 21 octobre."
+          },
+          {
+            type: "st",
+            texte: "1. Le PAPER reste bloqué"
+          },
+          {
+            type: "p",
+            texte: "On peut le staker, mais ni l'envoyer ni le vendre, et l'équipe n'a « pas de projet » d'ouvrir les transferts promis début octobre."
+          },
+          {
+            type: "p",
+            texte: "Pourquoi ? Parce qu'un PAPER échangeable deviendrait une arme contre la réserve."
+          },
+          {
+            type: "p",
+            texte: "Prenons une réserve de 10 M$ et une attaque (manipuler le prix pour lui arracher ses fonds) qui coûterait 15 M$, ordre de grandeur donné par l'équipe :"
+          },
+          {
+            type: "liste",
+            items: [
+              "Aujourd'hui : l'attaquant récupère 10 M$ et en dépense 15. Il perd 5 M$, donc personne n'attaque.",
+              "Avec un PAPER échangeable : il commence par vendre à découvert 10 M$ de PAPER, c'est-à-dire parier sur sa baisse. Puis il vide la réserve. Le PAPER ne rapporte plus rien, puisque la réserve qui paie les stakers est vide : imaginons qu'il perde 90 %. Le pari rapporte alors 9 M$.",
+              "Bilan : +10 M$ pris à la réserve, −15 M$ de coût d'attaque, +9 M$ de pari = +4 M$. L'attaque devient rentable."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : tant que le PAPER ne peut pas être vendu, personne ne peut parier sur sa chute, et attaquer la réserve reste une opération à perte."
+          },
+          {
+            type: "st",
+            texte: "2. Les gains sur de tout petits mouvements sont rognés"
+          },
+          {
+            type: "p",
+            texte: "En plus de la décote présentée dans notre numéro 7, plus un gain vient d'un mouvement minuscule, plus une part en est retenue (sous 0,06 % de mouvement, ou 0,1 % le week-end et aux heures creuses)."
+          },
+          {
+            type: "p",
+            texte: "Exemple sur le bitcoin : un gain brut de 100, tiré d'un mouvement d'environ 0,03 %, rapportait environ 53 après décote ; il n'en rapporte plus qu'environ 27 (selon notre calcul, avant frais). C'est le cas le plus défavorable : au-delà de 0,06 % de mouvement, rien ne change."
+          },
+          {
+            type: "p",
+            // FACTCHECK: « 15 fois plus » sur les bots de scalping = chiffre de presse (backtest de l'équipe), absent de la doc.
+            texte: "La cible : les bots de scalping."
+          },
+          {
+            type: "def",
+            terme: "Scalping",
+            slug: "scalping",
+            texte: "Ouvrir et fermer des positions très vite pour encaisser de tout petits écarts de prix, des centaines de fois."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : le trader ordinaire est peu touché, sauf s'il clôture très vite ou le week-end."
+          },
+          {
+            type: "st",
+            texte: "3. Le PAPER s'émet sans ralentir"
+          },
+          {
+            type: "p",
+            texte: "Chaque perte crée du PAPER, donc dilue ceux qui en détiennent. Avant, le PAPER reçu par dollar perdu baissait (100 au lancement, environ 10 le 21 octobre) : l'émission ralentissait. Désormais, chaque dollar perdu donne une part fixe de l'offre existante : l'offre grossit en proportion d'elle-même, sans ralentir."
+          },
+          {
+            type: "p",
+            // FACTCHECK: « plus de 260 M$ de gains sur les traders en onze jours » (compteur H de la fiche site, au 21/10 ; pertes nettes).
+            texte: "Dit simplement : l'offre de PAPER double environ tous les 630 M$ de pertes (selon notre calcul). Pour situer, la réserve avait encaissé plus de 260 M$ de gains sur les traders en onze jours : à ce rythme, l'offre doublerait en moins d'un mois. L'activité a toutefois nettement ralenti depuis."
+          }
+        ],
+        avis: "",
+        avisItems: [
+          "Les perdants : les bots, et ceux qui perdaient exprès pour accumuler du PAPER. Ces derniers ont payé un jeton invendable, et ce n'est pas provisoire : d'après l'argument même de l'équipe, le PAPER ne peut pas s'échanger sans fragiliser la réserve.",
+          "Le vrai risque reste la gouvernance. En dix jours, l'équipe a changé trois règles clés et ramené le délai de sécurité de 7 jours à 24 heures, sans vote des détenteurs. Chaque changement se défend ; qu'ils arrivent du jour au lendemain, beaucoup moins.",
+          "La métrique à suivre : les versements aux stakers rapportés à l'offre de PAPER. Si l'offre grossit plus vite, chaque PAPER rapporte moins."
+        ],
+        source: "documentation Papertrade (« Protocol changes », 21/10) · post X @papertrade_xyz « A note on transferability » · Bankless (20/10) · KuCoin, TokenPost (20/10) · CryptoTimes (21/10)"
+      },
+      {
+        titre: "Ethereum met en pause Glamsterdam, sa prochaine grande mise à jour",
+        corps: [
+          {
+            type: "p",
+            texte: "Glamsterdam est la prochaine grande mise à jour d'Ethereum, un hard fork initialement prévu pour fin 2026. Le 13 octobre, une étude de sécurité a montré qu'un de ses changements pouvait dérégler des contrats déjà en place."
+          },
+          {
+            type: "def",
+            terme: "Hard fork",
+            slug: "hard-fork",
+            texte: "Une mise à jour des règles d'une blockchain que tous les ordinateurs du réseau (les nœuds) doivent appliquer à la même date."
+          },
+          {
+            type: "st",
+            texte: "1. Ce que Glamsterdam doit apporter"
+          },
+          {
+            type: "liste",
+            items: [
+              "Amélioration de la scalabilité : la limite de gas par bloc, c'est-à-dire la quantité de calcul qu'un bloc peut contenir, passerait de 60 M aujourd'hui à 200 M dans les tests, soit plus de 3×. Chaque transaction consommant du gas, un bloc pourra donc contenir environ 3 fois plus de transactions, et les frais devraient baisser quand le réseau est chargé.",
+              "Des transactions traitées en parallèle : chaque bloc annoncera à l'avance les données que ses transactions vont lire et modifier. Les nœuds pourront alors en traiter plusieurs en même temps, au lieu de l'une après l'autre. C'est ce qui rend la hausse de capacité tenable.",
+              "L'enchère des blocs intégrée au protocole (ePBS) : aujourd'hui, le validateur qui publie un bloc l'achète en général tout fait à des constructeurs spécialisés (les block builders), via des intermédiaires extérieurs à Ethereum. Glamsterdam inscrit cette enchère dans les règles du réseau, sans intermédiaire à qui faire confiance."
+            ]
+          },
+          {
+            type: "st",
+            texte: "2. Pourquoi des contrats pourraient dérailler"
+          },
+          {
+            type: "p",
+            texte: "Une transaction peut consommer deux choses : du calcul, que le nœud effectue une fois puis oublie, et de la mémoire permanente, quand elle crée une donnée nouvelle (un solde, un compte…) que chaque nœud doit stocker pour toujours."
+          },
+          {
+            type: "p",
+            // FACTCHECK: croissance de l'état d'Ethereum, ~116 Go/an aujourd'hui → ~387 Go/an à 200 M de gas (CoinAcademy).
+            texte: "Tripler la capacité de transaction sans rien changer ferait aussi grossir cette mémoire environ 3 fois plus vite : de ~116 Go à ~387 Go par an. Faire tourner un nœud deviendrait trop coûteux pour un particulier, et le réseau se centraliserait."
+          },
+          {
+            type: "p",
+            texte: "Glamsterdam rend donc plus cher le seul fait de créer une donnée permanente (EIP-8037) et d'y accéder (EIP-8038), deux EIP (les propositions de modification d'Ethereum) afin de décourager l'augmentation de la taille de la chaîne."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : on veut 3 fois plus de transactions, pas 3 fois plus de stockage. C'est ce changement de prix sur la donnée permanente qui pose problème."
+          },
+          {
+            type: "p",
+            texte: "En effet, certains contrats réservent à une étape un montant de gas fixe, écrit dans leur code. Or la plupart de ces contrats ne se modifient plus une fois déployés. Prenons un contrat qui réserve 30 000 gas pour une étape qui écrit une donnée neuve :"
+          },
+          {
+            type: "liste",
+            items: [
+              "aujourd'hui, cette écriture coûte 22 100 gas : le budget suffit, l'étape passe ;",
+              "après Glamsterdam, elle coûterait 110 020 gas, environ 5 fois plus : le budget ne suffit plus, l'étape échoue."
+            ]
+          },
+          {
+            type: "p",
+            texte: "C'est ChainSecurity, une société d'audit, qui a mis le problème au jour : 13 cas réels, sans publier les noms des projets."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : sans changer une ligne de leur code, des contrats en place pourraient se comporter autrement après la mise à jour."
+          },
+          {
+            type: "st",
+            texte: "3. Le test sur Hoodi est suspendu"
+          },
+          {
+            type: "p",
+            texte: "Glamsterdam tourne depuis le 6 octobre sur Sepolia, un testnet. Il devait arriver le lundi 26 octobre sur Hoodi, le testnet le plus proche du réseau réel."
+          },
+          {
+            type: "def",
+            terme: "Testnet",
+            slug: "testnet",
+            texte: "Une copie d'une blockchain où les jetons n'ont pas de valeur, qui sert à essayer une mise à jour avant le réseau réel (le mainnet)."
+          },
+          {
+            type: "p",
+            // FACTCHECK: report à 2027 « très probable » = avis d'un développeur (Nixo) cité par Bankless, pas une décision.
+            texte: "Le jeudi 22 octobre, les développeurs ont retiré cette activation et le passage à 200 M de gas, sans nouvelle date ni pour Hoodi ni pour le mainnet."
+          },
+          {
+            type: "st",
+            texte: "Ce que ça change pour toi"
+          },
+          {
+            type: "liste",
+            items: [
+              "Rien à faire, confirme la Fondation Ethereum, pour les utilisateurs comme pour les détenteurs d'ETH.",
+              "Un calendrier qui glisse : la hausse de capacité, et la baisse des frais attendue à terme, arriveront plus tard.",
+              "Côté DeFi : ChainSecurity a prévenu les projets concernés ; si un protocole que tu utilises l'est, c'est à lui d'annoncer un correctif."
+            ]
+          }
+        ],
+        avis: "",
+        avisItems: [
+          "Le garde-fou a fonctionné : une étude externe a repéré le problème avant le mainnet.",
+          "Le vrai sujet : grandir sans casser l'existant. Plus de capacité oblige à faire payer le stockage plus cher, mais des contrats écrits il y a des années ne peuvent pas s'adapter. Chaque hausse de capacité reposera la question.",
+          "À suivre : une nouvelle date pour Hoodi, et le sort d'EIP-8037 (modifiée ou retirée). Ce choix dira si le report se compte en semaines ou en mois."
+        ],
+        source: "ChainSecurity (étude du 13/10) · Decrypt (23/10) · Bankless (~23/10) · TechReport · CryptoTicker · KuCoin · CoinAcademy (26/10)"
+      },
+      {
+        titre: "Actions tokenisées : 33 entreprises disent non à OKXICE, EQX se lance sans leur demander",
+        corps: [
+          {
+            type: "p",
+            texte: "Deux projets construisent des actions tokenisées, de deux façons très différentes, ce sont OKXICE (OKX) et EQX."
+          },
+          {
+            type: "def",
+            terme: "Action tokenisée",
+            slug: "action-tokenisee",
+            texte: "Une action classique (Apple, Microsoft…) représentée par un jeton sur une blockchain, qu'on peut échanger 24 h/24."
+          },
+          {
+            type: "st",
+            texte: "1. OKXICE : la version régulée, où l'entreprise peut dire non"
+          },
+          {
+            type: "p",
+            texte: "OKXICE, coentreprise de l'exchange OKX et d'ICE (la maison mère de la Bourse de New York), vise les investisseurs américains. Elle s'appuie sur une exemption temporaire de la SEC (l'Innovation Exemption) qui autorise à échanger des actions tokenisées sans être enregistré comme bourse. Concrètement :"
+          },
+          {
+            type: "liste",
+            items: [
+              "une société tierce achète les vraies actions via un courtier agréé ;",
+              "elle émet un token pour une action ;",
+              "le détenteur a les mêmes droits qu'un actionnaire : dividendes, droit de vote, part en cas de liquidation de l'entreprise ;",
+              "on l'échange uniquement sur la plateforme d'OKXICE : des pools Uniswap installés sur X Layer, la blockchain d'OKX, contre des stablecoins ;",
+              "seuls les wallets dont l'identité a été vérifiée (KYC) reçoivent un badge numérique non transférable qui leur ouvre l'accès. Le contrat le contrôle avant chaque achat, vente ou envoi : impossible de transférer le token vers un wallet non vérifié."
+            ]
+          },
+          {
+            type: "p",
+            // FACTCHECK: effet pratique d'une objection (« empêche la négociation sur cette plateforme ») jugé flou par CoinDesk.
+            texte: "La SEC n'exige pas l'accord de l'entreprise, mais la plateforme doit la prévenir : l'entreprise a 30 jours pour s'opposer. Son objection empêche alors la négociation du token sur cette plateforme."
+          },
+          {
+            type: "st",
+            texte: "2. La fronde : 33 refus sur 62 entreprises en trois semaines"
+          },
+          {
+            type: "p",
+            texte: "Sur les 62 entreprises qu'OKXICE prévoyait de proposer, 33 avaient refusé au 27 octobre, dont Microsoft, Alphabet, Goldman Sachs, JPMorgan, Coca-Cola, AMD, Cisco et Moderna."
+          },
+          {
+            type: "p",
+            texte: "Aucune n'a donné ses raisons. Nvidia, Tesla et Apple n'ont pas objecté : leur silence vaut accord pour la plateforme, pas soutien affiché."
+          },
+          {
+            type: "st",
+            texte: "3. EQX : la version offshore, sans demander l'avis de personne"
+          },
+          {
+            type: "p",
+            texte: "Le 14 octobre, EQX Labs a annoncé 11 actions et ETF tokenisés sur Hyperliquid, échangeables 24 h/24 contre de l'USDC et en ligne selon sa documentation. Microsoft et Alphabet (qui ont refusé OKXICE), en font partie."
+          },
+          {
+            type: "p",
+            texte: "Comme EQX n'est pas proposé aux Américains, il n'a pas besoin de cette exemption : la règle des 30 jours ne devrait donc pas le concerner."
+          },
+          {
+            type: "p",
+            texte: "Dit simplement : cette règle permet à Microsoft de bloquer OKXICE, pas EQX."
+          },
+          {
+            type: "p",
+            texte: "Attention toutefois, ici, tu ne détiens pas l'action, mais un titre de dette émis par EQX, une société des îles Vierges britanniques. EQX garde en face une vraie action pour chaque token, chez des courtiers. Tu es donc créancier d'EQX, pas actionnaire de Microsoft."
+          },
+          {
+            type: "liste",
+            items: [
+              "les dividendes sont réinvestis automatiquement en actions ;",
+              "tu peux transmettre des consignes de vote ;",
+              "seuls des intermédiaires agréés peuvent échanger le token contre l'action, jamais contre du cash : un particulier ne peut sortir qu'en revendant sur Hyperliquid (sauf faillite d'EQX, où chacun récupère ses actions)."
+            ]
+          },
+          {
+            type: "p",
+            texte: "Le token vit sur Hyperliquid, contre de l'USDC, et peut passer sur HyperEVM, la partie d'Hyperliquid qui accueille les applications. Contrairement à OKXICE, il s'envoie librement d'un wallet à l'autre, sans vérification d'identité, sauf vers un Américain ou une personne sous sanctions. EQX peut geler des transferts dans cinq cas listés par son contrat (sanctions notamment), mais pas saisir tes tokens."
+          },
+          {
+            type: "tableau",
+            entetes: [
+              "",
+              "OKXICE",
+              "EQX"
+            ],
+            lignes: [
+              [
+                "Ce que tu détiens",
+                "un droit sur une vraie action, avec les droits d'un actionnaire",
+                "une dette d'une société offshore, adossée à l'action"
+              ],
+              [
+                "Qui peut acheter",
+                "Américains vérifiés (KYC)",
+                "tout le monde sauf les Américains"
+              ],
+              [
+                "Où ça s'échange",
+                "uniquement sur OKXICE (X Layer)",
+                "sur Hyperliquid"
+              ],
+              [
+                "Peut-on l'envoyer ?",
+                "seulement vers un wallet vérifié",
+                "oui, librement (sauf Américains, sanctions)"
+              ],
+              [
+                "L'entreprise peut-elle bloquer ?",
+                "oui, sous 30 jours",
+                "pas via cette règle"
+              ]
+            ]
+          },
+          {
+            type: "p",
+            texte: "Pour un lecteur en France, la version régulée, OKXICE, n'est de toute façon pas ouverte. Ce qui t'est accessible, c'est le modèle EQX : sa documentation n'exclut pas la France."
+          }
+        ],
+        avis: "",
+        avisItems: [
+          "Le paradoxe : les entreprises ne peuvent bloquer, via cette règle, que la version qui protège le mieux l'acheteur. Refuser OKXICE prive les Américains de la version régulée.",
+          "La question à se poser avant d'acheter : est-ce que je possède l'action, ou une promesse sur l'action ? Sur EQX, tu dépends aussi de la solidité d'EQX et de ses courtiers, et de la liquidité sur Hyperliquid, a priori ta seule porte de sortie.",
+          "À suivre : le décompte des refus, et surtout le choix des plus grosses capitalisations (Nvidia, Apple, Tesla). Les refus dépassent déjà la moitié de la liste : si elles suivent, les grandes actions tokenisées s'échangeront surtout offshore ; si elles restent, le modèle régulé garde ses plus grosses valeurs."
+        ],
+        source: "avis officiel OKXICE (23/10) · documentation EQX · CoinDesk (19/10, 20/10) · Decrypt (19/10) · CoinAcademy (20/10) · Blockchain Reporter"
+      }
+    ],
+    protocole: {
+      nom: "Derive",
+      slug: "derive",
+      // FACTCHECK: part de Derive dans les volumes d'options DeFi sur 30 jours (~80 %, DeFiLlama 28/10), à rafraîchir le jour de l'envoi.
+      bref: "Derive (ex-Lyra, lancé en 2021) est la plus grosse plateforme d'options de la DeFi : environ 80 % des volumes sur 30 jours (DeFiLlama, 28 octobre). On y trouve aussi des perps, du prêt et des vaults. Sa V3 est en ligne depuis le 7 octobre 2026.",
+      etapes: [],
+      etapesCorps: [
+        {
+          type: "st",
+          texte: "Comment marchent les options"
+        },
+        {
+          type: "def",
+          terme: "Option",
+          slug: "option",
+          texte: "Un contrat qui donne le droit, sans l'obligation, d'acheter (call) ou de vendre (put) un actif à un prix fixé d'avance (le strike), à une date donnée. L'acheteur paie ce droit au vendeur : c'est la prime."
+        },
+        {
+          type: "st",
+          texte: "Acheter un put : se protéger"
+        },
+        {
+          type: "p",
+          texte: "Ton ETH vaut 3 000 $ et tu crains une baisse. Tu achètes un put de strike 2 700 $ à un mois, pour 60 $ de prime."
+        },
+        {
+          type: "p",
+          texte: "Autrement dit, tu achètes le droit de vendre ton ETH à 2 700 $ à l'échéance, quoi qu'il arrive : si l'ETH tombe à 2 000 $, tu seras content de pouvoir le vendre à 2 700 $. (En pratique, Derive te verse la différence en USDC.)"
+        },
+        {
+          type: "liste",
+          items: [
+            "L'ETH tombe à 2 000 $ : ton put vaut 700 $ (2 700 − 2 000). Ta perte est limitée à 360 $ (1 000 − 700 + 60 de prime) au lieu de 1 000 $.",
+            "L'ETH reste au-dessus de 2 700 $ : le put ne vaut rien. Tu perds 60 $, mais tu gardes la hausse."
+          ]
+        },
+        {
+          type: "st",
+          texte: "Acheter un call : parier sur la hausse"
+        },
+        {
+          type: "p",
+          texte: "L'ETH vaut 3 000 $ et tu penses qu'il va monter. Tu achètes un call de strike 3 300 $ à un mois, pour 100 $ de prime."
+        },
+        {
+          type: "p",
+          texte: "Autrement dit, tu achètes le droit d'acheter de l'ETH à 3 300 $ à l'échéance, quoi qu'il arrive : si l'ETH monte à 4 800 $, tu seras content de pouvoir l'acheter à 3 300 $. (Là encore, on te verse la différence en USDC.)"
+        },
+        {
+          type: "liste",
+          items: [
+            "L'ETH monte à 4 800 $ : ton call vaut 1 500 $ (4 800 − 3 300). Ton gain net est de 1 400 $ (1 500 − 100 de prime).",
+            "L'ETH reste sous 3 300 $ : le call ne vaut rien. Tu perds 100 $, rien de plus."
+          ]
+        },
+        {
+          type: "st",
+          texte: "Vendre une option : encaisser la prime"
+        },
+        {
+          type: "p",
+          texte: "En face de chaque acheteur, un vendeur encaisse la prime. Dans l'exemple du put, il garde tes 60 $ si l'ETH reste au-dessus de 2 700 $, mais te verse 700 $ s'il tombe à 2 000 $. Le vendeur joue l'assureur : de petites primes régulières, de grosses pertes possibles. Ce rôle est tenu surtout par des market makers (des professionnels qui affichent en permanence un prix d'achat et de vente) et par les vaults."
+        },
+        {
+          type: "p",
+          texte: "Les options restent un outil technique : il faut les avoir bien comprises avant de s'y mettre."
+        },
+        {
+          type: "st",
+          texte: "Ce qui change avec la V3"
+        },
+        {
+          type: "liste",
+          items: [
+            "Tes fonds sont gardés sur Ethereum. Derive a fermé sa propre blockchain : tes dépôts reposent désormais sur la sécurité d'Ethereum plutôt que sur une petite chaîne propre à Derive. Les ordres restent exécutés vite, hors chaîne, puis le résultat est prouvé sur Ethereum via une preuve zk (une preuve mathématique que les calculs ont respecté les règles).",
+            "Moins d'argent bloqué pour vendre des options, désormais aussi entre ETH et BTC. Quand tu vends une option, tu dois bloquer une garantie (la marge) au cas où tu devrais payer l'acheteur. Sur les premières plateformes d'options on-chain, il fallait souvent bloquer toute la perte possible. Derive calcule plutôt la garantie sur l'ensemble de tes positions. Exemple : tu vends un put ETH de strike 2 700 $ et tu en achètes un de strike 2 500 $ pour te couvrir. Ta perte maximale est de 200 $ (2 700 − 2 500) : c'est à peu près ce qu'on te demande de bloquer, au lieu de 2 700 $. La V3 étend ce calcul à l'ETH et au BTC ensemble : des positions sur les deux cryptos peuvent se compenser. (Acheter une option, en revanche, se paie comptant : seule la prime est en jeu.)",
+            "N'importe qui peut créer un vault sans coder : 500 $ de frais, et 10 000 $ de dépôt initial que le créateur doit laisser dedans, pour qu'il ait son propre argent en jeu.",
+            "Des compartiments isolés (BTC/ETH, HYPE, autres cryptos, or tokenisé) : un problème dans l'un ne contamine pas les autres."
+          ]
+        }
+      ],
+      rendementLabel: "Ce que tu peux y placer",
+      rendement: "",
+      rendementCorps: [
+        {
+          type: "liste",
+          items: [
+            "Prêter tes USDC ou tes cryptos (ETH, WBTC, HYPE depuis la V3) : ce sont les traders qui empruntent qui te paient un intérêt.",
+            "Déposer dans un vault qui vend des options : tu touches les primes payées par les acheteurs, moins les frais du gérant, et tu portes le risque du vendeur.",
+            "Staker du DRV, le jeton de Derive : tu es payé en DRV nouvellement créés, donc ton rendement dépend de ce que valent ces jetons."
+          ]
+        },
+        {
+          type: "p",
+          texte: "(Acheter un put, lui, coûte une prime : c'est une protection, pas un placement.)"
+        },
+        {
+          type: "p",
+          // FACTCHECK: absence de taux fiable publié pour le prêt et les vaults, à revérifier le jour de l'envoi.
+          texte: "Pas de taux fiable publié pour le prêt et les vaults au 28 octobre : la V3 n'a que trois semaines."
+        },
+        {
+          type: "st",
+          texte: "Le jeton DRV : des émissions à peine couvertes par les rachats"
+        },
+        {
+          type: "p",
+          texte: "Deux flux jouent en sens contraire sur la quantité de DRV en circulation :"
+        },
+        {
+          type: "liste",
+          items: [
+            // FACTCHECK: revenus Derive ~250 k$ sur 30 jours (DeFiLlama 28/10), à rafraîchir ; part des rachats passée de 35 % à 50 % mi-octobre (DIP 324, résultat du vote à confirmer).
+            "Des rachats : Derive a encaissé environ 420 k$ de revenus sur 30 jours, tous produits confondus (DeFiLlama, 28 octobre). Depuis mi-octobre, la moitié sert à racheter du DRV sur le marché, contre 35 % avant, selon la presse crypto : soit environ 210 k$ par mois.",
+            // FACTCHECK: 150 000 DRV émis par semaine, ≈ 235 k$/mois au cours de 0,365 $ (cours DRV à rafraîchir le jour de l'envoi).
+            "Des émissions : 150 000 DRV sont créés chaque semaine pour les stakers et les traders, soit environ 240 k$ par mois au cours de 0,37 $."
+          ]
+        },
+        {
+          type: "p",
+          // FACTCHECK: réserve de 500 millions de DRV votée en 2025 (DIP 303 « Strategic Mint »).
+          texte: "Les émissions de DRV restent donc un peu au-dessus des buybacks, d'environ 30 k$ par mois (240 − 210) : on est proche de l'équilibre, tant que les revenus tiennent. S'y ajoutent 500 millions de DRV créés en 2025, dont près de la moitié pour l'équipe sur quatre ans, non comptés ici : la dilution réelle peut être plus forte."
+        }
+      ],
+      risqueNiveau: "moyen",
+      risqueSens: "moyen",
+      risques: "Moyen : acheter une option limite à la prime ta perte liée au prix ; le risque monte si tu vends des options ou passes par un vault. Et quel que soit ton usage, tu dépends de la plateforme :",
+      risquesItems: [
+        "Tu fais confiance à l'équipe : elle garde la main pour modifier les contrats, la décentralisation n'est pas terminée.",
+        "La V3 est toute neuve : trois semaines de recul.",
+        "Vendre des options, ou passer par un vault qui en vend, est plus risqué qu'en acheter : une forte baisse peut coûter bien plus que les primes encaissées."
+      ],
+      risquesFin: "Et comme pour tout protocole DeFi, le risque de hack n'est jamais à exclure.",
+      importance: "Derive mise aussi sur d'autres applis pour toucher le grand public. Depuis février 2026, un builder code permet à n'importe quelle appli de proposer les options de Derive à ses propres utilisateurs, avec son interface, en ajoutant ses propres frais, sans autorisation à demander. Hyperliquid fait déjà pareil avec les perps.",
+      importanceCorps: [
+        {
+          type: "p",
+          texte: "L'objectif : laisser d'autres équipes (les builders) faire le travail de simplification. Un wallet pourrait par exemple proposer des boutons qui ne prononcent jamais le mot « option » :"
+        },
+        {
+          type: "liste",
+          items: [
+            "« Protéger mon ETH contre une baisse de plus de 10 % » : derrière, l'appli t'achète un put sur Derive ;",
+            "« Acheter du BTC s'il baisse de 10 %, et être payé en attendant » : derrière, l'appli vend un put pour toi. Tu touches la prime, mais si le BTC passe sous ce prix, tu l'achètes à ce prix, même s'il continue de chuter."
+          ]
+        },
+        {
+          type: "p",
+          texte: "L'adoption reste embryonnaire."
+        },
+        {
+          type: "p",
+          // FACTCHECK: TVL Derive ~111 M$ → ~177 M$ depuis la V3, ~3,2 Md$ d'options échangées sur 30 jours, dont ~2,1 Md$ sur la V3 (DeFiLlama 28/10), à rafraîchir.
+          texte: "Côté chiffres, depuis la V3, l'argent déposé est passé d'environ 111 M$ à 177 M$, pour ~3,2 Md$ d'options échangées sur 30 jours, dont ~2,1 Md$ sur la V3 (DeFiLlama, 28 octobre)."
+        },
+        {
+          type: "avis",
+          texte: "",
+          items: [
+            "Derive domine les options DeFi ; sa croissance dépend désormais des applis qui le rendront simple.",
+            "Les rachats couvrent presque les émissions, mais pas encore : les détenteurs de DRV restent un peu dilués. Le chiffre à suivre : rachats mensuels contre émissions.",
+            "Pour l'usage : acheter des options en petites mises, pour se protéger ou parier à perte plafonnée, a du sens. Prudence sur les vaults tant qu'ils n'ont pas d'historique."
+          ]
+        }
+      ]
+    },
+    // Cours DeFiLlama du 28/10 à 19h28 : à rafraîchir si l'envoi est décalé.
+    cours: [
+      {
+        actif: "BTC",
+        nom: "Bitcoin",
+        prix: "~80 800 $",
+        var7j: "▼ −4,6 %",
+        sens: "down"
+      },
+      {
+        actif: "ETH",
+        nom: "Ether",
+        prix: "~2 340 $",
+        var7j: "▼ −6,9 %",
+        sens: "down"
+      },
+      {
+        actif: "SOL",
+        nom: "Solana",
+        prix: "~101 $",
+        var7j: "▼ −6,9 %",
+        sens: "down"
+      },
+      {
+        actif: "HYPE",
+        nom: "Hyperliquid",
+        prix: "~80 $",
+        var7j: "▼ −2,0 %",
+        sens: "down"
+      },
+      {
+        actif: "BNB",
+        prix: "~748 $",
+        var7j: "▼ −0,3 %",
+        sens: "down"
+      }
+    ],
+    cours7jLabel: "Depuis notre n°7 (7 jours)",
+    coursHeure: "19h28",
+    coursAvisCorps: [
+      {
+        type: "st",
+        texte: "Ce qui a fait bouger les prix"
+      },
+      {
+        type: "p",
+        texte: "Une semaine d'attente avant la Fed : toute la sélection recule, de −0,3 % pour le BNB à −6,9 % pour l'ether et le SOL, qui baissent nettement plus que le bitcoin (−4,6 %). Trois choses ont pesé :"
+      },
+      {
+        type: "liste",
+        items: [
+          // FACTCHECK: Brent autour de 114 $ et conflit États-Unis / Iran (CoinDesk 26/10).
+          "Les investisseurs réduisent leurs risques avant la Fed. Les marchés n'attendent pas de changement de taux cette semaine, mais guettent un signal de hausse en décembre. Raison de la crainte : le pétrole très cher (Brent autour de 114 $) et le conflit entre les États-Unis et l'Iran entretiennent l'inflation.",
+          "Les valeurs liées à l'IA ont chuté en Asie (bourses coréenne et japonaise), et la crypto a suivi.",
+          "Le 26 octobre, le bitcoin est repassé sous 80 000 $, avant de remonter vers 81 000 $."
+        ]
+      },
+      {
+        type: "st",
+        texte: "La Fed ne bouge pas, mais deux voix voulaient monter"
+      },
+      {
+        type: "p",
+        texte: "Ce soir, la Fed a maintenu ses taux entre 3,75 % et 4 %, comme prévu. Le vote n'a pas été unanime : 2 membres sur 12 voulaient les relever de 0,25 point. Elle juge que « l'inflation reste élevée » et ne promet rien pour la suite : elle décidera au fil des chiffres."
+      },
+      {
+        type: "avis",
+        texte: "pas de hausse ce soir, mais une hausse en décembre reste sur la table. Tant que la Fed garde cette menace, l'argent placé sans risque reste bien rémunéré, et cela pèse sur les actifs risqués comme la crypto. Les cours ci-dessus ont été relevés juste après l'annonce, avant la conférence de presse de Kevin Warsh."
+      }
+    ],
+    // Chiffres DeFiLlama Hacks relevés le 28/10 (base mise à jour a posteriori) : à rafraîchir si l'envoi est décalé.
+    data: {
+      titre: "2,4 Md$ volés en crypto depuis janvier : les accès volés et les bridges en tête",
+      texte: "Environ 2,4 Md$ : c'est ce qui a été volé en crypto depuis le 1er janvier 2026, en plus de 300 attaques recensées par DeFiLlama. C'est déjà plus que sur toute l'année 2023 (1,6 Md$) ou 2024 (1,7 Md$), et pas loin de 2025 (2,7 Md$), à deux mois de la fin de l'année.",
+      corps: [
+        {
+          type: "st",
+          texte: "Comment l'argent a été volé"
+        },
+        {
+          type: "liste",
+          items: [
+            "≈ 30 % par des accès volés (≈ 720 M$) : l'attaquant met la main sur une clé ou s'introduit dans un système interne, et s'en sert pour vider des wallets. Aucune faille de code n'est nécessaire. Le plus gros vol de l'année en fait partie : environ 387 M$ sortis des hot wallets (des wallets connectés en permanence à Internet) de l'exchange Bitget, le 24 septembre ;",
+            "≈ 30 % sur des bridges (≈ 700 M$), ces ponts qui font passer des jetons d'une blockchain à l'autre : l'attaquant fait croire à une chaîne que des fonds ont été déposés sur l'autre, et retire de l'argent qui n'existe pas ;",
+            "≈ 16 % par un défaut de contrôle d'accès (≈ 370 M$) : quelqu'un obtient des droits d'administrateur qu'il ne devrait pas avoir. Exemple : en avril, chez Drift, les attaquants ont obtenu à l'avance la signature de deux des cinq membres chargés de valider les modifications du protocole, et ont pris la main sur ses contrats (≈ 285-295 M$) ;",
+            "le reste (≈ 24 %) se partage entre erreurs de calcul dans les contrats, attaques sur les sites web et manipulations d'oracles (les flux qui donnent les prix aux contrats)."
+          ]
+        },
+        {
+          type: "p",
+          texte: "Quatre attaques font à elles seules plus de la moitié du total : l'année se joue sur quelques gros coups, pas sur une multitude de petits. Et l'argent volé ne revient presque jamais (moins de 1 %, ≈ 6 M$)."
+        },
+        {
+          type: "avis",
+          texte: "",
+          items: [
+            "Près d'un tiers des fonds volés l'a été sans aucune faille de code : un accès dérobé a suffi. Et les bridges pèsent autant à eux seuls. Un audit du code des contrats ne couvre aucun de ces deux risques.",
+            "Si tes fonds sont sur un exchange, c'est lui qui détient les clés : le vol de Bitget montre que le risque se trouve alors chez lui, pas chez toi. Si tu passes par un protocole, la question à se poser est : qui peut modifier ses contrats, et combien de signatures faut-il ? C'est par là que Drift est tombé, et c'est le point faible de Derive (voir SOUS LA LOUPE)."
+          ]
+        }
+      ]
+    },
+    definitions: [
+      {
+        terme: "Builder code",
+        def: "un code attaché à chaque ordre qu'une appli tierce (un wallet, une appli mobile…) envoie à une plateforme comme Hyperliquid ou Derive. La plateforme sait ainsi quelle appli a apporté l'ordre, et lui reverse les frais que cette appli a fixés. La plateforme fournit le carnet d'ordres et la liquidité ; l'appli s'occupe de l'interface et rend le produit plus simple à utiliser.",
+        slug: "builder-code"
+      },
+      {
+        terme: "Preuve de travail utile (Proof of Useful Work, PoUW)",
+        def: "une variante du minage où le calcul qui fait tourner le réseau sert aussi à un second usage dont quelqu'un a besoin (aujourd'hui surtout des calculs pour l'intelligence artificielle). Toute la difficulté est de prouver que ce calcul utile a vraiment été fait (voir ON ÉCLAIRE).",
+        slug: "proof-of-useful-work"
+      }
+    ],
+    jeu: {
+      cta: "Une question sur ce numéro, un point qui reste flou, un sujet que tu aimerais qu'on creuse ? Réponds directement à ce mail : je lis tout, et je réponds.",
+      question: "Les options, ça te tente ?",
+      a: "Oui, pour protéger mes cryptos ou toucher des primes",
+      b: "Non, trop technique pour moi pour l'instant"
     }
   }
 ];

@@ -549,6 +549,146 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
 - **Registre pro, pas « parlé bébé »** : « on y en échange beaucoup, mais on y en garde peu » → « le volume est élevé, mais la valeur détenue reste faible ».
 - **REPÈRES : prix arrondis au dollar, variations au pour cent** (ex. ~106 $, −12 %) : les décimales nuisent à la lisibilité (Marc, 2026-10-13).
 
+- **Relecture de Marc sur ON ÉCLAIRE #8, preuve de travail utile (2026-10-27).** v2 notée 8,5 par
+  le vérificateur, mais **refusée** par Marc :
+  1. **Pas d'expérience personnelle** (« on a miné Pearl », GPU loué, gains estimés, test vLLM) :
+     ce n'est pas le sujet du lecteur. Ne pas raconter nos tests, même anonymisés.
+  2. **Trop technique, pas assez pédagogique** : nonce/hash/matrices bruitées/TOPLOC/batching/
+     slashing/caution/« Trifecta » = du détail d'expert. ON ÉCLAIRE = **faire comprendre UNE
+     différence**, pas décrire la machinerie.
+  3. **Se recentrer sur l'objectif en une phrase** avant d'écrire (ici : « comprendre la différence
+     PoW vs PoUW, et ce que sont Pearl et Flop en gros »). Tout paragraphe qui ne sert pas cet
+     objectif saute.
+  → Réflexe vérificateur : une note ≥ 8 ne suffit pas si la section n'est pas **recentrée sur la
+  question du lecteur** ; vérifier explicitement « l'objectif tient-il en une phrase, et chaque
+  bloc le sert-il ? ».
+
+- **Corrections de Marc sur ON ÉCLAIRE #8 v3 (2026-10-27)** — il valide la partie PoW
+  (« elle est top, on n'y touche pas ») puis corrige lui-même le reste. Règles tirées :
+  1. **Terme anglais dans le titre quand c'est le terme d'usage** : « La preuve de travail utile
+     ou *Proof of Useful Work* » / « (*Proof of Useful Work*, PoUW) ». Le lecteur croisera le
+     terme EN ailleurs. Si le terme s'emploie **surtout en anglais**, on peut même titrer
+     **directement en anglais** (précision de Marc). Si le terme FR est courant, le FR suffit.
+  2. **Mot concret plutôt que générique** : « de nouvelles **blockchains** » au lieu de « de
+     nouveaux réseaux ».
+  3. **Dire la conséquence de chaque étape** : il ajoute « il peut alors publier son bloc et
+     toucher sa rémunération » après la loterie. Ne pas laisser le lecteur déduire le « et
+     alors ? ».
+  4. **Image vs explicite : au cas par cas** — ici il remplace « son résultat lui sert de ticket
+     de loterie » par « son résultat sert à la fois à faire tourner le réseau et à un second
+     usage », parce que l'image **n'était pas assez explicite**. Règle (précisée par Marc) : une
+     image reste bienvenue si elle éclaire ; on la remplace quand elle oblige le lecteur à
+     déduire ce qu'on pourrait lui dire à plat.
+  5. **Garder la métaphore cohérente jusqu'au bout** : « le mineur **court et** livre des
+     colis » (l'effort reste, l'utilité s'ajoute) au lieu de « au lieu de courir… livre ».
+  6. **Nommer la critique au lieu de la supposer connue** : « la principale critique du minage
+     (usage élevé d'électricité uniquement pour faire tourner le réseau) ».
+  7. **Longueur de l'avis = selon le poids de notre avis sur le sujet** : il coupe la phrase
+     « critère à surveiller : part des revenus venant de vrais clients… ». Ici, sur une notion
+     pédagogique, **notre avis compte peu** → avis court qui conclut sur l'idée clé. Ailleurs
+     (actus, LOUPE, et une notion où notre lecture apporte vraiment), l'avis développé + la
+     métrique à suivre restent la norme (cf. [[feedback-analyse-tranchee]]). Ce n'est **pas**
+     une règle par rubrique : se demander « notre avis apporte-t-il quelque chose ici ? ».
+  8. **Pas de mise en garde anti-arnaque hors sujet** : il retire l'encadré « aucun token FLOP
+     n'existe, tout FLOP en vente est une arnaque ». Marc : « je ne suis pas là pour prévenir des
+     arnaques, sauf si c'est le cœur de l'actu ». N'en mettre que si l'arnaque EST le sujet.
+
+- **Correction de Marc sur l'actu Papertrade #8 (2026-10-27)** : il retire l'analogie « c'est
+  le principe de l'incendiaire qui assure la maison avant d'y mettre le feu », placée juste
+  avant l'exemple chiffré de l'attaque. Règle : **quand un exemple chiffré pas à pas explique
+  déjà le mécanisme, pas d'image en plus** — elle fait doublon (et une image « choc » sonne
+  plaqué). Il avait aussi demandé l'exemple chiffré lui-même : sur un mécanisme d'attaque ou
+  de rentabilité, **le déroulé en chiffres > la phrase abstraite**.
+  Il signale aussi le risque « ça sonne copié » quand notre phrase suit de près la formulation
+  de la source (ici l'exemple 10 M$ / 15 M$ de l'équipe, repris par toute la presse) → toujours
+  restructurer avec NOTRE déroulé, et attribuer explicitement ce qui vient de la source.
+
+- **Relecture de Marc sur l'actu Glamsterdam #8 (2026-10-27)** :
+  1. **Libellé clair et parlant** : « Amélioration de la scalabilité » > « Plus de capacité ».
+  2. **Ne pas changer de mot en route sans faire le lien** : on avait écrit « quantité de calcul »
+     puis « plus de transactions » sans dire que l'un entraîne l'autre → Marc bloque. Expliciter
+     chaque maillon (gas limit ↑ → plus de transactions par bloc).
+  3. **Une apparente contradiction doit être levée explicitement** : « freiner la croissance » juste
+     après « le but est plus de capacité » → incompréhensible. Il fallait distinguer ce qu'on
+     augmente (transactions / calcul) de ce qu'on freine (stockage permanent). Réflexe : relire
+     en se demandant « le lecteur peut-il croire qu'on se contredit ? ».
+  4. Sur la structure, il préfère **présenter d'abord toutes les nouveautés (1 ligne chacune) puis
+     dire laquelle pose problème**, plutôt qu'un paragraphe « autres nouveautés non concernées ».
+
+- **Corrections de Marc sur l'actu Glamsterdam #8, v finale (2026-10-27)** :
+  1. **Il coupe le mécanisme de second rang** : tout le paragraphe sur l'attaque (« fournir exprès
+     trop peu de gas… échec enregistré comme définitif ») saute. Un seul mécanisme par actu (ici :
+     le budget de gas figé qui ne suffit plus) ; l'attaque dérivée = détail d'expert.
+     ⚠️ Conséquence à vérifier après une coupe : les phrases qui y renvoyaient (« et certains
+     devenir attaquables ») deviennent incohérentes → toujours relire le reste après avoir coupé.
+  2. **Le « Dit simplement » peut venir AVANT l'exemple** qui le démontre, relié par « En effet, »
+     : il annonce la conclusion, puis l'exemple la prouve (ordre conclusion → preuve).
+  3. **Il dit le but de chaque mesure** : « …afin de décourager l'augmentation de la taille de la
+     chaîne » (pourquoi on renchérit le stockage).
+  4. **Précision des mots** : « stocker » > « garder » ; « capacité de transaction » > « capacité » ;
+     il retire « et lui seul » (insistance inutile).
+  5. Il glose le terme anglais d'usage entre parenthèses : « constructeurs spécialisés (les *block
+     builders*) ».
+
+- **Corrections de Marc sur l'actu tokenisation #8 (2026-10-27/28)** :
+  1. **Il compresse une chronologie en un seul fait** : la liste « 9 → 16 → 22 refus » et le
+     « Dit simplement » en % sautent ; il garde « 22 refus sur 62 en moins de deux semaines » + les
+     noms. Une progression datée n'est utile que si l'évolution EST l'info.
+  2. **Il demande le concret pratique** que le lecteur se pose : *où* ça s'échange, *sur quelle
+     chaîne*, *peut-on l'envoyer ou c'est bloqué ?* → réflexe pour tout actif/produit présenté :
+     lieu d'échange, blockchain, transférabilité, conditions d'accès.
+  3. **Il allège les précautions juridiques lourdes** (« à notre lecture de la règle ») → on garde
+     la prudence par le mode (« ne devrait pas le concerner »), plus fluide.
+  4. « Attention toutefois, » pour signaler un piège au lecteur ; il retire une demi-phrase d'avis
+     qui sur-explique (« hors des États-Unis, seule la version offshore existait déjà »).
+  ⚠️ En réécrivant lui-même, il peut glisser une coquille factuelle (66 au lieu de 62) ou un titre
+  trop long → toujours relire ses ajouts contre les sources.
+
+- **Leçons SOUS LA LOUPE Derive (2026-10-28, lecture de Marc)** :
+  1. **Présenter un outil par son usage PRINCIPAL**, pas par l'angle qui fait le lien avec un
+     ancien numéro. La v2 vendait l'option comme « parier sans risquer la liquidation » (vs perp
+     du numéro 4) → Marc : « c'est pas ça l'usage numéro 1 ». Usages réels d'une option : se
+     protéger (put = assurance) et encaisser des primes (vendre = vaults) ; le pari à perte
+     plafonnée est secondaire. Une propriété (« pas de liquidation ») n'est pas une raison d'être.
+  2. **Titres : se mettre à la place du lecteur, aucun titre qui induit en erreur sur le
+     périmètre.** Rejetés : « s'assurer contre une chute de l'ETH » (laisse croire qu'on ne peut
+     parier que sur l'ETH), « l'assurance de la DeFi » (fait penser à une assurance contre les
+     hacks, pas à un placement), « acheter une protection… ou la vendre » (« sonne IA »).
+     Préféré : **descriptif et utile, au format « Protocole : comment faire X »** — ex. « Derive :
+     comment utiliser les options on-chain ». Clarté > accroche astucieuse ou métaphore.
+
+  3. **SOUS LA LOUPE = vulgarisation, pas un résumé d'analyste.** Verdict de Marc sur la v2 :
+     « on dirait qu'on a pris des morceaux d'un article d'OAK sans cohérence ». On ne s'adresse
+     pas au public d'OAK (pros). Le lecteur doit ressortir en sachant : **comment ça marche ·
+     les nouveautés · ce qui peut l'intéresser en placement · les risques en gros**. Court,
+     logique, pas de détour technique. Ne pas bâtir la section sur une seule source tierce.
+  4. **Jamais un risque technique sans contexte** : soit on l'explique en le résumant, soit on
+     le vulgarise (« l'équipe garde la main sur les contrats, tu lui fais confiance » plutôt
+     que « multisig 6/8 peut remplacer l'état et contourner le délai »). Le détail technique
+     (preuve zk, escape hatch, multisig) va sur la fiche site.
+  5. **Exemples d'options : traduire en clair** juste après le chiffrage (« tu achètes le droit
+     de vendre ton ETH à 2 700 $ quoi qu'il arrive ; s'il tombe à 2 000 $ tu seras content de
+     le vendre à 2 700 $ ») ; put et call en gabarits strictement parallèles.
+
+  6. **La longueur n'est pas une contrainte dure : la cohérence d'abord.** Marc (28/10) : « c'est
+     pas grave si on dépasse un peu le nombre de mots, j'ai l'impression que c'est pour ça que tes
+     textes ressortent incohérents ». Ne jamais compresser une explication jusqu'au flou pour tenir
+     une cible de mots : on coupe les redites et le hors-sujet, pas les liaisons logiques.
+
+  7. **Ses retouches sur la v3 Derive (28/10)** : exemple de call grossi (3 800 → 4 800 $, gain
+     net 1 400 $) pour que l'intérêt saute aux yeux ; il garde « buybacks » à côté de « rachats » ;
+     il ajoute « via une preuve zk » (→ toujours gloser en une parenthèse). Pour une
+     fonctionnalité d'infrastructure (builder codes), il veut **l'objectif** (« laisser des
+     builders simplifier ») + **un exemple concret de ce que verrait l'utilisateur final**
+     (bouton de wallet « Protéger mon ETH contre une baisse de 10 % » = un put en coulisse).
+     Un exemple qui sort du sujet (perps dans une section options) doit être justifié en une
+     phrase, sinon il demande « tu veux dire une option ? ».
+
+  8. **Exemples illustratifs en chiffres ronds** (Marc, 28/10) : on garde un ETH « à 3 000 $ »
+     même s'il cote 2 370 $ dans les REPÈRES du même numéro ; pas besoin de recaler sur le cours.
+     Et la marge en options concerne le VENDEUR (l'acheteur paie la prime comptant) : le progrès
+     de Derive = moins de garantie bloquée pour vendre/couvrir (marge de portefeuille).
+
 ## Note de vocabulaire (échanges privés, pas le texte)
 - Marc écrit souvent « stacking » → le terme correct est **staking**.
 - Règle FR rappelée et validée : « se rappeler qqch » (sans « de »).

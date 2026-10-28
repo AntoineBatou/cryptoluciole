@@ -411,6 +411,55 @@ export const TERMES: GlossaireTerme[] = [
       "Le meilleur prix d'achat (bid) et le meilleur prix de vente (offer) proposés à un instant donné dans un carnet d'ordres. Le mid est leur milieu : acheteur à 99,8, vendeur à 100,2, le mid vaut 100.",
     numero: 7,
   },
+  {
+    slug: "hard-fork",
+    terme: "Hard fork",
+    definition:
+      "Une mise à jour des règles d'une blockchain que tous les ordinateurs du réseau (les nœuds) doivent appliquer à la même date.",
+    numero: 8,
+  },
+  {
+    slug: "testnet",
+    terme: "Testnet",
+    definition:
+      "Une copie d'une blockchain où les jetons n'ont pas de valeur, qui sert à essayer une mise à jour avant le réseau réel (le mainnet).",
+    numero: 8,
+  },
+  {
+    slug: "gas",
+    terme: "Gas",
+    definition:
+      "L'unité qui mesure la quantité de calcul demandée par une transaction sur Ethereum et les blockchains compatibles. Les frais que tu paies sont proportionnels au gas consommé, et chaque bloc a une limite de gas : c'est elle qui fixe combien de transactions il peut contenir.",
+    numero: 8,
+  },
+  {
+    slug: "scalping",
+    terme: "Scalping",
+    definition:
+      "Ouvrir et fermer des positions très vite pour encaisser de tout petits écarts de prix, des centaines de fois.",
+    numero: 8,
+  },
+  {
+    slug: "proof-of-useful-work",
+    terme: "Preuve de travail utile (Proof of Useful Work, PoUW)",
+    definition:
+      "Une variante du minage où le calcul qui fait tourner le réseau sert aussi à un second usage dont quelqu'un a besoin (aujourd'hui surtout des calculs pour l'intelligence artificielle). Toute la difficulté est de prouver que ce calcul utile a vraiment été fait. Exemples : Pearl, Flop.",
+    numero: 8,
+  },
+  {
+    slug: "option",
+    terme: "Option",
+    definition:
+      "Un contrat qui donne le droit, sans l'obligation, d'acheter (call) ou de vendre (put) un actif à un prix fixé d'avance (le strike), à une date donnée. L'acheteur paie ce droit au vendeur : c'est la prime. Acheter un put sert surtout à se protéger d'une baisse ; vendre une option permet d'encaisser la prime, avec de grosses pertes possibles si le marché bouge fortement.",
+    numero: 8,
+  },
+  {
+    slug: "builder-code",
+    terme: "Builder code",
+    definition:
+      "Un code attaché à chaque ordre qu'une appli tierce (un wallet, une appli mobile…) envoie à une plateforme comme Hyperliquid ou Derive. La plateforme sait ainsi quelle appli a apporté l'ordre, et lui reverse les frais que cette appli a fixés. La plateforme fournit le carnet d'ordres et la liquidité ; l'appli s'occupe de l'interface et rend le produit plus simple à utiliser.",
+    numero: 8,
+  },
 ];
 
 // Retrouver un terme par son slug.

@@ -41,6 +41,10 @@ puis une **note globale /10**) :
 2. **Concision / anti-délayage** — pas de remplissage, pas de phrase de lancement
    rhétorique, pas de reformulations empilées d'une évidence, pas de fioritures « pour
    faire bien ». (Critère sensible chez Marc.)
+   ⚠️ Concision ≠ nombre de mots (Marc, 28/10) : la longueur cible est SOUPLE, la logique et
+   la compréhension priment. Ne jamais faire couper pour atteindre un chiffre ; ne pénaliser
+   que les redites et le hors-sujet ; si un passage est trop compressé pour être clair,
+   demander de l'ALLONGER.
 3. **Ton sobre, pas « IA »** — pas de surenchère de formules punchy, métaphores courtes et
    adultes, français naturel (pas de calque de l'anglais). Pas de blabla générique.
 4. **Exactitude & chiffres** — aucun chiffre volatil inventé/figé (doit être `[À VÉRIFIER]`

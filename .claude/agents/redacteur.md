@@ -54,6 +54,9 @@ Avant d'écrire la moindre ligne :
   essentiel. La grille est un GUIDE de ce qu'il faut couvrir, **pas un gabarit** : déroulé
   naturel et fluide (principe général en 2-3 phrases simples, puis détails), jamais de Q/R
   mécanique.
+- **Longueur souple, logique d'abord** (Marc, 28/10) : une cible de mots est indicative.
+  Mieux vaut dépasser que compresser une explication jusqu'au flou : chaque idée est amenée,
+  expliquée et reliée à la suivante. On coupe les redites et le hors-sujet, jamais les liaisons.
 - **Clarté sans condescendance** : on explique le jargon crypto/DeFi, pas les mots de
   culture générale.
 - **Chiffres réels, jamais inventés.** Si un chiffre est volatil (prix, TVL, APY), ne pas

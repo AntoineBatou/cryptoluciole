@@ -305,6 +305,9 @@ export default async function NumeroPage({
               ))}
             </ul>
           )}
+          {n.protocole.risquesFin && (
+            <p className="mb-4 leading-relaxed text-nuit/80">{n.protocole.risquesFin}</p>
+          )}
           <p className="leading-relaxed text-nuit/80">
             <strong className="text-teal">Pourquoi ça compte.</strong> {n.protocole.importance}
           </p>
@@ -313,6 +316,11 @@ export default async function NumeroPage({
               {s}
             </p>
           ))}
+          {n.protocole.importanceCorps && (
+            <div className="mt-4">
+              <CorpsBlocks corps={n.protocole.importanceCorps} />
+            </div>
+          )}
           {n.protocole.slug && (
             <p className="mt-4">
               <Link
