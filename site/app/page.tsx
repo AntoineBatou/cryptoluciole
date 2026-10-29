@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Nav from "./Nav";
 import SignupForm from "./SignupForm";
+import DerniersContenus from "./DerniersContenus";
 
 // La page d'accueil de cryptoluciole.com.
 // Tout ce qui est entre return( ... ) est l'affichage, écrit en JSX
@@ -41,6 +42,9 @@ export default function Home() {
         aria-hidden
         className="h-24 bg-gradient-to-b from-nuit to-brume"
       />
+
+      {/* ===== Dernières newsletters + derniers dossiers ===== */}
+      <DerniersContenus />
 
       {/* ===== Au menu (les rubriques) ===== */}
       <section id="numeros" className="bg-brume px-6 pb-16 pt-4">

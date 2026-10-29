@@ -22,6 +22,7 @@ export type Issue = {
   date: string;
   titre: string;
   excerpt: string; // petit résumé affiché sur la carte
+  vignette?: string; // clé de l'illustration des miniatures de l'accueil (voir app/Vignettes.tsx)
   // notion : ancien format (blocs ⬡, #1) OU nouveau format aéré (corps, #2+).
   notion: { titre: string; blocs?: { label: string; texte: string }[]; corps?: NotionEl[] };
   // une actu peut porter des encadrés de définition (termes liés au glossaire).
@@ -73,6 +74,7 @@ export const issues: Issue[] = [
   {
     id: "1",
     numero: 1,
+    vignette: "staking",
     date: "Mercredi 3 juin 2026",
     titre: "Le staking, sans le jargon",
     excerpt:
@@ -166,6 +168,7 @@ export const issues: Issue[] = [
   {
     id: "2",
     numero: 2,
+    vignette: "restaking",
     date: "Mercredi 24 juin 2026",
     titre: "Le restaking, décrypté",
     excerpt:
@@ -276,6 +279,7 @@ export const issues: Issue[] = [
   {
     id: "3",
     numero: 3,
+    vignette: "stablecoins",
     date: "Samedi 4 juillet 2026",
     titre: "La guerre des stablecoins",
     excerpt:
@@ -400,6 +404,7 @@ export const issues: Issue[] = [
   {
     id: "4",
     numero: 4,
+    vignette: "perps",
     date: "Vendredi 28 août 2026",
     titre: "Les perps, décryptés",
     excerpt:
@@ -518,6 +523,7 @@ export const issues: Issue[] = [
   {
     id: "5",
     numero: 5,
+    vignette: "emprunt",
     date: "Jeudi 10 septembre 2026",
     titre: "Emprunter contre ses cryptos",
     excerpt: "Le CDP expliqué simplement, Strategy vend bas et rachète haut, le pétrole pousse la Fed vers une hausse des taux, et Liquity V2 — le protocole où c'est toi qui fixes ton taux.",
@@ -826,6 +832,7 @@ export const issues: Issue[] = [
   {
     id: "6",
     numero: 6,
+    vignette: "prediction",
     date: "Mardi 13 octobre 2026",
     titre: "Les marchés de prédiction",
     excerpt: "Les marchés de prédiction expliqués simplement, les débuts d'Hyperliquid sur ce terrain, l'IA face à la sécurité des wallets, un bilan de l'activité de la Robinhood Chain et la carte des actions tokenisées par blockchain.",
@@ -1314,6 +1321,7 @@ export const issues: Issue[] = [
   {
     id: "7",
     numero: 7,
+    vignette: "smart-accounts",
     date: "Mercredi 21 octobre 2026",
     titre: "Les smart accounts",
     excerpt: "Les smart accounts expliqués, où en sont les mesures crypto du budget 2027, MSCI face à Strategy, le nouveau mode de notation de Bittensor, Papertrade sous la loupe et 15 Md$ de positions ouvertes sur Hyperliquid.",
@@ -2070,6 +2078,7 @@ export const issues: Issue[] = [
   {
     id: "8",
     numero: 8,
+    vignette: "pouw",
     date: "Mercredi 28 octobre 2026",
     titre: "La preuve de travail utile",
     excerpt: "La preuve de travail utile expliquée avec Pearl et Flop, Papertrade qui réécrit ses règles, Glamsterdam en pause, la fronde contre les actions tokenisées, Derive sous la loupe et 2,4 Md$ volés en crypto depuis janvier.",
