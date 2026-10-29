@@ -57,7 +57,7 @@ export default function SignupForm() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
+        className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row"
       >
         <input
           type="email"

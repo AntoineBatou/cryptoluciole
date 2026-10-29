@@ -13,24 +13,24 @@ export default function Home() {
       <Nav />
 
       {/* ===== Hero (la grande accroche + inscription) ===== */}
-      <section className="bg-nuit px-6 pb-16 pt-10 text-center">
+      <section className="bg-nuit px-6 pb-10 pt-6 text-center">
         <div className="mx-auto max-w-2xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-teal-light">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-teal-light">
             🪲 La newsletter qui éclaire la crypto
           </p>
-          <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-            La crypto et la DeFi,
-            <br />
+          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+            La crypto et la DeFi,{" "}
+            <br className="sm:hidden" />
             expliquées en moins de{" "}
             <span className="text-luciole">10 minutes</span>.
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">
+          <p className="mx-auto mt-3 max-w-xl leading-relaxed text-white/70">
             Pas de jargon, pas de bruit. Une notion claire, deux actus
             analysées, un protocole décrypté. Pour comprendre — et savoir{" "}
             <em>comment faire</em>.
           </p>
 
-          {/* Formulaire d'inscription, relié à beehiiv via /api/subscribe */}
+          {/* Formulaire d'inscription, relié à Resend via /api/subscribe */}
           <div id="inscription">
             <SignupForm />
           </div>
@@ -40,7 +40,7 @@ export default function Home() {
       {/* ===== Transition douce nuit -> brume (évite la cassure nette) ===== */}
       <div
         aria-hidden
-        className="h-24 bg-gradient-to-b from-nuit to-brume"
+        className="h-10 bg-gradient-to-b from-nuit to-brume"
       />
 
       {/* ===== Dernières newsletters + derniers dossiers ===== */}

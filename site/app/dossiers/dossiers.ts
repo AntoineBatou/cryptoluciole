@@ -50,6 +50,7 @@ export type Dossier = {
   titre: string;
   accroche: string; // 2-3 phrases pour la carte de l'index
   emoji: string;
+  vignette?: string; // logo du sujet principal (accueil), fichier dans public/vignettes/
   date: string; // première publication
   majDate?: string;
   tempsLecture: string;
@@ -67,6 +68,7 @@ export const DOSSIERS: Dossier[] = [
     accroche:
       "Strategy et ses imitateurs achètent des milliards de dollars de cryptomonnaies, via différents montages boursiers ingénieux. Qui sont ces entreprises, comment les analyser, que se passe-t-il quand la machine s'enraye, et jusqu'où sa fragilité se propage-t-elle dans la DeFi ?",
     emoji: "🏦",
+    vignette: "/vignettes/strategy.png",
     date: "2026-07",
     tempsLecture: "45 min",
     scope: ["Strategy", "Bitmine", "Strive", "Apyx", "Pendle", "Morpho"],

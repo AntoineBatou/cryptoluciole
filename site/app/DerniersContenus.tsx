@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { issues } from "./numeros/issues";
 import { DOSSIERS } from "./dossiers/dossiers";
-import Vignette from "./Vignettes";
 
 // Les deux blocs de l'accueil, sous le bandeau :
 // à gauche les 5 dernières newsletters (miniatures carrées), à droite les
@@ -30,7 +30,7 @@ export default function DerniersContenus() {
   const placesVides = Math.max(0, 4 - dossiers.length);
 
   return (
-    <section className="bg-brume px-6 pb-16 pt-2">
+    <section className="bg-brume px-6 pb-16 pt-8">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-[3fr_2fr]">
         {/* ===== Bloc gauche : dernières newsletters ===== */}
         <div className="rounded-3xl bg-white p-6 shadow-sm sm:p-8">
@@ -69,10 +69,13 @@ export default function DerniersContenus() {
                   </div>
 
                   <div className="relative flex flex-1 items-center justify-center">
-                    <Vignette
-                      id={n.vignette}
-                      className={`text-white transition duration-300 group-hover:scale-110 ${
-                        vedette ? "h-40 w-40 sm:h-48 sm:w-48" : "h-20 w-20"
+                    <Image
+                      src={n.vignette ?? "/firefly-logo-white.png"}
+                      alt=""
+                      width={200}
+                      height={200}
+                      className={`rounded-2xl object-cover shadow-lg ring-1 ring-white/15 transition duration-300 group-hover:scale-110 ${
+                        vedette ? "h-32 w-32 sm:h-40 sm:w-40" : "h-16 w-16"
                       }`}
                     />
                   </div>
@@ -121,9 +124,13 @@ export default function DerniersContenus() {
                 href={`/dossiers/${d.slug}`}
                 className="group flex items-center gap-4 rounded-2xl border border-nuit/10 p-3 transition hover:border-teal/40 hover:shadow-md"
               >
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-nuit transition duration-300 group-hover:scale-105">
-                  <Vignette id={d.slug} className="h-14 w-14 text-white" />
-                </div>
+                <Image
+                  src={d.vignette ?? "/firefly-logo-black.png"}
+                  alt=""
+                  width={160}
+                  height={160}
+                  className="h-20 w-20 shrink-0 rounded-2xl object-cover shadow-sm transition duration-300 group-hover:scale-105"
+                />
                 <div className="min-w-0">
                   <h3 className="line-clamp-2 font-bold leading-snug text-nuit group-hover:text-teal">
                     {d.titre}
@@ -142,7 +149,7 @@ export default function DerniersContenus() {
                 className="flex items-center gap-4 rounded-2xl border border-dashed border-nuit/15 p-3"
               >
                 <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-brume">
-                  <Vignette id="avenir" className="h-14 w-14 text-nuit/30" />
+                  <Image src="/firefly-logo-black.png" alt="" width={48} height={42} className="opacity-20" />
                 </div>
                 <p className="text-sm text-nuit/40">
                   {i === 0 ? "Prochain dossier en préparation…" : "Bientôt"}
