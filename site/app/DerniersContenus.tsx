@@ -26,7 +26,9 @@ function sansJour(date: string) {
 
 export default function DerniersContenus() {
   const numeros = [...issues].sort((a, b) => b.numero - a.numero).slice(0, 5);
-  const dossiers = DOSSIERS.filter((d) => d.statut === "publie").slice(-4).reverse();
+  const dossiers = DOSSIERS.filter((d) => d.statut === "publie")
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 4);
   const placesVides = Math.max(0, 4 - dossiers.length);
 
   return (

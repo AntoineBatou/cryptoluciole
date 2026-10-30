@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 
-export default function SignupForm() {
+// ton "sombre" (défaut) : sur fond nuit (accueil, fin de dossier).
+// ton "clair" : sur le papier ivoire des dossiers.
+export default function SignupForm({ ton = "sombre" }: { ton?: "sombre" | "clair" }) {
+  const clair = ton === "clair";
   // "état" du formulaire : l'email tapé + le statut de l'envoi.
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
@@ -47,8 +50,8 @@ export default function SignupForm() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-teal text-2xl font-bold text-nuit">
           ✓
         </div>
-        <p className="mt-4 text-lg font-bold text-white">Inscription validée 🪲</p>
-        <p className="mt-1 text-sm leading-relaxed text-white/70">{message}</p>
+        <p className={`mt-4 text-lg font-bold ${clair ? "text-nuit" : "text-white"}`}>Inscription validée 🪲</p>
+        <p className={`mt-1 text-sm leading-relaxed ${clair ? "text-nuit/70" : "text-white/70"}`}>{message}</p>
       </div>
     );
   }
@@ -65,7 +68,11 @@ export default function SignupForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="ton@email.com"
-          className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-white placeholder-white/40 outline-none focus:border-teal-light"
+          className={`w-full rounded-full border px-5 py-3 outline-none ${
+            clair
+              ? "border-nuit/20 bg-white text-nuit placeholder-nuit/40 focus:border-teal"
+              : "border-white/15 bg-white/5 text-white placeholder-white/40 focus:border-teal-light"
+          }`}
         />
         <button
           type="submit"
@@ -76,9 +83,9 @@ export default function SignupForm() {
         </button>
       </form>
       {status === "error" ? (
-        <p className="mt-3 text-sm text-red-400">{message}</p>
+        <p className={`mt-3 text-sm ${clair ? "text-rouge" : "text-red-400"}`}>{message}</p>
       ) : (
-        <p className="mt-3 text-xs text-white/40">
+        <p className={`mt-3 text-xs ${clair ? "text-nuit/45" : "text-white/40"}`}>
           Gratuit. Une édition par semaine. Désinscription en un clic.
         </p>
       )}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Nav from "../../Nav";
 import { DossierFigure } from "../figures";
 import ReadingProgress from "../ReadingProgress";
+import SignupForm from "../../SignupForm";
 import {
   DOSSIERS,
   getDossier,
@@ -516,6 +517,13 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
       </header>
 
       <div className="mx-auto max-w-[720px] px-6">
+        {/* Inscription, version discrète : sous la couverture, avant le sommaire. */}
+        <aside className="no-print mt-8 rounded-sm border border-[color:var(--color-encre)]/12 bg-white/60 px-5 py-5 text-center sm:px-8">
+          <p className="text-[1.02rem] text-[color:var(--color-encre)]" style={serifStyle}>
+            Les prochains dossiers et la newsletter, chaque semaine dans ta boîte mail.
+          </p>
+          <SignupForm ton="clair" />
+        </aside>
         {/* Sommaire : chapitres seulement. print-avoid-break = ne pas laisser
             une seule ligne (« Verdict ») déborder sur la page suivante. */}
         <nav className="print-avoid-break border-b border-[color:var(--color-encre)]/12 py-8">
@@ -556,6 +564,17 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
           {dossier.parties.map((partie, i) => (
             <Partie key={partie.id} partie={partie} lead={i === 0} />
           ))}
+
+          {/* Inscription, version appuyée : pour qui a lu jusqu'au bout. */}
+          <aside className="no-print mt-16 rounded-sm bg-nuit px-6 py-10 text-center sm:px-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-luciole)]" style={monoStyle}>
+              🪲 La newsletter CryptoLuciole
+            </p>
+            <p className="mx-auto mt-3 max-w-md text-[1.35rem] leading-snug text-white" style={serifStyle}>
+              Tu as aimé ce dossier ? Reçois les prochains, et une notion DeFi décryptée chaque semaine.
+            </p>
+            <SignupForm />
+          </aside>
 
           <p className="mt-16 border-t border-[color:var(--color-encre)]/12 pt-6 text-[13px] text-[color:var(--color-encre)]/45 print:hidden" style={monoStyle}>
             Ce contenu n&apos;est pas un conseil en investissement.

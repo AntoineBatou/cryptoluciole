@@ -9,6 +9,9 @@ export const metadata = {
 };
 
 export default function DossiersPage() {
+  // Du plus récent au plus ancien (date "AAAA-MM", comparable comme du texte).
+  const dossiersTries = [...DOSSIERS].sort((a, b) => b.date.localeCompare(a.date));
+
   return (
     <div className="min-h-screen bg-brume">
       <Nav />
@@ -26,7 +29,7 @@ export default function DossiersPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <div className="flex flex-col gap-6">
-          {DOSSIERS.map((d) => (
+          {dossiersTries.map((d) => (
             <Link
               key={d.slug}
               href={`/dossiers/${d.slug}`}
