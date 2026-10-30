@@ -24,12 +24,15 @@ export type DossierBloc =
     }
   | { type: "tableau"; entetes: string[]; lignes: string[][] }
   | {
-      // Placeholder d'illustration — remplacé plus tard par un vrai graphique.
+      // Figure SVG (figures.tsx). `cle` = figure propre à un dossier (« metric-1 »),
+      // sinon `id` renvoie aux figures historiques du dossier DAT.
       type: "figure";
       id: number;
+      cle?: string;
       titre: string;
       legende: string;
-    };
+    }
+  | { type: "image"; src: string; legende: string }; // capture d'écran (dans public/)
 
 export type DossierSection = {
   id: string; // ancre (slug court, invariable)
@@ -60,6 +63,8 @@ export type Dossier = {
   parties: DossierPartie[];
   sources?: { label: string; href?: string }[];
 };
+
+import { METRIC_PARTIES } from "./metric-parties";
 
 export const DOSSIERS: Dossier[] = [
   {
@@ -872,6 +877,19 @@ Cette immunité a toutefois un angle mort. Ce taux est un **taux de rachat**, pa
         ],
       },
     ],
+  },
+  {
+    slug: "metric",
+    titre: "Metric, le DEX qui suit le prix du marché : mécanique, chiffres et limites",
+    accroche:
+      "Un DEX dont les pools ne fabriquent pas leur prix mais le reçoivent d'un oracle, pensé pour les actions tokenisées. Comment gagne et perd un LP quand la LVR disparaît, ce que disent les premiers chiffres, et pourquoi 96 % de la liquidité tient à deux market makers.",
+    emoji: "📈",
+    vignette: "/vignettes/metric.png",
+    date: "2026-10",
+    tempsLecture: "35 min",
+    scope: ["Metric", "Uniswap", "Pyth", "Carcosa", "Robinhood Chain", "BNB Chain"],
+    statut: "publie",
+    parties: METRIC_PARTIES,
   },
 ];
 

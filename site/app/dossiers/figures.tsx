@@ -1,3 +1,4 @@
+import { METRIC_FIGS } from "./metric-figures";
 // Figures du dossier — SVG « planches de guide de terrain », palette CryptoLuciole.
 // Rendu net, filets fins, libellés en mono. Aucune dépendance externe.
 
@@ -513,8 +514,8 @@ const FIGS: Record<number, () => React.JSX.Element> = {
   10: F10,
 };
 
-export function DossierFigure({ id, titre, legende }: { id: number; titre: string; legende: string }) {
-  const Fig = FIGS[id];
+export function DossierFigure({ id, cle, titre, legende }: { id: number; cle?: string; titre: string; legende: string }) {
+  const Fig = cle ? METRIC_FIGS[cle] : FIGS[id];
   return (
     <figure className="print-avoid-break my-2">
       <div className="rounded-sm border border-[color:var(--color-encre)]/12 bg-white px-4 py-6 sm:px-8">

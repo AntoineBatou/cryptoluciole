@@ -42,12 +42,25 @@ const isChapter = (t?: string) => !!t && CHAPTER_RE.test(t);
 const chapterMark = (t: string) => t.match(CHAPTER_RE)?.[0] ?? "";
 const chapterRest = (t: string) => t.replace(CHAPTER_RE, "").replace(/^\s*[—–-]\s*/, "").trim();
 
-// ---- rendu inline : **gras**, *italique*, `code` ----
+// ---- rendu inline : **gras**, *italique*, `code`, [lien](url) ----
 function Inline({ texte }: { texte: string }) {
-  const morceaux = texte.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
+  const morceaux = texte.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
   return (
     <>
       {morceaux.map((m, i) => {
+        const lien = m.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (lien)
+          return (
+            <a
+              key={i}
+              href={lien[2]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[color:var(--color-teal-fonce)] underline decoration-[color:var(--color-teal-fonce)]/30 underline-offset-2 hover:decoration-[color:var(--color-teal-fonce)]"
+            >
+              <Inline texte={lien[1]} />
+            </a>
+          );
         if (m.startsWith("**") && m.endsWith("**"))
           return (
             <strong key={i} className="font-semibold text-[color:var(--color-encre)]">
@@ -233,11 +246,12 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
       return (
         <aside className="print-avoid-break rounded-sm bg-[color:var(--color-papier2)] px-5 py-4">
           <Eyebrow>Exemple chiffré{bloc.titre ? ` — ${bloc.titre}` : ""}</Eyebrow>
-          {bloc.texte && (
-            <p className="mt-2 text-[1.0rem] leading-[1.62] text-[color:var(--color-encre)]/90">
-              <Multiligne texte={bloc.texte} />
+          {/* Une ligne du texte = un paragraphe : les étapes d'un calcul respirent. */}
+          {bloc.texte?.split("\n").map((ligne, i) => (
+            <p key={i} className="mt-2 text-[1.0rem] leading-[1.62] text-[color:var(--color-encre)]/90">
+              <Inline texte={ligne} />
             </p>
-          )}
+          ))}
         </aside>
       );
 
@@ -275,7 +289,24 @@ function Bloc({ bloc, lead }: { bloc: DossierBloc; lead?: boolean }) {
       );
 
     case "figure":
-      return <DossierFigure id={bloc.id} titre={bloc.titre} legende={bloc.legende} />;
+      return <DossierFigure id={bloc.id} cle={bloc.cle} titre={bloc.titre} legende={bloc.legende} />;
+
+    // Capture d'écran : cadre fin, légende mono comme les figures.
+    case "image":
+      return (
+        <figure className="print-avoid-break my-2">
+          <div className="overflow-hidden rounded-sm border border-[color:var(--color-encre)]/12 bg-white">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={bloc.src} alt={bloc.legende} loading="lazy" className="block h-auto w-full" />
+          </div>
+          <figcaption
+            className="mt-2 text-[13px] leading-relaxed text-[color:var(--color-encre)]/55"
+            style={monoStyle}
+          >
+            {bloc.legende}
+          </figcaption>
+        </figure>
+      );
   }
 }
 
