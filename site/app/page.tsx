@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Nav from "./Nav";
 import SignupForm from "./SignupForm";
 import DerniersContenus from "./DerniersContenus";
@@ -73,25 +72,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ===== Pied de page ===== */}
-      <footer className="mt-auto bg-nuit px-6 py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 text-center">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/firefly-logo-white.png"
-              alt=""
-              width={28}
-              height={24}
-            />
-            <span className="font-bold text-luciole">CryptoLuciole 🪲✨</span>
-          </div>
-          <p className="max-w-xl text-xs leading-relaxed text-white/50">
-            ⚠️ Contenu purement pédagogique — pas un conseil en investissement.
-            Fais tes propres recherches.
-          </p>
-        </div>
-      </footer>
+      {/* Le pied de page (logo, réseaux, disclaimer) vient de layout.tsx */}
     </div>
   );
 }
