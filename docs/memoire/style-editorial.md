@@ -694,3 +694,48 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
 - Règle FR rappelée et validée : « se rappeler qqch » (sans « de »).
 
 Voir [[glossaire]], [[etat-projet]].
+
+- **« Notre avis » d’ON ÉCLAIRE = situer le phénomène, pas seulement trancher un duel (numéro 9, 2026-11-03).**
+  Sur le deposit token, Marc n’a pas aimé l’avis « ça concurrence ton compte rémunéré, pas tes USDC ».
+  Il voulait : (1) dire qu’on **commence** à en voir, et que c’est **très récent** ; (2) dire **où ça
+  existe** aujourd’hui, et s’il y en a **en Europe** ; (3) préciser si c’est sur **blockchain publique ou
+  privée** ; (4) l’idée de fond : ça **consacrerait le passage de la banque vers la blockchain**.
+  **Why :** pour une notion neuve (que Marc lui-même découvrait), le lecteur veut d’abord savoir si c’est
+  réel, où, pour qui, et si ça le concerne depuis la France — avant une thèse concurrentielle.
+  **How to apply :** pour une notion émergente, ajouter dans le corps un état des lieux factuel (qui,
+  pour qui, où, quelle blockchain — petit tableau), avec le cas européen explicite même s’il est négatif ;
+  l’avis porte alors sur la portée du mouvement (« ce que ça changerait »), sa maturité réelle, et un
+  signal concret à surveiller côté Europe / particuliers.
+
+- **Une actu = une nouvelle avec un fil directeur, jamais deux infos juxtaposées (numéro 9, 2026-11-03).**
+  L’actu « refus OKXICE + DTCC » collait deux faits de la même semaine sans lien réel. Marc : « on dirait
+  que tu as rapproché deux informations qui ne sont pas liées ». Ses questions-test : quel est le but de la
+  news ? qu’est-ce qui est intéressant ? que faut-il en déduire ? est-ce un concurrent de X ? où/comment
+  y accéder ? Réécrite autour de la DTCC seule, avec le contraste particuliers / institutionnels en une
+  phrase, et un fil relié à l’ON ÉCLAIRE (les institutionnels passent aussi sur la blockchain, entre eux).
+  **Why :** sans fil, le lecteur ne sait pas quoi retenir ; un rappel long du numéro précédent noie la nouvelle.
+  **How to apply :** avant de rédiger une actu, écrire sa thèse en une phrase et vérifier que chaque partie
+  la sert ; répondre explicitement à « c’est quoi / pour qui / concurrent de qui / accessible où » ;
+  relier l’actu au fil du numéro quand c’est naturel.
+
+- **« Notre avis » d’une actu : court, sans spéculer sur ce qui n’est pas annoncé (numéro 9, 2026-11-03).**
+  Sur l’actu DTCC, Marc a réduit l’avis de 4 à 2 puces : il a gardé le constat (« deux voies ») et la
+  métrique à suivre (participants, titres), et coupé « pour toi, rien ne change » et le « signal » sur un
+  courtier qui proposerait un jour le jeton aux particuliers (« ce n’est pas annoncé »). Il a aussi retiré
+  « mais pas pour toi » du titre, et la plage horaire non confirmée par le communiqué.
+  **Why :** une puce qui imagine un futur non annoncé ou répète le corps dilue l’avis ; un titre neutre
+  suffit quand le corps explique déjà à qui ça s’adresse.
+  **How to apply :** dans un avis, ne garder que le constat analytique et la bonne métrique ; pas de
+  scénario hypothétique sans annonce, pas de redite du corps ; couper tout fait absent de la source primaire.
+
+- **Relier les rubriques seulement quand le lien est naturel (numéro 9, 2026-11-04).**
+  ÇA BRILLE comparait l'encours des stablecoins aux dépôts bancaires américains pour faire écho au
+  deposit token d'ON ÉCLAIRE. Marc : « tiré par les cheveux… on compare des choses non comparables et
+  on fait des suppositions juste pour lier les deux », et surtout « on n'explique même pas pourquoi le
+  montant des stablecoins a baissé ». Pas une règle stricte : quand le lien se fait très bien, c'est
+  top ; quand il force le propos, on laisse tomber.
+  **Why :** un chiffre de ÇA BRILLE vaut par son analyse (causes, perspectives, conclusion), pas par
+  son lien avec les autres rubriques. Un rapprochement forcé affaiblit tout le numéro.
+  **How to apply :** choisir un chiffre pertinent pour lui-même ; s'il montre un mouvement (hausse,
+  baisse), en expliquer les causes sourcées (idéalement en liste) et les perspectives ; ne relier à
+  une autre rubrique que si le lien tient sans supposition. Même réflexe pour les avis et les actus.

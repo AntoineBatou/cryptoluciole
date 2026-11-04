@@ -305,6 +305,7 @@ export default async function NumeroPage({
               ))}
             </ul>
           )}
+          {n.protocole.risquesCorps && <CorpsBlocks corps={n.protocole.risquesCorps} />}
           {n.protocole.risquesFin && (
             <p className="mb-4 leading-relaxed text-nuit/80">{n.protocole.risquesFin}</p>
           )}
@@ -479,6 +480,7 @@ export default async function NumeroPage({
           <section className="mb-12">
             <h2 className="mb-3 text-lg font-extrabold text-nuit">✉️ À toi de jouer</h2>
             <p className="mb-4 leading-relaxed text-nuit/80">{n.jeu.cta}</p>
+            {n.jeu.question && (
             <div className="rounded-xl bg-green-50 p-5 leading-relaxed text-nuit/80">
               🗳️ <strong>{n.jeu.question}</strong>
               <br />
@@ -486,6 +488,7 @@ export default async function NumeroPage({
               <br />
               <strong className="text-teal">B.</strong> {n.jeu.b}
             </div>
+            )}
           </section>
         )}
 

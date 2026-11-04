@@ -51,6 +51,8 @@ export type Issue = {
     // (#8+) : paragraphe affiché sous les puces de risques, et suite riche de
     // « Pourquoi ça compte » (listes, encadré « Notre avis »), sous importanceSuite.
     risquesFin?: string;
+    // (#9+) : risques en blocs riches (paragraphes, image, encadrés), rendus sous risquesItems.
+    risquesCorps?: NotionEl[];
     importanceCorps?: NotionEl[];
   };
   // varRef / sensRef : 2e colonne de variation, optionnelle — utilisée quand l'écart
@@ -66,7 +68,7 @@ export type Issue = {
   // data.def : encadré de définition affiché DANS la carte, sous le texte (#7+).
   data: { titre: string; texte: string; def?: { terme: string; slug: string; texte: string }; points?: string[]; texteFin?: string; corps?: NotionEl[] };
   // À toi de jouer (optionnel) : appel à répondre + sondage A/B.
-  jeu?: { cta: string; question: string; a: string; b: string };
+  jeu?: { cta: string; question?: string; a?: string; b?: string }; // sondage optionnel (#9+)
   definitions: { terme: string; en?: string; def: string; avis?: string; slug?: string }[];
 };
 
@@ -2794,6 +2796,762 @@ export const issues: Issue[] = [
       a: "Oui, pour protéger mes cryptos ou toucher des primes",
       b: "Non, trop technique pour moi pour l'instant"
     }
+  },
+  // ===== Numéro 9 (généré par drafts/build_issue.py depuis drafts/issue-09/) =====
+  // FACTCHECK: ON ÉCLAIRE : [À VÉRIFIER le jour de l'envoi]
+  // FACTCHECK: Actu « BlackRock dépose un ETF bitcoi » : [À VÉRIFIER]
+  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER : niveau des frais ensuite]
+  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER]
+  {
+    "id": "9",
+    "numero": 9,
+    "vignette": "/vignettes/pendle.jpg",
+    "date": "Mercredi 4 novembre 2026",
+    "titre": "Deposit tokens : quand les banques émettent leurs propres jetons",
+    "excerpt": "Le deposit token expliqué avec SoFi, la DTCC qui tokenise les actions américaines, l'ETF bitcoin « protégé » de BlackRock, PendleLoop sous la loupe, et pourquoi les stablecoins reculent depuis mai.",
+    "notion": {
+      "titre": "Le deposit token : ta banque arrive sur la blockchain",
+      "corps": [
+        {
+          "type": "p",
+          "texte": "Quand tu déposes de l'argent sur ton compte, ta banque inscrit une ligne dans son registre interne : « elle te doit 1 000 € ». Un deposit token (ou dépôt tokenisé), c'est ce même dépôt, mais inscrit sous forme de jeton sur une blockchain."
+        },
+        {
+          "type": "p",
+          "texte": "Vu de loin, ça ressemble à un stablecoin : un jeton qui vaut une unité de monnaie (1 $, 1 €). Mais juridiquement, ce n'est pas le même objet, et cette différence est importante."
+        },
+        {
+          "type": "def",
+          "terme": "Deposit token (dépôt tokenisé)",
+          "slug": "deposit-token",
+          "texte": "Dépôt bancaire représenté par un jeton sur une blockchain. 1 jeton = 1 unité de monnaie déposée à la banque, qui reste ta débitrice comme pour un compte classique."
+        },
+        {
+          "type": "st",
+          "texte": "La vraie question : qui te doit l'argent ?"
+        },
+        {
+          "type": "p",
+          "texte": "Avec un stablecoin comme l'USDC, tu as une créance sur un émetteur qui n'est pas une banque (ici Circle). Il garde tes dollars en réserve, placés ailleurs : bons du Trésor, comptes dans des banques. On l'a vu dans notre numéro 3."
+        },
+        {
+          "type": "p",
+          "texte": "Avec un deposit token, tu as une créance directement sur la banque. Ton argent reste un dépôt bancaire ordinaire, que la banque utilise comme les autres (pour prêter, pour placer) ; la blockchain remplace seulement son registre interne."
+        },
+        {
+          "type": "p",
+          "texte": "Ce n'est donc pas plus sûr par nature : un stablecoin régulé est en principe couvert à 100 % par ses réserves, alors qu'une banque prête une partie des dépôts qu'elle reçoit. La différence porte sur la protection prévue si ça tourne mal, sur le rendement et sur l'accès."
+        },
+        {
+          "type": "st",
+          "texte": "La garantie : ce qui se passe si ça tourne mal"
+        },
+        {
+          "type": "p",
+          "texte": "Si ta banque fait faillite, tes dépôts sont remboursés par un fonds public, jusqu'à un plafond."
+        },
+        {
+          "type": "def",
+          "terme": "Garantie des dépôts (FGDR, FDIC)",
+          "slug": "garantie-des-depots",
+          "texte": "Mécanisme public qui rembourse les déposants si leur banque fait faillite, jusqu'à un plafond : 100 000 € par déposant et par banque en France (FGDR), 250 000 $ par déposant et par banque aux États-Unis (FDIC)."
+        },
+        {
+          "type": "p",
+          "texte": "Le détenteur d'un stablecoin n'a pas cette protection. Les réserves de l'émetteur peuvent être déposées dans des banques assurées, mais c'est l'émetteur qui est client de ces banques, pas toi : si l'émetteur fait défaut, aucun fonds de garantie ne te rembourse."
+        },
+        {
+          "type": "p",
+          "texte": "Pour le deposit token, la FDIC a avancé en 2026 que le fait d'inscrire un dépôt sur une blockchain ne change pas, en soi, sa couverture. C'est une position de principe, pas encore un texte définitif : la règle peut encore évoluer."
+        },
+        {
+          "type": "st",
+          "texte": "Le rendement : ce que la loi interdit aux stablecoins"
+        },
+        {
+          "type": "p",
+          "texte": "Le GENIUS Act, la loi américaine qui encadre les stablecoins depuis 2025, interdit à leurs émetteurs de verser un intérêt aux détenteurs. En Europe aussi, MiCA interdit aux émetteurs de stablecoins d'en verser (article 50 de MiCA). L'objectif : éviter que les stablecoins deviennent des substituts aux dépôts bancaires, et protéger ainsi les banques."
+        },
+        {
+          "type": "p",
+          "texte": "Une banque, elle, peut rémunérer un deposit token comme n'importe quel compte de dépôt : elle fait travailler ton dépôt et te reverse une partie de ce qu'il rapporte."
+        },
+        {
+          "type": "st",
+          "texte": "L'accès : un jeton qui ne circule pas librement"
+        },
+        {
+          "type": "p",
+          "texte": "La plupart des deposit tokens existants aujourd'hui sont permissionnés : seuls les wallets approuvés par la banque, après vérification d'identité / KYC, peuvent les recevoir et les détenir. Tu ne peux pas les envoyer à n'importe quelle adresse, ni les déposer sur un protocole DeFi ouvert à tous."
+        },
+        {
+          "type": "def",
+          "terme": "KYC (Know Your Customer)",
+          "slug": "kyc",
+          "texte": "Vérification d'identité imposée par la réglementation (pièce d'identité, justificatif de domicile…) avant d'ouvrir un compte ou d'accéder à un service financier."
+        },
+        {
+          "type": "st",
+          "texte": "En pratique : SoFi propose les deux"
+        },
+        {
+          "type": "p",
+          "texte": "SoFi, une banque en ligne américaine grand public, illustre bien le compromis. Depuis le 22 octobre 2026, elle propose deux versions du même dollar :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "SoFi Earn (SOFIE), un deposit token : 1 SOFIE = 1 $ déposé chez SoFi Bank, rémunéré 4,40 % par an (taux variable), que SoFi présente comme couvert par la FDIC dans les plafonds habituels (en cumulant ses autres dépôts chez SoFi). Il est ouvert d'abord aux clients de SoFi Crypto, avec un déploiement progressif.",
+            "SoFiUSD, le stablecoin de SoFi : il peut circuler hors de la banque, mais ne rapporte rien et n'est pas couvert par la FDIC."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Les deux s'échangent 1 pour 1. Si tu as 1 000 SOFIE, tu touches environ 44 $ d'intérêts sur un an (1 000 × 4,40 %), avec la garantie FDIC. Tu les convertis en 1 000 SoFiUSD : tu peux les envoyer où tu veux, mais tu perds à la fois l'intérêt et la garantie."
+        },
+        {
+          "type": "p",
+          "texte": "Dit simplement : c'est le même dollar, et tu choisis entre protégé et rémunéré ou libre de circuler. Depuis la France, la question ne se pose pas encore : SOFIE est réservé aux clients américains de SoFi."
+        },
+        {
+          "type": "st",
+          "texte": "Où ça existe déjà ?"
+        },
+        {
+          "type": "p",
+          "texte": "Les dépôts tokenisés sont très récents. Jusqu'à cet automne, ils étaient réservés aux entreprises : SoFi se présente comme la première banque nationale américaine à en proposer un aux particuliers, et le sien n'est déployé que depuis le 22 octobre."
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "Banque",
+            "Pour qui",
+            "Où",
+            "Quelle blockchain"
+          ],
+          "lignes": [
+            [
+              "SoFi (SOFIE)",
+              "Particuliers (clients SoFi Crypto)",
+              "États-Unis",
+              "Pas de jeton public repéré : SOFIE reste chez SoFi. Converti en SoFiUSD, il passe sur Ethereum (publique)"
+            ],
+            [
+              "JPMorgan (JPMD)",
+              "Entreprises clientes",
+              "États-Unis",
+              "Base et Ethereum (publiques), mais réservé aux wallets approuvés"
+            ],
+            [
+              "HSBC",
+              "Entreprises clientes",
+              "Hong Kong, Singapour, Royaume-Uni, Luxembourg, États-Unis ; plusieurs devises, dont l'euro",
+              "Un réseau privé de HSBC"
+            ],
+            [
+              "Citi",
+              "Entreprises clientes",
+              "Sept pays, en dollars et en euros",
+              "Blockchain privée dont Citi est propriétaire"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "En Europe, les dépôts tokenisés en euros existent déjà, mais pour les entreprises et sur des blockchains privées : HSBC les propose depuis le Luxembourg depuis septembre 2025, Citi depuis novembre 2025. Au Royaume-Uni, Lloyds a réalisé une première transaction en livres sterling tokenisées sur Canton, un réseau public conçu pour les institutions financières, et la néobanque Monument prépare une offre pour les particuliers. Aucun deposit token en euros n'est aujourd'hui proposé aux particuliers."
+        },
+        {
+          "type": "p",
+          "texte": "Dit simplement : « sur la blockchain » ne veut pas dire « ouvert à tous ». Même JPMorgan, qui passe par des blockchains publiques, ne laisse entrer que les wallets qu'il a validés."
+        },
+        {
+          "type": "st",
+          "texte": "En résumé"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "",
+            "Stablecoin (ex. USDC)",
+            "Deposit token"
+          ],
+          "lignes": [
+            [
+              "Qui te doit l'argent",
+              "Un émetteur non bancaire",
+              "Ta banque"
+            ],
+            [
+              "Où est ton argent",
+              "Dans des réserves placées ailleurs",
+              "Sur ton dépôt, que la banque fait travailler"
+            ],
+            [
+              "Garantie des dépôts",
+              "Non",
+              "Oui, selon la position de la FDIC (non définitive)"
+            ],
+            [
+              "Intérêt versé par l'émetteur",
+              "Interdit (GENIUS Act, MiCA)",
+              "Possible"
+            ],
+            [
+              "Qui peut le détenir",
+              "N'importe quel wallet",
+              "Les wallets approuvés par la banque"
+            ]
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "les premiers dépôts tokenisés apparaissent, et c'est un changement de fond : la banque inscrit ton argent sur une blockchain, et plus seulement dans son registre interne. Si le mouvement se généralise, il consacrerait le passage de la banque vers la blockchain. On n'y est pas encore : c'est très récent, réservé presque partout aux entreprises, et souvent sur des réseaux fermés. Le signal à surveiller : le jour où une banque européenne proposera à ses clients particuliers un deposit token en euros, sur une blockchain publique."
+        }
+      ]
+    },
+    "actus": [
+      {
+        "titre": "La DTCC passe les actions américaines sur la blockchain",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 28 octobre 2026, la DTCC a lancé un service qui met des actions américaines sur une blockchain."
+          },
+          {
+            "type": "st",
+            "texte": "1. La DTCC, la tuyauterie de la Bourse américaine"
+          },
+          {
+            "type": "def",
+            "terme": "DTCC",
+            "slug": "dtcc",
+            "texte": "L'organisme central qui conserve et règle les titres américains. Quand tu détiens une action Apple, chez n'importe quel courtier, elle est en réalité conservée chez sa filiale DTC, qui enregistre son passage d'un courtier à l'autre. DTC conserve plus de 114 000 milliards de dollars d'actifs. Équivalent européen : Euroclear."
+          },
+          {
+            "type": "st",
+            "texte": "2. Ce qu'elle lance"
+          },
+          {
+            "type": "p",
+            "texte": "Avec le DTCC Tokenization Service, ses membres (banques, courtiers) peuvent convertir des titres qu'ils détiennent déjà chez elle en jetons, et inversement. Les jetons sont livrés vers les wallets choisis par ces membres. Selon la DTCC, ces « jumeaux numériques » conservent les droits de propriété, les protections des investisseurs et les droits économiques des titres classiques. Concrètement :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "la SEC a autorisé, par une lettre de non-action (décembre 2025), un périmètre qui couvre les actions du Russell 1000 (les 1 000 plus grandes sociétés américaines), des ETF indiciels et des bons du Trésor. Au lancement, seuls 34 titres sont éligibles (environ 30 000 Md$ de capitalisation, selon la DTCC citée par CoinDesk) ;",
+              "20 membres de DTC ont signé, et plus de 30 entreprises avaient participé en juillet à un premier essai en conditions réelles ;",
+              "les jetons vivent sur des réseaux réservés à ses membres : Canton Network, une blockchain conçue pour les institutions financières, et un réseau privé de la DTCC ; d'autres réseaux sont prévus en 2027."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Le but annoncé : donner aux institutions plus de liquidité et mobiliser des garanties en quelques minutes. Par exemple, une banque qui doit apporter une garantie à une autre institution pourrait le faire en quelques minutes, en jetons."
+          },
+          {
+            "type": "st",
+            "texte": "3. Ce que ce n'est pas"
+          },
+          {
+            "type": "p",
+            "texte": "Ce n'est ni une plateforme d'échange, ni à destination des particuliers : il n'y a rien à acheter pour un particulier, et ces jetons ne s'échangent sur aucune plateforme ouverte au public."
+          },
+          {
+            "type": "p",
+            "texte": "Côté particuliers, ce sont des plateformes crypto qui tokenisent des actions, et elles se heurtent aux entreprises : chez OKXICE, 33 d'entre elles avaient refusé fin octobre que leur action soit proposée (voir notre numéro 8)."
+          },
+          {
+            "type": "st",
+            "texte": "4. Ce qu'il faut en retenir"
+          },
+          {
+            "type": "p",
+            "texte": "Après les plateformes pour particuliers, ce sont les institutions et les banques qui adoptent la technologie. C'est le même mouvement que dans notre ON ÉCLAIRE de cette semaine : les banques tokenisent leurs dépôts, la DTCC tokenise les actions."
+          },
+          {
+            "type": "p",
+            "texte": "Dans les deux cas, la blockchain sert de registre, mais l'établissement garde la main sur qui peut détenir le jeton (voir « jeton permissionné » dans les DÉFINITIONS, plus bas)."
+          }
+        ],
+        "avis": "",
+        "source": "DTCC (communiqué du 28/10) · Cointelegraph · CoinDesk (via Northeast Times) · notre numéro 8 (OKXICE)",
+        "avisItems": [
+          "La tokenisation des actions avance sur deux voies : les plateformes pour particuliers d'un côté, la DTCC de l'autre, pour des titres qu'elle conserve déjà, pour des usages internes à la finance.",
+          "À l'avenir, le nombre de participants (20 aujourd'hui) et de titres concernés dira si l'usage s'installe."
+        ]
+      },
+      {
+        "titre": "BlackRock dépose un ETF bitcoin « protégé », aux gains plafonnés",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 19 octobre, BlackRock a déposé auprès de la SEC le dossier d'un nouvel ETF : l'iShares Bitcoin Managed Protection ETF (ticker PBIT). C'est un dépôt, pas un lancement : le fonds n'est pas encore disponible et ses frais ne sont pas renseignés."
+          },
+          {
+            "type": "p",
+            "texte": "Le principe : tu t'exposes au bitcoin avec une perte limitée à environ 10 % sur chaque tranche, mais en échange tes gains sont plafonnés."
+          },
+          {
+            "type": "st",
+            "texte": "1. Comment ça marche"
+          },
+          {
+            "type": "p",
+            "texte": "PBIT ne détient pas de bitcoin. Il utilise des options sur IBIT, l'ETF bitcoin classique de BlackRock (ou une exposition similaire)."
+          },
+          {
+            "type": "def",
+            "terme": "Option",
+            "slug": "option",
+            "texte": "Un contrat qui donne le droit, sans l'obligation, d'acheter (call) ou de vendre (put) un actif à un prix fixé d'avance, à une date donnée. L'acheteur paie ce droit au vendeur : c'est la prime."
+          },
+          {
+            "type": "p",
+            "texte": "Le dépôt ne détaille pas toute la combinaison  ; selon la presse spécialisée (The Block, Unchained), elle repose sur trois éléments (les calls ont été vus dans notre numéro 8) :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "une grande partie de l'argent est placée en obligations, qui rapportent des intérêts ;",
+              "le fonds achète des options d'achat (calls) sur IBIT, à un prix d'exercice proche du plancher : c'est ce qui lui donne la hausse du bitcoin sans en détenir ;",
+              "il vend des options d'achat à un prix plus élevé pour financer cet achat : au-delà de ce prix, la hausse revient à celui qui les a achetées. C'est ce qui plafonne ton gain."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Le plancher, en général autour de 90 % de la valeur de départ, découle de ce montage : si le bitcoin baisse, les calls achetés ne valent plus rien, mais tu ne perds au plus que la somme payée pour ces calls, en partie compensée par les intérêts des obligations. Le plafond est fixé selon les conditions de marché, et son niveau n'est pas publié. Le fonds garde une large latitude pour modifier ces deux bornes."
+          },
+          {
+            "type": "p",
+            "texte": "Ces bornes valent par tranche. Trois tranches se chevauchent : chaque mois, l'une arrive à échéance et une nouvelle démarre. Comme le fonds détient trois tranches à la fois, tu hérites toujours de bornes en partie entamées : les 10 % sont un repère, pas une garantie à partir de ton point d'entrée."
+          },
+          {
+            "type": "st",
+            "texte": "2. Ce que ça donne, en chiffres"
+          },
+          {
+            "type": "p",
+            "texte": "Exemple simplifié sur une seule tranche : tu places 100, avec un plancher à 90 et un plafond hypothétique à 115 (le vrai n'est pas publié). Avant frais :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "le bitcoin baisse de 40 % : IBIT tombe à 60 ; les calls achetés ne valent plus rien, il te reste la partie obligataire, environ 90 ;",
+              "le bitcoin monte de 10 % : les calls achetés suivent la hausse, tu passes à 110, comme IBIT ;",
+              "le bitcoin monte de 60 % : IBIT passe à 160 ; tes calls achetés rapportent, mais les calls vendus te coûtent tout ce qui dépasse 115 : toi à 115."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Attention toutefois : la limite de 10 % vaut pour une tranche, pas pour toute la durée de ton placement. Si le bitcoin chute pendant deux tranches de suite, tu perds environ 10 % à chaque fois : 100 → 90 → 81 (90 − 10 % de 90)."
+          },
+          {
+            "type": "p",
+            "texte": "Dit simplement : tu échanges les grosses baisses contre les grosses hausses. Et comme le plafond s'applique à chaque tranche, donc plusieurs fois par an, chaque grosse hausse au-delà du plafond est cédée."
+          },
+          {
+            "type": "st",
+            "texte": "3. Pas une première, mais une gamme"
+          },
+          {
+            "type": "p",
+            "texte": "Le concept existe déjà : Calamos et Innovator proposent des fonds bitcoin « à résultat défini »."
+          },
+          {
+            "type": "def",
+            "terme": "ETF à résultat défini (defined outcome ETF)",
+            "slug": "etf-a-resultat-defini",
+            "texte": "Un ETF qui utilise des options pour fixer à l'avance, sur une période donnée, une perte maximale et un gain maximal. Le format existe depuis des années sur les indices boursiers comme le S&P 500."
+          },
+          {
+            "type": "p",
+            "texte": "Avec PBIT, BlackRock déclinerait le bitcoin en trois profils :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "IBIT : le bitcoin brut, hausses et baisses comprises ;",
+              "BITA (iShares Bitcoin Premium Income), lancé en juin 2026 : le fonds vend des options d'achat sur sa position en bitcoin pour verser un revenu régulier élevé, en renonçant à une partie de la hausse ;",
+              "PBIT, s'il est lancé : une protection contre les baisses, en renonçant aussi au haut de la hausse."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Depuis la France, ces ETF américains ne sont en général pas accessibles aux particuliers (réglementation européenne PRIIPs)."
+          }
+        ],
+        "avis": "",
+        "source": "dépôt SEC de BlackRock (19/10) · The Block · Unchained · Crypto Briefing",
+        "avisItems": [
+          "Ce que tu achètes : un bitcoin assuré, payé avec sa partie la plus rentable. C'est cohérent si ta priorité est de limiter chaque baisse à environ 10 % ; ça l'est beaucoup moins si tu détiens du bitcoin pour son potentiel de hausse.",
+          "À qui ça s'adresse : à l'épargnant prudent américain, qui veut placer du bitcoin dans un compte-titres avec une perte maximale connue d'avance. Pour toi, depuis la France, avec des options on-chain (comme sur Derive, vu dans notre numéro 8), tu peux construire un montage équivalent toi-même, un « tunnel » : tu gardes ton bitcoin, tu achètes un put au plancher et tu le finances en vendant un call au plafond, en choisissant tes bornes, à condition de le renouveler à chaque échéance.",
+          "Le signal : Wall Street traite désormais le bitcoin comme le S&P 500, avec les mêmes produits structurés. Il devient une brique de la gestion classique, plus seulement un actif à part."
+        ]
+      }
+    ],
+    "protocole": {
+      "nom": "PendleLoop",
+      "slug": "pendle",
+      "bref": "PendleLoop, lancé le 22 octobre 2026, automatise le looping : tu déposes un actif, tu empruntes contre lui, tu rachètes du même actif avec ce que tu as emprunté, et tu recommences. Ce qui demandait une dizaine de transactions à la main se fait désormais en une seule. Pendle ne prête rien lui-même : l'emprunt se fait sur des plateformes de prêt existantes, Morpho et Aave.",
+      "etapes": [],
+      "etapesCorps": [
+        {
+          "type": "def",
+          "terme": "Looping",
+          "slug": "looping",
+          "texte": "Répéter le cycle « déposer un actif en garantie → emprunter → racheter du même actif → le redéposer ». Chaque tour grossit ta position, donc tes gains comme tes pertes, et rapproche ton seuil de liquidation."
+        },
+        {
+          "type": "st",
+          "texte": "Pour rappel"
+        },
+        {
+          "type": "p",
+          "texte": "A la base, Pendle sépare la possession d'un actif à rendement de son rendement, comme la nue-propriété et l'usufruit. Le PT (Principal Token) te rend l'actif à une date fixée : acheté moins cher aujourd'hui, il offre un rendement fixe. Le YT (Yield Token) touche le rendement variable d'ici là. Pendle proposait déjà de boucler des PT. PendleLoop étend le looping à des actifs sans échéance et au pari sur le prix, y compris sur des actions tokenisées."
+        },
+        {
+          "type": "st",
+          "texte": "1. Choisir le mode"
+        },
+        {
+          "type": "p",
+          "texte": "L'interface propose deux usages, et les résume elle-même en trois critères :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Loop to Earn (« boucler pour gagner ») : pas de pari sur le prix. Ta garantie et ta dette sont liées au même actif : Par exemple du sUSDS (un dollar à rendement) contre de l'USDT emprunté, ou du wstETH (de l'ETH staké) contre de l'ETH emprunté. Ta garantie prend lentement de la valeur par rapport à ta dette, grâce à son rendement : c'est précisément ce que tu gagnes. Tu gagnes grâce au rendement ; le chiffre à surveiller, c'est le taux d'emprunt par rapport au taux de rendement.",
+            "Loop to Long/Short (« boucler pour parier sur le prix ») : ta garantie et ta dette ne sont pas liées au même actif. En long, tu déposes un actif dont le prix varie (ETH, Bitcoin ou une action) et tu empruntes de l'USDC ou de l'USDT : si le prix monte, ta garantie prend de la valeur alors que ta dette reste la même. En short, c'est l'inverse : tu déposes des dollars et tu empruntes de l'ETH ; si l'ETH baisse, ta dette diminue en valeur. Le chiffre à surveiller, c'est le prix de liquidation."
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/numeros/9/01-pendleloop-deux-modes.png",
+          "legende": "Les deux modes de PendleLoop. Pendle résume chacun en trois critères : le lien entre garantie et dette, ce qui te fait gagner, ce qu'il faut surveiller."
+        },
+        {
+          "type": "p",
+          "texte": "Quels actifs dans chaque mode ? En Loop to Earn, des PT (rendement fixe jusqu'à l'échéance) ou directement l'actif à rendement, sans échéance, comme le sUSDS ou le wstETH. En Long/Short, pas de PT : des cryptos et les actions tokenisées."
+        },
+        {
+          "type": "p",
+          "texte": "Le mode Long sur actions constitue la vraie nouveauté."
+        },
+        {
+          "type": "st",
+          "texte": "2. Choisir l'actif"
+        },
+        {
+          "type": "p",
+          "texte": "L'onglet Stocks liste 7 actions tokenisées émises par Coinbase sur Base (sa blockchain) : Tesla, Google, Nvidia, Microsoft, Apple, Amazon et Meta, sous les noms TSLAc, GOOGLc, etc. Une action tokenisée est une action représentée par un jeton sur une blockchain. Ici, tu empruntes de l'USDC contre elle sur Aave V4. Le levier maximum va de 2,6x (Tesla, Meta) à 4,2x (Microsoft) : il dépend du seuil de liquidation qu'Aave fixe pour chaque action (on y revient à l'étape 4)."
+        },
+        {
+          "type": "image",
+          "src": "/numeros/9/02-pendleloop-actions-liste.png",
+          "legende": "Les 7 actions disponibles en long, avec leur levier maximum et le coût de détention à 2x (ici, une rémunération : « Earn 8,88 %/yr »). Relevé du 3 novembre 2026."
+        },
+        {
+          "type": "st",
+          "texte": "3. Choisir le levier"
+        },
+        {
+          "type": "p",
+          "texte": "Le levier est le rapport entre la taille de ta position et ta mise. Tu déposes 100 $ d'USDC et tu choisis 2x : PendleLoop emprunte 100 $ d'USDC et t'achète 200 $ de TSLAc (100 × 2), placés en garantie. Si Tesla monte de 10 %, ta position vaut 220 $, tu dois toujours 100 $ : il te reste 120 $, soit +20 %. Si elle baisse de 10 %, il te reste 80 $, soit −20 %."
+        },
+        {
+          "type": "st",
+          "texte": "4. Lire le prix de liquidation"
+        },
+        {
+          "type": "p",
+          "texte": "Chaque marché a un seuil de sécurité, le LLTV."
+        },
+        {
+          "type": "def",
+          "terme": "LLTV (seuil de liquidation)",
+          "slug": "ltv",
+          "texte": "La part maximale de la valeur de ta garantie que ta dette peut atteindre. Au-delà, la plateforme vend ta garantie pour rembourser le prêteur : c'est la liquidation. Pour TSLAc, le LLTV est de 65 %."
+        },
+        {
+          "type": "p",
+          "texte": "Dans notre exemple à 2x, tu dois 100 $. Tu es liquidé quand 65 % de ta garantie ne couvre plus ces 100 $, soit quand tes 200 $ de TSLAc tombent à environ 154 $ (100 ÷ 0,65) : une baisse d'environ 23 %. Avec Tesla à environ 407 $ le 3 novembre, l'écran affiche un prix de liquidation d'environ 313 $."
+        },
+        {
+          "type": "image",
+          "src": "/numeros/9/03-pendleloop-tslac-liquidation.png",
+          "legende": "L'écran de position TSLAc à 2x : prix de liquidation 312,91 $ pour un cours de 406,78 $. Le « Health Factor » affiché (23,08 %) correspond à cet écart de 23 %. En haut, « Closes Fri 22:00 » : l'heure à laquelle le prix arrête de bouger pour le week-end."
+        },
+        {
+          "type": "p",
+          "texte": "Plus tu pousses le curseur, plus cette marge fond :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "à 1,5x : liquidation après une baisse d'environ 49 % ;",
+            "à 2x : environ 23 % ;",
+            "à 2,6x (le maximum) : environ 5 % (vers 385 $)."
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "5. Confirmer"
+        },
+        {
+          "type": "p",
+          "texte": "Le dépôt, l'emprunt et le rachat partent en une seule transaction. Les frais de PendleLoop sont offerts jusqu'au 31 décembre (hors looping de PT)."
+        }
+      ],
+      "rendement": "",
+      "rendementCorps": [
+        {
+          "type": "st",
+          "texte": "Loop to Earn : un écart de taux, multiplié"
+        },
+        {
+          "type": "p",
+          "texte": "Ton actif rapporte un rendement, l'emprunt coûte un intérêt, et le levier amplifie l'écart. Exemple en chiffres ronds : un dollar à rendement qui rapporte 10 %, de l'USDC emprunté à 6 %, un levier de 3x. Avec 100 $, tu détiens 300 $ et tu dois 200 $ :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "tu touches 30 $ de rendement (300 × 10 %) ;",
+            "tu paies 12 $ d'intérêts (200 × 6 %) ;",
+            "il te reste 18 $, soit 18 % par an, au lieu de 10 % sans boucle."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Si le taux d'emprunt monte à 12 %, il ne te reste plus que 6 $ (30 − 24) : moins que sans levier. C'est pour ça que Pendle désigne le taux d'emprunt comme le chiffre à surveiller. Boucler un PT fige le rendement de ta garantie, mais pas le coût de ta dette, qui reste variable."
+        },
+        {
+          "type": "st",
+          "texte": "Long sur actions : pas de rendement, un pari sur le prix"
+        },
+        {
+          "type": "p",
+          "texte": "Une action tokenisée rapporte au mieux son dividende (Tesla n'en verse pas, et il reste faible pour ces valeurs), alors que l'USDC emprunté coûte un intérêt : environ 5 % par an sur Aave. Normalement, tenir la position te coûte donc de l'argent chaque année. Ton gain vient uniquement de la hausse de l'action."
+        },
+        {
+          "type": "p",
+          "texte": "Le 4 novembre, c'est l'inverse : l'interface affiche, à 2x, « Earn 8,68 %/an ». Tu es payé pour tenir la position, grâce à des récompenses :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "2,97 % de récompenses sur ta garantie, comptées deux fois puisqu'à 2x ta garantie vaut deux fois ta mise (2 × 2,97 = 5,94 %) ;",
+            "côté dette, l'USDC coûte 5,02 % par an, mais quatre campagnes de récompenses en reversent 7,76 % : il te reste +2,74 % ;",
+            "au total, 5,94 + 2,74 = 8,68 % par an sur ta mise."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Ces récompenses ont toutes une date de fin, et elles tombent dans les jours qui viennent. À taux d'emprunt inchangé, ta position à 2x :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "jusqu'au 5 novembre : te rapporte 8,68 % par an ;",
+            "après le 5 novembre (fin des récompenses sur la garantie) : environ +1 % ;",
+            "après le 6 novembre (fin du bonus de Pendle) : te coûte environ 2 % par an ;",
+            "après le 12 novembre : te coûte le taux d'emprunt plein, environ 5 % par an."
+          ]
+        }
+      ],
+      "risqueNiveau": "élevé",
+      "risqueSens": "eleve",
+      "risques": "Élevé pour le Long sur actions, parce que tu cumules le levier et un prix qui peut baisser. Le risque est moyen pour Loop to Earn : la liquidation demande que ta garantie décroche par rapport à ta dette (le sUSDS par rapport au dollar, le wstETH par rapport à l'ETH), ce qui n'est pas censé arriver. Avec un PT, c'est un peu différent : si les taux montent avant l'échéance, son prix baisse par rapport à ta dette, et à fort levier ça peut suffire à te faire liquider. Dans tous les cas, un taux d'emprunt qui grimpe peut rendre la boucle perdante.",
+      "risquesCorps": [
+        {
+          "type": "p",
+          "texte": "Le risque principal du Long sur actions, c'est Pendle lui-même qui l'affiche, dans un panneau consacré à l'oracle."
+        },
+        {
+          "type": "image",
+          "src": "/numeros/9/04-pendleloop-risque-oracle.png",
+          "legende": "Le panneau de risque de l'oracle pour TSLAc, affiché par Pendle : note globale « Medium », et la ligne « Price Updates » marquée « Requires Attention »."
+        },
+        {
+          "type": "st",
+          "texte": "Le week-end, le prix ne bouge plus"
+        },
+        {
+          "type": "p",
+          "texte": "L'oracle, fourni par Chainlink, suit le cours de l'action Tesla : il garde son dernier prix le week-end et les jours fériés. Si une mauvaise nouvelle tombe le samedi, Tesla peut rouvrir le lundi nettement plus bas : le prix saute d'un coup, sans passer par les niveaux intermédiaires."
+        },
+        {
+          "type": "p",
+          "texte": "Exemple à 2,6x : ta marge n'est que d'environ 5 %. Tesla termine la semaine à 406 $ et rouvre le lundi à 380 $ (environ −6 %) : tu es liquidé dès la mise à jour du prix, sans avoir pu ajouter de garantie ni fermer ta position. Pour une action comme Tesla, un écart de 5 à 6 % entre deux séances n'a rien d'exceptionnel."
+        },
+        {
+          "type": "p",
+          "texte": "S'y ajoutent :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Des règles qui peuvent changer sans préavis : un petit groupe d'administrateurs d'Aave peut modifier la source de prix et le seuil de liquidation sans délai, donc déplacer ton prix de liquidation.",
+            "Une dépendance à Coinbase : TSLAc est émis par une entité de Coinbase (Coinbase Onchain SPV, à Abou Dabi) et adossé à des actions conservées chez Alpaca, un courtier américain régulé : tu dépends donc aussi de Coinbase et d'Alpaca, pas seulement d'Aave et de Pendle. Ces jetons sont réservés aux non-Américains, et leur accès depuis la France n'est pas confirmé.",
+            "Une liquidité limitée : environ 590 000 $ d'USDC disponibles à l'emprunt le 4 novembre, partagés entre les 7 actions et d'autres protocoles qui empruntent sur le même marché.",
+            "Des oracles qui ne suivent pas toujours le marché (surtout en Loop to Earn) : sur Morpho, beaucoup de marchés de dollars à rendement et de PT n'utilisent pas le prix de marché, mais un prix calculé par une formule, voire fixé (hardcodé). Ça t'évite d'être liquidé sur un décrochage passager. Mais si l'actif s'effondre vraiment, l'écran continue d'afficher une position saine alors qu'elle ne vaut plus grand-chose. En novembre 2025, le xUSD de Stream Finance a perdu environ les trois quarts de sa valeur alors que des marchés le comptaient encore à prix fixe, à 1 $ : des prêteurs de Morpho ont subi des pertes. Avant de boucler, regarde quel oracle utilise le marché : Pendle le résume dans l'onglet Looping Info de chaque marché.",
+            "Un produit récent, lancé il y a moins de deux semaines."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Et comme pour tout protocole DeFi, le risque de hack n'est jamais à exclure."
+        }
+      ],
+      "importance": "PendleLoop n'invente pas un nouveau produit : tout ce qu'il fait, tu pouvais le faire à la main sur Aave ou Morpho. Ce qu'il change, c'est l'accès : le levier sur des actions que tu détiens vraiment, en une transaction, depuis un wallet, sans courtier.",
+      "importanceCorps": [
+        {
+          "type": "p",
+          "texte": "PendleLoop n'est pas le seul moyen de prendre du levier sur une action on-chain : les perps d'Hyperliquid le font déjà. La différence : ici tu détiens vraiment le jeton, et tu paies un taux d'emprunt au lieu d'un funding. Pendle affirme que c'est jusqu'à 70 % moins cher sur un an de données passées, mais c'est sa propre simulation, et le funding d'un perp change vite et peut être positif comme négatif : le chiffre est à ne pas prendre à la lettre."
+        },
+        {
+          "type": "avis",
+          "texte": "",
+          "items": [
+            "Ce qui est durable : l'outil. Un levier sur les actions accessible en un clic est un vrai progrès. Mais le jeton a beau s'échanger le week-end, le prix qui décide de ta liquidation, lui, s'arrête le vendredi soir.",
+            "Ce qui est temporaire : la rémunération. Les 8,68 % payés pour tenir un long à 2x viennent de récompenses qui s'arrêtent presque toutes d'ici au 12 novembre. Le bon calcul est celui sans récompenses : tenir une action à crédit coûte le taux d'emprunt de l'USDC.",
+            "Pour l'usage : en Long sur actions, rester sur un levier bas (autour de 2x, soit environ 23 % de marge sur Tesla) et ne pas laisser une position proche du maximum ouverte le vendredi soir."
+          ]
+        }
+      ]
+    },
+    "cours": [
+      {
+        "actif": "BTC",
+        "nom": "Bitcoin",
+        "prix": "~78 600 $",
+        "var7j": "▼ −3,4 %",
+        "sens": "down"
+      },
+      {
+        "actif": "ETH",
+        "nom": "Ether",
+        "prix": "~2 330 $",
+        "var7j": "▼ −1,3 %",
+        "sens": "down"
+      },
+      {
+        "actif": "SOL",
+        "nom": "Solana",
+        "prix": "~94 $",
+        "var7j": "▼ −8,7 %",
+        "sens": "down"
+      },
+      {
+        "actif": "HYPE",
+        "nom": "Hyperliquid",
+        "prix": "~87 $",
+        "var7j": "▲ +6,6 %",
+        "sens": "up"
+      },
+      {
+        "actif": "BNB",
+        "nom": "",
+        "prix": "~703 $",
+        "var7j": "▼ −7,4 %",
+        "sens": "down"
+      }
+    ],
+    "cours7jLabel": "Depuis notre n°8 (7 jours)",
+    "coursHeure": "12h33",
+    "coursAvisCorps": [
+      {
+        "type": "st",
+        "texte": "Ce qui a fait bouger les prix"
+      },
+      {
+        "type": "p",
+        "texte": "Toute la sélection recule, sauf l'HYPE (+6,6 %). Le SOL (−8,7 %) et le BNB (−7,4 %) baissent nettement plus que le bitcoin (−3,4 %). Deux événements ont marqué la semaine :"
+      },
+      {
+        "type": "liste",
+        "items": [
+          "Dans la nuit du 29 au 30 octobre, Binance a été piraté : environ 6,3 Md$ sont sortis de ses hot wallets, le plus gros vol crypto jamais signalé. C'est à lui seul plus que les 2,4 Md$ volés depuis janvier, que nous recensions dans notre numéro 8. Binance dit avoir remplacé environ 95 % des fonds volés avec ses réserves, et environ 3 Md$ ont été gelés, en grande partie par les émetteurs de stablecoins.",
+          "Les élections de mi-mandat américaines, le 3 novembre. Pendant le dépouillement, le bitcoin est tombé vers 76 200 $, avant de remonter au-dessus de 78 000 $ ce matin."
+        ]
+      },
+      {
+        "type": "st",
+        "texte": "Midterms : les démocrates reprennent le Congrès"
+      },
+      {
+        "type": "p",
+        "texte": "Selon les projections de CBS News, les démocrates ont remporté la Chambre des représentants et le Sénat. Le décompte n'est pas terminé dans plusieurs circonscriptions, mais la majorité est acquise dans les deux chambres."
+      },
+      {
+        "type": "avis",
+        "texte": "le soir de l'élection, le marché a réagi sur le moment, puis il est revenu à son niveau, une victoire des démocrates ayant été largement anticipée par le marché."
+      }
+    ],
+    "data": {
+      "titre": "Les stablecoins ont perdu 20 Md$ depuis mai",
+      "texte": "296 Md$ : c'est l'encours des stablecoins adossés au dollar (la valeur totale de ceux en circulation) le 4 novembre 2026, selon DeFiLlama. Le record date du 20 mai : 316 Md$. En cinq mois, le marché a donc perdu environ 20 Md$ (−6 %), dont 11 Md$ sur le seul dernier mois.",
+      "corps": [
+        {
+          "type": "st",
+          "texte": "Où ça baisse : là où on trade, pas là où on paie"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Sur Ethereum, le cœur de la DeFi : −19 Md$ (−12 %) depuis le 20 mai. Arbitrum, autre réseau très utilisé pour le trading, perd 5 Md$.",
+            "Sur Tron, surtout utilisé pour envoyer des USDT d'un pays à l'autre et payer : +3,7 Md$ (+4 %) sur la même période.",
+            "Sur les plateformes d'échange : sur Binance, qui détient environ 70 % des stablecoins déposés sur les plateformes, ce stock a reculé d'environ 20 % en trois mois (moyenne sur 90 jours), selon un analyste de CryptoQuant.",
+            "Côté émetteurs, l'USDT (−12 Md$) et l'USDC (−5,5 Md$) font plus de 85 % de la baisse."
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "Pourquoi"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Les investisseurs réduisent leurs risques. Le bitcoin tourne autour de 78 000 $, loin de son record d'environ 126 000 $ d'octobre 2025, les volumes d'échange sont au plus bas de l'année, et les ETF bitcoin américains ont perdu environ 1 Md$ en deux séances, fin octobre et début novembre. Moins on trade, moins on garde de stablecoins pour acheter : les détenteurs les rendent à l'émetteur contre des dollars, et les jetons sont détruits.",
+            "L'argent quitte la crypto, il ne change pas de forme. Les fonds de bons du Trésor tokenisés, comme BUIDL de BlackRock, reculent aussi (de 16,2 à 14,7 Md$ entre août et fin octobre, selon Cryptopolitan).",
+            "Le piratage de Binance a accéléré le mouvement. L'USDT a perdu 3,7 Md$ en sept jours, et Binance a connu d'importants retraits à leur réouverture, par étapes à partir du 1er novembre. À noter : les USDT gelés par Tether après le vol (plus de 1,5 Md$) restent comptés dans l'encours, puisqu'ils ne sont pas détruits."
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "Et maintenant ?"
+        },
+        {
+          "type": "p",
+          "texte": "L'encours des stablecoins suit les cycles du marché : en 2022-2023, il était passé de 187 à 123 Md$ (l'effondrement de l'UST de Terra compris), avant de repartir avec la reprise. Cette fois, la baisse épargne les usages de paiement : sur Tron, l'encours continue de monter. La demande de fond ne recule pas, c'est l'argent de la spéculation qui sort."
+        },
+        {
+          "type": "avis",
+          "texte": "",
+          "items": [
+            "Le stablecoin de trading recule, celui de paiement tient. C'est un baromètre de l'appétit pour le risque, pas un signe de défiance envers les stablecoins.",
+            "Le signal à suivre : le retour des émissions sur Ethereum et sur les plateformes d'échange. Quand Tether et Circle recommencent à créer des jetons plusieurs semaines d'affilée, c'est que de l'argent neuf revient. D'ici là, la reprise du marché manque de carburant."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Sources : DeFiLlama (stablecoins.llama.fi, encours total, par émetteur et par blockchain, 4/11/2026) · CryptoQuant (stablecoins sur Binance) · Cryptopolitan (25/10) · Binance (réouverture des retraits) · Tether (gel des USDT)"
+        }
+      ]
+    },
+    "jeu": {
+      "cta": "Une question sur ce numéro, un point qui reste flou, un sujet que tu aimerais qu'on creuse ? Réponds directement à ce mail : je lis tout, et je réponds."
+    },
+    "definitions": [
+      {
+        "terme": "Health factor (facteur de santé)",
+        "def": "L'indicateur de santé d'un emprunt : il compare ta garantie, pondérée par le seuil de liquidation, à ta dette. Sous 1, ta position est liquidée. Certaines interfaces, comme Pendle, l'affichent plutôt sous forme de marge restante en % : la baisse de ta garantie qui déclencherait la liquidation. C'est le chiffre à surveiller dans tout emprunt contre garantie (voir SOUS LA LOUPE).",
+        "slug": "health-factor"
+      },
+      {
+        "terme": "Jeton permissionné",
+        "def": "Un jeton sur une blockchain que seules les adresses approuvées par son émetteur peuvent recevoir et détenir, en général après vérification d'identité (KYC). L'émetteur tient la liste et peut refuser un transfert vers une autre adresse. C'est le cas de la plupart des deposit tokens (voir ON ÉCLAIRE) et des jetons de la DTCC, réservés à ses membres.",
+        "slug": "jeton-permissionne"
+      }
+    ]
   }
 ];
 

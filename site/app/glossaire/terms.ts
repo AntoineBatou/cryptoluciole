@@ -460,6 +460,62 @@ export const TERMES: GlossaireTerme[] = [
       "Un code attaché à chaque ordre qu'une appli tierce (un wallet, une appli mobile…) envoie à une plateforme comme Hyperliquid ou Derive. La plateforme sait ainsi quelle appli a apporté l'ordre, et lui reverse les frais que cette appli a fixés. La plateforme fournit le carnet d'ordres et la liquidité ; l'appli s'occupe de l'interface et rend le produit plus simple à utiliser.",
     numero: 8,
   },
+  {
+    slug: "deposit-token",
+    terme: "Deposit token (dépôt tokenisé)",
+    definition:
+      "Un dépôt bancaire représenté par un jeton sur une blockchain. 1 jeton = 1 unité de monnaie déposée à la banque, qui reste ta débitrice comme pour un compte classique. Contrairement à un stablecoin, c'est la banque elle-même qui te doit l'argent : il peut être rémunéré et, selon la position de la FDIC aux États-Unis, couvert par la garantie des dépôts. La plupart sont réservés aux wallets approuvés par la banque.",
+    numero: 9,
+  },
+  {
+    slug: "garantie-des-depots",
+    terme: "Garantie des dépôts (FGDR, FDIC)",
+    definition:
+      "Mécanisme public qui rembourse les déposants si leur banque fait faillite, jusqu'à un plafond : 100 000 € par déposant et par banque en France (FGDR), 250 000 $ par déposant et par banque aux États-Unis (FDIC). Le détenteur d'un stablecoin n'en bénéficie pas : c'est l'émetteur qui est client des banques, pas lui.",
+    numero: 9,
+  },
+  {
+    slug: "kyc",
+    terme: "KYC (Know Your Customer)",
+    definition:
+      "Vérification d'identité imposée par la réglementation (pièce d'identité, justificatif de domicile…) avant d'ouvrir un compte ou d'accéder à un service financier. En crypto, les plateformes centralisées et les jetons permissionnés l'exigent ; un protocole DeFi ouvert, non.",
+    numero: 9,
+  },
+  {
+    slug: "dtcc",
+    terme: "DTCC",
+    definition:
+      "L'organisme central qui conserve et règle les titres américains. Quand tu détiens une action Apple, chez n'importe quel courtier, elle est en réalité conservée chez sa filiale DTC, qui enregistre son passage d'un courtier à l'autre. DTC conserve plus de 114 000 milliards de dollars d'actifs. Équivalent européen : Euroclear. Depuis octobre 2026, la DTCC propose à ses membres de convertir certains titres en jetons sur des blockchains réservées.",
+    numero: 9,
+  },
+  {
+    slug: "etf-a-resultat-defini",
+    terme: "ETF à résultat défini (defined outcome ETF)",
+    definition:
+      "Un ETF qui utilise des options pour fixer à l'avance, sur une période donnée, une perte maximale et un gain maximal. Le format existe depuis des années sur les indices boursiers comme le S&P 500, et se décline désormais sur le bitcoin. Les bornes valent pour une période (une « tranche ») : en entrant en cours de route, tu hérites de bornes déjà entamées.",
+    numero: 9,
+  },
+  {
+    slug: "looping",
+    terme: "Looping",
+    definition:
+      "Répéter le cycle « déposer un actif en garantie → emprunter → racheter du même actif → le redéposer ». Chaque tour grossit ta position, donc tes gains comme tes pertes, et rapproche ton seuil de liquidation. Des outils comme PendleLoop le font en une seule transaction.",
+    numero: 9,
+  },
+  {
+    slug: "health-factor",
+    terme: "Health factor (facteur de santé)",
+    definition:
+      "L'indicateur de santé d'un emprunt : il compare ta garantie, pondérée par le seuil de liquidation, à ta dette. Sous 1, ta position est liquidée. Certaines interfaces, comme Pendle, l'affichent plutôt sous forme de marge restante en % : la baisse de ta garantie qui déclencherait la liquidation. C'est le chiffre à surveiller dans tout emprunt contre garantie.",
+    numero: 9,
+  },
+  {
+    slug: "jeton-permissionne",
+    terme: "Jeton permissionné",
+    definition:
+      "Un jeton sur une blockchain que seules les adresses approuvées par son émetteur peuvent recevoir et détenir, en général après vérification d'identité (KYC). L'émetteur tient la liste et peut refuser un transfert vers une autre adresse. C'est le cas de la plupart des deposit tokens et des jetons de la DTCC, réservés à ses membres.",
+    numero: 9,
+  },
 ];
 
 // Retrouver un terme par son slug.
