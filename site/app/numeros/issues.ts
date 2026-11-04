@@ -3469,7 +3469,7 @@ export const issues: Issue[] = [
       {
         "type": "liste",
         "items": [
-          "Dans la nuit du 29 au 30 octobre, Binance a été piraté : environ 6,3 Md$ sont sortis de ses hot wallets, le plus gros vol crypto jamais signalé. C'est à lui seul plus que les 2,4 Md$ volés depuis janvier, que nous recensions dans notre numéro 8. Binance dit avoir remplacé environ 95 % des fonds volés avec ses réserves, et environ 3 Md$ ont été gelés, en grande partie par les émetteurs de stablecoins.",
+          "Dans la nuit du 29 au 30 octobre, Binance a été piraté : environ 6,3 Md$ volés, le plus gros vol crypto jamais signalé. Binance dit avoir déjà remplacé environ 95 % des fonds.",
           "Les élections de mi-mandat américaines, le 3 novembre. Pendant le dépouillement, le bitcoin est tombé vers 76 200 $, avant de remonter au-dessus de 78 000 $ ce matin."
         ]
       },
@@ -3533,7 +3533,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Sources : DeFiLlama (stablecoins.llama.fi, encours total, par émetteur et par blockchain, 4/11/2026) · CryptoQuant (stablecoins sur Binance) · Cryptopolitan (25/10) · Binance (réouverture des retraits) · Tether (gel des USDT)"
+          "texte": "Sources : DeFiLlama (stablecoins.llama.fi, encours total, par émetteur et par blockchain, 4/11/2026) · Cryptopolitan (25/10)"
         }
       ]
     },
