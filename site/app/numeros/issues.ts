@@ -3488,19 +3488,17 @@ export const issues: Issue[] = [
     ],
     "data": {
       "titre": "Les stablecoins ont perdu 20 Md$ depuis mai",
-      "texte": "296 Md$ : c'est l'encours des stablecoins adossés au dollar (la valeur totale de ceux en circulation) le 4 novembre 2026, selon DeFiLlama. Le record date du 20 mai : 316 Md$. En cinq mois, le marché a donc perdu environ 20 Md$ (−6 %), dont 11 Md$ sur le seul dernier mois.",
+      "texte": "296 Md$ d'encours le 4 novembre, contre 316 Md$ au record du 20 mai, selon DeFiLlama : le marché des stablecoins a perdu environ 20 Md$ (−6 %) en cinq mois. L'USDT et l'USDC font l'essentiel de la baisse.",
       "corps": [
         {
           "type": "st",
-          "texte": "Où ça baisse : là où on trade, pas là où on paie"
+          "texte": "Moins de stablecoins là où on trade, plus là où on paie"
         },
         {
           "type": "liste",
           "items": [
-            "Sur Ethereum, le cœur de la DeFi : −19 Md$ (−12 %) depuis le 20 mai. Arbitrum, autre réseau très utilisé pour le trading, perd 5 Md$.",
-            "Sur Tron, surtout utilisé pour envoyer des USDT d'un pays à l'autre et payer : +3,7 Md$ (+4 %) sur la même période.",
-            "Sur les plateformes d'échange : sur Binance, qui détient environ 70 % des stablecoins déposés sur les plateformes, ce stock a reculé d'environ 20 % en trois mois (moyenne sur 90 jours), selon un analyste de CryptoQuant.",
-            "Côté émetteurs, l'USDT (−12 Md$) et l'USDC (−5,5 Md$) font plus de 85 % de la baisse."
+            "Ethereum, le cœur de la DeFi : −19 Md$ (−12 %) depuis le 20 mai ;",
+            "Tron, surtout utilisé pour envoyer des USDT et payer : +3,7 Md$ (+4 %)."
           ]
         },
         {
@@ -3510,25 +3508,20 @@ export const issues: Issue[] = [
         {
           "type": "liste",
           "items": [
-            "Les investisseurs réduisent leurs risques. Le bitcoin tourne autour de 78 000 $, loin de son record d'environ 126 000 $ d'octobre 2025, les volumes d'échange sont au plus bas de l'année, et les ETF bitcoin américains ont perdu environ 1 Md$ en deux séances, fin octobre et début novembre. Moins on trade, moins on garde de stablecoins pour acheter : les détenteurs les rendent à l'émetteur contre des dollars, et les jetons sont détruits.",
-            "L'argent quitte la crypto, il ne change pas de forme. Les fonds de bons du Trésor tokenisés, comme BUIDL de BlackRock, reculent aussi (de 16,2 à 14,7 Md$ entre août et fin octobre, selon Cryptopolitan).",
-            "Le piratage de Binance a accéléré le mouvement. L'USDT a perdu 3,7 Md$ en sept jours, et Binance a connu d'importants retraits à leur réouverture, par étapes à partir du 1er novembre. À noter : les USDT gelés par Tether après le vol (plus de 1,5 Md$) restent comptés dans l'encours, puisqu'ils ne sont pas détruits."
+            "Le marché crypto ralentit : bitcoin vers 78 000 $ (contre 126 000 $ au record), volumes au plus bas de l'année. Moins on trade, moins on garde de stablecoins : ils sont rendus à l'émetteur et détruits.",
+            "Le piratage de Binance a accéléré le mouvement : l'USDT a perdu 3,7 Md$ en sept jours."
           ]
         },
         {
-          "type": "st",
-          "texte": "Et maintenant ?"
-        },
-        {
           "type": "p",
-          "texte": "L'encours des stablecoins suit les cycles du marché : en 2022-2023, il était passé de 187 à 123 Md$ (l'effondrement de l'UST de Terra compris), avant de repartir avec la reprise. Cette fois, la baisse épargne les usages de paiement : sur Tron, l'encours continue de monter. La demande de fond ne recule pas, c'est l'argent de la spéculation qui sort."
+          "texte": "Ce n'est pas la première fois : en 2022-2023, l'encours était passé de 187 à 123 Md$, avant de repartir avec la reprise."
         },
         {
           "type": "avis",
           "texte": "",
           "items": [
-            "Le stablecoin de trading recule, celui de paiement tient. C'est un baromètre de l'appétit pour le risque, pas un signe de défiance envers les stablecoins.",
-            "Le signal à suivre : le retour des émissions sur Ethereum et sur les plateformes d'échange. Quand Tether et Circle recommencent à créer des jetons plusieurs semaines d'affilée, c'est que de l'argent neuf revient. D'ici là, la reprise du marché manque de carburant."
+            "C'est l'argent de la spéculation qui sort, pas la confiance dans les stablecoins : les usages de paiement, eux, continuent de grandir.",
+            "Le signal à suivre : le retour des émissions de Tether et Circle plusieurs semaines d'affilée. D'ici là, la reprise du marché manque de carburant."
           ]
         },
         {
