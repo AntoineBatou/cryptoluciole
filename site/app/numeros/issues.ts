@@ -3545,6 +3545,643 @@ export const issues: Issue[] = [
         "slug": "jeton-permissionne"
       }
     ]
+  },
+  // ===== Numéro 10 (généré par drafts/build_issue.py depuis drafts/issue-10/) =====
+
+  {
+    "id": "10",
+    "numero": 10,
+    "vignette": "/vignettes/morpho.jpg",
+    "date": "Mardi 10 novembre 2026",
+    "titre": "Les wallets à connexion Google ou Apple : où sont vraiment tes clés ?",
+    "excerpt": "Les wallets à connexion Google ou Apple après l'incident Keplr, Aave qui rachète Avon, les perps sur actions validés puis contestés aux États-Unis, le bitcoin natif bientôt accepté sur Aave, Morpho Midnight sous la loupe et Strategy qui rachète ses STRC.",
+    "notion": {
+      "titre": "Les wallets à connexion Google ou Apple : où sont vraiment tes clés ?",
+      "corps": [
+        {
+          "type": "p",
+          "texte": "Début novembre, des utilisateurs de Keplr, un wallet très utilisé dans l'écosystème Cosmos, qui se connectaient avec leur compte Google ou Apple, ont vu leurs fonds disparaître."
+        },
+        {
+          "type": "p",
+          "texte": "Ils n'avaient jamais noté de seed phrase. Ils avaient pourtant une clé privée, et c'est elle qui a fuité. Ces wallets sans phrase de récupération s'appellent des embedded wallets (wallets à connexion sociale)."
+        },
+        {
+          "type": "def",
+          "terme": "Embedded wallet (wallet à connexion sociale)",
+          "slug": "embedded-wallet",
+          "texte": "Wallet intégré directement dans une application, on s'y connecte avec un compte qu'on a déjà (Google, Apple, e-mail). Pas de logiciel à installer, pas de seed phrase à recopier. La clé privée est découpée en plusieurs morceaux : l'un reste sur ton appareil, un autre est géré par un fournisseur spécialisé."
+        },
+        {
+          "type": "st",
+          "texte": "Le principe : pas de seed phrase, mais une clé quand même"
+        },
+        {
+          "type": "p",
+          "texte": "Sur la blockchain, rien ne change : ton adresse est contrôlée par une clé privée, et quiconque la détient peut signer à ta place. Ce qui change, c'est la façon de garder cette clé."
+        },
+        {
+          "type": "p",
+          "texte": "Avec un wallet classique, ton appareil crée la clé et te la confie sous forme de seed phrase : une série de mots dont tu es le seul gardien. Avec un embedded wallet, la clé est découpée en plusieurs morceaux, rangés à des endroits différents. Aucun de ces morceaux ne suffit seul à signer une transaction ; il en faut un nombre minimum."
+        },
+        {
+          "type": "st",
+          "texte": "En pratique : ce qui se passe quand tu cliques « Continuer avec Google »"
+        },
+        {
+          "type": "p",
+          "texte": "Le schéma de base est le suivant :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "À la création du compte, la clé est générée directement en trois parties. Deux suffisent pour signer.",
+            "La première partie reste sur ton appareil (ton téléphone ou ton navigateur).",
+            "La deuxième est gérée par l'infrastructure du fournisseur : elle ne t'est remise que lorsque tu prouves ton identité en te connectant à ton compte Google ou Apple.",
+            "La troisième est une part de secours : un mot de passe, un fichier ou un second appareil, pour retrouver l'accès si tu perds ton téléphone.",
+            "À chaque connexion, ton appareil récupère la deuxième part et l'associe à la première : tu peux signer."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Selon la technique utilisée, cette dernière étape se passe de deux façons. Soit les deux parts sont réassemblées sur ton appareil le temps de signer, et la clé complète existe alors, un instant, à un endroit. Soit chaque part participe à la signature de son côté, et la clé n'est jamais réunie : c'est ce qu'on appelle le MPC."
+        },
+        {
+          "type": "def",
+          "terme": "MPC (Multi-Party Computation)",
+          "slug": "mpc",
+          "texte": "Calcul multipartite : une technique qui permet à plusieurs parties de produire ensemble une signature sans jamais réunir la clé privée en un seul endroit."
+        },
+        {
+          "type": "st",
+          "texte": "En théorie, personne ne tient ta clé seul. En pratique…"
+        },
+        {
+          "type": "p",
+          "texte": "En théorie, ce découpage protège bien : un pirate qui vole ton téléphone n'a qu'une part, et le fournisseur n'en a qu'une autre. C'est pourquoi ces wallets sont présentés comme non-custodial : personne d'autre que toi n'est censé pouvoir déplacer tes fonds."
+        },
+        {
+          "type": "p",
+          "texte": "En pratique, le fournisseur ne garde pas seulement une part. Il écrit aussi le logiciel qui crée la clé et la découpe, et il fait tourner les serveurs qui délivrent sa part à chaque connexion. Si ce système a une faille, les protections du découpage peuvent tomber d'un coup, quel que soit le soin que tu mets à protéger ton compte Google."
+        },
+        {
+          "type": "p",
+          "texte": "Dit simplement : ta sécurité ne dépend plus seulement de toi, mais aussi de l'infrastructure du fournisseur."
+        },
+        {
+          "type": "st",
+          "texte": "Le cas Keplr / Web3Auth"
+        },
+        {
+          "type": "p",
+          "texte": "Ce qui est établi à ce jour :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Le 6 novembre au soir, Web3Auth, le fournisseur de ces comptes (filiale de Consensys, la société derrière MetaMask, depuis 2025), suspend ses embedded wallets.",
+            "Le 7 novembre, Keplr suspend la connexion par Google et Apple après des transactions non autorisées.",
+            "Le même jour, Web3Auth attribue la cause à une faille de son infrastructure ayant exposé des clés privées.",
+            "Le 8 novembre, Web3Auth indique avoir lui-même déplacé les fonds des wallets encore exposés vers des adresses de récupération, avant que l'attaquant ne les atteigne : environ 5,6 M$, qu'il prépare à restituer avec Keplr. Dit simplement : le fournisseur a pu agir sur ces comptes sans leurs propriétaires, ce qui est impossible sur un wallet à seed phrase."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Ce qui ne l'est pas :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Les pertes : aucun montant volé ni nombre de comptes touchés n'a été confirmé officiellement, et aucun rapport détaillé de l'incident n'a été publié."
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "Embedded wallet ou wallet à seed phrase : ce qui change"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "",
+            "Wallet à seed phrase",
+            "Embedded wallet"
+          ],
+          "lignes": [
+            [
+              "Qui crée la clé",
+              "Ton appareil",
+              "Le fournisseur et ton appareil, en plusieurs parts"
+            ],
+            [
+              "Ce qui te donne accès",
+              "Ta seed phrase, toi seul",
+              "Ton compte Google ou Apple + ton appareil (ou la part de secours)"
+            ],
+            [
+              "Si tu perds ton accès",
+              "Seed phrase perdue = fonds perdus",
+              "Récupération via la part de secours, si tu l'as configurée"
+            ],
+            [
+              "De qui tu dépends",
+              "De toi",
+              "De toi, du fournisseur et de ses serveurs"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Dit simplement : l'embedded wallet échange le risque de perdre ta seed phrase contre le risque lié au fournisseur."
+        },
+        {
+          "type": "p",
+          "texte": "À ne pas confondre avec les smart accounts de notre numéro 7, qui changent les règles du compte, pas la garde de la clé ; les deux peuvent se combiner : un embedded wallet peut servir de signataire à un smart account."
+        },
+        {
+          "type": "st",
+          "texte": "Les bons réflexes si tu utilises un embedded wallet"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Savoir qui garde ta clé. Le nom du fournisseur apparaît souvent sur l'écran de connexion ou dans la documentation de l'application (par exemple Web3Auth, devenu MetaMask Embedded Wallets, ou Privy). Si une faille est annoncée chez lui, tu sauras que tu es concerné.",
+            "Exporter ta clé quand c'est possible, et la ranger comme une seed phrase. Tu retrouves ainsi tes fonds même si le fournisseur suspend son service. Si ton compte est concerné par une faille, ne garde pas cette clé : déplace tes fonds vers une nouvelle seed phrase.",
+            "Pour ne plus dépendre du fournisseur, transférer tes fonds vers un wallet à seed phrase créée par toi. Exporter la clé ne suffit pas : le fournisseur en garde toujours une part.",
+            "Y laisser de petites sommes. L'embedded wallet est pratique pour tester une application ou payer de petits montants."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "l'embedded wallet échange une garde par toi seul contre une garde partagée avec un fournisseur : il convient aux montants que tu acceptes d'exposer à son infrastructure, pas à ce que tu tiens à garder. L'incident Keplr ne condamne pas la technique du découpage, mais montre que sa sécurité vaut celle de l'infrastructure qui l'entoure."
+        }
+      ]
+    },
+    "actus": [
+      {
+        "titre": "Aave Labs rachète Avon pour proposer des prêts à taux fixe",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 6 novembre 2026, Aave Labs, la société qui développe Aave, a annoncé le rachat d'Avon, une jeune société spécialisée dans les prêts à taux fixe."
+          },
+          {
+            "type": "st",
+            "texte": "1. Ce qu'Aave Labs achète"
+          },
+          {
+            "type": "p",
+            "texte": "Sur Aave, le taux d'emprunt est variable : il dépend de la part de la réserve commune déjà empruntée, et peut changer d'une heure à l'autre. Avec un taux fixe, le taux et la date de remboursement sont fixés dès le départ : l'emprunteur sait ce qu'il paiera, le prêteur ce qu'il touchera."
+          },
+          {
+            "type": "p",
+            "texte": "Avon avait construit des marchés de prêt à taux fixe et à taux variable, et un carnet d'ordres sur la blockchain, où prêteurs et emprunteurs affichent le taux qu'ils acceptent. Aave Labs récupère la technologie et l'équipe."
+          },
+          {
+            "type": "st",
+            "texte": "2. Pourquoi racheter plutôt que construire"
+          },
+          {
+            "type": "p",
+            "texte": "Stani Kulechov, fondateur et patron d'Aave Labs, explique que l'équipe d'Avon a travaillé sur « certains des problèmes les plus difficiles du prêt sur la blockchain ». Selon l'annonce, il s'agit surtout de fixer le prix d'un prêt (son taux) par la rencontre entre prêteurs et emprunteurs et d'isoler le risque de chaque marché, pour qu'un défaut sur l'un ne touche pas les autres."
+          },
+          {
+            "type": "p",
+            "texte": "Ce rachat suit celui de Stable Finance, une application d'épargne en stablecoins, en octobre 2025. Les deux vont dans le même sens : Aave Labs ne se contente plus de développer un protocole, et dit vouloir apporter Aave aux institutions, aux fintechs et aux particuliers."
+          },
+          {
+            "type": "p",
+            "texte": "Côté calendrier, Aave Labs n'annonce ni date, ni forme d'intégration. Mais on sait comment Avon fonctionnait : comme une bourse, pas comme un pool. Prêteurs et emprunteurs y affichent leurs conditions (taux, montant, garantie), et le prêt s'ouvre quand deux offres se rencontrent ; ce ne sont pas un algorithme et le taux d'utilisation qui fixent le prix, comme sur Aave aujourd'hui."
+          }
+        ],
+        "avis": "",
+        "source": "Aave Labs (annonce du 06/11, aave.com/blog/avon-acquisition) · The Block (via Crypto Briefing) · PYMNTS · CoinAlertNews",
+        "avisItems": [
+          "Le taux fixe devient un terrain de concurrence entre les grands du prêt DeFi. En rachetant une équipe déjà formée, Aave Labs gagne du temps et montre qu'il ne veut pas laisser ce segment à d'autres, dont Morpho Midnight, présenté dans SOUS LA LOUPE.",
+          "Qui y gagne : d'abord les institutions, qui ont besoin de connaître leur coût d'emprunt.",
+          "Durable ou temporaire : l'avantage d'Aave Labs serait la taille de la base de dépôts d'Aave."
+        ]
+      },
+      {
+        "titre": "Les perps sur actions validés par la CFTC, mais contestés en justice",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 3 novembre 2026, Michael Selig, président de la CFTC, a annoncé que des contrats perpétuels sur des actions individuelles, les equity perps, peuvent désormais s'échanger sur des bourses américaines régulées. C'est une première."
+          },
+          {
+            "type": "def",
+            "terme": "Contrat perpétuel (« perp »)",
+            "slug": "contrat-perpetuel",
+            "texte": "Inventé en 2016 par la plateforme crypto BitMEX, c'est un contrat qui suit le prix d'un actif sans qu'on le possède, souvent avec levier. On choisit un sens : à la hausse (long) ou à la baisse (short). Contrairement à un contrat à terme classique, il n'a pas de date d'expiration, d'où « perpétuel »."
+          },
+          {
+            "type": "p",
+            "texte": "Aux États-Unis, la CFTC avait déjà autorisé en mai 2026 un premier perp, sur le bitcoin, chez Kalshi. La décision du 3 novembre étend le produit aux actions (voir notre numéro 4 pour le fonctionnement du perp)."
+          },
+          {
+            "type": "st",
+            "texte": "1. Ce que la CFTC autorise"
+          },
+          {
+            "type": "p",
+            "texte": "Aucune nouvelle loi n'a été nécessaire. Ces contrats entrent dans une catégorie créée en 2000 : les security futures, des contrats à terme sur des titres financiers, supervisés à la fois par la CFTC et par la SEC (le gendarme de la Bourse américaine). Concrètement :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "seules les bourses enregistrées à la fois auprès de la CFTC et de la SEC peuvent les proposer ;",
+              "le communiqué ne nomme aucune bourse et ne donne aucune date ;",
+              "les règles de marge, donc le levier maximum autorisé, ne figurent pas dans le communiqué."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "L'argument de Selig : permettre aux Américains d'échanger ces produits « dans le cadre protecteur de la CFTC, plutôt que d'être contraints de se tourner vers des plateformes offshore, souvent non régulées »."
+          },
+          {
+            "type": "p",
+            "texte": "La décision est contestée en justice. La Capital Markets Alliance Association, dont font partie Cboe, Citadel Securities et la Healthy Markets Association, a attaqué la CFTC devant le tribunal fédéral de New York : selon elle, ces contrats sont des security-based swaps, qui relèvent de la SEC et non de la CFTC. Le 3 novembre, la juge a refusé de les suspendre en urgence, mais a estimé que l'association avait de bonnes chances de l'emporter. La décision sur le fond de la procédure d'urgence est attendue."
+          },
+          {
+            "type": "st",
+            "texte": "2. Ce qui existe déjà côté crypto"
+          },
+          {
+            "type": "p",
+            "texte": "Des perps sur actions s'échangent déjà sur la blockchain. Sur Hyperliquid, des sociétés tierces peuvent déployer leurs propres marchés de perps (le dispositif HIP-3), et la principale, trade.xyz, propose des perps sur le S&P 500, Nvidia ou Google (voir notre numéro 7). Ces marchés ne sont pas supervisés par la CFTC."
+          },
+          {
+            "type": "p",
+            "texte": "La CFTC veut ramener ces échanges sur des bourses qu'elle supervise."
+          },
+          {
+            "type": "p",
+            "texte": "Pour un lecteur en France, rien ne change à court terme : ces bourses sont conçues pour le marché américain."
+          }
+        ],
+        "avis": "",
+        "source": "CFTC (communiqué n° 9319-26 et déclaration de Michael Selig, 03/11) · Coin Academy (04/11, d'après le Financial Times) · Ledger Insights · Cleary Gottlieb · The Block (10/11) · notre numéro 7 (HIP-3)",
+        "avisItems": [
+          "Qui peut y gagner : les bourses enregistrées à la fois auprès de la CFTC et de la SEC. Des acteurs comme Coinbase et Kalshi soutiennent la CFTC devant le tribunal, mais la première lecture de la juge leur est défavorable : rien n'est acquis.",
+          "C'est aussi une consécration : un produit inventé par la crypto entre dans la finance régulée américaine."
+        ]
+      },
+      {
+        "titre": "Aave va accepter le bitcoin natif comme garantie, sans wrapper",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 9 novembre 2026, les détenteurs d'AAVE ont approuvé une proposition de Babylon Labs : accepter du bitcoin natif comme garantie sur Aave V4, grâce aux Trustless Bitcoin Vaults (TBV) de Babylon. Un dernier vote, exécuté sur la blockchain, reste nécessaire avant tout lancement, visé d'ici fin 2026 selon TokenPost."
+          },
+          {
+            "type": "st",
+            "texte": "1. Jusqu'ici, il fallait passer par un émetteur"
+          },
+          {
+            "type": "p",
+            "texte": "Le bitcoin ne circule pas sur Ethereum. Pour l'utiliser comme garantie sur Aave, il faut le confier à un émetteur, qui le conserve et crée en échange un jeton sur Ethereum : WBTC, cbBTC (Coinbase) ou tBTC (Threshold)."
+          },
+          {
+            "type": "def",
+            "terme": "Bitcoin wrappé (wrapped BTC)",
+            "slug": "wrapped-btc",
+            "texte": "Un jeton qui représente, sur une autre blockchain (le plus souvent Ethereum), un bitcoin conservé ailleurs, par un dépositaire ou un réseau d'opérateurs. Il vaut un bitcoin tant que l'émetteur garde la réserve et permet de la récupérer."
+          },
+          {
+            "type": "p",
+            "texte": "Ce maillon ajoute des risques par rapport au bitcoin natif : piratage du bridge ou de l'émetteur, réserves insuffisantes ou gelées."
+          },
+          {
+            "type": "st",
+            "texte": "2. Ce que change Babylon"
+          },
+          {
+            "type": "p",
+            "texte": "Avec Babylon, ton bitcoin reste sur la blockchain Bitcoin, verrouillé dans un vault (une adresse Bitcoin dont les conditions de sortie sont inscrites d'avance). Pas de BTC wrappé, pas de bridge, pas de dépositaire. Côté Ethereum, Aave le compte grâce à un jeton comptable que personne ne peut échanger ni transférer. Tu empruntes contre lui des stablecoins, comme l'USDT ou l'USDC."
+          },
+          {
+            "type": "p",
+            "texte": "Ce marché est isolé du reste d'Aave, avec ses propres plafonds : au départ, 300 BTC au plus, avec une garantie retenue à 78 % de sa valeur pour calculer ce qu'on peut emprunter, selon la proposition."
+          },
+          {
+            "type": "st",
+            "texte": "3. Le compromis"
+          },
+          {
+            "type": "p",
+            "texte": "Le risque d'émetteur disparaît, mais deux points deviennent plus complexes :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "La liquidation. Sortir des bitcoins d'un vault prend plusieurs jours, selon la proposition : c'est le délai pendant lequel un retrait frauduleux peut être contesté. Pour que la liquidation reste immédiate, le liquidateur est payé tout de suite en WBTC ; des intermédiaires agréés rachètent ensuite le vault et récupèrent les bitcoins quelques jours plus tard.",
+              "Deux groupes de signataires, dont Babylon et Aave Labs, peuvent mettre les vaults en pause : tes bitcoins y restent, mais bloqués. C'est un risque de centralisation : quelques signataires peuvent geler ta garantie."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Selon LlamaRisk, le gestionnaire de risque d'Aave, les premiers audits avaient relevé des failles graves, déclarées corrigées ; comme pour tout protocole neuf, le risque de bug demeure."
+          }
+        ],
+        "avis": "Beaucoup de détenteurs de bitcoin ont confiance dans le bitcoin lui-même, mais pas dans les jetons qui le représentent sur Ethereum : ils refusaient de le confier à un émetteur, et restaient donc à l'écart de la DeFi. En leur permettant d'emprunter sans s'en séparer, Aave peut aller chercher cette nouvelle clientèle.",
+        "source": "Forum de gouvernance Aave (ARFC de Babylon Labs du 14/10, avis de LlamaRisk et d'Aave Labs) · PANews (09/11) · TokenPost (10/11) · Cointelegraph (09/11)"
+      }
+    ],
+    "protocole": {
+      "nom": "Morpho Midnight",
+      "slug": "morpho",
+      "bref": "Morpho est le numéro 2 du prêt DeFi, derrière Aave. Il a été cofondé notamment par deux Français. Sur son protocole principal, comme sur Aave, le taux d'un prêt est variable : il bouge en permanence selon l'offre et la demande.",
+      "etapes": [],
+      "etapesCorps": [
+        {
+          "type": "p",
+          "texte": "Midnight est sa version à taux fixe. Lancé sur Base (la blockchain de Coinbase) le 21 juillet 2026, puis sur Ethereum en septembre, il permet de prêter ou d'emprunter à un taux connu dès le départ, jusqu'à une date fixée à l'avance."
+        },
+        {
+          "type": "def",
+          "terme": "Taux fixe",
+          "slug": "taux-fixe",
+          "texte": "Un taux d'intérêt connu dès le départ, qui ne bouge plus jusqu'à la date de remboursement prévue, l'échéance. L'emprunteur sait ce qu'il paiera, le prêteur ce qu'il touchera."
+        },
+        {
+          "type": "st",
+          "texte": "1. Des offres plutôt qu'une formule"
+        },
+        {
+          "type": "p",
+          "texte": "Sur Midnight, ce sont les participants qui proposent des offres : un prêteur publie une offre (« je prête tant d'USDC, à tel taux, jusqu'à telle date »), un emprunteur aussi. Le taux naît de la rencontre entre l'offre et la demande."
+        },
+        {
+          "type": "p",
+          "texte": "Chaque offre porte sur un marché précis, défini par trois éléments qui ne changent jamais :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "l'actif prêté, le plus souvent de l'USDC ;",
+            "les garanties acceptées : du bitcoin, de l'ETH… ;",
+            "l'échéance, en pratique le dernier vendredi d'un mois : 27 novembre, 25 décembre, 26 mars 2027…"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/numeros/10/04-midnight-echeances-usdc-cbbtc.jpg",
+          "legende": "Sur l'app Morpho le 10 novembre, le prêt d'USDC contre du bitcoin (cbBTC) sur Ethereum se décline en un marché par échéance : 5,48 M$ prêtés au 27 novembre, 37,23 M$ au 25 décembre, rien encore au 26 mars 2027."
+        },
+        {
+          "type": "st",
+          "texte": "2. Le taux est fixé au moment de l'échange"
+        },
+        {
+          "type": "p",
+          "texte": "Quand quelqu'un accepte une offre, le taux est verrouillé. En réalité, Midnight n'enregistre pas un taux mais un prix : prêter, c'est acheter aujourd'hui, un peu moins cher, le droit de recevoir 1 USDC à l'échéance. Tu prêtes 99 USDC, on t'en rend 100 dans trois mois : ton gain d'environ 1 % sur la période (environ 4 % par an) est connu dès le départ."
+        },
+        {
+          "type": "p",
+          "texte": "C'est le principe d'une obligation zéro-coupon : aucun intérêt en cours de route, ton gain est l'écart entre le prix payé et ce qui est remboursé. Sur l'app Morpho le 10 novembre, les prêteurs proposaient de payer 0,9948 USDC pour en recevoir 1 au 25 décembre, soit environ 4,3 % par an."
+        },
+        {
+          "type": "p",
+          "texte": "Tu ne prêtes pas à une personne en particulier : ta créance porte sur l'ensemble du marché, partagé avec tous les autres prêteurs du même marché (même actif, même garantie, même échéance), quel que soit le taux que chacun a obtenu : chacun a payé son propre prix, mais toutes les créances valent 1 USDC à l'échéance."
+        },
+        {
+          "type": "st",
+          "texte": "3. Pendant le prêt"
+        },
+        {
+          "type": "p",
+          "texte": "Comme sur Aave, l'emprunteur dépose une garantie, le collatéral, qui vaut plus que ce qu'il emprunte. Si sa valeur baisse trop, il est liquidé, même avant l'échéance : le taux est fixe, pas la valeur de la garantie. Il peut aussi rembourser à tout moment."
+        },
+        {
+          "type": "st",
+          "texte": "4. À l'échéance, l'emprunteur doit rembourser"
+        },
+        {
+          "type": "p",
+          "texte": "Il n'y a pas de prolongation automatique : passé la date, un prêt non remboursé est liquidé, même s'il est sain. Pour continuer, l'emprunteur peut reconduire son prêt sur l'échéance suivante, s'il trouve en face l'offre d'un prêteur, au taux que propose cette offre, qui n'est pas forcément celui de son premier prêt. Le prêteur récupère ses 100 USDC une fois les emprunteurs remboursés ou liquidés (voir les risques)."
+        },
+        {
+          "type": "st",
+          "texte": "5. Le prêteur peut sortir avant l'échéance"
+        },
+        {
+          "type": "p",
+          "texte": ", en revendant sa créance à quelqu'un qui veut prêter à sa place. Le risque : si les taux montent juste après ton achat, par exemple si les prêteurs exigent désormais 5 % au lieu de 4 %, personne ne rachètera ta créance à 4 % au prix que tu l'as payée. Pour qu'elle rapporte 5 % à son acheteur, il faut la lui céder moins cher : environ 98,8 au lieu de 99, et tu sors à perte. Et encore faut-il trouver un acheteur."
+        }
+      ],
+      "rendement": "",
+      "rendementCorps": [
+        {
+          "type": "st",
+          "texte": "Le taux du moment"
+        },
+        {
+          "type": "p",
+          "texte": "Relevés sur l'app Morpho le 10 novembre, pour le marché le plus actif (prêt d'USDC contre du bitcoin, sur Ethereum), face à l'USDC sur Aave le même jour :"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "",
+            "Prêter",
+            "Emprunter"
+          ],
+          "lignes": [
+            [
+              "Midnight (taux fixe)",
+              "environ 4,1 % (27/11) ; aucune offre à saisir au 25/12 ce jour-là",
+              "4,26 % (27/11) ; 4,27 % (25/12)"
+            ],
+            [
+              "Aave (taux variable)",
+              "3,73 %",
+              "4,45 %"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Les deux taux sont proches du taux variable d'Aave. L'emprunteur paie à peu près le même prix, mais il le connaît à l'avance. Le prêteur gagne un peu plus (4,1 % contre 3,73 %), en échange d'un argent bloqué jusqu'à l'échéance, sauf revente : l'écart est mince."
+        },
+        {
+          "type": "p",
+          "texte": "Plus l'échéance est lointaine, plus emprunter coûte cher, comme pour les obligations : 5,27 % jusqu'au 26 mars 2027."
+        },
+        {
+          "type": "image",
+          "src": "/numeros/10/06-midnight-courbe-taux.jpg",
+          "legende": "La courbe des taux du même marché, sur l'app Morpho le 10 novembre : 4,26 % pour emprunter à 16 jours, 4,27 % à 44 jours, 5,27 % à 135 jours. Côté prêteur, une seule échéance proposait un taux ce jour-là : 4,09 % à 16 jours."
+        },
+        {
+          "type": "p",
+          "texte": "Ce ne sont pas des moyennes : ce sont les meilleures offres disponibles ce jour-là sur ce marché précis (même garantie, même échéance). Chaque prêt se conclut au taux de l'offre acceptée, et ces taux changent à chaque nouvelle offre."
+        },
+        {
+          "type": "st",
+          "texte": "La taille"
+        },
+        {
+          "type": "p",
+          "texte": "Le 10 novembre, Midnight comptait 92 M$ de prêts en cours (DeFiLlama), dont environ les trois quarts sur une seule échéance, le 25 décembre. C'est encore peu : environ 1,6 % des prêts en cours sur Morpho Blue, le protocole à taux variable de Morpho (5,6 Md$)."
+        }
+      ],
+      "risqueNiveau": "moyen",
+      "risqueSens": "moyen",
+      "risques": "Moyen pour les marchés principaux (prêter de l'USDC contre du bitcoin ou de l'ETH) : les garanties sont liquides et valent plus que les prêts, mais le produit est neuf et la sortie avant l'échéance n'est pas garantie. Les marchés sur des jetons plus confidentiels, que n'importe qui peut créer, relèvent d'un risque élevé.",
+      "risquesCorps": [
+        {
+          "type": "liste",
+          "items": [
+            "Une sortie anticipée qui dépend des acheteurs. Pour sortir avant l'échéance, il faut revendre ta créance à un nouveau prêteur. Morpho l'écrit lui-même : cette sortie « dépend de la demande ». Le 10 novembre, sur le marché du 25 décembre, les offres de prêteurs couvraient environ 6 M$ au prix du marché ; au-delà, le prix proposé chutait nettement.",
+            "Rembourser à la date, quoi qu'il arrive. L'emprunteur qui n'a pas ses USDC le jour J est liquidé, même avec un prêt sain.",
+            "Des pertes partagées. Si la vente d'une garantie ne couvre pas la dette, la perte (la bad debt) est répartie entre tous les prêteurs du marché, au prorata. Les autres marchés ne sont pas touchés.",
+            "Des contrats neufs que personne ne peut modifier. Le code a été audité à plusieurs reprises. Il est immuable : personne, pas même Morpho, ne peut changer les règles d'un marché ni mettre le protocole en pause si une faille apparaît.",
+            "Une activité concentrée. Le 25 décembre, beaucoup d'emprunteurs devront rembourser ou reconduire leur prêt au même moment."
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/numeros/10/05-midnight-carnet-ordres-25dec.jpg",
+          "legende": "Les offres du marché du 25 décembre sur l'app Morpho, le 10 novembre (un instantané). Seulement des offres de prêteurs : environ 6 M$ à 4,3 % (prix de 0,99476 USDC pour 1 USDC à l'échéance), puis quelques centaines de dollars à 6,9 % et 0,5 M$ à 17 %. Plus le taux est élevé, plus le prix est bas."
+        }
+      ],
+      "importance": "Aux États-Unis, environ 96 % des crédits immobiliers en cours sont à taux fixe (FHFA) ; en DeFi, plus de 95 % des prêts sont à taux variable (Four Pillars). Les deux crédits ne sont pas de même nature. Pourquoi le taux fixe n'a-t-il jamais pris en DeFi ?",
+      "importanceCorps": [
+        {
+          "type": "st",
+          "texte": "Les échecs passés"
+        },
+        {
+          "type": "p",
+          "texte": "Yield Protocol a fermé fin 2023 faute de demande durable, Notional V3 a quasiment cessé son activité fin 2025, et Aave a coupé en 2023 son « taux stable », réajustable, après un bug. Pour le cabinet d'analyse Four Pillars, la cause de fond est que les emprunteurs, surtout des spéculateurs, voulaient pouvoir sortir à tout moment, et qu'un prêteur gagnait à peu près autant sur Aave sans bloquer son argent."
+        },
+        {
+          "type": "st",
+          "texte": "Ce qui change cette fois"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Le prêteur ne bloque plus son argent en attendant : tant que son offre n'est pas acceptée, ses fonds peuvent continuer de rapporter le taux variable de Morpho.",
+            "Un distributeur grand public : depuis le 22 septembre, Coinbase propose à ses clients d'emprunter de l'USDC contre leur bitcoin, à taux fixe et à rembourser en fin de mois ; les prêts passent par Midnight.",
+            "Les concurrents bougent, en cinq jours :",
+            "le 6 novembre, Aave rachète Avon (voir DANS LE FAISCEAU) ; Stani Kulechov dit que l'équipe bâtira le crédit sur Aave V4, sans calendrier ni forme précise annoncés ;",
+            "le 9, Spark (l'écosystème Sky, ex-MakerDAO) annonce IRIS, une couche à taux fixe posée sur son protocole de prêt SparkLend : d'après son annonce, l'emprunteur demande une cotation et obtient un taux fixe pour une durée donnée (annonce) ;",
+            "le 10, Pendle et Ethena ouvrent des échéances à 3, 6, 9 et 12 mois sur l'USDe : on achète un jeton moins cher aujourd'hui, remboursé 1 pour 1 à l'échéance. C'est le même principe zéro-coupon que Midnight, mais côté épargne seulement : on ne peut pas y emprunter (annonce)."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "Le taux fixe de Midnight coûte à peu près le prix du variable d'Aave et apporte de la certitude : entrer est désormais simple. Le vrai test, c'est de sortir. Tant que revendre sa créance avant l'échéance repose sur quelques millions de dollars d'offres par marché, c'est à nos yeux un outil pour qui peut attendre l'échéance, pas encore un placement qu'on quitte quand on veut."
+        }
+      ]
+    },
+    "cours": [
+      {
+        "actif": "BTC",
+        "nom": "Bitcoin",
+        "prix": "~73 900 $",
+        "var7j": "▼ −5 %",
+        "sens": "down"
+      },
+      {
+        "actif": "ETH",
+        "nom": "Ether",
+        "prix": "~2 060 $",
+        "var7j": "▼ −10 %",
+        "sens": "down"
+      },
+      {
+        "actif": "SOL",
+        "nom": "Solana",
+        "prix": "~84 $",
+        "var7j": "▼ −11 %",
+        "sens": "down"
+      },
+      {
+        "actif": "HYPE",
+        "nom": "Hyperliquid",
+        "prix": "~73 $",
+        "var7j": "▼ −15 %",
+        "sens": "down"
+      },
+      {
+        "actif": "BNB",
+        "nom": "",
+        "prix": "~678 $",
+        "var7j": "▼ −3 %",
+        "sens": "down"
+      }
+    ],
+    "cours7jLabel": "Depuis notre n°9 (7 jours)",
+    "coursHeure": "22h08",
+    "coursAvisCorps": [
+      {
+        "type": "st",
+        "texte": "Ce qui a fait bouger les prix"
+      },
+      {
+        "type": "p",
+        "texte": "Semaine rouge pour toute la sélection. Le bitcoin est passé sous les 75 000 $ ce week-end, jusqu'à 73 500 $ environ, son plus bas depuis le 21 août, puis vers 72 800 $ le 10 novembre. Les autres cryptos ont baissé plus fort, jusqu'à −15 % pour l'HYPE. Trois mouvements se sont additionnés :"
+      },
+      {
+        "type": "liste",
+        "items": [
+          "Des sorties des ETF bitcoin américains : environ 1,3 Md$ retirés du 2 au 6 novembre, dont 1,2 Md$ sur le seul fonds de BlackRock (IBIT), leur pire semaine depuis juin.",
+          "Une vague de liquidations : plus d'1 Md$ de positions à levier fermées de force le 9 novembre, dont 90 % de paris à la hausse. Chaque vente forcée fait baisser le prix, qui déclenche la liquidation suivante.",
+          "L'inflation américaine d'octobre, publiée le 10 novembre, plus forte que prévu : +0,4 % sur un mois, contre +0,3 % attendu. Les marchés parient désormais sur une hausse des taux de la Fed en décembre, ce qui pèse sur les actifs risqués."
+        ]
+      },
+      {
+        "type": "avis",
+        "texte": "Les acheteurs d'ETF se retirent au moment où une hausse des taux redevient probable, et le levier transforme chaque recul en cascade de liquidations. Tant que les flux des ETF restent négatifs, le marché manque d'acheteurs pour absorber ces ventes forcées."
+      }
+    ],
+    "data": {
+      "titre": "Strategy rachète plus de STRC qu'elle n'achète de bitcoin",
+      "texte": "Strategy (ex-MicroStrategy) est la société cotée qui détient le plus de bitcoins : environ 850 000. Pour en acheter, elle vend notamment du STRC, une action privilégiée qui verse un dividende mensuel : chaque STRC vendu 100 $, ce sont 100 $ pour acheter du bitcoin. Or du 26 octobre au 8 novembre, elle a fait l'inverse : 397 M$ de STRC rachetés, contre 147 M$ de bitcoin achetés, selon ses déclarations à la SEC.",
+      "corps": [
+        {
+          "type": "st",
+          "texte": "Pourquoi racheter plutôt qu'acheter du bitcoin"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Le STRC vise un cours de 100 $ : Strategy ajuste son dividende chaque mois pour l'y maintenir (12 % par an en novembre).",
+            "Il cotait sous les 100 $ depuis mai, et Strategy n'en émet pas sous ce prix, selon la presse. Plus de nouveau STRC à vendre, donc moins d'argent pour le bitcoin.",
+            "Racheter sous 100 $ soutient le cours : Strategy a payé en moyenne 99,5 à 99,8 $ par action. Le STRC a touché les 100 $ le 4 novembre, une première depuis mai, sans encore s'y tenir.",
+            "Pour payer ces rachats, Strategy vend de nouvelles actions ordinaires (cotées sous le code MSTR) et puise dans sa trésorerie en dollars."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "sur l'argent levé en vendant des actions MSTR ces deux semaines, à peine un tiers est allé au bitcoin. Strategy dilue d'abord ses actionnaires pour défendre son action privilégiée. Tant que le STRC ne tient pas seul ses 100 $, le premier acheteur de bitcoin coté achète à un rythme réduit : 1 847 BTC en deux semaines."
+        },
+        {
+          "type": "p",
+          "texte": "Sources : Strategy, formulaires 8-K du 2/11 et du 9/11/2026 (SEC EDGAR) · strategy.com/strc · Bitcoin Magazine et CryptoTimes (4-5/11)"
+        }
+      ]
+    },
+    "jeu": {
+      "cta": "Tu emprunterais à taux fixe sur Midnight, ou tu préfères la souplesse du taux variable d'Aave ? Réponds directement à ce mail : je lis tout, et je réponds.",
+      "question": "Pour emprunter, tu choisirais…",
+      "a": "le taux fixe (je sais ce que je paierai)",
+      "b": "le taux variable (je peux rembourser quand je veux)"
+    },
+    "definitions": [
+      {
+        "terme": "Action privilégiée perpétuelle",
+        "def": "Une action sans date de remboursement qui verse un dividende prioritaire, fixe ou ajustable selon les titres (celui du STRC est revu chaque mois), payé avant celui des actions ordinaires, mais qui ne donne en général pas de droit de vote. Strategy en a fait son principal outil pour financer ses achats de bitcoin (voir ÇA BRILLE).",
+        "slug": "action-privilegiee-perpetuelle"
+      },
+      {
+        "terme": "Multisig",
+        "def": "Un portefeuille ou un contrat qui ne peut agir qu'avec la signature de plusieurs personnes, par exemple 3 sur 5. Il évite qu'une seule clé volée suffise, mais concentre le pouvoir sur un petit groupe de signataires (voir l'actu Babylon dans DANS LE FAISCEAU).",
+        "slug": "multisig"
+      }
+    ]
   }
 ];
 

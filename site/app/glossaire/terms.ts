@@ -516,6 +516,48 @@ export const TERMES: GlossaireTerme[] = [
       "Un jeton sur une blockchain que seules les adresses approuvées par son émetteur peuvent recevoir et détenir, en général après vérification d'identité (KYC). L'émetteur tient la liste et peut refuser un transfert vers une autre adresse. C'est le cas de la plupart des deposit tokens et des jetons de la DTCC, réservés à ses membres.",
     numero: 9,
   },
+  {
+    slug: "action-privilegiee-perpetuelle",
+    terme: "Action privilégiée perpétuelle",
+    definition:
+      "Une action sans date de remboursement qui verse un dividende prioritaire, fixe ou ajustable selon les titres (celui du STRC est revu chaque mois), payé avant celui des actions ordinaires, mais qui ne donne en général pas de droit de vote. Strategy en a fait son principal outil pour financer ses achats de bitcoin.",
+    numero: 10,
+  },
+  {
+    slug: "embedded-wallet",
+    terme: "Embedded wallet (wallet à connexion sociale)",
+    definition:
+      "Wallet intégré directement dans une application, on s'y connecte avec un compte qu'on a déjà (Google, Apple, e-mail). Pas de logiciel à installer, pas de seed phrase à recopier. La clé privée est découpée en plusieurs morceaux : l'un reste sur ton appareil, un autre est géré par un fournisseur spécialisé.",
+    numero: 10,
+  },
+  {
+    slug: "mpc",
+    terme: "MPC (Multi-Party Computation)",
+    definition:
+      "Calcul multipartite : une technique qui permet à plusieurs parties de produire ensemble une signature sans jamais réunir la clé privée en un seul endroit.",
+    numero: 10,
+  },
+  {
+    slug: "multisig",
+    terme: "Multisig",
+    definition:
+      "Un portefeuille ou un contrat qui ne peut agir qu'avec la signature de plusieurs personnes, par exemple 3 sur 5. Il évite qu'une seule clé volée suffise, mais concentre le pouvoir sur un petit groupe de signataires.",
+    numero: 10,
+  },
+  {
+    slug: "taux-fixe",
+    terme: "Taux fixe",
+    definition:
+      "Un taux d'intérêt connu dès le départ, qui ne bouge plus jusqu'à la date de remboursement prévue, l'échéance. L'emprunteur sait ce qu'il paiera, le prêteur ce qu'il touchera.",
+    numero: 10,
+  },
+  {
+    slug: "wrapped-btc",
+    terme: "Bitcoin wrappé (wrapped BTC)",
+    definition:
+      "Un jeton qui représente, sur une autre blockchain (le plus souvent Ethereum), un bitcoin conservé ailleurs, par un dépositaire ou un réseau d'opérateurs. Il vaut un bitcoin tant que l'émetteur garde la réserve et permet de la récupérer.",
+    numero: 10,
+  },
 ];
 
 // Retrouver un terme par son slug.
