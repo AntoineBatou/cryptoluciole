@@ -19,6 +19,11 @@ qu'on construit les agents.
 2. Par section : **mini-brief de 3 lignes** (objectif, thèse, ce qui reste dehors) que tu valides
    en un mot → rédacteur (**une section à la fois**) → vérificateur : **questions-tests
    bloquantes**, prédiction de tes coupes, puis note (seuil 8, max 3 boucles).
+   **Section qui explique un mécanisme** (ON ÉCLAIRE, SOUS LA LOUPE, fiche site) : avant le
+   vérificateur, une passe de l'agent global `defi-expert` sur le brouillon et la doc primaire du
+   protocole. Il contrôle seulement la mécanique (chaîne de cause à effet complète, source du
+   rendement, conditions, ce qui est affirmé sans source) et rend une liste de points ; il ne
+   réécrit rien. Raison : le vérificateur juge le style, pas la DeFi (leçon du 10/09).
 3. **Avant de te montrer la section**, je copie le brouillon dans
    `drafts/issue-XX/versions/<rubrique>.avant-marc.md`. Tu valides ou corriges ; la version validée
    reste `drafts/issue-XX/<rubrique>.md`. La paire avant / après sert d'exemple au numéro suivant.
@@ -27,7 +32,8 @@ qu'on construit les agents.
    `style-regles.md` ; une ligne dans `docs/calibrage-verificateur.md`. Puis commit des brouillons.
 5. Section suivante. À la fin : assemblage verbatim par **`python3 drafts/build_issue.py <n>`**
    (voir plus bas) → fact-checker → mail de test → envoi Resend.
-6. Fin de numéro : recopier la mémoire vers `docs/memoire/` (contrôle d'anonymisation), commit.
+6. Fin de numéro : recopier vers `docs/memoire/` les seuls fichiers lus par les agents (liste dans
+   `docs/memoire/README.md`), contrôle d'anonymisation, commit.
 
 **Mémoire de style = deux fichiers** : `style-regles.md` (l'état à jour des règles, par thème et
 par rubrique : c'est ce que lisent d'abord les agents) et `style-editorial.md` (le journal, en

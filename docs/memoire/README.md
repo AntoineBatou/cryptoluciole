@@ -39,6 +39,17 @@ cp ~/.claude/CLAUDE.md docs/memoire/CLAUDE-global.md
   elle a été écrite dans `docs/memoire/` — la **recopier vers `~/.claude/.../memory/`**
   pour que le Mac reparte à jour.
 
+## 📦 Ce qui va dans ce miroir (règle du 2026-11-11)
+
+Le dépôt est public : on n'y recopie **que les fichiers que les agents lisent**, pas toute la mémoire.
+Y vont : `style-regles`, `style-editorial`, `profil-editorial`, `sources-veille`, `lecteur-dossiers`,
+`dat-mecanismes-defi-rigueur`, `fact-check-sources-primaires`, `cours-defillama`,
+`sources-rwa-adoption`, `feedback-questionner-x`, `feedback-analyse-tranchee`,
+`feedback-renvoi-numeros`, `etat-projet`, et les fichiers déjà présents avant cette date.
+N'y vont pas : les notes d'organisation et de stratégie (idées de dossiers, usage des outils
+payants, méthode de sélection, références aux autres projets). La commande `cp memory/*.md`
+ci-dessus est donc à remplacer par une copie fichier par fichier.
+
 ## 🔒 Anonymisation
 
 Les **adresses email personnelles** ont été retirées de ce miroir (celle de Marc, celle du
