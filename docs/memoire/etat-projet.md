@@ -1,10 +1,11 @@
 ---
 name: etat-projet
-description: "Où en est CryptoLuciole — #1 à #5 publiés (tous dans l'archive site) ; dossier de fond DAT PUBLIÉ (/dossiers/dat) avec PDF téléchargeable"
+description: "Où en est CryptoLuciole — focus courant + journal des numéros (le hook de démarrage donne l'état réel du code)"
 metadata:
   node_type: memory
   type: project
   originSessionId: 90507c6d-d393-4d8b-99c7-5a756f3f0a77
+  modified: 2026-10-29T21:52:04.969Z
 ---
 
 **⚠️ Avant d'affirmer où on en est : vérifier le CODE, pas seulement cette note.**
@@ -12,7 +13,21 @@ Source de vérité = `ls site/app/emails/issues/` (numéros publiés) + `ls draf
 `ls factcheck/` + `git log --oneline`. Cette mémoire reflète la dernière session ; la
 mettre à jour À CHAQUE fin de session (voir [[journal-de-bord]]).
 
-## 🎯 Focus actuel (2026-09-10)
+## 🛠️ Refonte du 2026-11-11 (audit)
+Audit complet dans `/Users/marc/Documents/claude/_audit-2026-11/newsletter.md`. Appliqué le jour même :
+agents sur la mémoire locale, `style-regles.md` (règles à jour, à RELIRE par Marc) + journal annoté,
+`profil-editorial.md` (tri des sujets + registre), vérificateur à questions-tests bloquantes,
+`docs/calibrage-verificateur.md`, `drafts/issue-XX/versions/` (paires avant / après, à partir du
+numéro 11), fact-checker avec accès lecture aux API, `CLAUDE.md` aligné sur `build_issue.py`.
+**Reste à Marc** : régénérer la clé Resend ; relire `style-regles.md` ; trancher le gabarit email
+(numéro 1 ou 8) ; relire la fiche Morpho ; décider si `docs/memoire/` reste dans un dépôt public.
+
+## 🎯 Focus actuel (2026-11-10 soir)
+**#10 ENVOYÉ** (voir le journal). Restent : relecture par Marc de `drafts/issue-10/fiche-morpho.ts` (8,5/10, balises levées) puis
+intégration à `protocols.ts` (le lien /protocoles/morpho affiche « Fiche en construction » en attendant) ; idées de shorts à
+reprendre (Marc les a trouvées « pas terribles ») ; `drafts/issue-10/` non commité (comme issue-09).
+
+## Focus précédent (2026-09-10)
 
 **#5 ENVOYÉ** (voir le journal ci-dessous). Rien de bloquant en cours.
 **Pistes pour le #6**, remontées par la veille du 9 septembre et non traitées :
@@ -82,13 +97,19 @@ wiki Lido dédiée (à créer avant d'écrire).
 
 ## Audience Resend
 
-**19 contacts actifs, 0 désinscrit** au 2026-09-10 (inchangé depuis le 31/08 : aucun nouvel inscrit en dix jours — la croissance est à l'arrêt) (18 lors de l'envoi du #4 le 28/08 ;
+**22 contacts actifs, 0 désinscrit au 2026-11-04 (envoi #9)** : +2 les 30 et 31/10, +1 le 03/11 (premiers depuis le 30/08 ; coïncide avec la publication du dossier Metric + les encarts d'inscription sur /dossiers, lien non prouvé). Lister les abonnés par date : script ad hoc sur `GET /audiences/<id>/contacts` (pagination `after`).
+
+Historique : **19 contacts actifs, 0 désinscrit** au 2026-09-10 (inchangé depuis le 31/08 : aucun nouvel inscrit en dix jours — la croissance est à l'arrêt) (18 lors de l'envoi du #4 le 28/08 ;
 +1 le 30/08). Croissance lente mais régulière, et le taux de désinscription est à zéro
 depuis le lancement. Compter l'audience : `cd site && node scripts/send-newsletter.mjs
 app/emails/issues/issue-0X.ts --dry-run`.
 
 ## Journal des numéros (le plus récent en haut)
 
+- **#10 — PUBLIÉ le 2026-11-10 ~22h15** (« Les wallets à connexion Google ou Apple : où sont vraiment tes clés ? », objet « CryptoLuciole #10 — Où sont vraiment tes clés ? »). ON ÉCLAIRE embedded wallets (Keplr/Web3Auth, 5,6 M$ récupérés) · 3 actus : Aave Labs rachète Avon, perps sur actions validés par la CFTC mais contestés (juge : CMAA « bonnes chances »), BTC natif sur Aave V4 via Babylon · SOUS LA LOUPE Morpho Midnight (🟡, 3 captures app Morpho, avis tiers) · REPÈRES (ETF −1,3 Md$, liquidations, CPI du 10/11) · ÇA BRILLE Strategy rachète 397 M$ de STRC vs 147 M$ de BTC (8-K) · DÉFINITIONS action privilégiée perpétuelle, multisig · sondage taux fixe/variable. Envoyé à **24 abonnés** (24/24, 0 échec ; +2 depuis le #9). Commits `a57fdd9` (captures) + `60d26bc`. 6 termes glossaire. Fact-check `factcheck/2026-11-10-numero-10.md` (NO-GO → corrigé). Leçons : avis = une thèse, pas de gabarit ; anglicismes d'usage ; renvoyer le lien du fichier après chaque correction ; un script de remplacement a vidé fin.md une fois → toujours sauvegarder avant.
+- **#9 — PUBLIÉ le 2026-11-04 ~14h** (« Deposit tokens : quand les banques émettent leurs propres jetons », objet « CryptoLuciole #9 — Les deposit tokens »). ON ÉCLAIRE deposit token (SoFi SOFIE/SoFiUSD, tableau JPMD/HSBC/Citi, Europe) · 2 actus : DTCC Tokenization Service (34 titres éligibles), ETF BlackRock PBIT · SOUS LA LOUPE PendleLoop (🔴, 4 captures, calendrier des récompenses, oracles, nuance perps) · REPÈRES (Binance 6,3 Md$, midterms : démocrates Chambre + Sénat) · ÇA BRILLE stablecoins −20 Md$ depuis mai (Ethereum −19, Tron +3,7) · DÉFINITIONS health factor, jeton permissionné · pas de sondage. Envoyé à **22 abonnés** (22/22, 0 échec). Commits `a703e90` → `5704bf9`. Fiche site **/protocoles/pendle** complète (vérificateur 7 → 7,5, 3 boucles ; fact-check, plus aucun [À VÉRIFIER]). 8 termes glossaire. Fact-check `factcheck/2026-11-04-numero-09.md` (NO-GO → corrigé). **Nouveau : `drafts/build_issue.py N`** génère issues.ts + email issue-0N.ts depuis `drafts/issue-0N/*.md` + `meta.json` (titre, objet, menu, intro…) — relançable ; ajout `risquesCorps` et sondage optionnel. Piège : ne jamais insérer par `s.index("[texte]")`/`"[avis]"` — l'en-tête des brouillons contient aussi ces marqueurs (2 incidents le 4/11). Erratum Papertrade abandonné par Marc.
+- **#8 — PUBLIÉ le 2026-10-28 ~19h45** (« La preuve de travail utile », objet « CryptoLuciole #8 — La Proof of Useful Work »). ON ÉCLAIRE PoW vs PoUW (Pearl, Flop) · 3 actus : Papertrade réécrit ses règles, Glamsterdam en pause (ChainSecurity), OKXICE 33 refus/62 vs EQX · SOUS LA LOUPE Derive V3 (🟡, « acheter et vendre des options on-chain ») · REPÈRES + Fed du 28/10 (maintien 3,75-4 %, vote 10-2, deux voix pour une hausse) · ÇA BRILLE piratages 2026 (~2,4 Md$) · DÉFINITIONS builder code, PoUW. Envoyé à **19 abonnés** (19/19, 0 échec). Commit `555cb66` (site déployé et vérifié avant l'envoi : /protocoles/derive, /numeros/8, glossaire 200). Fiche site Derive COMPLÈTE (vérificateur 8,5/10, sans score /100 : badge seul « Risque MOYEN », `score.valeur` rendu optionnel). 7 termes glossaire ajoutés (hard-fork, testnet, gas, scalping, proof-of-useful-work, option, builder-code). Fact-check : `factcheck/2026-10-28-numero-08.md` (NO-GO initial → corrigé : OKXICE 22→33, calcul DRV refait sur TOUS les revenus Derive ≈ 417 k$/30 j → rachats ≈ émissions, V3 le 7/10). **Leçons** : (1) ne jamais bâtir une section sur une seule source tierce (OAK) — Marc a rejeté la v2 Derive ; (2) longueur souple, cohérence d'abord ; (3) espaces insécables avant « : ; ? ! » (deux-points en début de ligne sur mobile). **À faire** : figer la mise en forme du #1 comme gabarit de référence (Marc : « on a perdu en beauté »), avec nbsp intégrés ; erratum Papertrade (audit Guardian public) prévu pour le #8 NON inclus → à glisser au #9 ; MAJ fiche Papertrade (14 points, `drafts/issue-08/actu-papertrade.md`) ; supprimer la page aperçu vidéo quand Marc le dira ; `veille/2026-10-27-oak.md` non commité (contenu OAK, dépôt public).
+- **#7 — PUBLIÉ le 2026-10-21** (« Les smart accounts »). ON ÉCLAIRE smart accounts (4337/7702, quantique) · 3 actus : budget 2027 (vote solennel reporté, report des moins-values rejeté, crypto→stablecoins voté), MSCI vs Strategy (mNAV ~0,9), Bittensor Null Consensus · SOUS LA LOUPE Papertrade (🔴, fiche site « en construction ») · ÇA BRILLE OI Hyperliquid ~15 Md$. Envoyé à **19 abonnés** (19/19, 0 échec) après fact-check (`factcheck/2026-10-21-issue-07.md`) et déploiement vérifié (tous les liens 200). Commit `e6425eb`. Toujours 19 contacts : croissance à l'arrêt. **Décision 19/10 : le niveau du lecteur monte** (CLAUDE.md + agents). Reste à faire : fiche site Papertrade complète (`/analyse` dans ../analyste-defi puis Mode B) ; resync `docs/memoire/` (ré-anonymisation) ; leçon process : un numéro préparé sur 2 jours = re-relever cours/actu le jour J (le sens des REPÈRES s'est inversé). Pièges : mise en veille du Mac a coupé le fact-checker 2× → `caffeinate -di`. **Erratum à glisser dans le #8** : l'email #7 disait « Audit annoncé, sans rapport public » pour Papertrade — faux, rapport Guardian public depuis le 15/10 (final 17/10) ; archive site + mail de bienvenue corrigés le 21/10. Analyse complète : `../analyste-defi/analyses/PAPER-papertrade-2026-10-21.md` (32/100) ; fiche site complète EN LIGNE le 21/10 ~20h20 UTC (commit `35b6793`, vérificateur 8,5/10). **À réviser** : mise à jour des contrats Papertrade exécutable dès le 21/10 21h35 UTC (Exchange, SessionKeyManager, PaperTokenomics + nouveau keeper) → relire l'état on-chain (timelock `0xB915…EA0F`, `isOperationPending`) et passer l'encadré au passé ; rafraîchir LP/taux PAPER. Limite du rendu fiches : pas de liens dans les paragraphes.
 - **#6 — PUBLIÉ le 2026-10-13** (« Les marchés de prédiction »). Envoyé à **19 abonnés** via l'API Resend (19 envoyés, 0 échec), cours rafraîchis le 13/10 à midi. Toujours **19 contacts actifs, 0 désinscrit** : aucun nouvel inscrit depuis le 30/08 (6 semaines) → la croissance est à l'arrêt, chantier acquisition à ouvrir. Prochain : #7 (Pendle en SOUS LA LOUPE, ESMA/USDT, Open USD).
 - **#5 — PUBLIÉ le 2026-09-10** (« Emprunter contre ses cryptos »). Envoyé à **19 abonnés**
   via Resend (`--send`, 19/19, 0 échec). Fichiers : `site/app/emails/issues/issue-05.ts`
@@ -151,7 +172,7 @@ app/emails/issues/issue-0X.ts --dry-run`.
     `fundingHistory` (500 points max → paginer) et `metaAndAssetCtxs` (volume, OI, levier).
     ⚠️ Farside Investors et blackrock.com renvoient 403 aux requêtes automatisées.
   - ✅ **Soldé le 2026-08-31** : les fiches `/protocoles/hyperliquid` et `/protocoles/ethena`
-    sont écrites et en ligne. L'abonné `<abonné>` est bien en `.com` dans Resend —
+    sont écrites et en ligne. L'abonné `philippedargent64` est bien en `.com` dans Resend —
     la faute de frappe `.col` notée ici était une erreur de mémoire, plus rien à supprimer.
 
 - **#3 — PUBLIÉ le 2026-07-04** (« La guerre des stablecoins »). Envoyé à 13 abonnés via
@@ -171,7 +192,7 @@ app/emails/issues/issue-0X.ts --dry-run`.
     pour rendre puces/encadré « Notre avis » de la rubrique On éclaire. Micro-pertes de portage
     assumées (fiche Ethena en prose ; graphe ETF → liste de flux).
   - ⚠️ **Restes à faire (non bloquants)** : **fiche `/protocoles/ethena` PAS écrite** (voir RAPPEL
-    Focus actuel) ; supprimer l'abonné invalide `<abonné>@gmail.col` dans Resend.
+    Focus actuel) ; supprimer l'abonné invalide `<adresse-anonymisée>` dans Resend.
   - **Article DAT en parallèle** (idée de Marc) : préparer un article de fond sur les DAT /
     modèle Strategy (mNAV, STRC) à publier APRÈS, dans `drafts/articles/`.
   - Les vieux `drafts/issue-03/on-eclaire.md` + `factcheck/issue-03-2026-06-26.md` étaient des
@@ -190,6 +211,14 @@ app/emails/issues/issue-0X.ts --dry-run`.
 
 - ⚠️ Ne pas compter via `grep id: issues.ts` (le type TS + `getIssue` contiennent aussi
   `id:`). Compter les vrais numéros via `ls site/app/emails/issues/`.
+- **Accueil (2026-10-29)** : sous le bandeau, blocs « Nos dernières newsletters » (5 tuiles
+  illustrées) + « Nos derniers dossiers » (4, places « à venir » si moins). Bandeau compacté
+  pour que les blocs soient visibles sans scroller. Illustrations = **logo du sujet principal
+  du titre** (Marc a rejeté emojis puis dessins SVG). **À chaque nouveau numéro / dossier :
+  télécharger le logo (icons.llama.fi/<slug>.png ou CoinGecko) dans `site/public/vignettes/`
+  + `vignette: "/vignettes/<fichier>"` dans issues.ts / dossiers.ts.** Logo Pearl (#8) pris
+  sur CoinGecko `pearl-2`, identité non confirmée à 100 %.
+- **Pied de page commun (2026-11-02)** : `site/app/Footer.tsx`, branché dans `layout.tsx` donc sur toutes les pages (classe `no-print`) — logo + liens réseaux (X, TikTok, Instagram, YouTube, tous `@cryptoluciole`) + disclaimer. Ajouter un réseau = une entrée dans le tableau `reseaux`.
 - Tuyauterie d'envoi : voir [[envoi-resend]]. Workflow agents IA : voir le mémo en tête
   de `CLAUDE.md` du projet.
 

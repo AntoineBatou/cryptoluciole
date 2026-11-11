@@ -1,0 +1,29 @@
+{
+ "date": "Mardi 10 novembre 2026",
+ "titre": "Les wallets à connexion Google ou Apple : où sont vraiment tes clés ?",
+ "subject": "CryptoLuciole #10 — Où sont vraiment tes clés ?",
+ "vignette": "/vignettes/morpho.jpg",
+ "excerpt": "Les wallets à connexion Google ou Apple après l'incident Keplr, Aave qui rachète Avon, les perps sur actions validés puis contestés aux États-Unis, le bitcoin natif bientôt accepté sur Aave, Morpho Midnight sous la loupe et Strategy qui rachète ses STRC.",
+ "intro": "Cette semaine, on regarde où sont vraiment les clés d'un wallet à connexion Google, on suit la course au taux fixe entre Aave et Morpho, et on passe Morpho Midnight sous la loupe : prêter et emprunter à taux fixe, sur la blockchain.",
+ "menu": [
+  "🔦 **On éclaire** — les wallets à connexion Google ou Apple, où sont vraiment tes clés",
+  "✨ **Dans le faisceau** — Aave rachète Avon · les perps sur actions validés aux États-Unis, mais contestés · bientôt le bitcoin natif sur Aave",
+  "🔍 **Sous la loupe** — Morpho Midnight, le prêt à taux fixe",
+  "📊 **Les repères** — les cours de la semaine, ETF et liquidations",
+  "💡 **Ça brille** — Strategy rachète plus de STRC qu'elle n'achète de bitcoin",
+  "📖 **Définitions** — action privilégiée perpétuelle, multisig",
+  "✉️ **À toi de jouer** — taux fixe ou variable ?"
+ ],
+ "notionTitreTexte": "Les wallets à connexion Google ou Apple : où sont vraiment tes clés ?",
+ "notionTitreHtml": "Les wallets à connexion <em style=\"color:#28B092; font-style:normal;\">Google ou Apple</em>&nbsp;: où sont vraiment tes clés&nbsp;?",
+ "onEclaireAvis": "dernier",
+ "loupeNom": "Morpho Midnight",
+ "loupeSlug": "morpho",
+ "loupeSousTitre": "prêter et emprunter à taux fixe, sur la blockchain",
+ "risqueNiveau": "moyen",
+ "risqueSens": "moyen",
+ "cours7jLabel": "Depuis notre n°9 (7 jours)",
+ "coursHeure": "22h08",
+ "reperesDate": "au 10 novembre 2026",
+ "coursNote": "Cours au 10 novembre, 22h08 ; variations sur 7 jours. Source : DeFiLlama."
+}

@@ -45,3 +45,5 @@ conclusion (comparaison, classement, « X gagne plus que Y »).
   sans login par émetteur et par réseau : `app.rwa.xyz/stocks`, `/platforms/<xstocks|bstocks|robinhood>`,
   `/networks/<robinhood|solana>`. Limite : la répartition d'Ondo par chaîne et les parts de marché
   sont derrière login.
+- Depuis le 2026-11-11 : mesurer l'**adoption** des RWA (détenteurs, adresses actives, taux
+  d'utilisation en DeFi) → voir [[sources-rwa-adoption]].

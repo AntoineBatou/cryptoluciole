@@ -1,12 +1,20 @@
 ---
 name: style-editorial
-description: "Fiche de style évolutive de Marc — voix, tics, à éviter, à faire ressortir (à enrichir à CHAQUE correction)"
+description: "JOURNAL des corrections de style de Marc (ajout seul, daté, avec ses citations et les exemples) — l'état à jour des règles est dans style-regles"
 metadata: 
   node_type: memory
   type: feedback
   originSessionId: 90507c6d-d393-4d8b-99c7-5a756f3f0a77
-  modified: 2026-10-12T21:06:52.335Z
+  modified: 2026-11-11T12:00:00.000Z
 ---
+
+## 📒 Statut de ce fichier (depuis le 2026-11-11)
+Ce fichier est le **JOURNAL** : chaque correction de Marc y est ajoutée, datée, avec sa citation,
+le pourquoi et l'exemple. **On n'y supprime rien.** L'**état à jour** des règles, classé par thème
+et par rubrique, est dans [[style-regles]] : c'est lui qui tranche quand deux entrées d'ici se
+contredisent (la plus récente gagne). À chaque correction : (1) ajouter l'entrée ici, en fin de
+fichier ; (2) mettre à jour la ligne correspondante dans [[style-regles]].
+Les mentions « ↪ Remplacé / précisé le … » signalent les entrées dont la règle a évolué.
 
 ## ⚠️ RITUEL OBLIGATOIRE (zéro raté)
 1. **Au DÉBUT de chaque édition / séance de rédaction CryptoLuciole**, ressortir
@@ -60,6 +68,9 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
   intégrés (« un LST, chez Lido le stETH »).
 - **Pas d'anglicismes inutiles / vocabulaire cohérent.** « liquid restaking » →
   « restaking ». Simplifier les variantes.
+  ↪ *Précisé les 2026-07-14, 10-19 et 11-10 : le terme anglais D'USAGE reste (vault, bridge, wrapped,
+  bad debt, social recovery), glosé à la 1re occurrence. Ce qui est visé ici, ce sont les variantes
+  inutiles, pas le jargon que le lecteur rencontre.*
 - **Éviter le spéculatif vague.** Il a retiré le « risque de domino » (systémique
   hypothétique). Préférer des risques concrets et étayés au catastrophisme.
 - **Lier au passé.** Quand une notion a déjà été traitée, ajouter le lien vers le
@@ -133,6 +144,8 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
   AVANT, on ne réécrit jamais en douce. Garder le texte validé comme source.
 
 - **Vérifier les TOURNURES/expressions avant envoi (anti-anglicisme machinal).**
+  ↪ *Précisé le 2026-07-14 : le critère est « le mot qu'un praticien utiliserait à l'oral ». Un terme
+  anglais consacré vaut mieux qu'une périphrase française que personne n'emploie.*
   Marc a tiqué sur « actions de bourse on-chain » → « on dirait traduit
   machinalement de l'anglais ». Avant d'envoyer, vérifier que les formulations
   « se disent » vraiment en français naturel ; éviter le calque de l'anglais
@@ -460,6 +473,8 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
   générale.
 
 - **🔴 Le lecteur ne déduit pas tout : après les faits, écrire la conclusion (2026-09-10).**
+  ↪ *Précisé le 2026-11-10 : la conclusion reste, en gras, mais SANS formule d'annonce systématique
+  (« Dit simplement : »). Et le lecteur-type n'est plus « débutant » depuis le 2026-10-19.*
   Sur l'actu Strategy, j'avais donné tous les éléments — le tableau vendu/racheté, l'écart de +33 %,
   les ~20 100 $ par bitcoin — sans jamais énoncer ce qu'ils signifient. Marc : « tu donnes tous les
   faits mais ne conclus pas donc on sait pas trop […] note-toi ça ça peut être important, **le lecteur
@@ -549,6 +564,119 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
 - **Registre pro, pas « parlé bébé »** : « on y en échange beaucoup, mais on y en garde peu » → « le volume est élevé, mais la valeur détenue reste faible ».
 - **REPÈRES : prix arrondis au dollar, variations au pour cent** (ex. ~106 $, −12 %) : les décimales nuisent à la lisibilité (Marc, 2026-10-13).
 
+- **🔼 LE NIVEAU DU LECTEUR MONTE (décision de Marc, 2026-10-19).** « J'élève le niveau du lecteur
+  peu à peu, je me rends compte que les débutants ça ne les intéresse pas au final. » Le lecteur-type
+  « Grégoire » **a désormais les bases** : wallet, seed phrase, stablecoin, swap, staking, gas, DEX.
+  **Why :** l'audience qui accroche est celle qui veut monter en compétence ; réexpliquer les
+  fondamentaux la fait décrocher sans retenir de nouveaux débutants.
+  **How to apply :** se demander pour chaque explication « est-ce un fondamental que ce lecteur
+  connaît déjà ? » — si oui, une incise ou rien. En revanche les règles de clarté NE changent PAS :
+  le jargon *technique* nouveau (EIP-7702, bundler, BBO, PT…) se définit toujours au fil de l'eau,
+  la progression principe → mécanique → usages reste, les exemples chiffrés ronds restent. Les
+  mentions « Grégoire, débutant » plus haut dans cette fiche sont à lire avec ce nouveau niveau.
+  Ce n'est pas un passage en mode expert : on monte d'un cran, progressivement.
+
+- **Prévenir d'un risque = expliquer le mécanisme, pas aligner des stats alarmantes (2026-10-19).**
+  Sur ON ÉCLAIRE #7 (smart accounts), Marc a fait retirer le paragraphe « selon Wintermute, plus de
+  97 % des délégations 7702 pointaient vers des sweepers… surtout des clés déjà volées » : « je m'en
+  fous, l'idée c'est d'expliquer comment ça marche, ce que ça apporte et bien sûr prévenir du risque,
+  mais pas de faire un paragraphe sur des stats alarmantes et passées — surtout si c'était des trucs
+  hackés avant, ça sonne un peu manipulé ».
+  **Why :** un chiffre choc qui ne concerne pas vraiment la situation du lecteur (ici, des wallets déjà
+  compromis) gonfle la peur sans rien lui apprendre, et le lecteur le perçoit comme de la manipulation.
+  **How to apply :** pour un risque, se demander « est-ce que ce chiffre décrit un danger qui touche CE
+  lecteur aujourd'hui ? ». Si oui (ex. un montant perdu par le mécanisme expliqué), il peut rester ;
+  si c'est une stat de contexte, ancienne ou qui demande une nuance pour ne pas tromper, la couper
+  et garder le mécanisme + le réflexe. Ne pas en faire une interdiction de tout chiffre de risque.
+
+- **Relecture de Marc sur ON ÉCLAIRE #7 (smart accounts, 2026-10-19, texte noté 8,5/10 avant).**
+  Ses retouches et ses questions, à lire comme des exemples :
+  1. **Un avantage se compare à ce que le lecteur fait VRAIMENT aujourd'hui.** « Si l'appli est piratée,
+     ta perte max est 100 USDC, pas tout ton wallet » → Marc : « c'était déjà le cas, si je dépose
+     100 $ sur Aave, Aave ne peut pas taper dans mes autres fonds ». Le comparatif était un homme de
+     paille. Se demander : quelle est l'alternative réelle actuelle (déposer chez l'appli, approve
+     illimité, signer à chaque fois…) et en quoi la nouveauté fait mieux qu'ELLE.
+  2. **Ne jamais réserver une capacité à une variante sans dire pourquoi.** « Sur un smart account
+     ERC-4337 : passkey, gardiens… » laissait croire qu'en 7702 c'est impossible (« trompeur »). La
+     vraie nuance : possible aussi, mais la clé d'origine peut contourner. Dire la cause.
+  3. **Lecteur qui monte en niveau = il demande « et après la mise en place ? ».** Présenter deux
+     options par leur seul mode d'installation ne suffit plus : dire ce qui change ENSUITE (pouvoirs,
+     sécurité réelle, usage en pratique, qui utilise quoi).
+  4. **Une affirmation qui ouvre une question évidente doit y répondre.** « La clé garde tous ses
+     pouvoirs » → « alors à quoi ça sert ? ». Écrire la conséquence (UX oui, protection contre le vol
+     de la seed non).
+  5. Ses coupes : le détail du sweeper et de l'annulation (le risque tient en un paragraphe +
+     réflexes) ; « MetaMask te le propose peut-être déjà » (non vérifié). Il a écrit lui-même une
+     intro d'annonce courte (« Décryptons ensemble comment cela fonctionne et ce que ça apporte ») :
+     une phrase d'annonce en ouverture de rubrique lui va, la chasse à l'échafaudage vise le corps.
+  6. **2e relecture (2026-10-20) — il coupe ce qui redit ou dramatise :** « c'est-à-dire un compte
+     programmable » dans l'intro (la définition vient juste après) ; « sans limite de montant ni de
+     durée » (redit « peut tout faire ») ; « tous tes jetons, et tout ce qui y arrivera plus tard » et
+     « Concrètement, le risque pour toi, c'est de » → « Le risque est de » ; dans l'avis, la phrase
+     finale qui re-martelait le danger (« la plus puissante de toutes… ») : **le risque est déjà dit
+     dans sa section, l'avis conclut sur le verdict sans le répéter.** Il ajoute « (multisig) » pour
+     nommer le terme que le lecteur connaît.
+  7. **Un nom qui revient plusieurs fois doit être situé.** Safe était cité 3 fois sans dire où il se
+     range par rapport à 4337/7702 → Marc : « on n'explique pas tellement la différence ». Tout acteur
+     récurrent = une phrase qui le place dans la grille du texte.
+  8. **Pas de traduction littérale d'un terme que personne n'emploie en français : garder l'anglais
+     d'usage et le définir.** « Récupération sociale » → Marc : « une traduction littérale sonne trop
+     IA ». Les médias FR écrivent « social recovery ». Règle : on traduit seulement si le français est
+     réellement employé ; sinon terme anglais en italique + définition. (Comme *smart account*,
+     *session key*, *paymaster*.)
+- **Relecture de Marc sur l'actu MSCI #7 (2026-10-20, texte noté 8,5/10 avant).**
+  1. **Le mot que le lecteur connaît plutôt que la périphrase** : « fonds passifs » → « ETFs » ;
+     « trésoreries crypto » → « DAT » (le sigle de notre dossier, développé à la 1re occurrence).
+     Rester cohérent avec le vocabulaire déjà installé dans nos contenus.
+  2. **Il coupe les noms de personnes non nécessaires** (« Michael Saylor et son directeur général
+     Phong Le » → « Strategy conteste ») et la phrase-conséquence qui explicitait une évidence
+     (« Conséquence : émettre des actions ne faisait plus acheter… »).
+  3. **Fusionne deux phrases courtes qui forment une seule idée** (« MSCI avait renoncé… en gardant
+     une mesure provisoire… »).
+  4. **Renvoyer à notre contenu le plus approfondi** : pour le modèle de financement des DAT,
+     lien vers le dossier DAT plutôt que vers le numéro 3 (« parle du dossier qu'on a fait »).
+  5. Il a déplacé l'exemple Yellow Cake dans l'encadré de définition (« Pour rappel, … ») :
+     un exemple qui illustre une définition peut vivre dans l'encadré.
+- **Relecture de Marc sur l'actu Bittensor #7 (2026-10-20).** « Il manque pourquoi ce choix, il y a
+  bien une raison ? » → **une nouveauté technique s'explique par le problème qu'elle résout** (ici :
+  le coût quadratique de Yuma qui plafonne à 256 ; les subnets visés), AVANT ses conséquences. Décrire
+  ce que fait une mise à jour sans dire pourquoi elle existe = trou dans l'explication, même si le
+  compromis est bien analysé.
+- **Relecture de Marc sur SOUS LA LOUPE Papertrade #7 (2026-10-21).**
+  1. **Dire la thèse sur laquelle repose le modèle** : il a ajouté « le protocole se base sur la théorie
+     que les traders à levier élevé perdent sur le long terme… sans besoin de liquidity providers ».
+     Un protocole s'explique aussi par son pari de départ, pas seulement par sa tuyauterie.
+  2. **« Comment est-on rémunéré quand on stake ? » doit avoir une réponse explicite** : qui paie, en
+     quoi, selon quelle clé de répartition, à quelles conditions. Annoncer « on le stake » puis enchaîner
+     sur un seuil de LP = trou. Pour tout jeton qui rapporte : source(s) du revenu en puces.
+  4. **« On peut trader quoi dessus ? » : le fait produit de base doit sauter aux yeux** (quels actifs,
+     quels marchés) dès « En bref » et dans « Comment ça marche », pas noyé dans une subordonnée.
+  5. **Un chiffre surprenant appelle son explication** : « reperdu ensuite 450 k$ » → « explique
+     pourquoi et comment ». Ne jamais poser un retournement sans sa cause.
+  6. Il coupe la nuance technique « en réalité, l'écart sur l'ether est d'un cran… » (précision de
+     second ordre) et précise « (donc le prix de référence sur Papertrade) » pour relier les deux mondes.
+  3. Il retouche « En bref » pour que la promesse du jeton soit concrète (« une fois staké, permet
+     d'obtenir un rendement sur les pertes futures ») et ajoute « et à liquider la position ».
+- **Relecture de Marc sur REPÈRES et ÇA BRILLE #7 (2026-10-21).**
+  1. **Une cause de mouvement s'écrit comme une chaîne, pas comme une liste de faits** : « ETF +550 M$,
+     presque tout le lundi ; actions en hausse aidées par le pétrole ; les deux ont probablement joué »
+     → « pas très clair ». Écrire : cause probable → mécanisme → conséquence (« dû à la baisse du pétrole :
+     elle apaise la crainte d'inflation et fait remonter les actions, que le bitcoin suit ; les ETF en
+     profitent »). Les flux ETF sont souvent un symptôme, pas la cause. Couper le détail parasite
+     (« presque tout le lundi »).
+  2. **Il demande le « pourquoi ça remonte aujourd'hui »** quand les cours se retournent entre la
+     rédaction et l'envoi : REPÈRES doit expliquer le dernier mouvement, pas seulement la semaine.
+  3. ÇA BRILLE : il coupe les nuances secondaires (« l'OI monte aussi avec les cours », « plus
+     d'activité ≠ plus de revenus », « pour le trader : accès à l'or depuis son wallet »). La data
+     brille par son chiffre + sa lecture ; deux puces d'avis suffisent.
+- **Relecture de Marc sur l'actu fiscalité #7 (2026-10-20).**
+  1. **Il étend la question aux cas DeFi** : à l'USDT il ajoute BOLD (adossé à de la crypto) et
+     USDe (delta neutre). Réflexe : quand une règle vise une catégorie (EMT), se demander ce que
+     deviennent les objets DeFi natifs qui n'y rentrent pas — c'est notre angle.
+  2. **Il coupe le paragraphe de procédure** (rejet de la partie recettes en commission, 31-3) :
+     le tableau + le calendrier suffisent ; la mécanique parlementaire détaillée ne sert pas le
+     lecteur.
+
 - **Relecture de Marc sur ON ÉCLAIRE #8, preuve de travail utile (2026-10-27).** v2 notée 8,5 par
   le vérificateur, mais **refusée** par Marc :
   1. **Pas d'expérience personnelle** (« on a miné Pearl », GPU loué, gains estimés, test vLLM) :
@@ -587,7 +715,8 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
      « critère à surveiller : part des revenus venant de vrais clients… ». Ici, sur une notion
      pédagogique, **notre avis compte peu** → avis court qui conclut sur l'idée clé. Ailleurs
      (actus, LOUPE, et une notion où notre lecture apporte vraiment), l'avis développé + la
-     métrique à suivre restent la norme (cf. [[feedback-analyse-tranchee]]). Ce n'est **pas**
+     métrique à suivre restent la norme (cf. [[feedback-analyse-tranchee]]) — ↪ *corrigé le
+     2026-11-10 : un avis = UNE thèse propre à l'actu, pas un gabarit gagnant / durable / métrique*. Ce n'est **pas**
      une règle par rubrique : se demander « notre avis apporte-t-il quelque chose ici ? ».
   8. **Pas de mise en garde anti-arnaque hors sujet** : il retire l'encadré « aucun token FLOP
      n'existe, tout FLOP en vente est une arnaque ». Marc : « je ne suis pas là pour prévenir des
@@ -689,11 +818,18 @@ mêmes écarts. « Il ne doit pas y avoir de raté. » Demandé le 2026-06-24.
      Et la marge en options concerne le VENDEUR (l'acheteur paie la prime comptant) : le progrès
      de Derive = moins de garantie bloquée pour vendre/couvrir (marge de portefeuille).
 
-## Note de vocabulaire (échanges privés, pas le texte)
-- Marc écrit souvent « stacking » → le terme correct est **staking**.
-- Règle FR rappelée et validée : « se rappeler qqch » (sans « de »).
-
-Voir [[glossaire]], [[etat-projet]].
+- **Un exemple chiffré plutôt qu'une analogie, même courte (dossier Metric, 2026-10-30).** Marc a retiré
+  « Comme au bureau de change « 0 commission » » (déjà réduite à une demi-phrase) et demandé à la place
+  « un exemple : pool XXX, prix d'achat, prix de vente, prix de l'oracle ». Il a aussi supprimé l'amorce
+  d'une définition (« Quand ceux qui échangent avec toi en savent plus que ton prix. ») pour garder
+  seulement le scénario concret qui suit. Et « est reperdue » → « a été reperdue » (un chiffre mesuré
+  sur une période passée se dit au passé).
+  **Why :** pour le lecteur des dossiers (avancé), l'analogie n'apporte rien que le calcul ne montre
+  mieux ; une définition abstraite suivie d'un exemple fait doublon.
+  **How to apply :** dans un dossier, illustrer par des prix (référence / ask / bid, calcul de l'aller-
+  retour) repris d'un exemple déjà posé dans le texte ; ne pas faire précéder un scénario concret d'une
+  phrase-définition générale. Placer un tableau comparatif de synthèse TÔT (dès que le principe est
+  posé), comme carte de lecture, plutôt qu'en récapitulatif final.
 
 - **« Notre avis » d’ON ÉCLAIRE = situer le phénomène, pas seulement trancher un duel (numéro 9, 2026-11-03).**
   Sur le deposit token, Marc n’a pas aimé l’avis « ça concurrence ton compte rémunéré, pas tes USDC ».
@@ -739,3 +875,35 @@ Voir [[glossaire]], [[etat-projet]].
   **How to apply :** choisir un chiffre pertinent pour lui-même ; s'il montre un mouvement (hausse,
   baisse), en expliquer les causes sourcées (idéalement en liste) et les perspectives ; ne relier à
   une autre rubrique que si le lien tient sans supposition. Même réflexe pour les avis et les actus.
+
+- **ON ÉCLAIRE : sobre, sans dramatiser ni s'étaler sur ce qui est secondaire (numéro 10, 2026-11-10).**
+  Sur l'ON ÉCLAIRE « embedded wallets » (8,5/10 au vérificateur), Marc a : retiré « sans avoir rien signé »
+  de l'accroche (« ont vu leurs fonds disparaître » suffit) ; glosé la seed phrase en passant (« une série de
+  mots dont tu es le seul gardien ») ; préféré « morceaux » / « parties » à « parts » pour la clé découpée ;
+  retiré l'attribution « Chez Web3Auth, d'après sa documentation » en tête du schéma ; coupé la puce
+  « comptes seed phrase et MetaMask non touchés », la puce « en cas d'incident annoncé » (consignes Keplr) et,
+  dans l'avis, toute la partie « ce qu'on surveillera : le rapport d'incident… ».
+  **Why :** la notion est le sujet, l'incident n'est qu'une accroche ; les détails d'incident et les
+  consignes de crise alourdissent sans servir la compréhension du mécanisme.
+  **How to apply :** dans un ON ÉCLAIRE, garder l'actu au strict nécessaire pour accrocher ; pas de
+  liste de consignes de crise ; avis = la thèse + l'enseignement, sans « à surveiller » quand ça n'apporte
+  rien ; vocabulaire simple et constant (un même mot pour un même objet).
+
+- **Actus : termes anglais d'usage, pas de « Dit simplement » systématique, pas de détails de procédure (numéro 10, 2026-11-10).**
+  Sur DANS LE FAISCEAU, Marc a remplacé « jeton enveloppé » → « wrapper / BTC wrappé », « pont » → « bridge » ;
+  retiré « (le régulateur américain des marchés de dérivés) » après CFTC, « Dit simplement : » devant la phrase de
+  conclusion (gardée en gras seule), « selon Babylon à l'unanimité des votes » et « C'est un vote d'orientation »,
+  les candidats non confirmés (Kalshi, Coinbase), « et les fintechs », et la condition « à condition que le plafond
+  soit vite relevé » dans l'avis Babylon. Sur SOUS LA LOUPE, il a retiré la ligne « Et sur un an ? impossible à
+  dire », le paragraphe des deux voix (Frambot / Sentora) et « Coinbase ne publie pas ses taux ».
+  **Why :** le lecteur a les bases ; le jargon crypto anglais est celui qu'il rencontre ; les précisions de procédure,
+  les non-informations (« pas de données sur un an », « ne publie pas ») et les citations d'acteurs alourdissent.
+  **How to apply :** anglicismes d'usage (wrapped, bridge, vault, bad debt…) ; conclusion en gras sans formule
+  d'annonce ; ne pas écrire ce qu'on ne sait pas sauf si c'est utile au lecteur ; avis = la thèse, sans condition
+  ajoutée en fin de phrase. Voir [[feedback-analyse-tranchee]].
+
+## Note de vocabulaire (échanges privés, pas le texte)
+- Marc écrit souvent « stacking » → le terme correct est **staking**.
+- Règle FR rappelée et validée : « se rappeler qqch » (sans « de »).
+
+Voir [[style-regles]], [[glossaire]], [[etat-projet]].

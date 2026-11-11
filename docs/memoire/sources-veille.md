@@ -33,7 +33,7 @@ protocoles/définitions, tout le contenu), EN PLUS des recherches web et de
 - **Blockhead** — blockhead.co. News Ethereum + protocoles spécialisés. Sourcing solide, French-friendly.
 - **The Block Data** — theblock.co/data. Dashboards temps réel L2/DeFi TVL/métriques. Dashboard par chaîne + protocole.
 - **MetaMask News** — metamask.io/news. RWA + tokenization narratives. Angle retail + accessibility.
-- **RWA.xyz** — app.rwa.xyz. Analytics dashboard RWA tokenized. Distributed + represented value en direct. **ESSENTIEL pour RWA tracking**.
+- **RWA.xyz** — app.rwa.xyz. Analytics dashboard RWA tokenized. Distributed + represented value en direct. **ESSENTIEL pour RWA tracking**. Agrégats lisibles sans login + script d'adoption : voir [[sources-rwa-adoption]] (avec DeFiLlama RWA, Token Terminal, tokenizedstonks).
 - **CoinMarketCap AI** — coinmarketcap.com/cmc-ai/. Synthèses token-by-token (TAO, HYPE, MORPHO, etc.). Baseline fact-checking rapide.
 - **Cryptopolitain** — cryptopolitain.com (édition FR de Cryptopolitan). News crypto **de volume** en français (couverture large, rapide). Bon pour **ratisser et ne rien rater**, MAIS info brute parfois traduite vite → **à recouper systématiquement avant de citer un chiffre** (ne pas traiter comme source pédagogique comme Deblock). Ajoutée 2026-06-30, pas encore testée par le veilleur.
 

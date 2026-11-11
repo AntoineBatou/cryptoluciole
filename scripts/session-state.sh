@@ -9,7 +9,7 @@ echo "=== ÉTAT RÉEL CryptoLuciole (auto — $(date +%Y-%m-%d)) ==="
 nums=$(ls site/app/emails/issues/ 2>/dev/null | grep -oE 'issue-[0-9]+' | tr '\n' ' ')
 echo "Numéros publiés (emails)   : ${nums:-aucun}"
 
-arch=$(grep -oE 'id: *"[0-9]+"' site/app/numeros/issues.ts 2>/dev/null | grep -oE '[0-9]+' | sort -un | tr '\n' ' ')
+arch=$(grep -oE '"?id"?: *"[0-9]+"' site/app/numeros/issues.ts 2>/dev/null | grep -oE '[0-9]+' | sort -un | tr '\n' ' ')
 echo "Archive site (issues.ts)   : ${arch:-aucun}"
 
 slugs=$(grep -oE 'slug: *"[a-z-]+"' site/app/dossiers/dossiers.ts 2>/dev/null | grep -oE '"[a-z-]+"' | tr -d '"' | tr '\n' ' ')

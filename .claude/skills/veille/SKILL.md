@@ -19,9 +19,10 @@ on en est) — la transparence est un invariant du projet.
 1. **Date + dossier.** Récupère la date du jour (`date +%F`) et assure-toi que le dossier
    `veille/` existe à la racine du repo (`mkdir -p veille`).
 
-2. **Rappel des cibles.** Lis rapidement
-   `~/.claude/projects/-Users-marc-Documents-claude-newsletter/memory/sources-veille.md`
-   (sources + sujets prioritaires) pour cadrer le veilleur.
+2. **Rappel des cibles.** Lis dans `~/.claude/projects/-Users-marc-Documents-claude-newsletter/memory/` :
+   `profil-editorial.md` (ce que Marc retient et écarte, grille de tri) et `sources-veille.md`.
+   Relève les sujets des **deux derniers numéros** (`site/app/numeros/issues.ts`) et les promesses
+   en cours (« on y reviendra ») notées dans `etat-projet.md`.
 
 3. **Lance le veilleur** via l'outil Task (subagent_type: `veilleur`). Donne-lui :
    - la date du jour ;
@@ -33,14 +34,29 @@ on en est) — la transparence est un invariant du projet.
    grappes de catégories (ex. macro+BTC+ETH d'un côté, DeFi+L2+perp de l'autre) puis
    fusionner leurs sorties dans un seul fichier daté. Par défaut, un seul suffit.
 
-4. **Restitue à Marc** : un résumé court (les 2-3 trucs forts 🔥 + les pistes
-   newsletter), et le chemin du fichier. Ne recopie pas tout le fichier.
+4. **Trie toi-même, puis restitue à Marc.** Le veilleur (Haiku) ratisse et étiquette ; le choix
+   des pistes est ton travail. Relis ses items avec `profil-editorial.md` :
+   - écarte ce que Marc écarte d'habitude (vu partout sans angle, déjà traité, troisième numéro
+     d'affilée, pas mûr, simple allégation, sujet de dossier) et **dis pourquoi** ;
+   - pour chaque piste gardée, vérifie qu'une **source primaire** existe (ouvre-la) ;
+   - regarde les **signaux chiffrés** : un chiffre qui bouge sans que la presse en parle est
+     souvent la meilleure piste ;
+   - avant de figer une piste de protocole ou de produit, interroge X sur deux semaines
+     (mémoire `feedback-questionner-x.md`) pour voir l'angle qu'on rate.
+   Présente à Marc **un tableau rubrique / idée / ce que ça apporte au lecteur / source primaire**,
+   puis la liste des pistes écartées avec leur motif, puis les suites à donner à nos numéros.
+   Donne le chemin du fichier ; ne recopie pas tout.
+
+4 bis. **Enregistre ses choix.** Quand Marc a retenu et écarté, ajoute une ligne par piste au
+   « Registre des choix » de `profil-editorial.md`, avec son motif **dans ses mots**. Quand un
+   motif revient trois fois, remonte-le dans les tableaux du profil. C'est ce registre qui fait
+   que la veille lui ressemble de plus en plus.
 
 5. **Mémoire des sources (toi = greffier).** Si le veilleur a remonté des **nouvelles
    sources** dans « 🆕 Nouvelles sources repérées », propose à Marc de les **promouvoir**
-   dans `…/memory/sources-veille.md`. Après son OK, ajoute-les à la section « Sources à
-   consulter » de ce fichier (un seul rédacteur de la mémoire = pas de conflit). C'est le
-   mécanisme par lequel la liste de sources grandit dans le temps.
+   dans `…/memory/sources-veille.md`. Après son OK, ajoute-les à ce fichier (un seul rédacteur de
+   la mémoire = pas de conflit), puis recopie les fichiers de mémoire modifiés vers
+   `docs/memoire/` (voir `memoire-miroir-cloud.md`, contrôle d'anonymisation compris).
 
 ## Souplesse
 

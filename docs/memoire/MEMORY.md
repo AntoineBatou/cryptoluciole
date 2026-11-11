@@ -1,10 +1,12 @@
 # Mémoire — CryptoLuciole
 
-- [État du projet](etat-projet.md) — #1 à #5 publiés ; dossier DAT publié (/dossiers/dat) + PDF téléchargeable
+- [État du projet](etat-projet.md) — #1 à #10 publiés (#10 le 10/11 à 24 abonnés) ; dossiers DAT + Metric publiés
 - [Journal de bord](journal-de-bord.md) — CONSIGNE : vérifier le code en début de session + tracer numéros/nouveautés en fin de session
 - [Envoi Resend](envoi-resend.md) — bascule beehiiv → Resend, comment ajouter un numéro
 - [Glossaire](glossaire.md) — source unique des définitions, liens auto à maintenir par Claude
-- [Style éditorial](style-editorial.md) — fiche vivante de la voix de Marc, à enrichir à chaque correction
+- [Règles de style À JOUR](style-regles.md) — état actuel des règles par thème et par rubrique ; lu en premier par les agents ; à mettre à jour après chaque correction
+- [Journal de style](style-editorial.md) — toutes les corrections de Marc datées, avec ses citations (ajout seul, ne rien supprimer)
+- [Profil éditorial](profil-editorial.md) — sujets que Marc retient / écarte, grille de tri de la veille, registre des choix à compléter à chaque numéro
 - [Vérificateur des fiches site](verificateur-fiches-site.md) — les fiches protocoles passent au vérificateur comme la newsletter (seuil 8, 2-3 boucles)
 - [Vision site](vision-site.md) — long terme : site = "Obsidian intelligent" (tutos vidéo, fiches protocoles)
 - [Sources primaires DeFiLlama](fact-check-sources-primaires.md) — endpoints qui marchent (cours historiques, frais de chaîne, taux d'emprunt CDP) + ce qui est devenu payant
@@ -16,5 +18,15 @@
 - [PDF dossier — mode d'emploi](pdf-dossier-playbook.md) — recette réutilisable pour le PDF « type livre » d'un dossier (Paged.js + les 2 pièges : version Chrome, feuille -s ignorée)
 - [Adresse de test email](adresse-test-email.md) — adresse de test Resend (anonymisée ici — PAS le userEmail système)
 - [Mémoire miroir cloud](memoire-miroir-cloud.md) — docs/memoire/ suit dans git pour travailler depuis une tablette ; resync + ré-anonymisation obligatoires
-- [Avis tranchés = plus-value](feedback-analyse-tranchee.md) — Marc veut des « Notre avis » analytiques : gagnants, durable vs temporaire, bonne métrique
+- [Avis tranchés = plus-value](feedback-analyse-tranchee.md) — une vraie thèse propre à l’actu en 2-3 phrases ; PAS le gabarit gagnant/durable/métrique (corrigé le 10/11)
 - [Renvoi aux numéros passés](feedback-renvoi-numeros.md) — écrire « notre numéro 5 » + lien /numeros/5, jamais « le #5 » seul
+- [Typo & gabarit email](feedback-typo-gabarit.md) — repartir du #1, espaces insécables avant : ; ? ! (deux-points en début de ligne au #8)
+- [Lecteur des dossiers](lecteur-dossiers.md) — dossiers = lecteur avancé (LVR/IL = rappels), ≠ Grégoire de la newsletter
+- [Dossier Metric](dossier-metric.md) — 2e dossier (DEX à prix oracle), PUBLIÉ le 2026-10-30 ; md source + convertisseur réutilisable
+- [Sélection des sujets](feedback-selection-sujets.md) — méthode validée : originalité, pas les news vues partout, jamais 3 numéros d'affilée sur un sujet, peu dépendre d'OAK
+- [Idées de dossiers](idees-dossiers.md) — oracles on-chain (traces Apyx/Morpho dans le wiki) + rollups/L2Beat, à traiter plus tard
+- [Questionner X avant de figer](feedback-questionner-x.md) — réflexe validé : chercher sur X les angles manqués d'une analyse (treg x.search.posts), puis recouper
+- [MCP OAK Research](mcp-oak-research.md) — accès Premium OK ; unusual_activity pour ÇA BRILLE, yields (poolId DeFiLlama), garde-fous originalité
+- [Projet onchain](reference-projet-onchain.md) — atelier on-chain central (../onchain/docs) : le consulter et y reporter les leçons on-chain
+- [Lien après correction](feedback-lien-apres-correction.md) — renvoyer le lien du fichier modifié à chaque correction (Marc le ferme pendant)
+- [Sources RWA & adoption](sources-rwa-adoption.md) — rwa.xyz / DeFiLlama RWA / Token Terminal / tokenizedstonks testés le 11/11 + script `../onchain/scripts/rwa_adoption.py` ; ne jamais additionner deux sites

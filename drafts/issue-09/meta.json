@@ -1,0 +1,29 @@
+{
+  "date": "Mercredi 4 novembre 2026",
+  "titre": "Deposit tokens : quand les banques émettent leurs propres jetons",
+  "subject": "CryptoLuciole #9 — Les deposit tokens",
+  "vignette": "/vignettes/pendle.jpg",
+  "excerpt": "Le deposit token expliqué avec SoFi, la DTCC qui tokenise les actions américaines, l'ETF bitcoin « protégé » de BlackRock, PendleLoop sous la loupe, et pourquoi les stablecoins reculent depuis mai.",
+  "intro": "Cette semaine, on regarde ta banque arriver sur la blockchain avec le *deposit token*, on suit la DTCC qui tokenise les actions américaines, et on passe PendleLoop sous la loupe : le levier en un clic, jusque sur les actions.",
+  "menu": [
+    "🔦 **On éclaire** — le deposit token, ton dépôt bancaire en jeton",
+    "✨ **Dans le faisceau** — la DTCC tokenise les actions américaines · l'ETF bitcoin « protégé » de BlackRock",
+    "🔍 **Sous la loupe** — PendleLoop, le levier en un clic",
+    "📊 **Les repères** — les cours de la semaine, Binance et les midterms",
+    "💡 **Ça brille** — pourquoi les stablecoins ont perdu 20 Md$ depuis mai",
+    "📖 **Définitions** — health factor, jeton permissionné",
+    "✉️ **À toi de jouer** — ta question"
+  ],
+  "notionTitreTexte": "Le deposit token : ta banque arrive sur la blockchain",
+  "notionTitreHtml": "Le <em style=\"color:#28B092; font-style:normal;\">deposit token</em>&nbsp;: ta banque arrive sur la blockchain",
+  "onEclaireAvis": "dernier",
+  "loupeNom": "PendleLoop",
+  "loupeSlug": "pendle",
+  "loupeSousTitre": "le levier en un clic, jusque sur les actions",
+  "risqueNiveau": "élevé",
+  "risqueSens": "eleve",
+  "cours7jLabel": "Depuis notre n°8 (7 jours)",
+  "coursHeure": "12h33",
+  "reperesDate": "au 4 novembre 2026",
+  "coursNote": "Cours au 4 novembre, 12h33 ; variations depuis notre [numéro 8](https://www.cryptoluciole.com/numeros/8) (28 octobre). Source : DeFiLlama."
+}

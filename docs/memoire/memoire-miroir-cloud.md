@@ -17,6 +17,11 @@ que Marc puisse travailler depuis une tablette via `claude.ai/code`, Mac éteint
 = session perdue. Seul ce qui est dans git suit. Sans ce miroir, le rédacteur perdait
 `style-editorial.md` et le vérificateur son barème : la boucle qualité tournait à vide.
 
+**Depuis le 2026-11-11** : les agents lisent la **mémoire locale en premier** et `docs/memoire/`
+seulement en repli (session cloud). Raison : le miroir du 4 novembre avait 12 leçons de style de
+retard, et le numéro 10 a été rédigé sans les leçons du numéro 7. La recopie vers le miroir est
+désormais une étape de fin de numéro (`CLAUDE.md`, boucle type, étape 6).
+
 **Comment l'appliquer** :
 - La **source de vérité reste `~/.claude/.../memory/`**. `docs/memoire/` ne se met pas à jour
   tout seul : resynchroniser avant un départ (`cp memory/*.md docs/memoire/`).

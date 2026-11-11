@@ -1,5 +1,11 @@
 # Spec — Couche IA pour CryptoLuciole : 4 agents
 
+> **Mise à jour du 2026-11-11.** Ce spec date du 25/06. Ce qui a changé depuis, et qui fait foi :
+> `CLAUDE.md` (boucle type d'un numéro), les fichiers `.claude/agents/*.md`, `drafts/README.md`
+> (assemblage par `build_issue.py`, dossier `versions/`), la mémoire `style-regles.md` (règles à
+> jour) + `style-editorial.md` (journal), `profil-editorial.md` (choix des sujets) et
+> `docs/calibrage-verificateur.md`. Les agents lisent la mémoire locale en premier.
+
 > Plan de référence figé le 2026-06-25 (via `/spec`). On construit ensemble, pas à pas.
 > Ce document décrit ce qu'on **ajoute** au workflow existant. Il ne change ni le
 > contenu, ni le workflow, ni l'esprit de la newsletter — il ajoute de l'IA par-dessus.

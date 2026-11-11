@@ -8,16 +8,31 @@ qu'on construit les agents.
 
 | Agent | Modèle | Comment le lancer | État |
 |-------|--------|-------------------|------|
-| 🔦 **Veilleur** (lit large, classe, ne rédige pas) | Haiku | **`/veille`** → écrit `veille/AAAA-MM-JJ.md` + remonte nouvelles sources | ✅ construit |
+| 🔦 **Veilleur** (lit large, étiquette avec la grille du profil, relève les signaux chiffrés, ne rédige pas) | Haiku | **`/veille`** → écrit `veille/AAAA-MM-JJ.md` ; je trie ensuite avec `profil-editorial.md` et te propose un tableau de pistes ; tes choix vont au registre du profil | ✅ construit |
 | ✍️ **Rédacteur** (une section à la fois, ton style) | Opus | dis « on rédige » / « on attaque la section X » → je lance le sous-agent `redacteur` ; sortie dans `drafts/` | ✅ construit |
-| ✅ **Vérificateur** (note /10, seuil 8, max 3 boucles) | Opus | lancé auto après le rédacteur : note → fait reprendre en silence jusqu'à ≥8 (max 3) → Marc ne lit que la version propre + bilan | ✅ construit |
+| ✅ **Vérificateur** (8 questions-tests bloquantes, prédiction des coupes de Marc, puis note /10 ; seuil 8, max 3 boucles) | Opus | lancé auto après le rédacteur : fait reprendre en silence jusqu'à ≥8 sans aucun NON (max 3) → Marc lit la version propre + bilan ; suivi dans `docs/calibrage-verificateur.md` | ✅ construit |
 | 🔍 **Fact-checker** (lit tout, web, ne change rien) | Sonnet | lancé avant l'envoi : vérifie chiffres + actualité, rapport ✅/⚠️/❓ + GO/NO-GO dans `factcheck/`, ne corrige rien (c'est moi qui corrige après) | ✅ construit |
 
-**Boucle type d'un numéro** : `/veille` → on choisit le sujet → rédacteur **une section
-à la fois** (mise en page soignée dès le brouillon) → vérificateur note **style ET mise en
-page** (reboucle si < 8) → tu valides/corriges (leçon de style capitalisée dans
-`style-editorial.md`) → section suivante → assemblage verbatim (`issues.ts` + `issue-0X.ts`)
-→ fact-checker → envoi Resend.
+**Boucle type d'un numéro** (mise à jour le 2026-11-11) :
+1. `/veille` → tableau de pistes (rubrique / idée / ce que ça apporte / source primaire) → tu
+   choisis ; tes choix et tes refus, avec ton motif, vont au registre de `profil-editorial.md`.
+2. Par section : **mini-brief de 3 lignes** (objectif, thèse, ce qui reste dehors) que tu valides
+   en un mot → rédacteur (**une section à la fois**) → vérificateur : **questions-tests
+   bloquantes**, prédiction de tes coupes, puis note (seuil 8, max 3 boucles).
+3. **Avant de te montrer la section**, je copie le brouillon dans
+   `drafts/issue-XX/versions/<rubrique>.avant-marc.md`. Tu valides ou corriges ; la version validée
+   reste `drafts/issue-XX/<rubrique>.md`. La paire avant / après sert d'exemple au numéro suivant.
+4. **Après ta relecture**, trois écritures, dans cet ordre : l'entrée datée au journal
+   `style-editorial.md` (ta citation, le pourquoi, l'exemple) ; la ligne mise à jour dans
+   `style-regles.md` ; une ligne dans `docs/calibrage-verificateur.md`. Puis commit des brouillons.
+5. Section suivante. À la fin : assemblage verbatim par **`python3 drafts/build_issue.py <n>`**
+   (voir plus bas) → fact-checker → mail de test → envoi Resend.
+6. Fin de numéro : recopier la mémoire vers `docs/memoire/` (contrôle d'anonymisation), commit.
+
+**Mémoire de style = deux fichiers** : `style-regles.md` (l'état à jour des règles, par thème et
+par rubrique : c'est ce que lisent d'abord les agents) et `style-editorial.md` (le journal, en
+ajout seul). Les agents lisent la mémoire locale `~/.claude/projects/…/memory/` en premier ;
+`docs/memoire/` n'est qu'un repli pour les sessions cloud.
 
 **Mise en page = au fur et à mesure** (décidé 2026-07-04) : la lisibilité visuelle
 (paragraphes bien séparés, gras au bon endroit — jamais sur un « 1 » seul, puces dès qu'il y
@@ -30,7 +45,13 @@ ne reste qu'un **coup d'œil de cohérence global léger**.
 mémoire = **fichiers** (les agents n'ont pas de mémoire interne).
 
 **Protocole** : 2 niveaux — newsletter (résumé 3 min) vs fiche site complète (cahier des
-charges : wiki d'abord → si absent, lancer `/analyse` du projet `../analyste-defi`).
+charges : wiki d'abord → si absent, lancer `/analyse` du projet `../analyste-defi` :
+`cd /Users/marc/Documents/claude/analyste-defi && claude -p "/analyse <protocole>"`, long, à lancer
+en arrière-plan ; le résultat arrive dans `analyses/` et dans le wiki. Commande non testée depuis ici).
+
+**Autres projets à consulter** : `../onchain/docs/sources-api.md` (endpoints et pièges : source
+unique, ne pas recopier ici) · `../onchain/scripts/rwa_adoption.py` (adoption des RWA) ·
+wiki Obsidian `…/Mon Drive/Obsidian/A/_wiki/` (concepts et protocoles).
 
 ---
 
@@ -80,7 +101,7 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 - **Lecteur-type** : « Grégoire », ~32 ans, **a déjà les bases** (wallet, stablecoins, swap, staking) et veut monter en compétence : comprendre les mécanismes ET savoir *comment faire*. **Le niveau monte au fil des numéros** (décidé 2026-10-19 : les purs débutants n'accrochent pas) — on ne réexplique plus les fondamentaux, mais on définit toujours le jargon technique au fil de l'eau.
 - **Edge** : profondeur DeFi vulgarisée et **actionnable**, pas « les news en plus court ».
 - **Approche tech (C — hybride)** : envoi via **Resend** (audience + emails) + **site web à construire à neuf** (cryptoluciole.com) pour l'archive des numéros + l'inscription, puis plus tard de la data crypto. **Le site reprend la charte CryptoLuciole** (= celle de la newsletter, ci-dessous). ⚠️ **trackpaw n'est PAS la base du site** : c'est seulement, plus tard, une *source de data* (chiffres) à afficher — jamais le squelette ni le design. Agents de veille : étendre `../analyste-defi` (Phase 4).
-- **Cadence** : 1×/semaine au départ (mardi+jeudi à terme). **2 actus par numéro** (pas 3).
+- **Cadence** : 1×/semaine au départ (mardi+jeudi à terme). **2 ou 3 actus par numéro** selon les semaines.
 - **Domaine** : cryptoluciole.com (OVH).
 - **Plateforme d'envoi** : **Resend** (bascule depuis beehiiv le 2026-06, beehiiv abandonné). Domaine vérifié d'envoi : **`send.cryptoluciole.com`** ; expéditeur `CryptoLuciole <mail@send.cryptoluciole.com>` (SPF/DKIM). **Inscription** branchée : formulaire du site → route `site/app/api/subscribe/route.ts` → ajout du contact à l'**audience Resend** PUIS envoi auto d'un **mail de bienvenue** (= le dernier numéro complet). Secrets `RESEND_API_KEY` + `RESEND_AUDIENCE_ID` dans `site/.env.local` (local, gitignored) ET dans les Environment Variables Vercel (prod). La clé API ne doit jamais être commitée ni écrite en mémoire.
 - **Périmètre du site** (à construire à neuf, charte CryptoLuciole) : (1) accueil brandé + inscription, (2) archive des numéros, (3) plus tard : section data (prix/TVL, éventuellement chiffres issus de trackpaw) **et tutos pas-à-pas** (ouvrir un wallet, faire du staking…).
@@ -98,9 +119,10 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 
 - **Contenu = HTML email complet** (header/footer inclus, contrairement à l'ancienne version beehiiv body-only). Fichier de référence : `cryptoluciole-01-resend.html`.
 - **Mail de bienvenue automatique** : à l'inscription, le nouvel abonné reçoit le **dernier numéro** en transactionnel. La sélection est AUTO via `site/app/emails/latest.ts` → tableau `ALL_ISSUES` (le numéro au plus grand `number` gagne).
-- **Pour chaque nouveau numéro** :
-  1. Créer `site/app/emails/issues/issue-0X.ts` (sur le modèle de `issue-01.ts`) et l'ajouter à `ALL_ISSUES` dans `latest.ts` → le welcome pointera dessus.
-  2. Ajouter le numéro dans `site/app/numeros/issues.ts` (archive du site).
+- **Pour chaque nouveau numéro** (depuis le numéro 9, l'assemblage est fait par un script) :
+  1. Les sections validées sont dans `drafts/issue-XX/` (`on-eclaire.md`, `dans-le-faisceau.md`, `sous-la-loupe.md`, `reperes.md`, `fin.md`), balisées `[p] [st] [def|slug] [liste] [tableau] [avis] [image] [source]`, avec un `meta.json` (date, titre, objet, menu, cours). Modèle : `drafts/issue-10/`.
+  2. `python3 drafts/build_issue.py <n>` écrit l'entrée du numéro dans `site/app/numeros/issues.ts` ET l'email `site/app/emails/issues/issue-XX.ts`, pose les espaces insécables et liste les `[À VÉRIFIER]` restants. Relançable : on corrige le brouillon, on relance. **Ne jamais retoucher à la main les fichiers générés** : corriger le brouillon. Gabarit de l'email = `issue-08.ts` (`build_issue.py:473`) ; ⚠️ Marc préfère le rendu du numéro 1 : gabarit de référence à trancher.
+  2 bis. Ajouter le numéro à `ALL_ISSUES` dans `site/app/emails/latest.ts` → le mail de bienvenue pointera dessus.
   3. **Fact-check AVANT le mail de test** (l'ordre compte, décidé 2026-07-04) : le mail de test qui *valide* doit refléter le contenu **définitif** → lancer le fact-checker sur `issue-0X.ts` et corriger d'abord, PUIS envoyer le test. (Un aperçu de forme en amont reste possible, mais ce n'est pas la validation.)
   4. **Contrôle anti-troncature AVANT chaque mail de test** (obligatoire) : (a) **contenu** — chaque section complète, aucune phrase coupée, pas de « … » parasite (vérif possible par le vérificateur ou la session principale sur l'email assemblé) ; (b) **anti-repli Gmail** — email **< 102 Ko** ET **objet de test unique/varié à chaque envoi** (sinon Gmail regroupe les tests en conversation et replie la partie répétée derrière un bouton « ··· », ce qui ressemble à tort à une troncature — constaté le 2026-07-04).
   5. **Envoi en masse via l'API** (PAS l'éditeur Broadcast) : `cd site && node scripts/send-newsletter.mjs app/emails/issues/issue-0X.ts --test <email>` (rendu réel) → `--dry-run` (compter l'audience) → `--send` (envoi réel). Le script suit la pagination, exclut les désinscrits, ajoute `List-Unsubscribe`.
@@ -125,7 +147,7 @@ Newsletter crypto/DeFi **pédagogique**, lancée le 2026-06-02. Objectif double 
 
 ### Template & système de design (NE PAS refaire le squelette)
 
-**Réutiliser `templates/newsletter-template.html`** pour chaque numéro — remplir les `{{SLOTS}}`, ne jamais reconstruire la structure. Référence finale : `cryptoluciole-01-v3.html` (= le #1 abouti).
+Le squelette de l'email est porté par `drafts/build_issue.py` (voir « Workflow d'envoi »). `templates/newsletter-template.html` et ses `{{SLOTS}}` sont l'ancien procédé manuel (numéros 1 à 8), gardés comme référence visuelle — ne jamais reconstruire la structure. Référence finale : `cryptoluciole-01-v3.html` (= le #1 abouti).
 
 **Format aéré = standard depuis le #2 (figé le 2026-06-24).** Chaque terme défini va dans un **encadré de définition** dédié (fond gris clair, terme en gras lié au glossaire), pas fondu en parenthèses. Sous-titres clairs dans ON ÉCLAIRE (« En pratique », « Combien ça rapporte »…). Listes à puces quand ça aide (ex. scénarios de ÇA BRILLE). Côté site, ce format est porté par le type `NotionEl` (`corps: p | st | def`) + `defs` sur les actus + `points`/`texteFin` sur `data`, rendus par `site/app/numeros/[id]/page.tsx` (composant `DefBox`). L'email reproduit le même rendu en HTML (encadrés `background-color:#f3f6f6`). Objectif : **agréable à lire**.
 
