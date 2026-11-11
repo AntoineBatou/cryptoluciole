@@ -53,7 +53,8 @@ mémoire = **fichiers** (les agents n'ont pas de mémoire interne).
 **Protocole** : 2 niveaux — newsletter (résumé 3 min) vs fiche site complète (cahier des
 charges : wiki d'abord → si absent, lancer `/analyse` du projet `../analyste-defi` :
 `cd /Users/marc/Documents/claude/analyste-defi && claude -p "/analyse <protocole>"`, long, à lancer
-en arrière-plan ; le résultat arrive dans `analyses/` et dans le wiki. Commande non testée depuis ici).
+en arrière-plan ; le résultat arrive dans `analyses/` et dans le wiki ; la sortie se termine par un bloc
+`RÉSULTAT /analyse` (score, verdict, vérifications PAS LU, fichiers écrits). Commande non testée depuis ici).
 
 **Autres projets à consulter** : `../onchain/docs/sources-api.md` (endpoints et pièges : source
 unique, ne pas recopier ici) · `../onchain/scripts/rwa_adoption.py` (adoption des RWA) ·
