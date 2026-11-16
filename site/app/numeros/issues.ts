@@ -4309,7 +4309,7 @@ export const issues: Issue[] = [
               "Plasma",
               "Écosystème Tether (Bitfinex), Founders Fund",
               "1,62 Md$",
-              "Frais quasi nuls ; envois d'USDT gratuits annoncés, mais ceux que nous avons relevés payaient en XPL"
+              "Envois d'USDT gratuits depuis les applications branchées sur son relais ; sinon frais quasi nuls, en XPL"
             ],
             [
               "Stable",
@@ -4333,7 +4333,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Plasma, lancée en septembre 2025, annonce des envois d'USDT gratuits, pris en charge par un paymaster qui paie les frais à ta place. Sur les 30 derniers envois de jetons que nous avons relevés, les frais étaient pourtant payés en XPL, son jeton : minuscules, mais il fallait en détenir."
+          "texte": "Plasma, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un paymaster qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie."
         },
         {
           "type": "def",

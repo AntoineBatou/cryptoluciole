@@ -57,13 +57,13 @@ Reste que l'écart de prix n'a pas vidé Tron de son activité. L'USDT y circule
 [tableau]
 | Chaîne | Qui est derrière | Stablecoins hébergés (16/11) | Ce qui change pour toi |
 |---|---|---|---|
-| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | Frais quasi nuls ; envois d'USDT gratuits annoncés, mais ceux que nous avons relevés payaient en XPL |
+| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | Envois d'USDT gratuits depuis les applications branchées sur son relais ; sinon frais quasi nuls, en XPL |
 | Stable | Écosystème Tether | 0,03 Md$ | L'USDT0 paie lui-même les frais : pas de second jeton à détenir |
 | Arc | Circle | 1,53 Md$ | Frais en USDC, validateurs choisis parmi des institutions régulées |
 | Tempo | Stripe et Paradigm | 0,80 Md$ | Aucun jeton à acheter : frais de transaction payables avec le stablecoin de n'importe quel émetteur |
 
 [p]
-**Plasma**, lancée en septembre 2025, annonce des envois d'USDT gratuits, pris en charge par un **paymaster** qui paie les frais à ta place. Sur les 30 derniers envois de jetons que nous avons relevés, les frais étaient pourtant payés en XPL, son jeton : minuscules, mais il fallait en détenir.
+**Plasma**, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un **paymaster** qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie.
 
 [def | `paymaster`] **Paymaster**
 Smart contract qui paie le gas d'une transaction à la place de l'utilisateur. Il est financé par le protocole ou par une application, ou se rembourse dans un autre jeton.
@@ -138,3 +138,6 @@ Sources : DeFiLlama (stablecoins par chaîne, revenus, cours, 16/11/2026) ; comm
 - Fact-check du 16/11 : Stable lancée le 08/12/2025 → « depuis septembre 2025 » ; DeFiLlama relu : Plasma 1,62, Arc 1,53, Tempo 0,80, Stable 0,03 (≈ 3,97 Md$) ; USDT sur Tron 91,8 / 175,25 Md$ = 52 % ; OUSD 140 à l'annonce (30/06), plus de 200 depuis.
 - Plasma : docs contradictoires (docs.plasma.to « en construction », docs.plasma.org « USD₮ transfers are free »). Mesure RPC rpc.plasma.to du 16/11 : 30 derniers appels transfer(), 0 à frais nuls, tous les expéditeurs détiennent ≈ 0,04-0,06 XPL. Les envois gratuits passent peut-être par un autre contrat (relayeur) : formulation limitée à ce qu'on a observé.
 - Stripe : 1,5 % par paiement en stablecoin (docs.stripe.com/crypto/stablecoin-payments) ; carte US 2,9 % + 0,30 $ (Blockworks).
+- Plasma, enquête du 16/11 (demande de Marc « vérifie pourquoi ») : sur 120 transactions récentes qui déplacent de l'USDT0 (blocs 37 915 324 à 37 915 624, rpc.plasma.to), AUCUNE à frais nuls. 31 sont des transfer() directs payés en XPL par l'expéditeur ; 42 passent par l'EntryPoint ERC-4337 (0x0000000071727De22E5E9d8BAf0edAc6f37da032, handleOps) : le gas y est payé en XPL par un bundler ou un paymaster, pas par l'utilisateur. Le reste : contrats d'applications (swaps, etc.). → « gratuit » = frais payés par un tiers, pas frais nuls.
+- Docs : la page « zero-fee USDT transfers » redirige désormais vers l'accueil ; « Network Fees » (docs.plasma.org) présente le paymaster de gas en jetons comme « en construction » ; « Payments › Core concepts » parle de « free transfers for USD₮ ». Chainstack décrit l'accès par la Relayer API ; Confirmo et Cryptorefills annoncent l'avoir intégrée.
+
