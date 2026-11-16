@@ -1,6 +1,8 @@
 # Numéro 11 — note de reprise (écrite le 16/11/2026 avant un /clear)
 
-## État
+## État (mis à jour le 16/11 au soir)
+RELECTURE DE MARC TERMINÉE. Corrections reportées, sondage A/B retiré, écritures de style faites (journal, règles, calibrage), brouillons commités (a3829c1). Reste : la section « Reste avant l'envoi » ci-dessous.
+
 Toutes les sections sont rédigées, passées au vérificateur (≥ 8/10, sans NON) et assemblées
 (`python3 drafts/build_issue.py 11` → site/app/numeros/issues.ts + site/app/emails/issues/issue-11.ts, 45 Ko).
 Pas de SOUS LA LOUPE cette semaine (décision de Marc) ; build_issue.py rend désormais cette rubrique facultative.
