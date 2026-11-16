@@ -109,6 +109,10 @@ puis une **note globale /10**) :
    - **puces dès qu'il y a une énumération** (« deux sources : … », « le filet : A et B »,
      une liste de risques, d'étapes, de raisons…) plutôt qu'une phrase à rallonge avec des
      « et… et… ».
+   - **rythme visuel (16/11)** : jamais plus de 3-4 paragraphes d'affilée sans liste, tableau, encadré
+     ou image ; les cas et les étapes en puces ; une case de tableau à plusieurs éléments en puces
+     (« • a • b ») ; une section longue sans visuel (graphique, capture) se signale (« visuel
+     manquant : proposer un graphique de… »).
    - encadrés de définition, sous-titres clairs, **« 💡 Notre avis » présent là où il est
      obligatoire** (chaque actu, sous le tableau des cours) — un avis est UNE thèse en 2-3 phrases
      ou 2 puces : n'exige jamais les trois points « qui gagne / durable / métrique » ; pas de mots « spammy » ;

@@ -25,26 +25,20 @@ Sur Tron, un transfert d'USDT ne se paie pas directement en TRX, le jeton de la 
 Ressource consommée par les smart contracts sur Tron, dont les transferts d'USDT. On l'obtient en stakant des TRX ou en la louant à ceux qui en ont staké, qui touchent alors le loyer. Si ton wallet n'en a pas, le réseau brûle des TRX à la place : ils sont détruits et ne vont à personne.
 
 [p]
-Sans énergie, un envoi d'USDT revient à **environ 2,07 $** au cours du 16 novembre, et à environ 4,1 $ vers une adresse qui n'a jamais reçu d'USDT. Avec de l'énergie louée, il tombe à environ 0,4 à 1 $ selon le loueur, et la plupart des envois sont payés ainsi, avec de l'énergie stakée ou louée. Ceux qui stakent eux-mêmes beaucoup de TRX ne paient presque rien par envoi, mais immobilisent leur capital. À titre de comparaison, un envoi d'USDT sur Ethereum coûtait le même jour entre 0,01 et 0,30 $, **0,10 $ en médiane**. **La réputation de Tron, « la chaîne pas chère pour l'USDT », date des années où Ethereum coûtait plusieurs dollars par envoi : aujourd'hui, sauf à staker ses propres TRX, Tron est plus cher qu'Ethereum.**
+Combien coûte un envoi d'USDT sur Tron, au cours du 16 novembre :
+
+[liste]
+- **Sans énergie** : **environ 2,07 $**, et environ 4,1 $ vers une adresse qui n'a jamais reçu d'USDT.
+- **Avec de l'énergie louée** : environ 0,4 à 1 $ selon le loueur. C'est ainsi, avec de l'énergie louée ou stakée, que sont payés la plupart des envois.
+- **Avec ses propres TRX stakés** : presque rien par envoi, mais du capital immobilisé.
+
+[p]
+Le même jour, un envoi d'USDT sur Ethereum coûtait entre 0,01 et 0,30 $, **0,10 $ en médiane**. **La réputation de Tron, « la chaîne pas chère pour l'USDT », date des années où Ethereum coûtait plusieurs dollars par envoi : aujourd'hui, sauf à staker ses propres TRX, Tron est plus cher qu'Ethereum.**
 
 [p]
 Face à lui, les *stablechains*, avec trois blockchains généralistes pour repère :
 
-[tableau]
-| Chaîne | Frais payés en | Coût d'un envoi (au 16/11) |
-|---|---|---|
-| Tron, sans énergie | TRX brûlés | ≈ 2,07 $ (≈ 4,1 $ vers une adresse neuve) |
-| Tron, énergie louée | Énergie | ≈ 0,4 à 1 $ |
-| Plasma | XPL | ≈ 0,000003 $ |
-| Tempo | N'importe quel stablecoin en dollars | ≈ 0,0002 à 0,0003 $ |
-| Arc | USDC | ≈ 0,001 $ |
-| Stable | USDT0 | ≈ 0,00002 $ (calculé au prix du gas) |
-| *Repère : Ethereum* | ETH | ≈ 0,01 à 0,30 $ (médiane 0,10 $) |
-| *Repère : Solana* | SOL | ≈ 0,0004 $ |
-| *Repère : Base* | ETH | ≈ 0,0007 $ |
-
-[note]
-Ordres de grandeur relevés sur chaque blockchain ; sur Ethereum, le coût varie avec l'encombrement du réseau.
+[image | drafts/issue-11/captures/cout-envoi.png | Coût d'un envoi de stablecoin par blockchain, relevé le 16 novembre 2026. Sur Ethereum, il varie avec l'encombrement du réseau.]
 
 [p]
 Plasma, Tempo et Arc se paient en fractions de centime, mais Solana et Base aussi. **Le prix bas n'est donc pas une nouveauté des *stablechains*.** Ce qui change, c'est la commodité (envoyer un stablecoin sans détenir un second jeton) et surtout l'émetteur qui est derrière chaque chaîne.
@@ -57,7 +51,7 @@ Reste que l'écart de prix n'a pas vidé Tron de son activité. L'USDT y circule
 [tableau]
 | Chaîne | Qui est derrière | Stablecoins hébergés (16/11) | Leur particularité |
 |---|---|---|---|
-| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | • Frais quasi nuls • Envois d'USDT gratuits annoncés, mais seulement depuis certaines applications |
+| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | • Frais quasi nuls, en XPL • Envois d'USDT gratuits annoncés, mais seulement depuis certaines applications |
 | Stable | Écosystème Tether | 0,03 Md$ | L'USDT0 paie lui-même les frais : pas de second jeton à détenir |
 | Arc | Circle | 1,53 Md$ | • Frais en USDC • Validateurs choisis parmi des institutions régulées |
 | Tempo | Stripe et Paradigm | 0,80 Md$ | • Aucun jeton à acheter • Frais de transaction payables avec le stablecoin de n'importe quel émetteur |
@@ -98,7 +92,12 @@ La différence est ailleurs : là où Arc fait payer en USDC et Stable en USDT0,
 Un émetteur gagne sa vie sur les intérêts de ses réserves : tu lui donnes 100 $, il te remet 100 USDT ou 100 USDC, et il place tes 100 $ en bons du Trésor. Les intérêts sont pour lui ; toi, tu ne touches rien. Tether en a tiré environ 5,96 Md$ de revenus sur douze mois, d'après DeFiLlama.
 
 [p]
-Pour que son stablecoin soit utilisé, un émetteur peut aussi partager ces intérêts avec les plateformes qui le distribuent. Prenons Circle et Coinbase. Si tu gardes 1 000 USDC sur Coinbase, Circle place 1 000 $ en bons du Trésor, qui lui rapportent environ 35 $ par an au taux actuel. Selon l'accord publié lors de l'entrée en Bourse de Circle, en 2025, Coinbase récupère la totalité de ces intérêts tant que tes USDC restent chez lui, et la moitié de ceux des USDC détenus ailleurs. Coinbase en reverse une partie à ses clients sous forme de récompenses : c'est ce qui l'incite à pousser l'USDC plutôt qu'un autre stablecoin.
+Pour que son stablecoin soit utilisé, un émetteur peut aussi partager ces intérêts avec les plateformes qui le distribuent. Prenons Circle et Coinbase. Si tu gardes 1 000 USDC sur Coinbase :
+
+[liste]
+- Circle place 1 000 $ en bons du Trésor, qui lui rapportent environ 35 $ par an au taux actuel.
+- Selon l'accord publié lors de l'entrée en Bourse de Circle, en 2025, Coinbase récupère la totalité de ces intérêts tant que tes USDC restent chez lui, et la moitié de ceux des USDC détenus ailleurs.
+- Coinbase en reverse une partie à ses clients sous forme de récompenses : c'est ce qui l'incite à pousser l'USDC plutôt qu'un autre stablecoin.
 
 [p]
 Les frais de transfert, eux, reviennent à la chaîne, pas à l'émetteur : ces projets visent donc autre chose que les frais.

@@ -4219,70 +4219,28 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Sans énergie, un envoi d'USDT revient à environ 2,07 $ au cours du 16 novembre, et à environ 4,1 $ vers une adresse qui n'a jamais reçu d'USDT. Avec de l'énergie louée, il tombe à environ 0,4 à 1 $ selon le loueur, et la plupart des envois sont payés ainsi, avec de l'énergie stakée ou louée. Ceux qui stakent eux-mêmes beaucoup de TRX ne paient presque rien par envoi, mais immobilisent leur capital. À titre de comparaison, un envoi d'USDT sur Ethereum coûtait le même jour entre 0,01 et 0,30 $, 0,10 $ en médiane. La réputation de Tron, « la chaîne pas chère pour l'USDT », date des années où Ethereum coûtait plusieurs dollars par envoi : aujourd'hui, sauf à staker ses propres TRX, Tron est plus cher qu'Ethereum."
+          "texte": "Combien coûte un envoi d'USDT sur Tron, au cours du 16 novembre :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Sans énergie : environ 2,07 $, et environ 4,1 $ vers une adresse qui n'a jamais reçu d'USDT.",
+            "Avec de l'énergie louée : environ 0,4 à 1 $ selon le loueur. C'est ainsi, avec de l'énergie louée ou stakée, que sont payés la plupart des envois.",
+            "Avec ses propres TRX stakés : presque rien par envoi, mais du capital immobilisé."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Le même jour, un envoi d'USDT sur Ethereum coûtait entre 0,01 et 0,30 $, 0,10 $ en médiane. La réputation de Tron, « la chaîne pas chère pour l'USDT », date des années où Ethereum coûtait plusieurs dollars par envoi : aujourd'hui, sauf à staker ses propres TRX, Tron est plus cher qu'Ethereum."
         },
         {
           "type": "p",
           "texte": "Face à lui, les stablechains, avec trois blockchains généralistes pour repère :"
         },
         {
-          "type": "tableau",
-          "entetes": [
-            "Chaîne",
-            "Frais payés en",
-            "Coût d'un envoi (au 16/11)"
-          ],
-          "lignes": [
-            [
-              "Tron, sans énergie",
-              "TRX brûlés",
-              "≈ 2,07 $ (≈ 4,1 $ vers une adresse neuve)"
-            ],
-            [
-              "Tron, énergie louée",
-              "Énergie",
-              "≈ 0,4 à 1 $"
-            ],
-            [
-              "Plasma",
-              "XPL",
-              "≈ 0,000003 $"
-            ],
-            [
-              "Tempo",
-              "N'importe quel stablecoin en dollars",
-              "≈ 0,0002 à 0,0003 $"
-            ],
-            [
-              "Arc",
-              "USDC",
-              "≈ 0,001 $"
-            ],
-            [
-              "Stable",
-              "USDT0",
-              "≈ 0,00002 $ (calculé au prix du gas)"
-            ],
-            [
-              "Repère : Ethereum",
-              "ETH",
-              "≈ 0,01 à 0,30 $ (médiane 0,10 $)"
-            ],
-            [
-              "Repère : Solana",
-              "SOL",
-              "≈ 0,0004 $"
-            ],
-            [
-              "Repère : Base",
-              "ETH",
-              "≈ 0,0007 $"
-            ]
-          ]
-        },
-        {
-          "type": "p",
-          "texte": "Ordres de grandeur relevés sur chaque blockchain ; sur Ethereum, le coût varie avec l'encombrement du réseau."
+          "type": "image",
+          "src": "/numeros/11/cout-envoi.png",
+          "legende": "Coût d'un envoi de stablecoin par blockchain, relevé le 16 novembre 2026. Sur Ethereum, il varie avec l'encombrement du réseau."
         },
         {
           "type": "p",
@@ -4309,7 +4267,7 @@ export const issues: Issue[] = [
               "Plasma",
               "Écosystème Tether (Bitfinex), Founders Fund",
               "1,62 Md$",
-              "• Frais quasi nuls\n• Envois d'USDT gratuits annoncés, mais seulement depuis certaines applications"
+              "• Frais quasi nuls, en XPL\n• Envois d'USDT gratuits annoncés, mais seulement depuis certaines applications"
             ],
             [
               "Stable",
@@ -4385,7 +4343,15 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Pour que son stablecoin soit utilisé, un émetteur peut aussi partager ces intérêts avec les plateformes qui le distribuent. Prenons Circle et Coinbase. Si tu gardes 1 000 USDC sur Coinbase, Circle place 1 000 $ en bons du Trésor, qui lui rapportent environ 35 $ par an au taux actuel. Selon l'accord publié lors de l'entrée en Bourse de Circle, en 2025, Coinbase récupère la totalité de ces intérêts tant que tes USDC restent chez lui, et la moitié de ceux des USDC détenus ailleurs. Coinbase en reverse une partie à ses clients sous forme de récompenses : c'est ce qui l'incite à pousser l'USDC plutôt qu'un autre stablecoin."
+          "texte": "Pour que son stablecoin soit utilisé, un émetteur peut aussi partager ces intérêts avec les plateformes qui le distribuent. Prenons Circle et Coinbase. Si tu gardes 1 000 USDC sur Coinbase :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Circle place 1 000 $ en bons du Trésor, qui lui rapportent environ 35 $ par an au taux actuel.",
+            "Selon l'accord publié lors de l'entrée en Bourse de Circle, en 2025, Coinbase récupère la totalité de ces intérêts tant que tes USDC restent chez lui, et la moitié de ceux des USDC détenus ailleurs.",
+            "Coinbase en reverse une partie à ses clients sous forme de récompenses : c'est ce qui l'incite à pousser l'USDC plutôt qu'un autre stablecoin."
+          ]
         },
         {
           "type": "p",
