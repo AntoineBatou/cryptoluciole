@@ -240,18 +240,20 @@ for part in fx_md.split("## ✦ Actu")[1:]:
     bl = parse(part, f"Actu « {titre[:30]} »")
     actus.append({"titre": titre, "blocks": bl})
 
-# SOUS LA LOUPE
-sl = parse(body_of((D / "sous-la-loupe.md").read_text()), "SOUS LA LOUPE")
-def is_st(name):
-    return lambda b: b["k"] == "st" and b["t"].startswith(name)
-_, rest = split_at(sl, is_st("En bref"))
-rest = rest[1:]
-bref_b, rest = rest[0], rest[1:]
-etapes, rest = split_at(rest, is_st("Le rendement"))
-etapes = [b for b in etapes if not (b["k"] == "st" and b["t"].startswith("Comment ça marche"))]
-rend, rest = split_at(rest[1:], is_st("Les risques"))
-risq, rest = split_at(rest[1:], is_st("Pourquoi ça compte"))
-imp = rest[1:]
+# SOUS LA LOUPE (facultatif : un numéro peut ne pas en avoir, ex. #6, #11)
+HAS_SL = (D / "sous-la-loupe.md").exists()
+if HAS_SL:
+    sl = parse(body_of((D / "sous-la-loupe.md").read_text()), "SOUS LA LOUPE")
+    def is_st(name):
+        return lambda b: b["k"] == "st" and b["t"].startswith(name)
+    _, rest = split_at(sl, is_st("En bref"))
+    rest = rest[1:]
+    bref_b, rest = rest[0], rest[1:]
+    etapes, rest = split_at(rest, is_st("Le rendement"))
+    etapes = [b for b in etapes if not (b["k"] == "st" and b["t"].startswith("Comment ça marche"))]
+    rend, rest = split_at(rest[1:], is_st("Les risques"))
+    risq, rest = split_at(rest[1:], is_st("Pourquoi ça compte"))
+    imp = rest[1:]
 
 # LES REPÈRES
 rp_md = (D / "reperes.md").read_text()
@@ -284,13 +286,6 @@ issue = {
     "excerpt": typo(CFG["excerpt"]),
     "notion": {"titre": to_txt(CFG["notionTitreTexte"]), "corps": site_els(oe)},
     "actus": [],
-    "protocole": {
-        "nom": CFG["loupeNom"], "slug": CFG["loupeSlug"], "bref": to_txt(bref_b["t"]), "etapes": [],
-        "etapesCorps": site_els(etapes), "rendement": "", "rendementCorps": site_els(rend),
-        "risqueNiveau": CFG["risqueNiveau"], "risqueSens": CFG["risqueSens"],
-        "risques": to_txt(risq[0]["t"]), "risquesCorps": site_els(risq[1:]),
-        "importance": to_txt(imp[0]["t"]), "importanceCorps": site_els(imp[1:]),
-    },
     "cours": cours, "cours7jLabel": CFG["cours7jLabel"], "coursHeure": CFG["coursHeure"],
     "coursAvisCorps": site_els(rp),
     "data": {"titre": to_txt(cb_title()), "texte": to_txt(cb_text()),
@@ -298,6 +293,14 @@ issue = {
     "jeu": {"cta": to_txt(jeu_b["cta"]), **({"question": to_txt(jeu_b["question"]), "a": to_txt(jeu_b["a"]), "b": to_txt(jeu_b["b"])} if "question" in jeu_b else {})},
     "definitions": [{"terme": to_txt(d["terme"]), "def": to_txt(d["t"]), "slug": d["slug"]} for d in defs],
 }
+if HAS_SL:
+    issue["protocole"] = {
+        "nom": CFG["loupeNom"], "slug": CFG["loupeSlug"], "bref": to_txt(bref_b["t"]), "etapes": [],
+        "etapesCorps": site_els(etapes), "rendement": "", "rendementCorps": site_els(rend),
+        "risqueNiveau": CFG["risqueNiveau"], "risqueSens": CFG["risqueSens"],
+        "risques": to_txt(risq[0]["t"]), "risquesCorps": site_els(risq[1:]),
+        "importance": to_txt(imp[0]["t"]), "importanceCorps": site_els(imp[1:]),
+    }
 for a in actus:
     bl = a["blocks"]
     av = [b for b in bl if b["k"] == "avis"]
@@ -368,24 +371,25 @@ for i, a in enumerate(actus):
   </td></tr>
 """)
 h.append(HR)
-# SOUS LA LOUPE
-badge = {"eleve": ("#fee2e2", "#b91c1c", "🔴 Élevé"), "moyen": ("#fef9c3", "#a16207", "🟡 Moyen"), "faible": ("#dcfce7", "#15803d", "🟢 Faible")}[CFG["risqueSens"]]
-h.append(f"""  <tr><td style="padding:24px 36px 0 36px;">
-    {sec_pill('🔍 SOUS LA LOUPE')}
-    <p style="margin:14px 0 16px 0; font-size:22px; font-weight:800; color:#1A2332;">{CFG['loupeNom']} <span style="color:#94a3b8; font-weight:600; font-size:18px;">{to_html(CFG['loupeSousTitre'])}</span></p>
-  </td></tr>
-  <tr><td style="padding:0 36px; color:#1A2332;">
-    {P}<strong style="color:#28B092;">En bref.</strong> {to_html(bref_b['t'])}</p>
-    {ST}Comment ça marche</p>
-    {mail_els(etapes)}
-    {ST}Le rendement</p>
-    {mail_els(rend)}
-    {ST}Les risques &nbsp;<span style="background-color:{badge[0]}; color:{badge[1]}; border-radius:20px; padding:3px 12px; font-size:13px; font-weight:700;">{badge[2]}</span></p>
-    {mail_els(risq)}
-    {ST}Pourquoi ça compte</p>
-    {mail_els(imp)}
-  </td></tr>
-""" + HR)
+# SOUS LA LOUPE (facultatif)
+if HAS_SL:
+    badge = {"eleve": ("#fee2e2", "#b91c1c", "🔴 Élevé"), "moyen": ("#fef9c3", "#a16207", "🟡 Moyen"), "faible": ("#dcfce7", "#15803d", "🟢 Faible")}[CFG["risqueSens"]]
+    h.append(f"""  <tr><td style="padding:24px 36px 0 36px;">
+        {sec_pill('🔍 SOUS LA LOUPE')}
+        <p style="margin:14px 0 16px 0; font-size:22px; font-weight:800; color:#1A2332;">{CFG['loupeNom']} <span style="color:#94a3b8; font-weight:600; font-size:18px;">{to_html(CFG['loupeSousTitre'])}</span></p>
+      </td></tr>
+      <tr><td style="padding:0 36px; color:#1A2332;">
+        {P}<strong style="color:#28B092;">En bref.</strong> {to_html(bref_b['t'])}</p>
+        {ST}Comment ça marche</p>
+        {mail_els(etapes)}
+        {ST}Le rendement</p>
+        {mail_els(rend)}
+        {ST}Les risques &nbsp;<span style="background-color:{badge[0]}; color:{badge[1]}; border-radius:20px; padding:3px 12px; font-size:13px; font-weight:700;">{badge[2]}</span></p>
+        {mail_els(risq)}
+        {ST}Pourquoi ça compte</p>
+        {mail_els(imp)}
+      </td></tr>
+    """ + HR)
 # REPÈRES
 rows = []
 for j, c in enumerate(cours):

@@ -4182,6 +4182,441 @@ export const issues: Issue[] = [
         "slug": "multisig"
       }
     ]
+  },
+  // ===== Numéro 11 (généré par drafts/build_issue.py depuis drafts/issue-11/) =====
+  // FACTCHECK: Actu « Marchés de prédiction : la Lou » : [À VÉRIFIER : statut de Polymarket US / QCEX]
+  // FACTCHECK: Actu « Marchés de prédiction : la Lou » : [À VÉRIFIER : communiqué CFTC introuvable, chiffre repris par casino.org et Gambling Insider]
+  // FACTCHECK: LES REPÈRES : [À VÉRIFIER : Farside]
+  // FACTCHECK: LES REPÈRES : [À VÉRIFIER : montant CoinGlass]
+  {
+    "id": "11",
+    "numero": 11,
+    "vignette": "/vignettes/stablechains.jpg",
+    "date": "Mardi 17 novembre 2026",
+    "titre": "Les blockchains de stablecoins : qui innove vraiment, et pourquoi les émetteurs en veulent une ?",
+    "excerpt": "Les blockchains de stablecoins (Tron, Plasma, Stable, Arc, Tempo) : ce que coûte un envoi, qui innove vraiment, et ce que cherchent Tether, Circle et Stripe ; la Louisiane contre la CFTC sur les marchés de prédiction ; le Kazakhstan émet des titres tokenisés sur Solana ; les actions et l'or tokenisés perdent leurs utilisateurs actifs.",
+    "notion": {
+      "titre": "Les blockchains de stablecoins : qui innove vraiment ?",
+      "corps": [
+        {
+          "type": "p",
+          "texte": "Tron est le rail historique de l'USDT : un tiers de tous les stablecoins en circulation, soit 93,2 Md$, y vit. Depuis un peu plus d'un an, quatre blockchains conçues spécialement pour les stablecoins, qu'on appelle des stablechains, sont arrivées : Plasma et Stable (dans l'orbite de Tether), Arc (Circle) et Tempo (Stripe et Paradigm). À elles quatre, elles hébergent environ 3,9 Md$."
+        },
+        {
+          "type": "p",
+          "texte": "Trois questions : combien coûte un envoi sur ces chaînes, qu'apportent-elles vraiment de neuf, et pourquoi des émetteurs de stablecoins se donnent-ils la peine d'en construire une ?"
+        },
+        {
+          "type": "st",
+          "texte": "Ce que coûte un envoi"
+        },
+        {
+          "type": "p",
+          "texte": "Sur Tron, un transfert d'USDT ne se paie pas directement en TRX, le jeton de la chaîne, mais en énergie."
+        },
+        {
+          "type": "def",
+          "terme": "Énergie (Tron)",
+          "slug": "energie-tron",
+          "texte": "Ressource consommée par les smart contracts sur Tron, dont les transferts d'USDT. On l'obtient en stakant des TRX ou en la louant à ceux qui en ont staké, qui touchent alors le loyer. Si ton wallet n'en a pas, le réseau brûle des TRX à la place : ils sont détruits et ne vont à personne."
+        },
+        {
+          "type": "p",
+          "texte": "Sans énergie, un envoi d'USDT revient à environ 2,07 $ au cours du 16 novembre, et à environ 4,1 $ vers une adresse qui n'a jamais reçu d'USDT. Avec de l'énergie louée, il tombe à environ 0,4 à 1 $ selon le loueur, et la plupart des envois sont payés ainsi, avec de l'énergie stakée ou louée. Ceux qui stakent eux-mêmes beaucoup de TRX ne paient presque rien par envoi, mais immobilisent leur capital. À titre de comparaison, un envoi d'USDT sur Ethereum coûtait le même jour entre 0,01 et 0,30 $, 0,10 $ en médiane. La réputation de Tron, « la chaîne pas chère pour l'USDT », date des années où Ethereum coûtait plusieurs dollars par envoi : aujourd'hui, sauf à staker ses propres TRX, Tron est plus cher qu'Ethereum."
+        },
+        {
+          "type": "p",
+          "texte": "Face à lui, les stablechains, et deux blockchains généralistes que tu connais déjà pour repère :"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "Chaîne",
+            "Frais payés en",
+            "Coût d'un envoi (relevé du 16/11)"
+          ],
+          "lignes": [
+            [
+              "Tron, sans énergie",
+              "TRX brûlés",
+              "≈ 2,07 $ (≈ 4,1 $ vers une adresse neuve)"
+            ],
+            [
+              "Tron, énergie louée",
+              "Énergie",
+              "≈ 0,4 à 1 $"
+            ],
+            [
+              "Plasma",
+              "XPL",
+              "≈ 0,000003 $"
+            ],
+            [
+              "Tempo",
+              "N'importe quel stablecoin en dollars",
+              "≈ 0,0002 à 0,0003 $"
+            ],
+            [
+              "Arc",
+              "USDC",
+              "≈ 0,001 $"
+            ],
+            [
+              "Stable",
+              "USDT0",
+              "≈ 0,00002 $ (calculé au prix du gas)"
+            ],
+            [
+              "Repère : Ethereum",
+              "ETH",
+              "≈ 0,01 à 0,30 $ (médiane 0,10 $)"
+            ],
+            [
+              "Repère : Solana",
+              "SOL",
+              "≈ 0,0004 $"
+            ],
+            [
+              "Repère : Base",
+              "ETH",
+              "≈ 0,0007 $"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Ordres de grandeur : cible officielle pour Arc, 25 envois d'USDT relevés pour Ethereum (le prix y varie avec l'encombrement du réseau), très peu de transferts relevés pour Tempo et Base, prix du gas en vigueur pour Stable (aucun envoi d'utilisateur dans les 200 derniers blocs), prix de loueurs pour Tron avec énergie."
+        },
+        {
+          "type": "p",
+          "texte": "Plasma, Tempo et Arc se paient en fractions de centime, mais Solana et Base aussi. Le prix bas n'est donc pas une nouveauté des stablechains. Ce qui change, c'est la commodité (envoyer un stablecoin sans détenir un second jeton) et surtout l'émetteur qui est derrière chaque chaîne."
+        },
+        {
+          "type": "p",
+          "texte": "Reste que l'écart de prix n'a pas vidé Tron de son activité. L'USDT y circule depuis des années, surtout dans les pays émergents et entre plateformes d'échange ; les plateformes, les services de paiement et les contreparties l'utilisent, et les gros utilisateurs y paient peu grâce à l'énergie."
+        },
+        {
+          "type": "st",
+          "texte": "Qui apporte vraiment du neuf ?"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "Chaîne",
+            "Qui est derrière",
+            "Stablecoins hébergés (16/11)",
+            "Ce qui change pour toi"
+          ],
+          "lignes": [
+            [
+              "Plasma",
+              "Écosystème Tether (Bitfinex), Founders Fund",
+              "1,61 Md$",
+              "Frais quasi nuls, mais payés en XPL ; l'envoi d'USDT sans XPL est promis, pas encore livré"
+            ],
+            [
+              "Stable",
+              "Écosystème Tether",
+              "0,03 Md$",
+              "L'USDT0 paie lui-même les frais : pas de second jeton à détenir"
+            ],
+            [
+              "Arc",
+              "Circle",
+              "1,47 Md$",
+              "Frais en USDC, validateurs choisis parmi des institutions régulées"
+            ],
+            [
+              "Tempo",
+              "Stripe et Paradigm",
+              "0,80 Md$",
+              "Aucun jeton à acheter : frais de transaction payables avec le stablecoin de n'importe quel émetteur"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Plasma, lancée en septembre 2025, promet des envois d'USDT gratuits. Pour l'instant, les frais se paient en XPL, son jeton : ils sont minuscules, mais il faut en détenir. Le paymaster qui doit les payer à ta place, pour que tu n'aies besoin que d'USDT, est encore présenté « en construction » dans sa documentation."
+        },
+        {
+          "type": "def",
+          "terme": "Paymaster",
+          "slug": "paymaster",
+          "texte": "Smart contract qui paie le gas d'une transaction à la place de l'utilisateur. Il est financé par le protocole ou par une application, ou se rembourse dans un autre jeton."
+        },
+        {
+          "type": "p",
+          "texte": "Sur Tron, on peut déjà envoyer de l'USDT sans détenir de TRX grâce au service GasFree, mais il prélève 1,5 USDT par envoi (tarif en vigueur depuis mai 2026). Plasma et Stable n'inventent donc pas la commodité : ils la rendent quasi gratuite et l'intègrent à la chaîne, au lieu d'en faire un service payant ajouté par-dessus."
+        },
+        {
+          "type": "p",
+          "texte": "Plasma a atteint environ 6 Md$ de stablecoins à son lancement, attirés par des récompenses en XPL ; il en reste 1,61 Md$, le capital venu pour les récompenses étant sans doute reparti avec leur baisse."
+        },
+        {
+          "type": "p",
+          "texte": "Stable fait la même proposition, avec des frais payés en USDT0 (la version de l'USDT émise par Tether pour circuler entre blockchains). Un envoi y coûte environ 0,00002 $, et n'est gratuit que si une application prend les frais à sa charge. Surtout, la chaîne tourne presque à vide : quelques dizaines de millions de dollars y sont placés dans des vaults et des marchés de prêt (Morpho), mais ils ne circulent pas. Ses blocs sont remplis à 0,03 %, et les 200 derniers ne contenaient aucun envoi d'utilisateur."
+        },
+        {
+          "type": "p",
+          "texte": "Arc, lancée par Circle en septembre 2026, est pensée pour les institutions : frais en USDC, transaction définitive annoncée en moins d'une seconde, service de change entre stablecoins (StableFX). Ses validateurs sont choisis parmi des institutions régulées."
+        },
+        {
+          "type": "def",
+          "terme": "Proof of Authority (validateurs permissionnés)",
+          "slug": "proof-of-authority",
+          "texte": "Mode de fonctionnement où les blocs sont validés par une liste fermée d'acteurs identifiés et choisis à l'avance, au lieu de validateurs qui entrent librement en mettant des jetons en jeu."
+        },
+        {
+          "type": "p",
+          "texte": "Le but est de rassurer des institutions régulées, qui savent qui valide leurs transactions. La contrepartie : une liste fermée peut aussi décider de bloquer des transactions."
+        },
+        {
+          "type": "p",
+          "texte": "Tempo, lancée en mars 2026, n'a pas de jeton natif : on paie les frais avec n'importe quel stablecoin en dollars, converti automatiquement en coulisse. Ses validateurs sont, eux aussi, une liste fermée de partenaires choisis (Stripe, Visa, Zodia Custody, filiale de Standard Chartered, MoneyGram) : sur ce point, Tempo ressemble à Arc."
+        },
+        {
+          "type": "p",
+          "texte": "La différence est ailleurs : là où Arc fait payer en USDC et Stable en USDT0, Tempo ne favorise aucun émetteur. Stripe a pourtant son propre stablecoin, l'OUSD, mais il ne lie pas sa chaîne à lui : l'OUSD circule aussi sur Ethereum, Solana et Base, et Tempo accepte les stablecoins de tous les émetteurs."
+        },
+        {
+          "type": "st",
+          "texte": "Notre lecture : pourquoi chaque émetteur veut sa chaîne"
+        },
+        {
+          "type": "p",
+          "texte": "Un émetteur gagne sa vie sur les intérêts de ses réserves : tu lui confies 100 $, il les place en bons du Trésor et garde les intérêts, toi tu ne touches rien. Tether en a tiré environ 5,96 Md$ de revenus sur douze mois (DeFiLlama). Pour que son stablecoin soit utilisé, un émetteur peut aussi reverser une partie de ces intérêts aux plateformes qui le distribuent, c'est-à-dire qui le mettent entre les mains des utilisateurs : c'est ce que Circle fait avec Coinbase. Les frais de transfert, eux, reviennent à la chaîne, pas à l'émetteur : ces projets visent donc autre chose que les frais."
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Tether défend l'usage de l'USDT. Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit, au risque de n'être qu'un tuyau de plus, interchangeable. Pour l'instant, la migration n'a pas eu lieu : l'énorme majorité des USDT restent sur Tron.",
+            "Circle cherche des revenus qui ne dépendent pas des taux. Ses revenus de réserves (658 M$ au troisième trimestre 2026) baissent quand la Fed baisse ses taux, et il en reverse une grosse part : 412 M$ de coûts de distribution, de transaction et autres au T3, l'équivalent de près des deux tiers, surtout à Coinbase, selon un contrat qui s'applique quelle que soit la chaîne. Arc ne réduit donc pas cette facture. Il ouvre à Circle d'autres recettes : la prévente de son jeton (182 M$, ponctuelle), des services comme StableFX, et une place directe auprès des institutions et des paiements branchés sur sa chaîne.",
+            "Stripe rend la rente pour gagner sur les paiements. Stripe n'est pas d'abord un émetteur mais un service de paiement : il prélève une commission sur chaque paiement qu'il traite pour un commerçant, par exemple 1,5 % du montant pour un paiement en stablecoin (contre 2,9 % + 0,30 $ pour une carte aux États-Unis). Sa filiale Bridge émet bien un stablecoin, l'Open USD (OUSD), mais celui-ci reverse la totalité des revenus des réserves, moins de petits frais de gestion, aux entreprises qui le distribuent (plus de 140 à son lancement). Stripe renonce à la rente pour attirer les entreprises sur ses services, là où il touche ses commissions, comme un supermarché qui vend le lait à prix coûtant pour remplir les caddies."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "le prix d'un envoi ne départage plus grand-chose : quelques centimes sur Ethereum, une fraction de centime sur les autres, et seul Tron coûte encore 0,4 à 2 $ à qui ne stake pas ses TRX. Ce qui compte, c'est ce que chaque promoteur attend de sa chaîne. Tether et Circle gagnent sur les réserves de leur stablecoin : leur chaîne sert d'abord à faire circuler le leur, l'USDT pour Plasma et Stable, l'USDC pour Arc. Stripe gagne sa commission sur le paiement, quel que soit le stablecoin utilisé : c'est pourquoi Tempo est la seule à accepter ceux de tous les émetteurs."
+        }
+      ]
+    },
+    "actus": [
+      {
+        "titre": "Marchés de prédiction : la Louisiane ou la CFTC, qui fixe les règles ?",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 12 novembre 2026, la procureure générale de Louisiane a obtenu d'un tribunal de l'État une ordonnance temporaire contre une trentaine de plateformes, dont Kalshi et Polymarket. Motif : proposer aux habitants des contrats sur le résultat d'événements (matchs, élections…) sans licence de jeu de l'État."
+          },
+          {
+            "type": "p",
+            "texte": "Le lendemain, la CFTC a répliqué en poursuivant la Louisiane pour empêcher l'application de cette ordonnance."
+          },
+          {
+            "type": "st",
+            "texte": "1. Un même contrat, deux lectures"
+          },
+          {
+            "type": "p",
+            "texte": "Pour la Louisiane, un contrat qui paie si une équipe gagne est un pari : il relève de sa loi sur le jeu. Pour la CFTC, c'est un contrat d'événement, le contrat OUI / NON des marchés de prédiction (voir notre numéro 6) : un produit dérivé, échangé sur des bourses qu'elle agrée, comme Kalshi."
+          },
+          {
+            "type": "p",
+            "texte": "La CFTC demande donc au juge de déclarer les lois de la Louisiane sur le jeu préemptées pour les marchés qu'elle régule."
+          },
+          {
+            "type": "def",
+            "terme": "Préemption fédérale",
+            "slug": "preemption-federale",
+            "texte": "Principe du droit américain : quand une loi fédérale encadre un domaine, elle écarte les lois des États qui la contredisent. Ici, la CFTC soutient que la loi qui lui confie les marchés de dérivés prime sur les lois des États sur le jeu."
+          },
+          {
+            "type": "p",
+            "texte": "Cette protection ne vaudrait que pour les marchés agréés par la CFTC : une plateforme qui n'a pas son agrément ne pourrait pas s'en prévaloir."
+          },
+          {
+            "type": "p",
+            "texte": "Polymarket illustre la frontière. Sa version pour les Américains est passée sous le contrôle de la CFTC après le rachat d'une bourse agréée, QCEX, en 2025 ; sa version internationale, en USDC sur Polygon, ne l'est pas. D'après notre compréhension du droit, seule la première serait protégée par la préemption."
+          },
+          {
+            "type": "st",
+            "texte": "2. Le régulateur passe à l'attaque"
+          },
+          {
+            "type": "p",
+            "texte": "La CFTC ne se contente plus de défendre ses bourses : selon elle, la Louisiane est le 12e État qu'elle poursuit, après l'Utah fin octobre."
+          },
+          {
+            "type": "p",
+            "texte": "Le sujet a pris un tour politique avec les élections de mi-mandat du 3 novembre : Kalshi et Polymarket brassent des milliards de dollars par semaine, alors que 23 États interdisent les paris sur les élections."
+          },
+          {
+            "type": "p",
+            "texte": "Kalshi a coupé l'accès à ses utilisateurs de Louisiane."
+          },
+          {
+            "type": "p",
+            "texte": "En France, l'ANJ traite ces plateformes comme des jeux d'argent non autorisés et a fait bloquer Polymarket en juillet 2026."
+          }
+        ],
+        "avis": "Le fond du dossier n'est pas de savoir si c'est un pari, mais qui fixe les règles. C'est désormais un affrontement entre institutions : d'un côté la CFTC et le gouvernement fédéral, qui ont poursuivi douze États depuis avril ; de l'autre, 44 procureurs généraux d'États qui contestent par écrit sa compétence sur les paris sportifs. Deux cours d'appel fédérales ont déjà tranché en sens contraire : la Cour suprême aura sans doute le dernier mot, comme en 2018, quand elle avait laissé aux États le droit d'autoriser les paris sportifs.",
+        "source": "The Block (14/11) · casino.org · Invezz (15/11) · Gambling Insider · CDC Gaming · Courthouse News (Arkansas, 12/11) · CNBC (lettre des 44 États, 28/07) · AP et Fortune (élections de mi-mandat) · notre numéro 6"
+      },
+      {
+        "titre": "Le Kazakhstan émet de la dette tokenisée sur Solana",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 9 novembre 2026, la Banque nationale du Kazakhstan a émis pour 50 milliards de tenges de notes, dont une tranche de 10 milliards de tenges (≈ 22 M$) sous forme de jetons, via la plateforme d'actifs numériques de la Bourse du Kazakhstan (KASE)."
+          },
+          {
+            "type": "def",
+            "terme": "Note (de banque centrale)",
+            "slug": "note-banque-centrale",
+            "texte": "Un titre de dette court émis par une banque centrale : l'acheteur lui prête de l'argent pour quelques semaines ou quelques mois, et récupère sa mise plus les intérêts à l'échéance. La banque centrale s'en sert pour retirer des liquidités du système et tenir son taux directeur."
+          },
+          {
+            "type": "st",
+            "texte": "1. Ce qui a été émis"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "Durée : 91 jours.",
+              "Rendement : 15,72 % en moyenne, juste sous le taux directeur du pays (15,75 %).",
+              "Infrastructure : la blockchain Solana, et BitGo pour la garde des jetons, selon la Bourse du Kazakhstan."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Le 13 novembre, le gouverneur de la banque centrale a annoncé la suite : des obligations d'État tokenisées, émises avec le ministère des Finances, « probablement » au premier trimestre 2027."
+          },
+          {
+            "type": "st",
+            "texte": "2. Ce que la blockchain change, et ce qu'elle ne change pas"
+          },
+          {
+            "type": "p",
+            "texte": "Le 15,72 % ne doit rien à la blockchain. Un titre de la banque centrale rapporte à peu près son taux directeur, et ce taux est élevé parce qu'il compense l'inflation du pays et le risque que le tenge perde de la valeur. La preuve : la banque centrale a proposé ces notes en même temps sous forme classique et sous forme de jetons, avec les mêmes règles de prix."
+          },
+          {
+            "type": "p",
+            "texte": "Ce que la blockchain change ici, c'est l'infrastructure : la propriété des notes est inscrite sur la plateforme de la Bourse du Kazakhstan, et reprise dans le registre du dépositaire central, comme pour un titre classique. Le tout est mis à l'essai sur une tranche de 10 milliards de tenges avant les obligations d'État de 2027."
+          }
+        ],
+        "avis": "Le signal n'est pas le taux, c'est le choix d'une blockchain publique par une banque centrale. Les essais de banques centrales se font le plus souvent sur des réseaux privés qu'elles contrôlent ; le Kazakhstan accepte de s'appuyer sur un réseau ouvert, Solana, tout en gardant le registre officiel chez son dépositaire central. À 22 M$, c'est un test : la vraie mesure viendra avec les obligations d'État de 2027.",
+        "source": "CoinDesk (14/11) · Trend.az · Caspian Post · Solana Compass · Grafa · Spendnode · Coinpaprika"
+      }
+    ],
+    "cours": [
+      {
+        "actif": "BTC",
+        "nom": "Bitcoin",
+        "prix": "~65 300 $",
+        "var7j": "▼ −12,7 %",
+        "sens": "down"
+      },
+      {
+        "actif": "ETH",
+        "nom": "Ether",
+        "prix": "~1 850 $",
+        "var7j": "▼ −13,0 %",
+        "sens": "down"
+      },
+      {
+        "actif": "SOL",
+        "nom": "Solana",
+        "prix": "~72 $",
+        "var7j": "▼ −17,3 %",
+        "sens": "down"
+      },
+      {
+        "actif": "HYPE",
+        "nom": "Hyperliquid",
+        "prix": "~67 $",
+        "var7j": "▼ −11,6 %",
+        "sens": "down"
+      },
+      {
+        "actif": "BNB",
+        "nom": "",
+        "prix": "~594 $",
+        "var7j": "▼ −13,5 %",
+        "sens": "down"
+      }
+    ],
+    "cours7jLabel": "Depuis notre n°10 (7 jours)",
+    "coursHeure": "15h58",
+    "coursAvisCorps": [
+      {
+        "type": "st",
+        "texte": "Ce qui a fait bouger les prix"
+      },
+      {
+        "type": "p",
+        "texte": "Deuxième semaine rouge d'affilée, et plus forte que la précédente : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :"
+      },
+      {
+        "type": "liste",
+        "items": [
+          "L'inflation d'octobre a surpris à la hausse : +0,4 % sur un mois, contre +0,3 % attendu. Elle a relancé la crainte d'une Fed plus dure à sa réunion des 8 et 9 décembre. Quand le placement sans risque rapporte plus, les actifs risqués perdent des acheteurs.",
+          "Les ETF bitcoin américains, qui se vidaient déjà depuis le 5 novembre, ont continué : environ 1,9 Md$ retirés en sept séances, jusqu'au 13 novembre.",
+          "Les liquidations ont accéléré la chute : plusieurs centaines de millions de dollars de paris à la hausse sur le bitcoin fermés de force en une journée, le 14 novembre. Chaque vente forcée fait baisser le prix, qui déclenche la suivante."
+        ]
+      },
+      {
+        "type": "avis",
+        "texte": "la baisse ne vient pas d'un problème propre à la crypto mais du prix de l'argent. Tant que le marché craint une Fed plus dure en décembre, les acheteurs restent à l'écart. Le prochain repère est la réunion de la Fed des 8 et 9 décembre."
+      }
+    ],
+    "data": {
+      "titre": "Actions et or tokenisés : plus de détenteurs, beaucoup moins d'adresses actives",
+      "texte": "Sur les trente derniers jours, selon rwa.xyz, les jetons d'actions et d'or gagnent des détenteurs mais perdent une bonne part de leurs adresses actives.",
+      "corps": [
+        {
+          "type": "liste",
+          "items": [
+            "Actions tokenisées : détenteurs +7 % (4,8 millions d'adresses), adresses actives −32 %, volume stable.",
+            "Or et autres matières premières tokenisés : détenteurs +2 %, adresses actives −47 %, volume divisé par deux."
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "Ce que disent ces deux chiffres"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Détenir n'est pas utiliser : un détenteur est une adresse qui possède le jeton ; une adresse active en a fait au moins une transaction dans le mois.",
+            "Pour l'or, l'activité suit l'emballement du cours, pas l'usage : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé de 4 345 à 4 021 $ l'once), et les échanges ont été divisés par deux.",
+            "Pour les actions, l'activité se concentre : autant de volume avec un tiers d'adresses actives en moins, ce qui laisse penser que moins d'acteurs, plus gros, font l'essentiel des échanges. C'est une hypothèse : les sources n'en donnent pas la cause."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "la tokenisation recrute des détenteurs, pas encore des utilisateurs. Tant que l'activité dépend du cours ou de quelques gros acteurs plutôt que de ce qu'on en fait (le prêter, le placer en garantie, l'utiliser dans une application), l'argument « un actif tokenisé devient programmable » reste surtout une promesse."
+        },
+        {
+          "type": "p",
+          "texte": "Sources : rwa.xyz (pages Stocks et Commodities, relevées le 16/11/2026, variations sur 30 jours) · DeFiLlama (cours du PAXG)"
+        }
+      ]
+    },
+    "jeu": {
+      "cta": "Tu envoies déjà des stablecoins ? Sur quelle blockchain, et pourquoi celle-là ? Réponds directement à ce mail : je lis tout, et je réponds."
+    },
+    "definitions": [
+      {
+        "terme": "Stablechain",
+        "def": "Une blockchain conçue d'abord pour faire circuler des stablecoins, avec des frais souvent payables en stablecoin. Plusieurs sont portées par un émetteur (Arc par Circle) ou par son écosystème (Plasma pour Tether) ; Tempo, de Stripe, accepte tous les stablecoins. Voir ON ÉCLAIRE.",
+        "slug": "stablechain"
+      },
+      {
+        "terme": "Revenus de réserves",
+        "def": "Les intérêts qu'un émetteur de stablecoin touche en plaçant les dollars reçus en échange de ses jetons, surtout en bons du Trésor américain. C'est l'essentiel du modèle économique de Tether et de Circle, et ce revenu suit les taux de la Fed. En général, le détenteur n'en touche rien directement.",
+        "slug": "revenus-de-reserves"
+      }
+    ]
   }
 ];
 

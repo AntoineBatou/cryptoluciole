@@ -558,6 +558,48 @@ export const TERMES: GlossaireTerme[] = [
       "Un jeton qui représente, sur une autre blockchain (le plus souvent Ethereum), un bitcoin conservé ailleurs, par un dépositaire ou un réseau d'opérateurs. Il vaut un bitcoin tant que l'émetteur garde la réserve et permet de la récupérer.",
     numero: 10,
   },
+  {
+    slug: "energie-tron",
+    terme: "Énergie (Tron)",
+    definition:
+      "Ressource consommée par les smart contracts sur Tron, dont les transferts d'USDT. On l'obtient en stakant des TRX ou en la louant à ceux qui en ont staké, qui touchent alors le loyer. Si ton wallet n'en a pas, le réseau brûle des TRX à la place : ils sont détruits et ne vont à personne.",
+    numero: 11,
+  },
+  {
+    slug: "proof-of-authority",
+    terme: "Proof of Authority (validateurs permissionnés)",
+    definition:
+      "Mode de fonctionnement où les blocs sont validés par une liste fermée d'acteurs identifiés et choisis à l'avance, au lieu de validateurs qui entrent librement en mettant des jetons en jeu. Il rassure des institutions régulées, mais une liste fermée peut aussi décider de bloquer des transactions.",
+    numero: 11,
+  },
+  {
+    slug: "stablechain",
+    terme: "Stablechain",
+    definition:
+      "Une blockchain conçue d'abord pour faire circuler des stablecoins, avec des frais souvent payables en stablecoin. Plusieurs sont portées par un émetteur (Arc par Circle) ou par son écosystème (Plasma pour Tether) ; Tempo, de Stripe, accepte tous les stablecoins.",
+    numero: 11,
+  },
+  {
+    slug: "revenus-de-reserves",
+    terme: "Revenus de réserves",
+    definition:
+      "Les intérêts qu'un émetteur de stablecoin touche en plaçant les dollars reçus en échange de ses jetons, surtout en bons du Trésor américain. C'est l'essentiel du modèle économique de Tether et de Circle, et ce revenu suit les taux de la Fed. En général, le détenteur n'en touche rien directement.",
+    numero: 11,
+  },
+  {
+    slug: "preemption-federale",
+    terme: "Préemption fédérale",
+    definition:
+      "Principe du droit américain : quand une loi fédérale encadre un domaine, elle écarte les lois des États qui la contredisent. Dans le dossier des marchés de prédiction, la CFTC soutient que la loi qui lui confie les marchés de dérivés prime sur les lois des États sur le jeu.",
+    numero: 11,
+  },
+  {
+    slug: "note-banque-centrale",
+    terme: "Note (de banque centrale)",
+    definition:
+      "Un titre de dette court émis par une banque centrale : l'acheteur lui prête de l'argent pour quelques semaines ou quelques mois, et récupère sa mise plus les intérêts à l'échéance. La banque centrale s'en sert pour retirer des liquidités du système et tenir son taux directeur.",
+    numero: 11,
+  },
 ];
 
 // Retrouver un terme par son slug.

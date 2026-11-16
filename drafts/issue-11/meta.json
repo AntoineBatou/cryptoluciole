@@ -1,0 +1,23 @@
+{
+ "date": "Mardi 17 novembre 2026",
+ "titre": "Les blockchains de stablecoins : qui innove vraiment, et pourquoi les émetteurs en veulent une ?",
+ "subject": "CryptoLuciole #11 — Pourquoi chaque émetteur veut sa blockchain",
+ "vignette": "/vignettes/stablechains.jpg",
+ "excerpt": "Les blockchains de stablecoins (Tron, Plasma, Stable, Arc, Tempo) : ce que coûte un envoi, qui innove vraiment, et ce que cherchent Tether, Circle et Stripe ; la Louisiane contre la CFTC sur les marchés de prédiction ; le Kazakhstan émet des titres tokenisés sur Solana ; les actions et l'or tokenisés perdent leurs utilisateurs actifs.",
+ "intro": "Cette semaine, on compare les blockchains lancées pour les stablecoins : ce que coûte vraiment un envoi, laquelle apporte du neuf, et pourquoi Tether, Circle et Stripe veulent chacun leur route. Pas de SOUS LA LOUPE cette fois : la notion prend toute la place.",
+ "menu": [
+  "🔦 **On éclaire** — les blockchains de stablecoins : coûts, nouveautés et calculs des émetteurs",
+  "✨ **Dans le faisceau** — la Louisiane contre la CFTC · le Kazakhstan tokenise sa dette sur Solana",
+  "📊 **Les repères** — les cours de la semaine, ETF et inflation",
+  "💡 **Ça brille** — actions et or tokenisés : plus de détenteurs, moins d'utilisateurs",
+  "📖 **Définitions** — stablechain, revenus de réserves",
+  "✉️ **À toi de jouer** — sur quelle blockchain envoies-tu tes stablecoins ?"
+ ],
+ "notionTitreTexte": "Les blockchains de stablecoins : qui innove vraiment ?",
+ "notionTitreHtml": "Les blockchains de <em style=\"color:#28B092; font-style:normal;\">stablecoins</em>&nbsp;: qui innove vraiment&nbsp;?",
+ "onEclaireAvis": "dernier",
+ "cours7jLabel": "Depuis notre n°10 (7 jours)",
+ "coursHeure": "15h58",
+ "reperesDate": "au 16 novembre 2026",
+ "coursNote": "Cours au 16 novembre, 15h58 ; variations sur 7 jours. Source : DeFiLlama."
+}

@@ -38,3 +38,8 @@ vérificateur le 11/11.
 
 | Numéro | Section | Note | Tests /8 | Verdict de Marc | Coupes prévues /3 | Ce que Marc a corrigé (type) |
 |---|---|---|---|---|---|---|
+| 11 | ON ÉCLAIRE (stablechains) | ≥ 8 | 8/8 | retouché (fond) | non conservé | acteurs et flux non introduits (Coinbase, modèle de Stripe) ; contradiction tableau/texte ; « rien de neuf » non prouvé ; jargon maison ; repère Ethereum manquant |
+| 11 | DANS LE FAISCEAU (Louisiane, Kazakhstan) | ≥ 8 | 8/8 | retouché | non conservé | lecture juridique non signalée ; avis trop étroit ; exemple fictif et non-information coupés |
+| 11 | LES REPÈRES | ≥ 8 | 8/8 | validé | non conservé | — |
+| 11 | ÇA BRILLE + définitions | ≥ 8 | 8/8 | validé | non conservé | — |
+| 11 | À toi de jouer | — | — | sondage coupé | — | question sans vrai dilemme |
