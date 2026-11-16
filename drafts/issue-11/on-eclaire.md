@@ -63,7 +63,7 @@ Reste que l'écart de prix n'a pas vidé Tron de son activité. L'USDT y circule
 | Tempo | Stripe et Paradigm | 0,80 Md$ | Aucun jeton à acheter : frais de transaction payables avec le stablecoin de n'importe quel émetteur |
 
 [p]
-**Plasma**, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un **paymaster** qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie.
+**Plasma**, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un **paymaster** qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie. À terme, Plasma prévoit aussi de laisser payer tous les autres frais directement en USDT, sans passer par le XPL.
 
 [def | `paymaster`] **Paymaster**
 Smart contract qui paie le gas d'une transaction à la place de l'utilisateur. Il est financé par le protocole ou par une application, ou se rembourse dans un autre jeton.

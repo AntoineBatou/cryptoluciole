@@ -4333,7 +4333,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Plasma, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un paymaster qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie."
+          "texte": "Plasma, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un paymaster qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie. À terme, Plasma prévoit aussi de laisser payer tous les autres frais directement en USDT, sans passer par le XPL."
         },
         {
           "type": "def",
