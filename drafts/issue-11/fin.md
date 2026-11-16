@@ -24,7 +24,7 @@ Sur les trente derniers jours, selon rwa.xyz, les jetons d'actions et d'or gagne
 
 [liste]
 - **Détenir n'est pas utiliser** : un détenteur est une adresse qui possède le jeton ; une adresse active en a fait au moins une transaction dans le mois.
-- **Pour l'or, l'activité suit l'emballement du cours, pas l'usage** : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé d'environ 4 330 $ début septembre à environ 3 850 $ l'once), et les échanges ont été divisés par deux.
+- **Pour l'or, l'activité suit l'emballement du cours, pas l'usage** : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé d'environ 4 330 $ début septembre à environ 3 840 $ l'once), et les échanges ont été divisés par deux.
 - **Pour les actions, l'activité se concentre** : autant de volume avec un tiers d'adresses actives en moins, ce qui laisse penser que moins d'acteurs, plus gros, font l'essentiel des échanges. C'est une hypothèse : les sources n'en donnent pas la cause.
 
 [avis]

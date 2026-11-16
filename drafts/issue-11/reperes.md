@@ -6,11 +6,11 @@
 
 | Actif | Nom | Prix | 7 jours |
 |---|---|---|---|
-| BTC | Bitcoin | ~65 300 $ | ▼ −12,7 % |
-| ETH | Ether | ~1 850 $ | ▼ −13,0 % |
-| SOL | Solana | ~72 $ | ▼ −17,3 % |
-| HYPE | Hyperliquid | ~67 $ | ▼ −11,6 % |
-| BNB | BNB | ~594 $ | ▼ −13,5 % |
+| BTC | Bitcoin | ~64 900 $ | ▼ −13,2 % |
+| ETH | Ether | ~1 820 $ | ▼ −14,5 % |
+| SOL | Solana | ~71 $ | ▼ −17,6 % |
+| HYPE | Hyperliquid | ~68 $ | ▼ −9,1 % |
+| BNB | BNB | ~591 $ | ▼ −14,3 % |
 
 `cours7jLabel` : « Depuis notre n°10 (7 jours) » · `coursHeure` : « 15h58 » [À RAFRAÎCHIR]
 
@@ -19,7 +19,7 @@
 [st] Ce qui a fait bouger les prix
 
 [p]
-Deuxième semaine rouge d'affilée : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :
+Deuxième semaine rouge d'affilée : le bitcoin a perdu plus de 13 % et est passé sous les 65 000 $, l'ether sous les 1 850 $. Une cause principale, et deux accélérateurs :
 
 [liste]
 - **L'inflation d'octobre a surpris à la hausse** : +0,4 % sur un mois, contre +0,3 % attendu. Elle a relancé la crainte d'une Fed plus dure à sa réunion des 8 et 9 décembre. Quand le placement sans risque rapporte plus, les actifs risqués perdent des acheteurs.
@@ -34,7 +34,8 @@ Deuxième semaine rouge d'affilée : le bitcoin a perdu près de 13 % et est pas
 ## Notes (hors texte)
 
 ### Sources
-- Cours : DeFiLlama coins API, 16/11 15 h 58 (J−7 = 09/11 15 h 58). BTC 65 297,6 / 74 798,3 = −12,7 % ; ETH 1 852,0 / 2 128,5 = −13,0 % ; SOL 72,07 / 87,19 = −17,3 % ; HYPE 67,00 / 75,78 = −11,6 % ; BNB 593,7 / 686,1 = −13,5 %.
+- Cours (rafraîchis le 16/11 à 21 h 48 pour l'envoi du soir) : BTC 64 876 / 74 764 = −13,2 % ; ETH 1 818,6 / 2 127,7 = −14,5 % ; SOL 71,34 / 86,60 = −17,6 % ; HYPE 68,25 / 75,07 = −9,1 % ; BNB 590,8 / 689,0 = −14,3 %.
+- Cours initiaux : DeFiLlama coins API, 16/11 15 h 58 (J−7 = 09/11 15 h 58). BTC 65 297,6 / 74 798,3 = −12,7 % ; ETH 1 852,0 / 2 128,5 = −13,0 % ; SOL 72,07 / 87,19 = −17,3 % ; HYPE 67,00 / 75,78 = −11,6 % ; BNB 593,7 / 686,1 = −13,5 %.
 - Inflation (CPI d'octobre, publié le 10/11) : BLS, bls.gov/news.release/cpi.htm (vérifié par le veilleur le 16/11) ; attentes +0,3 % et +0,2 % (presse).
 - ETF : CryptoLinks et The Block (14/11), d'après Farside / SoSoValue : 1,907 Md$ de sorties du 5 au 13/11, IBIT 908 M$. Semaine du 9 au 13/11 seule : −1,07 Md$ (The Block).
 - Liquidations du 14/11 : 636 à 750 M$ sur le bitcoin selon les sources (Coin-Turk, BigGo) → écrit « plusieurs centaines de millions ».

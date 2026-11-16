@@ -4189,7 +4189,7 @@ export const issues: Issue[] = [
     "id": "11",
     "numero": 11,
     "vignette": "/vignettes/stablechains.jpg",
-    "date": "Mardi 17 novembre 2026",
+    "date": "Lundi 16 novembre 2026",
     "titre": "Les blockchains de stablecoins : qui innove vraiment, et pourquoi les émetteurs en veulent une ?",
     "excerpt": "Les blockchains de stablecoins (Tron, Plasma, Stable, Arc, Tempo) : ce que coûte un envoi, qui innove vraiment, et ce que cherchent Tether, Circle et Stripe ; la Louisiane contre la CFTC sur les marchés de prédiction ; le Kazakhstan émet des titres tokenisés sur Solana ; les actions et l'or tokenisés perdent leurs utilisateurs actifs.",
     "notion": {
@@ -4483,41 +4483,41 @@ export const issues: Issue[] = [
       {
         "actif": "BTC",
         "nom": "Bitcoin",
-        "prix": "~65 300 $",
-        "var7j": "▼ −12,7 %",
+        "prix": "~64 900 $",
+        "var7j": "▼ −13,2 %",
         "sens": "down"
       },
       {
         "actif": "ETH",
         "nom": "Ether",
-        "prix": "~1 850 $",
-        "var7j": "▼ −13,0 %",
+        "prix": "~1 820 $",
+        "var7j": "▼ −14,5 %",
         "sens": "down"
       },
       {
         "actif": "SOL",
         "nom": "Solana",
-        "prix": "~72 $",
-        "var7j": "▼ −17,3 %",
+        "prix": "~71 $",
+        "var7j": "▼ −17,6 %",
         "sens": "down"
       },
       {
         "actif": "HYPE",
         "nom": "Hyperliquid",
-        "prix": "~67 $",
-        "var7j": "▼ −11,6 %",
+        "prix": "~68 $",
+        "var7j": "▼ −9,1 %",
         "sens": "down"
       },
       {
         "actif": "BNB",
         "nom": "",
-        "prix": "~594 $",
-        "var7j": "▼ −13,5 %",
+        "prix": "~591 $",
+        "var7j": "▼ −14,3 %",
         "sens": "down"
       }
     ],
     "cours7jLabel": "Depuis notre n°10 (7 jours)",
-    "coursHeure": "15h58",
+    "coursHeure": "21h48",
     "coursAvisCorps": [
       {
         "type": "st",
@@ -4525,7 +4525,7 @@ export const issues: Issue[] = [
       },
       {
         "type": "p",
-        "texte": "Deuxième semaine rouge d'affilée : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :"
+        "texte": "Deuxième semaine rouge d'affilée : le bitcoin a perdu plus de 13 % et est passé sous les 65 000 $, l'ether sous les 1 850 $. Une cause principale, et deux accélérateurs :"
       },
       {
         "type": "liste",
@@ -4559,7 +4559,7 @@ export const issues: Issue[] = [
           "type": "liste",
           "items": [
             "Détenir n'est pas utiliser : un détenteur est une adresse qui possède le jeton ; une adresse active en a fait au moins une transaction dans le mois.",
-            "Pour l'or, l'activité suit l'emballement du cours, pas l'usage : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé d'environ 4 330 $ début septembre à environ 3 850 $ l'once), et les échanges ont été divisés par deux.",
+            "Pour l'or, l'activité suit l'emballement du cours, pas l'usage : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé d'environ 4 330 $ début septembre à environ 3 840 $ l'once), et les échanges ont été divisés par deux.",
             "Pour les actions, l'activité se concentre : autant de volume avec un tiers d'adresses actives en moins, ce qui laisse penser que moins d'acteurs, plus gros, font l'essentiel des échanges. C'est une hypothèse : les sources n'en donnent pas la cause."
           ]
         },
