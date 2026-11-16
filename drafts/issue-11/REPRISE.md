@@ -1,6 +1,8 @@
 # Numéro 11 — note de reprise (écrite le 16/11/2026 avant un /clear)
 
-## État (mis à jour le 16/11 au soir)
+## État
+**PUBLIÉ le 16/11/2026 vers 22 h : 25 envoyés, 0 échec** (commit 2ac5a6e). Reste : étape 6 du workflow (miroir docs/memoire + anonymisation).
+
 RELECTURE DE MARC TERMINÉE. Corrections reportées, sondage A/B retiré, écritures de style faites (journal, règles, calibrage), brouillons commités (a3829c1). Reste : la section « Reste avant l'envoi » ci-dessous.
 
 Toutes les sections sont rédigées, passées au vérificateur (≥ 8/10, sans NON) et assemblées
