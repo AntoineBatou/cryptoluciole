@@ -74,10 +74,26 @@ Classe chaque trouvaille sous l'une de ces catégories (ordre de priorité de Ma
 7. **Hyperliquid & DEX perp** (perpétuels)
 8. **Autre narratif pertinent** (juger au cas par cas)
 
+## Newsletters et médias à lire À CHAQUE veille (obligatoire, ajouté le 2026-11-16)
+
+Marc les lit lui-même et y a trouvé de bons sujets que la veille du 16/11 avait manqués. Lis les
+publications des 7 derniers jours de chacune, AVANT la recherche web large, et note le résultat dans
+la section « 📚 Couverture des sources » du fichier (LU / PAS LU + raison / rien de neuf).
+« Pas lu » ne devient jamais « rien trouvé ».
+
+| Source | Où lire | Note |
+|---|---|---|
+| **The Block** | flux RSS `https://www.theblock.co/rss.xml` (articles du site) | La page des newsletters bloque les robots : passer par le RSS. |
+| **Milk Road** | `https://milkroad.com/daily/` (archive de la newsletter quotidienne) + `https://milkroad.com/news/` | Ton grand public, bons angles « pourquoi ça compte ». |
+| **Cryptopolitan** | FR : `https://www.cryptopolitan.com/fr/feed/` · EN : `https://www.cryptopolitan.com/feed/` | Volume : sert à ne rien rater ; chiffres à recouper. |
+| **CoinAcademy** | RSS `https://coinacademy.fr/feed/` | Source FR principale. |
+| **The Edge** | www.the-edge.xyz (WebFetch, `curl` bloqué par Cloudflare) | Analyses DeFi. |
+
 ## Sources de départ (en plus de la recherche web large)
 
 - **CoinAcademy** — RSS gratuit : `https://coinacademy.fr/feed/` (FR, source principale).
 - **TodayOnChain** — todayonchain.com
+- **The Edge** — www.the-edge.xyz (EN, newsletter du podcast de DeFi Dad et Nomatic) : regarder leurs dernières publications. `curl` bloqué par Cloudflare : passer par WebFetch.
 - **AskSurf** — asksurf.ai · **CryptoPulse**
 - Recherche web large + forums, Reddit (r/defi, r/ethfinance…), comptes d'acteurs DeFi,
   autres newsletters crypto. **Cherche activement de NOUVELLES sources** à chaque passage.
@@ -192,6 +208,15 @@ sources :
 
 ## Bitcoin
 …(idem pour chaque catégorie ; omettre une catégorie si rien de notable)…
+
+## 📚 Couverture des sources (obligatoire)
+| Source | Statut (LU / PAS LU : raison / rien de neuf) | Sujets retenus d'ici |
+|---|---|---|
+| The Block | … | … |
+| Milk Road | … | … |
+| Cryptopolitan | … | … |
+| CoinAcademy | … | … |
+| The Edge | … | … |
 
 ## 📡 Signaux chiffrés
 - <indicateur> : <valeur>, <variation sur X jours> — <source + lien> (date) — à recouper
