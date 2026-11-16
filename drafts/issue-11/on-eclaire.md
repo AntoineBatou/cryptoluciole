@@ -11,7 +11,7 @@
 ---
 
 [p]
-Tron est le rail historique de l'USDT : un tiers de tous les stablecoins en circulation, soit **93,2 Md$**, y vit. Depuis un peu plus d'un an, quatre blockchains conçues spécialement pour les stablecoins, qu'on appelle des ***stablechains***, sont arrivées : **Plasma** et **Stable** (dans l'orbite de Tether), **Arc** (Circle) et **Tempo** (Stripe et Paradigm). À elles quatre, elles hébergent environ **3,9 Md$**.
+Tron est le rail historique de l'USDT : un tiers de tous les stablecoins en circulation, soit **93,2 Md$**, y vit. Depuis septembre 2025, quatre blockchains conçues spécialement pour les stablecoins, qu'on appelle des **stablechains**, sont arrivées : **Plasma** et **Stable** (dans l'orbite de Tether), **Arc** (Circle) et **Tempo** (Stripe et Paradigm). À elles quatre, elles hébergent environ **4 Md$**.
 
 [p]
 Trois questions : combien coûte un envoi sur ces chaînes, qu'apportent-elles vraiment de neuf, et pourquoi des émetteurs de stablecoins se donnent-ils la peine d'en construire une ?
@@ -28,7 +28,7 @@ Ressource consommée par les smart contracts sur Tron, dont les transferts d'USD
 Sans énergie, un envoi d'USDT revient à **environ 2,07 $** au cours du 16 novembre, et à environ 4,1 $ vers une adresse qui n'a jamais reçu d'USDT. Avec de l'énergie louée, il tombe à environ 0,4 à 1 $ selon le loueur, et la plupart des envois sont payés ainsi, avec de l'énergie stakée ou louée. Ceux qui stakent eux-mêmes beaucoup de TRX ne paient presque rien par envoi, mais immobilisent leur capital. À titre de comparaison, un envoi d'USDT sur Ethereum coûtait le même jour entre 0,01 et 0,30 $, **0,10 $ en médiane**. **La réputation de Tron, « la chaîne pas chère pour l'USDT », date des années où Ethereum coûtait plusieurs dollars par envoi : aujourd'hui, sauf à staker ses propres TRX, Tron est plus cher qu'Ethereum.**
 
 [p]
-Face à lui, les *stablechains*, et deux blockchains généralistes que tu connais déjà pour repère :
+Face à lui, les *stablechains*, et trois blockchains généralistes que tu connais déjà pour repère :
 
 [tableau]
 | Chaîne | Frais payés en | Coût d'un envoi (relevé du 16/11) |
@@ -57,13 +57,13 @@ Reste que l'écart de prix n'a pas vidé Tron de son activité. L'USDT y circule
 [tableau]
 | Chaîne | Qui est derrière | Stablecoins hébergés (16/11) | Ce qui change pour toi |
 |---|---|---|---|
-| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,61 Md$ | Frais quasi nuls, mais payés en XPL ; l'envoi d'USDT sans XPL est promis, pas encore livré |
+| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | Frais quasi nuls ; envois d'USDT gratuits annoncés, mais ceux que nous avons relevés payaient en XPL |
 | Stable | Écosystème Tether | 0,03 Md$ | L'USDT0 paie lui-même les frais : pas de second jeton à détenir |
-| Arc | Circle | 1,47 Md$ | Frais en USDC, validateurs choisis parmi des institutions régulées |
+| Arc | Circle | 1,53 Md$ | Frais en USDC, validateurs choisis parmi des institutions régulées |
 | Tempo | Stripe et Paradigm | 0,80 Md$ | Aucun jeton à acheter : frais de transaction payables avec le stablecoin de n'importe quel émetteur |
 
 [p]
-**Plasma**, lancée en septembre 2025, promet des envois d'USDT gratuits. Pour l'instant, les frais se paient en XPL, son jeton : ils sont minuscules, mais il faut en détenir. Le **paymaster** qui doit les payer à ta place, pour que tu n'aies besoin que d'USDT, est encore présenté « en construction » dans sa documentation.
+**Plasma**, lancée en septembre 2025, annonce des envois d'USDT gratuits, pris en charge par un **paymaster** qui paie les frais à ta place. Sur les 30 derniers envois de jetons que nous avons relevés, les frais étaient pourtant payés en XPL, son jeton : minuscules, mais il fallait en détenir.
 
 [def | `paymaster`] **Paymaster**
 Smart contract qui paie le gas d'une transaction à la place de l'utilisateur. Il est financé par le protocole ou par une application, ou se rembourse dans un autre jeton.
@@ -98,9 +98,9 @@ La différence est ailleurs : là où Arc fait payer en USDC et Stable en USDT0,
 Un émetteur gagne sa vie sur les intérêts de ses réserves : tu lui confies 100 $, il les place en bons du Trésor et garde les intérêts, toi tu ne touches rien. Tether en a tiré environ 5,96 Md$ de revenus sur douze mois (DeFiLlama). Pour que son stablecoin soit utilisé, un émetteur peut aussi reverser une partie de ces intérêts aux plateformes qui le distribuent, c'est-à-dire qui le mettent entre les mains des utilisateurs : c'est ce que Circle fait avec Coinbase. Les frais de transfert, eux, reviennent à la chaîne, pas à l'émetteur : ces projets visent donc autre chose que les frais.
 
 [liste]
-- **Tether défend l'usage de l'USDT.** Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit, au risque de n'être qu'un tuyau de plus, interchangeable. Pour l'instant, la migration n'a pas eu lieu : l'énorme majorité des USDT restent sur Tron.
+- **Tether défend l'usage de l'USDT.** Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit, au risque de n'être qu'un tuyau de plus, interchangeable. Pour l'instant, la migration n'a pas eu lieu : Plasma et Stable réunis hébergent 1,65 Md$ de stablecoins, quand Tron garde environ la moitié de tous les USDT (92 Md$ sur 175).
 - **Circle cherche des revenus qui ne dépendent pas des taux.** Ses revenus de réserves (658 M$ au troisième trimestre 2026) baissent quand la Fed baisse ses taux, et il en reverse une grosse part : 412 M$ de coûts de distribution, de transaction et autres au T3, l'équivalent de près des deux tiers, surtout à Coinbase, selon un contrat qui s'applique quelle que soit la chaîne. Arc ne réduit donc pas cette facture. Il ouvre à Circle d'autres recettes : la prévente de son jeton (182 M$, ponctuelle), des services comme StableFX, et une place directe auprès des institutions et des paiements branchés sur sa chaîne.
-- **Stripe rend la rente pour gagner sur les paiements.** Stripe n'est pas d'abord un émetteur mais un service de paiement : il prélève une commission sur chaque paiement qu'il traite pour un commerçant, par exemple 1,5 % du montant pour un paiement en stablecoin (contre 2,9 % + 0,30 $ pour une carte aux États-Unis). Sa filiale Bridge émet bien un stablecoin, l'Open USD (OUSD), mais celui-ci reverse la totalité des revenus des réserves, moins de petits frais de gestion, aux entreprises qui le distribuent (plus de 140 à son lancement). Stripe renonce à la rente pour attirer les entreprises sur ses services, là où il touche ses commissions, comme un supermarché qui vend le lait à prix coûtant pour remplir les caddies.
+- **Stripe rend la rente pour gagner sur les paiements.** Stripe n'est pas d'abord un émetteur mais un service de paiement : il prélève une commission sur chaque paiement qu'il traite pour un commerçant, par exemple 1,5 % du montant pour un paiement en stablecoin (contre 2,9 % + 0,30 $ pour une carte aux États-Unis). Sa filiale Bridge émet bien un stablecoin, l'Open USD (OUSD), mais celui-ci reverse la totalité des revenus des réserves, moins de petits frais de gestion, aux entreprises qui le distribuent (plus de 200 aujourd'hui). Stripe renonce à la rente pour attirer les entreprises sur ses services, là où il touche ses commissions, comme un supermarché qui vend le lait à prix coûtant pour remplir les caddies.
 
 [avis]
 💡 **Notre avis** : le prix d'un envoi ne départage plus grand-chose : quelques centimes sur Ethereum, une fraction de centime sur les autres, et seul Tron coûte encore 0,4 à 2 $ à qui ne stake pas ses TRX. Ce qui compte, c'est ce que chaque promoteur attend de sa chaîne. Tether et Circle gagnent sur les réserves de leur stablecoin : leur chaîne sert d'abord à faire circuler le leur, l'USDT pour Plasma et Stable, l'USDC pour Arc. Stripe gagne sa commission sur le paiement, quel que soit le stablecoin utilisé : c'est pourquoi Tempo est la seule à accepter ceux de tous les émetteurs.
@@ -134,5 +134,7 @@ Sources : DeFiLlama (stablecoins par chaîne, revenus, cours, 16/11/2026) ; comm
 ### Compléments du 16/11 (relecture de Marc)
 - Ethereum : 25 envois d'USDT (transfer) relevés dans les 4 derniers blocs (publicnode, 16/11), gasUsed × effectiveGasPrice × ETH 1 817 $ : min 0,011 $, médiane 0,097 $, max 0,31 $. Frais de base ≈ 0,15 gwei ; l'écart vient des pourboires. Premier calcul théorique (≈ 0,02 $) remplacé par cette mesure.
 - X : @xKseilas, 11/10/2026 : « TRON without energy ~$2.26, Ethereum ~$0.01 (unusually cheap today) » — même ordre de grandeur que notre mesure. La croyance « Tron = pas cher » reste très répandue sur X (posts de novembre 2026).
-- GasFree : 1,5 USDT par envoi et à l'activation depuis le 9/05/2026 (presse : KuCoin, Forklog) ; d'autres wallets facturent ≈ 1 USDT. [À VÉRIFIER sur gasfree.io]
+- GasFree : 1,5 USDT par envoi et à l'activation depuis le 9/05/2026 (presse : KuCoin, Forklog ; confirmé par le fact-checker le 16/11).
+- Fact-check du 16/11 : Stable lancée le 08/12/2025 → « depuis septembre 2025 » ; DeFiLlama relu : Plasma 1,62, Arc 1,53, Tempo 0,80, Stable 0,03 (≈ 3,97 Md$) ; USDT sur Tron 91,8 / 175,25 Md$ = 52 % ; OUSD 140 à l'annonce (30/06), plus de 200 depuis.
+- Plasma : docs contradictoires (docs.plasma.to « en construction », docs.plasma.org « USD₮ transfers are free »). Mesure RPC rpc.plasma.to du 16/11 : 30 derniers appels transfer(), 0 à frais nuls, tous les expéditeurs détiennent ≈ 0,04-0,06 XPL. Les envois gratuits passent peut-être par un autre contrat (relayeur) : formulation limitée à ce qu'on a observé.
 - Stripe : 1,5 % par paiement en stablecoin (docs.stripe.com/crypto/stablecoin-payments) ; carte US 2,9 % + 0,30 $ (Blockworks).

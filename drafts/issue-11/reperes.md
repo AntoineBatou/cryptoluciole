@@ -19,12 +19,12 @@
 [st] Ce qui a fait bouger les prix
 
 [p]
-Deuxième semaine rouge d'affilée, et plus forte que la précédente : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :
+Deuxième semaine rouge d'affilée : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :
 
 [liste]
 - **L'inflation d'octobre a surpris à la hausse** : +0,4 % sur un mois, contre +0,3 % attendu. Elle a relancé la crainte d'une Fed plus dure à sa réunion des 8 et 9 décembre. Quand le placement sans risque rapporte plus, les actifs risqués perdent des acheteurs.
-- **Les ETF bitcoin américains, qui se vidaient déjà depuis le 5 novembre, ont continué** : environ **1,9 Md$** retirés en sept séances, jusqu'au 13 novembre. [À VÉRIFIER : Farside]
-- **Les liquidations ont accéléré la chute** : plusieurs centaines de millions de dollars de paris à la hausse sur le bitcoin fermés de force en une journée, le 14 novembre. Chaque vente forcée fait baisser le prix, qui déclenche la suivante. [À VÉRIFIER : montant CoinGlass]
+- **Les ETF bitcoin américains ont continué de se vider** : environ **1,9 Md$** retirés du 5 au 13 novembre, selon The Block (données Farside et SoSoValue).
+- **Les liquidations ont accéléré la chute** : sur certaines journées, des centaines de millions de dollars de paris à la hausse sur le bitcoin ont été fermés de force. Chaque vente forcée fait baisser le prix, qui déclenche la suivante.
 
 [avis]
 💡 **Notre avis** : la baisse ne vient pas d'un problème propre à la crypto mais du prix de l'argent. Tant que le marché craint une Fed plus dure en décembre, les acheteurs restent à l'écart. Le prochain repère est la réunion de la Fed des 8 et 9 décembre.

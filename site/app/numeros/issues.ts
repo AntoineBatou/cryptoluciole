@@ -4184,10 +4184,7 @@ export const issues: Issue[] = [
     ]
   },
   // ===== Numéro 11 (généré par drafts/build_issue.py depuis drafts/issue-11/) =====
-  // FACTCHECK: Actu « Marchés de prédiction : la Lou » : [À VÉRIFIER : statut de Polymarket US / QCEX]
-  // FACTCHECK: Actu « Marchés de prédiction : la Lou » : [À VÉRIFIER : communiqué CFTC introuvable, chiffre repris par casino.org et Gambling Insider]
-  // FACTCHECK: LES REPÈRES : [À VÉRIFIER : Farside]
-  // FACTCHECK: LES REPÈRES : [À VÉRIFIER : montant CoinGlass]
+
   {
     "id": "11",
     "numero": 11,
@@ -4200,7 +4197,7 @@ export const issues: Issue[] = [
       "corps": [
         {
           "type": "p",
-          "texte": "Tron est le rail historique de l'USDT : un tiers de tous les stablecoins en circulation, soit 93,2 Md$, y vit. Depuis un peu plus d'un an, quatre blockchains conçues spécialement pour les stablecoins, qu'on appelle des stablechains, sont arrivées : Plasma et Stable (dans l'orbite de Tether), Arc (Circle) et Tempo (Stripe et Paradigm). À elles quatre, elles hébergent environ 3,9 Md$."
+          "texte": "Tron est le rail historique de l'USDT : un tiers de tous les stablecoins en circulation, soit 93,2 Md$, y vit. Depuis septembre 2025, quatre blockchains conçues spécialement pour les stablecoins, qu'on appelle des stablechains, sont arrivées : Plasma et Stable (dans l'orbite de Tether), Arc (Circle) et Tempo (Stripe et Paradigm). À elles quatre, elles hébergent environ 4 Md$."
         },
         {
           "type": "p",
@@ -4226,7 +4223,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Face à lui, les stablechains, et deux blockchains généralistes que tu connais déjà pour repère :"
+          "texte": "Face à lui, les stablechains, et trois blockchains généralistes que tu connais déjà pour repère :"
         },
         {
           "type": "tableau",
@@ -4311,8 +4308,8 @@ export const issues: Issue[] = [
             [
               "Plasma",
               "Écosystème Tether (Bitfinex), Founders Fund",
-              "1,61 Md$",
-              "Frais quasi nuls, mais payés en XPL ; l'envoi d'USDT sans XPL est promis, pas encore livré"
+              "1,62 Md$",
+              "Frais quasi nuls ; envois d'USDT gratuits annoncés, mais ceux que nous avons relevés payaient en XPL"
             ],
             [
               "Stable",
@@ -4323,7 +4320,7 @@ export const issues: Issue[] = [
             [
               "Arc",
               "Circle",
-              "1,47 Md$",
+              "1,53 Md$",
               "Frais en USDC, validateurs choisis parmi des institutions régulées"
             ],
             [
@@ -4336,7 +4333,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Plasma, lancée en septembre 2025, promet des envois d'USDT gratuits. Pour l'instant, les frais se paient en XPL, son jeton : ils sont minuscules, mais il faut en détenir. Le paymaster qui doit les payer à ta place, pour que tu n'aies besoin que d'USDT, est encore présenté « en construction » dans sa documentation."
+          "texte": "Plasma, lancée en septembre 2025, annonce des envois d'USDT gratuits, pris en charge par un paymaster qui paie les frais à ta place. Sur les 30 derniers envois de jetons que nous avons relevés, les frais étaient pourtant payés en XPL, son jeton : minuscules, mais il fallait en détenir."
         },
         {
           "type": "def",
@@ -4389,9 +4386,9 @@ export const issues: Issue[] = [
         {
           "type": "liste",
           "items": [
-            "Tether défend l'usage de l'USDT. Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit, au risque de n'être qu'un tuyau de plus, interchangeable. Pour l'instant, la migration n'a pas eu lieu : l'énorme majorité des USDT restent sur Tron.",
+            "Tether défend l'usage de l'USDT. Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit, au risque de n'être qu'un tuyau de plus, interchangeable. Pour l'instant, la migration n'a pas eu lieu : Plasma et Stable réunis hébergent 1,65 Md$ de stablecoins, quand Tron garde environ la moitié de tous les USDT (92 Md$ sur 175).",
             "Circle cherche des revenus qui ne dépendent pas des taux. Ses revenus de réserves (658 M$ au troisième trimestre 2026) baissent quand la Fed baisse ses taux, et il en reverse une grosse part : 412 M$ de coûts de distribution, de transaction et autres au T3, l'équivalent de près des deux tiers, surtout à Coinbase, selon un contrat qui s'applique quelle que soit la chaîne. Arc ne réduit donc pas cette facture. Il ouvre à Circle d'autres recettes : la prévente de son jeton (182 M$, ponctuelle), des services comme StableFX, et une place directe auprès des institutions et des paiements branchés sur sa chaîne.",
-            "Stripe rend la rente pour gagner sur les paiements. Stripe n'est pas d'abord un émetteur mais un service de paiement : il prélève une commission sur chaque paiement qu'il traite pour un commerçant, par exemple 1,5 % du montant pour un paiement en stablecoin (contre 2,9 % + 0,30 $ pour une carte aux États-Unis). Sa filiale Bridge émet bien un stablecoin, l'Open USD (OUSD), mais celui-ci reverse la totalité des revenus des réserves, moins de petits frais de gestion, aux entreprises qui le distribuent (plus de 140 à son lancement). Stripe renonce à la rente pour attirer les entreprises sur ses services, là où il touche ses commissions, comme un supermarché qui vend le lait à prix coûtant pour remplir les caddies."
+            "Stripe rend la rente pour gagner sur les paiements. Stripe n'est pas d'abord un émetteur mais un service de paiement : il prélève une commission sur chaque paiement qu'il traite pour un commerçant, par exemple 1,5 % du montant pour un paiement en stablecoin (contre 2,9 % + 0,30 $ pour une carte aux États-Unis). Sa filiale Bridge émet bien un stablecoin, l'Open USD (OUSD), mais celui-ci reverse la totalité des revenus des réserves, moins de petits frais de gestion, aux entreprises qui le distribuent (plus de 200 aujourd'hui). Stripe renonce à la rente pour attirer les entreprises sur ses services, là où il touche ses commissions, comme un supermarché qui vend le lait à prix coûtant pour remplir les caddies."
           ]
         },
         {
@@ -4406,7 +4403,7 @@ export const issues: Issue[] = [
         "corps": [
           {
             "type": "p",
-            "texte": "Le 12 novembre 2026, la procureure générale de Louisiane a obtenu d'un tribunal de l'État une ordonnance temporaire contre une trentaine de plateformes, dont Kalshi et Polymarket. Motif : proposer aux habitants des contrats sur le résultat d'événements (matchs, élections…) sans licence de jeu de l'État."
+            "texte": "Le 12 novembre 2026, la procureure générale de Louisiane a obtenu d'un tribunal de l'État une ordonnance temporaire contre 31 entités liées à onze groupes, dont Kalshi et Polymarket. Motif : proposer aux habitants des contrats sur le résultat d'événements (matchs, élections…) sans licence de jeu de l'État."
           },
           {
             "type": "p",
@@ -4448,7 +4445,7 @@ export const issues: Issue[] = [
           },
           {
             "type": "p",
-            "texte": "Le sujet a pris un tour politique avec les élections de mi-mandat du 3 novembre : Kalshi et Polymarket brassent des milliards de dollars par semaine, alors que 23 États interdisent les paris sur les élections."
+            "texte": "Le sujet a pris un tour politique avec les élections de mi-mandat du 3 novembre : Kalshi et Polymarket brassent des milliards de dollars par semaine, alors que 23 États interdisent totalement les paris sur les élections."
           },
           {
             "type": "p",
@@ -4554,14 +4551,14 @@ export const issues: Issue[] = [
       },
       {
         "type": "p",
-        "texte": "Deuxième semaine rouge d'affilée, et plus forte que la précédente : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :"
+        "texte": "Deuxième semaine rouge d'affilée : le bitcoin a perdu près de 13 % et est passé sous les 66 000 $, l'ether sous les 1 900 $. Une cause principale, et deux accélérateurs :"
       },
       {
         "type": "liste",
         "items": [
           "L'inflation d'octobre a surpris à la hausse : +0,4 % sur un mois, contre +0,3 % attendu. Elle a relancé la crainte d'une Fed plus dure à sa réunion des 8 et 9 décembre. Quand le placement sans risque rapporte plus, les actifs risqués perdent des acheteurs.",
-          "Les ETF bitcoin américains, qui se vidaient déjà depuis le 5 novembre, ont continué : environ 1,9 Md$ retirés en sept séances, jusqu'au 13 novembre.",
-          "Les liquidations ont accéléré la chute : plusieurs centaines de millions de dollars de paris à la hausse sur le bitcoin fermés de force en une journée, le 14 novembre. Chaque vente forcée fait baisser le prix, qui déclenche la suivante."
+          "Les ETF bitcoin américains ont continué de se vider : environ 1,9 Md$ retirés du 5 au 13 novembre, selon The Block (données Farside et SoSoValue).",
+          "Les liquidations ont accéléré la chute : sur certaines journées, des centaines de millions de dollars de paris à la hausse sur le bitcoin ont été fermés de force. Chaque vente forcée fait baisser le prix, qui déclenche la suivante."
         ]
       },
       {
@@ -4588,7 +4585,7 @@ export const issues: Issue[] = [
           "type": "liste",
           "items": [
             "Détenir n'est pas utiliser : un détenteur est une adresse qui possède le jeton ; une adresse active en a fait au moins une transaction dans le mois.",
-            "Pour l'or, l'activité suit l'emballement du cours, pas l'usage : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé de 4 345 à 4 021 $ l'once), et les échanges ont été divisés par deux.",
+            "Pour l'or, l'activité suit l'emballement du cours, pas l'usage : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé d'environ 4 330 $ début septembre à environ 3 850 $ l'once), et les échanges ont été divisés par deux.",
             "Pour les actions, l'activité se concentre : autant de volume avec un tiers d'adresses actives en moins, ce qui laisse penser que moins d'acteurs, plus gros, font l'essentiel des échanges. C'est une hypothèse : les sources n'en donnent pas la cause."
           ]
         },

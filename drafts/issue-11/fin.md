@@ -24,7 +24,7 @@ Sur les trente derniers jours, selon rwa.xyz, les jetons d'actions et d'or gagne
 
 [liste]
 - **Détenir n'est pas utiliser** : un détenteur est une adresse qui possède le jeton ; une adresse active en a fait au moins une transaction dans le mois.
-- **Pour l'or, l'activité suit l'emballement du cours, pas l'usage** : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé de 4 345 à 4 021 $ l'once), et les échanges ont été divisés par deux.
+- **Pour l'or, l'activité suit l'emballement du cours, pas l'usage** : on échange surtout l'or tokenisé quand le prix de l'or s'envole. Il s'est calmé depuis septembre (le PAXG, jeton adossé à de l'or, est passé d'environ 4 330 $ début septembre à environ 3 850 $ l'once), et les échanges ont été divisés par deux.
 - **Pour les actions, l'activité se concentre** : autant de volume avec un tiers d'adresses actives en moins, ce qui laisse penser que moins d'acteurs, plus gros, font l'essentiel des échanges. C'est une hypothèse : les sources n'en donnent pas la cause.
 
 [avis]
@@ -58,7 +58,7 @@ Tu envoies déjà des stablecoins ? Sur quelle blockchain, et pourquoi celle-là
 ### Chiffres (script `../onchain/scripts/rwa_adoption.py`, lu le 16/11 vers 15 h)
 - Actions tokenisées (rwa.xyz/stocks) : valeur distribuée 3,71 Md$ (+4,3 % sur 30 j) ; volume mensuel 89,69 Md$ (−0,3 %) ; adresses actives mensuelles 1 866 813 (−32,3 %) ; détenteurs 4 837 650 (+7,0 %).
 - Matières premières (rwa.xyz/commodities) : valeur distribuée 5,10 Md$ (−4,5 %) ; volume mensuel 9,51 Md$ (−52,4 %) ; adresses actives 134 613 (−46,6 %) ; détenteurs 489 388 (+2,3 %).
-- PAXG (DeFiLlama coins chart) : 4 345 $ le 02/09, 4 021 $ le 10/11 (−7,5 %).
+- PAXG (DeFiLlama) : 4 334 $ le 02/09, 3 848 $ le 16/11 (−11 %), relu après le fact-check.
 
 ### Pour le fact-checker
 - « L'activité suit le cours » : lien établi sur 2025 par CoinGecko (volume d'octobre 2025 à 21,4 Md$ avec les records de l'or, puis 14,1 Md$ en novembre) ; pour novembre 2026, c'est une concordance, pas une causalité démontrée → formulation prudente.

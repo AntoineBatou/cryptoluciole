@@ -13,7 +13,7 @@
 **Titre (proposition)** : ✦ Marchés de prédiction : la Louisiane ou la CFTC, qui fixe les règles ?
 
 [p]
-Le 12 novembre 2026, la procureure générale de Louisiane a obtenu d'un tribunal de l'État une ordonnance temporaire contre **une trentaine de plateformes**, dont Kalshi et Polymarket. Motif : proposer aux habitants des contrats sur le résultat d'événements (matchs, élections…) sans licence de jeu de l'État.
+Le 12 novembre 2026, la procureure générale de Louisiane a obtenu d'un tribunal de l'État une ordonnance temporaire contre **31 entités liées à onze groupes**, dont Kalshi et Polymarket. Motif : proposer aux habitants des contrats sur le résultat d'événements (matchs, élections…) sans licence de jeu de l'État.
 
 [p]
 Le lendemain, la CFTC a répliqué en poursuivant la Louisiane pour empêcher l'application de cette ordonnance.
@@ -33,15 +33,15 @@ Principe du droit américain : quand une loi fédérale encadre un domaine, elle
 Cette protection ne vaudrait que pour les marchés agréés par la CFTC : une plateforme qui n'a pas son agrément ne pourrait pas s'en prévaloir.
 
 [p]
-Polymarket illustre la frontière. Sa version pour les Américains est passée sous le contrôle de la CFTC après le rachat d'une bourse agréée, QCEX, en 2025 ; sa version internationale, en USDC sur Polygon, ne l'est pas [À VÉRIFIER : statut de Polymarket US / QCEX]. **D'après notre compréhension du droit, seule la première serait protégée par la préemption.**
+Polymarket illustre la frontière. Sa version pour les Américains est passée sous le contrôle de la CFTC après le rachat d'une bourse agréée, QCEX, en 2025 ; sa version internationale, en USDC sur Polygon, ne l'est pas. **D'après notre compréhension du droit, seule la première serait protégée par la préemption.**
 
 [st] **2. Le régulateur passe à l'attaque**
 
 [p]
-La CFTC ne se contente plus de défendre ses bourses : selon elle, la Louisiane est **le 12e État qu'elle poursuit** [À VÉRIFIER : communiqué CFTC introuvable, chiffre repris par casino.org et Gambling Insider], après l'Utah fin octobre.
+La CFTC ne se contente plus de défendre ses bourses : selon elle, la Louisiane est **le 12e État qu'elle poursuit**, après l'Utah fin octobre.
 
 [p]
-Le sujet a pris un tour politique avec les élections de mi-mandat du 3 novembre : Kalshi et Polymarket brassent des milliards de dollars par semaine, alors que 23 États interdisent les paris sur les élections.
+Le sujet a pris un tour politique avec les élections de mi-mandat du 3 novembre : Kalshi et Polymarket brassent des milliards de dollars par semaine, alors que 23 États interdisent totalement les paris sur les élections.
 
 [p]
 Kalshi a coupé l'accès à ses utilisateurs de Louisiane.
