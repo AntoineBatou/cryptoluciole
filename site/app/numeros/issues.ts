@@ -4223,14 +4223,14 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Face à lui, les stablechains, et trois blockchains généralistes que tu connais déjà pour repère :"
+          "texte": "Face à lui, les stablechains, avec trois blockchains généralistes pour repère :"
         },
         {
           "type": "tableau",
           "entetes": [
             "Chaîne",
             "Frais payés en",
-            "Coût d'un envoi (relevé du 16/11)"
+            "Coût d'un envoi (au 16/11)"
           ],
           "lignes": [
             [
@@ -4282,7 +4282,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Ordres de grandeur : cible officielle pour Arc, 25 envois d'USDT relevés pour Ethereum (le prix y varie avec l'encombrement du réseau), très peu de transferts relevés pour Tempo et Base, prix du gas en vigueur pour Stable (aucun envoi d'utilisateur dans les 200 derniers blocs), prix de loueurs pour Tron avec énergie."
+          "texte": "Ordres de grandeur relevés sur chaque blockchain ; sur Ethereum, le coût varie avec l'encombrement du réseau."
         },
         {
           "type": "p",
@@ -4302,14 +4302,14 @@ export const issues: Issue[] = [
             "Chaîne",
             "Qui est derrière",
             "Stablecoins hébergés (16/11)",
-            "Ce qui change pour toi"
+            "Leur particularité"
           ],
           "lignes": [
             [
               "Plasma",
               "Écosystème Tether (Bitfinex), Founders Fund",
               "1,62 Md$",
-              "Envois d'USDT gratuits depuis les applications branchées sur son relais ; sinon frais quasi nuls, en XPL"
+              "Frais quasi nuls ; envois d'USDT gratuits annoncés, mais seulement depuis certaines applications"
             ],
             [
               "Stable",
@@ -4381,12 +4381,20 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Un émetteur gagne sa vie sur les intérêts de ses réserves : tu lui confies 100 $, il les place en bons du Trésor et garde les intérêts, toi tu ne touches rien. Tether en a tiré environ 5,96 Md$ de revenus sur douze mois (DeFiLlama). Pour que son stablecoin soit utilisé, un émetteur peut aussi reverser une partie de ces intérêts aux plateformes qui le distribuent, c'est-à-dire qui le mettent entre les mains des utilisateurs : c'est ce que Circle fait avec Coinbase. Les frais de transfert, eux, reviennent à la chaîne, pas à l'émetteur : ces projets visent donc autre chose que les frais."
+          "texte": "Un émetteur gagne sa vie sur les intérêts de ses réserves : tu lui donnes 100 $, il te remet 100 USDT ou 100 USDC, et il place tes 100 $ en bons du Trésor. Les intérêts sont pour lui ; toi, tu ne touches rien. Tether en a tiré environ 5,96 Md$ de revenus sur douze mois, d'après DeFiLlama."
+        },
+        {
+          "type": "p",
+          "texte": "Pour que son stablecoin soit utilisé, un émetteur peut aussi partager ces intérêts avec les plateformes qui le distribuent. Prenons Circle et Coinbase. Si tu gardes 1 000 USDC sur Coinbase, Circle place 1 000 $ en bons du Trésor, qui lui rapportent environ 35 $ par an au taux actuel. Selon l'accord publié lors de l'entrée en Bourse de Circle, en 2025, Coinbase récupère la totalité de ces intérêts tant que tes USDC restent chez lui, et la moitié de ceux des USDC détenus ailleurs. Coinbase en reverse une partie à ses clients sous forme de récompenses : c'est ce qui l'incite à pousser l'USDC plutôt qu'un autre stablecoin."
+        },
+        {
+          "type": "p",
+          "texte": "Les frais de transfert, eux, reviennent à la chaîne, pas à l'émetteur : ces projets visent donc autre chose que les frais."
         },
         {
           "type": "liste",
           "items": [
-            "Tether défend l'usage de l'USDT. Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit, au risque de n'être qu'un tuyau de plus, interchangeable. Pour l'instant, la migration n'a pas eu lieu : Plasma et Stable réunis hébergent 1,65 Md$ de stablecoins, quand Tron garde environ la moitié de tous les USDT (92 Md$ sur 175).",
+            "Tether défend l'usage de l'USDT. Chaque envoi sur Tron profite à l'écosystème Tron (TRX brûlés ou énergie louée), pas à Tether. Plasma et Stable sont une tentative de reprendre la route sur laquelle roule son produit. Pour l'instant, la migration n'a pas eu lieu : Plasma et Stable réunis hébergent 1,65 Md$ de stablecoins, quand Tron garde environ la moitié de tous les USDT (92 Md$ sur 175).",
             "Circle cherche des revenus qui ne dépendent pas des taux. Ses revenus de réserves (658 M$ au troisième trimestre 2026) baissent quand la Fed baisse ses taux, et il en reverse une grosse part : 412 M$ de coûts de distribution, de transaction et autres au T3, l'équivalent de près des deux tiers, surtout à Coinbase, selon un contrat qui s'applique quelle que soit la chaîne. Arc ne réduit donc pas cette facture. Il ouvre à Circle d'autres recettes : la prévente de son jeton (182 M$, ponctuelle), des services comme StableFX, et une place directe auprès des institutions et des paiements branchés sur sa chaîne.",
             "Stripe rend la rente pour gagner sur les paiements. Stripe n'est pas d'abord un émetteur mais un service de paiement : il prélève une commission sur chaque paiement qu'il traite pour un commerçant, par exemple 1,5 % du montant pour un paiement en stablecoin (contre 2,9 % + 0,30 $ pour une carte aux États-Unis). Sa filiale Bridge émet bien un stablecoin, l'Open USD (OUSD), mais celui-ci reverse la totalité des revenus des réserves, moins de petits frais de gestion, aux entreprises qui le distribuent (plus de 200 aujourd'hui). Stripe renonce à la rente pour attirer les entreprises sur ses services, là où il touche ses commissions, comme un supermarché qui vend le lait à prix coûtant pour remplir les caddies."
           ]

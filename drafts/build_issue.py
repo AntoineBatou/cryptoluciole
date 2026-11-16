@@ -53,7 +53,7 @@ def to_txt(s):
     return s
 
 # ---------- parsing des brouillons ----------
-MARK = re.compile(r"^\[(p|st|def|liste|tableau|avis|image|source|titre|texte|cta|question|a|b)(?:\s*\|([^\]]*))?\]\s*(.*)$")
+MARK = re.compile(r"^\[(p|st|def|liste|tableau|avis|image|source|note|titre|texte|cta|question|a|b)(?:\s*\|([^\]]*))?\]\s*(.*)$")
 
 def parse(text, where):
     blocks, cur = [], None
@@ -133,6 +133,8 @@ def site_els(blocks):
             els.append({"type": "def", "terme": to_txt(b["terme"]), "slug": b["slug"], "texte": to_txt(b["t"])})
         elif k == "liste":
             els.append({"type": "liste", "items": [to_txt(i) for i in b["items"]]})
+        elif k == "note":
+            els.append({"type": "p", "texte": to_txt(b["t"])})
         elif k == "tableau":
             els.append({"type": "tableau", "entetes": [to_txt(h) for h in b["head"]], "lignes": [[to_txt(c) for c in r] for r in b["rows"]]})
         elif k == "avis":
@@ -155,7 +157,7 @@ DEF = ('<table role="presentation" width="100%" cellpadding="0" cellspacing="0" 
 AVIS = ('<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0fdf4; border-left:4px solid #28B092; border-radius:8px; margin-bottom:14px;">'
         '<tr><td style="padding:14px 18px; font-size:16px; line-height:1.65; color:#1A2332;">')
 SRC = '<p style="margin:0 0 4px 0; font-size:11px; line-height:1.5; color:#94a3b8;">'
-TH = '<td valign="bottom" style="padding:10px 10px; font-size:13px; font-weight:700; color:#ffffff; line-height:1.35;">'
+TH = '<td valign="middle" style="padding:10px 10px; font-size:13px; font-weight:700; color:#ffffff; line-height:1.35;">'
 TD0 = '<td valign="top" style="padding:10px 10px; font-size:14px; line-height:1.5; color:#1A2332; border-top:1px solid #e2e8f0;">'
 TD = '<td valign="top" style="padding:10px 10px; font-size:14px; line-height:1.5; color:#334155; border-top:1px solid #e2e8f0;">'
 
@@ -199,7 +201,7 @@ def mail_els(blocks):
         elif k == "liste":
             out.append(ul(b["items"]))
         elif k == "tableau":
-            rows = [f'<tr style="background-color:#1d8870;">' + "".join(TH + to_html(h) + "</td>" for h in b["head"]) + "</tr>"]
+            rows = [f'<tr style="background-color:#1d8870;">' + "".join(TH + to_html(h).replace(" (", "<br>(", 1) + "</td>" for h in b["head"]) + "</tr>"]
             for j, r in enumerate(b["rows"]):
                 bg = ' style="background-color:#f7fafa;"' if j % 2 else ""
                 rows.append(f"<tr{bg}>" + TD0 + "<strong>" + to_html(r[0]) + "</strong></td>" + "".join(TD + to_html(c) + "</td>" for c in r[1:]) + "</tr>")
@@ -210,6 +212,8 @@ def mail_els(blocks):
         elif k == "image":
             out.append(f'<img src="{RAW}{b["file"]}" width="528" alt="{html.escape(to_txt(b["leg"]))}" style="display:block; width:100%; max-width:528px; height:auto; border:0; border-radius:8px;">'
                        f'<div style="font-size:11px; line-height:1.5; color:#94a3b8; margin:6px 0 16px 0;">{to_html(b["leg"])}</div>')
+        elif k == "note":
+            out.append('<p style="margin:-6px 0 16px 0; font-size:12px; line-height:1.5; color:#94a3b8;">' + to_html(b["t"]) + "</p>")
         elif k == "source":
             out.append(SRC + "Source&nbsp;: " + to_html(b["t"]) + "</p>")
     return "\n    ".join(out)
