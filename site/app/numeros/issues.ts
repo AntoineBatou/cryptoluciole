@@ -4309,7 +4309,7 @@ export const issues: Issue[] = [
               "Plasma",
               "Écosystème Tether (Bitfinex), Founders Fund",
               "1,62 Md$",
-              "Frais quasi nuls ; envois d'USDT gratuits annoncés, mais seulement depuis certaines applications"
+              "• Frais quasi nuls\n• Envois d'USDT gratuits annoncés, mais seulement depuis certaines applications"
             ],
             [
               "Stable",
@@ -4321,13 +4321,13 @@ export const issues: Issue[] = [
               "Arc",
               "Circle",
               "1,53 Md$",
-              "Frais en USDC, validateurs choisis parmi des institutions régulées"
+              "• Frais en USDC\n• Validateurs choisis parmi des institutions régulées"
             ],
             [
               "Tempo",
               "Stripe et Paradigm",
               "0,80 Md$",
-              "Aucun jeton à acheter : frais de transaction payables avec le stablecoin de n'importe quel émetteur"
+              "• Aucun jeton à acheter\n• Frais de transaction payables avec le stablecoin de n'importe quel émetteur"
             ]
           ]
         },

@@ -57,10 +57,10 @@ Reste que l'écart de prix n'a pas vidé Tron de son activité. L'USDT y circule
 [tableau]
 | Chaîne | Qui est derrière | Stablecoins hébergés (16/11) | Leur particularité |
 |---|---|---|---|
-| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | Frais quasi nuls ; envois d'USDT gratuits annoncés, mais seulement depuis certaines applications |
+| Plasma | Écosystème Tether (Bitfinex), Founders Fund | 1,62 Md$ | • Frais quasi nuls • Envois d'USDT gratuits annoncés, mais seulement depuis certaines applications |
 | Stable | Écosystème Tether | 0,03 Md$ | L'USDT0 paie lui-même les frais : pas de second jeton à détenir |
-| Arc | Circle | 1,53 Md$ | Frais en USDC, validateurs choisis parmi des institutions régulées |
-| Tempo | Stripe et Paradigm | 0,80 Md$ | Aucun jeton à acheter : frais de transaction payables avec le stablecoin de n'importe quel émetteur |
+| Arc | Circle | 1,53 Md$ | • Frais en USDC • Validateurs choisis parmi des institutions régulées |
+| Tempo | Stripe et Paradigm | 0,80 Md$ | • Aucun jeton à acheter • Frais de transaction payables avec le stablecoin de n'importe quel émetteur |
 
 [p]
 **Plasma**, lancée en septembre 2025, annonce des envois d'USDT gratuits. En pratique, ils sont gratuits pour toi seulement si l'application que tu utilises passe par le relais de Plasma, un **paymaster** qui paie les frais à ta place. Depuis un wallet ordinaire, c'est toi qui paies, en XPL, son jeton : des montants minuscules, mais il faut en détenir. Dans les deux cas, la chaîne encaisse bien des frais : la gratuité veut dire que quelqu'un d'autre les paie. À terme, Plasma prévoit aussi de laisser payer tous les autres frais directement en USDT, sans passer par le XPL.

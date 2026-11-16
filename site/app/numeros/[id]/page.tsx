@@ -95,7 +95,7 @@ function CorpsBlocks({ corps }: { corps: NotionEl[] }) {
                       {ligne.map((c, k) => (
                         <td
                           key={k}
-                          className={`border-t border-black/5 px-3 py-2.5 align-top leading-snug ${
+                          className={`border-t border-black/5 px-3 py-2.5 align-top leading-snug whitespace-pre-line ${
                             k === 0 ? "font-semibold text-nuit" : "text-nuit/80"
                           }`}
                         >

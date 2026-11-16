@@ -136,7 +136,7 @@ def site_els(blocks):
         elif k == "note":
             els.append({"type": "p", "texte": to_txt(b["t"])})
         elif k == "tableau":
-            els.append({"type": "tableau", "entetes": [to_txt(h) for h in b["head"]], "lignes": [[to_txt(c) for c in r] for r in b["rows"]]})
+            els.append({"type": "tableau", "entetes": [to_txt(h) for h in b["head"]], "lignes": [[cell_txt(c) for c in r] for r in b["rows"]]})
         elif k == "avis":
             e = {"type": "avis", "texte": to_txt(b["t"])}
             if b["items"]:
@@ -160,6 +160,18 @@ SRC = '<p style="margin:0 0 4px 0; font-size:11px; line-height:1.5; color:#94a3b
 TH = '<td valign="middle" style="padding:10px 10px; font-size:13px; font-weight:700; color:#ffffff; line-height:1.35;">'
 TD0 = '<td valign="top" style="padding:10px 10px; font-size:14px; line-height:1.5; color:#1A2332; border-top:1px solid #e2e8f0;">'
 TD = '<td valign="top" style="padding:10px 10px; font-size:14px; line-height:1.5; color:#334155; border-top:1px solid #e2e8f0;">'
+
+def puces(c):
+    """Case de tableau « • a • b » -> une puce par ligne."""
+    return [i.strip() for i in c.split("•") if i.strip()] if c.strip().startswith("•") else None
+
+def cell_html(c):
+    it = puces(c)
+    return "<br>".join("•&nbsp;" + to_html(i) for i in it) if it else to_html(c)
+
+def cell_txt(c):
+    it = puces(c)
+    return "\n".join("• " + to_txt(i) for i in it) if it else to_txt(c)
 
 def ul(items):
     lis = [f"{LI}{to_html(i)}</li>" for i in items]
@@ -204,7 +216,7 @@ def mail_els(blocks):
             rows = [f'<tr style="background-color:#1d8870;">' + "".join(TH + to_html(h).replace(" (", "<br>(", 1) + "</td>" for h in b["head"]) + "</tr>"]
             for j, r in enumerate(b["rows"]):
                 bg = ' style="background-color:#f7fafa;"' if j % 2 else ""
-                rows.append(f"<tr{bg}>" + TD0 + "<strong>" + to_html(r[0]) + "</strong></td>" + "".join(TD + to_html(c) + "</td>" for c in r[1:]) + "</tr>")
+                rows.append(f"<tr{bg}>" + TD0 + "<strong>" + to_html(r[0]) + "</strong></td>" + "".join(TD + cell_html(c) + "</td>" for c in r[1:]) + "</tr>")
             out.append('<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e2e8f0; border-radius:10px; overflow:hidden; margin:0 0 16px 0;">\n      '
                        + "\n      ".join(rows) + "\n    </table>")
         elif k == "avis":
