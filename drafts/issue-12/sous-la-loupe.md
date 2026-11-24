@@ -15,7 +15,7 @@
 [st] En bref
 
 [p]
-**Strata** découpe un placement à rendement en **deux jetons**, sur Ethereum : une tranche **senior**, moins payée mais protégée en priorité, et une tranche **junior**, mieux payée, qui encaisse les pertes en premier. Le protocole propose **sept placements**, des [dollars synthétiques](https://www.cryptoluciole.com/glossaire/dollar-synthetique) au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$, et fonctionne depuis 2025.
+**Strata** découpe un placement à rendement en **deux jetons** : une tranche **senior**, moins payée mais protégée en priorité, et une tranche **junior**, mieux payée, qui encaisse les pertes en premier. Le protocole propose **sept placements**, des [dollars synthétiques](https://www.cryptoluciole.com/glossaire/dollar-synthetique) au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$, et fonctionne depuis 2025.
 
 [st] Comment ça marche
 
@@ -23,38 +23,41 @@
 On a présenté le principe du tranching dans [notre numéro 2](https://www.cryptoluciole.com/numeros/2), avec Re : un même placement, découpé en tranches qui n'ont pas la même priorité face aux pertes. Strata applique ce découpage à des placements existants, qu'il ne gère pas lui-même.
 
 [p]
-**⬡ 1. Tu choisis ta tranche.** Tu déposes l'actif du marché sur l'application de Strata, par exemple de l'USDe pour le marché Ethena [À VÉRIFIER : accès depuis la France aux marchés de crédit réel, PRIME et nOPAL]. Strata le place dans le produit à rendement (ici le sUSDe, l'USDe staké) et te remet un jeton : **srUSDe** si tu choisis la senior, **jrUSDe** si tu choisis le junior. Les deux tranches partagent le même pot.
+**⬡ 1. Tu choisis ta tranche.** Tu déposes l'actif du marché sur l'application de Strata, par exemple de l'USDe pour le marché Ethena, Strata le place dans le produit à rendement (ici le sUSDe) et te remet un jeton : **srUSDe** si tu choisis la senior, **jrUSDe** si tu choisis le junior. Les deux tranches partagent le même pot.
 
 [p]
 **⬡ 2. Le rendement est partagé.** La senior cède au junior une **prime** : un pourcentage du rendement, environ 21 % aujourd'hui sur le marché USDe. Plus la senior pèse lourd dans le pot, plus cette prime augmente. La senior touche donc :
 
 [liste]
 - **le rendement du placement, moins la prime** ;
-- **ou un plancher**, s'il est plus haut : un taux de référence propre à chaque marché (pour l'USDe, le taux de prêt de l'USDC et de l'USDT sur Aave). Ce complément est payé sur le capital du junior, tant qu'il en reste ; junior vidé, la senior ne touche plus que le rendement réel du placement.
+- **mais jamais moins qu'un plancher** : un taux minimum propre à chaque marché (pour l'USDe, ce que rapporte un prêt d'USDC ou d'USDT sur Aave). Si le placement rapporte moins que ce plancher, c'est le junior qui paie la différence, sur son propre capital. Donc la tanche junior protège d'une baisse de valeur, mais également d'une absence de rendement, puisqu'elle paiera sur son capital la tranche senior s'il y a une absence de rendement.
 
 [p]
-Exemple en chiffres ronds : un pot de 100 $, dont 80 $ en senior et 20 $ en junior, dans un placement qui rapporte 10 % par an, avec une prime de 20 %. Le pot gagne 10 $. La senior touche 8 % (10 % moins 20 % de 10 %), soit 6,40 $ sur 80 $. Le junior garde le reste, 3,60 $ sur 20 $, soit **18 %**.
+Exemple en chiffres ronds : un pot commun de 100 $, dont 80 $ en senior et 20 $ en junior, dans un placement qui rapporte 10 % par an, avec une prime de 20 %. Le pot commun gagne 10 $ par an (10% de 100$). La senior touchera donc 8 % (10 % moins 20 % de 10 %), soit 6,40 $ sur 80 $. Le junior garde le reste, 3,60 $ sur 20 $, soit **18 %**.
+
+[p]
+Une année faible, avec le même pot : le placement ne rapporte que 2 % et le plancher est à 3 %. Le pot gagne 2 $, mais la senior doit toucher 3 % de 80 $, soit 2,40 $. Les 0,40 $ manquants sont pris sur le capital du junior, qui passe de 20 $ à **19,60 $** : il perd de l'argent alors que le placement en a gagné. Le junior ne protège donc pas seulement la senior contre les pertes (étape 3) : il lui garantit aussi un rendement minimum. Une fois le junior vidé, la senior ne touche plus que ce que rapporte le placement.
 
 [p]
 **⬡ 3. Les pertes suivent l'ordre inverse.** Si le placement perd de la valeur, le junior absorbe la perte en premier. La senior n'est touchée qu'une fois le junior vidé. Avec le même pot :
 
 [liste]
-- **une perte de 15 %** : les 15 $ sont pris sur le junior, à qui il reste 5 $. La senior n'est pas touchée ;
+- **une perte de 15 %** : les 15 $ sont pris sur la partie junior, à qui il reste 5 $. La senior n'est pas touchée ;
 - **une perte de 30 %** : le junior perd ses 20 $, les 10 $ restants tombent sur la senior, qui perd **12,5 %** (10 sur 80).
 
 [def | `ratio-de-couverture`] **Ratio de couverture**
-Le rapport entre tous les dépôts d'un marché et ceux de la senior. Dans l'exemple, 100 ÷ 80 = 125 % : le junior pèse 20 % du pot, donc la senior résiste à une perte allant jusqu'à 20 % du total. À 110 %, ce coussin n'est plus que d'environ 9 %.
+Le total des dépôts d'un marché divisé par les dépôts de la senior. Dans l'exemple, 100 $ ÷ 80 $ = 125 % : derrière les 80 $ de la senior, il y a 25 % de dépôts en plus, les 20 $ du junior. En pratique, la senior ne perd rien tant que la perte du pot ne dépasse pas ces 20 $, soit 20 % du pot. Plus la couverture est haute, plus ce coussin est épais.
 
 [p]
-**⬡ 4. Des garde-fous sur les sorties.** Quand la couverture baisse, Strata retient le junior, afin que le coussin ne disparaisse pas au moment où il sert. Les seuils et les délais varient selon le marché :
+**⬡ 4. Des garde-fous sur les sorties.** Quand la couverture baisse, Strata retient le junior ou empêche de déposer sur la senior, afin que le coussin ne disparaisse pas au moment où il sert. Les seuils et les délais de sortie de la tranche junior varient selon le marché :
 
 [liste]
-- **NUSD** : sortie du junior immédiate au-dessus de 120 % de couverture, 7 jours entre 110 et 120 %, 35 jours en dessous ;
+- **mHYPER** : sortie du junior immédiate au-dessus de 120 % de couverture, 7 jours entre 110 et 120 %, 21 jours en dessous ;
 - **USDat** : 7 jours même au-dessus de 130 %, jusqu'à 28 jours sous 115 % ;
 - **USDe** : pas de délai progressif, mais sous 105 % de couverture, les rachats du junior et les nouveaux dépôts en senior sont suspendus.
 
 [p]
-Ces délais retiennent le coussin, mais ne l'empêchent pas de subir une perte : pendant son attente, le junior reste exposé. La senior sort sans délai chez Strata, mais elle reçoit du sUSDe ou du sNUSD : pour récupérer des dollars, il faut ensuite passer par le délai du placement, 7 jours pour l'USDe et 10 jours pour le NUSD, d'après la FAQ de Strata.
+La senior sort sans délai chez Strata, mais elle reçoit l'actif du placement (du sUSDe sur le marché USDe) : pour récupérer des dollars, il faut ensuite passer par le délai de cet actif, 7 jours pour le sUSDe.
 
 [p]
 **⬡ Les sept marchés.** Le même mécanisme s'applique à des placements très différents, d'après la documentation de Strata :
@@ -76,7 +79,7 @@ Ces délais retiennent le coussin, mais ne l'empêchent pas de subir une perte :
 Ce n'est pas un piratage : une partie de la stratégie derrière le NUSD a perdu de la valeur et ne pouvait plus être revendue. Le 13 août, Neutrl a suspendu les créations et les rachats de NUSD ; le 17 septembre, les rachats ont rouvert à **0,51 USDC par NUSD**.
 
 [p]
-Sans intervention, la senior aurait perdu autant que le NUSD, puisque sa protection est comptée en NUSD. Strata a donc tout converti en dollars, au taux de rachat de Neutrl, pour appliquer l'ordre de priorité à la perte réelle. D'après Strata, le srNUSD a été réglé **0,63 $ par part**, contre **0,54 $** pour le sNUSD détenu en direct. Le junior a été ramené à zéro, d'après Merkle.Press [À VÉRIFIER].
+D'après Strata, le srNUSD (tranche senior) a été réglé **0,63 $ par part**, contre **0,54 $** pour le sNUSD détenu en direct. Le jrNUSD (tranche junior) a été ramené à zéro, d'après Merkle.Press [À VÉRIFIER].
 
 [image | drafts/issue-12/captures/neutrl-reglement.png | Ce qu'a récupéré chaque détenteur pour 1 $ de départ, d'après Strata et Neutrl.]
 
@@ -118,14 +121,17 @@ Rendements annuels et dépôts au 23 novembre, d'après DeFiLlama ; couverture =
 [p]
 **Le marché où la senior détient le plus d'argent, USDat (environ 4,3 M$), est aussi l'un des moins couverts : son coussin absorbe une perte d'environ 16 % du pot.** La prime dépend du seul poids de la senior, pas de ce que le placement peut perdre : sur PRIME, du crédit immobilier hors blockchain, le junior ne touche qu'environ un demi-point de plus que la senior.
 
-[st] Les risques — 🟡 Moyen (senior USDe) · 🔴 Élevé (juniors, autres marchés)
+[st] Les risques — 🟡 Moyen (senior) · 🔴 Élevé (juniors, autres marchés)
 
 [p]
-**🟡 Moyen pour la senior du marché USDe.** Elle dispose d'environ 40 % de coussin, pour un USDe qui n'a jamais subi de perte de cette ampleur (son pire épisode : 0,977 $ après le piratage de Bybit en février 2025, d'après Chaos Labs). Un accident de type Neutrl toucherait pourtant aussi cette senior. **🔴 Élevé pour les juniors**, qui peuvent perdre tout leur capital (c'est leur rôle), **et pour les marchés adossés à des placements hors blockchain ou peu couverts**.
+**Le risque dépend d'abord du marché**, pour deux raisons : le placement de départ (ce que fait le jeton de ton argent, et ce qu'il peut perdre) et la couverture (l'épaisseur du coussin). On le note ici sur la senior du marché USDe.
+
+[p]
+**🟡 Moyen pour la senior du marché USDe** : son coussin absorbe une perte d'environ 40 % du pot. **🔴 Élevé pour les juniors**, qui peuvent perdre tout leur capital (c'est leur rôle), **et pour les marchés adossés à des placements risqués**.
 
 [liste]
 - **Le placement de départ.** Strata n'en gère aucun : chaque marché ajoute les risques de son émetteur, dont des stratégies et des crédits hors blockchain qu'on ne peut pas vérifier soi-même.
-- **Un coussin qui peut fondre.** Il s'use quand des juniors partent, mais aussi quand le placement rapporte moins que le plancher : le complément de la senior est pris sur le capital du junior.
+- **Un coussin qui peut fondre.** Il s'use quand des juniors partent, mais aussi quand le placement rapporte moins que le plancher, puisque le junior paie alors la différence sur son capital.
 - **Des marchés petits.** Quelques millions de dollars par marché, parfois moins : un gros retrait suffit à déplacer la couverture et les rendements.
 - **Les contrats et l'équipe.** Les contrats de Strata ont été audités plusieurs fois ; d'après Yearn, aucun audit public ne couvre les marchés Neutrl, Midas, Saturn et Hastra. L'équipe garde la main sur les réglages, délais de sortie compris, avec un préavis d'un à deux jours, et peut tout mettre en pause sans délai.
 
@@ -137,7 +143,6 @@ Strata a compté **276 M$ de dépôts en mars**, d'après DeFiLlama ; il en rest
 [image | drafts/issue-12/captures/strata-tvl.png | Dépôts sur Strata, d'après DeFiLlama, relevés le 23 novembre 2026. La ligne pointillée marque le gel des rachats de Neutrl.]
 
 [p]
-L'essentiel des sorties vient du marché USDe, avant comme après Neutrl : le marché NUSD ne pesait plus qu'environ **1,7 M$** au moment de la perte. Yearn compte **cinq vagues de retraits depuis janvier** et y voit la marque d'une poignée de très gros déposants. Pendant ces sorties, les seniors partaient, les juniors restaient : la couverture du marché USDe montait (141 % le 11 octobre, d'après Yearn). Les retraits n'ont donc pas aminci le coussin des seniors restés.
 
 [p]
 **⬡ Un nouveau concurrent : Mezzanine.** En ligne depuis début novembre, Mezzanine compte 6,4 M$ de dépôts sur Ethereum et Solana, d'après DeFiLlama. Il fonctionne sur le même modèle. Son premier marché porte sur Hastra PRIME, le même placement que le marché PRIME de Strata, avec un junior qui pèse 20 % du *vault* (le fonds commun où sont déposées les deux tranches) d'après son fondateur, soit une couverture de 125 %. Au 23 novembre, d'après DeFiLlama (un relevé sur quelques semaines d'existence) :
@@ -148,7 +153,6 @@ L'essentiel des sorties vient du marché USDe, avant comme après Neutrl : le ma
 - **son junior**, environ **26 %**.
 
 [p]
-Ses deux tranches rapportent ensemble environ 13,6 % pour un placement à 7,3 % : un découpage partage un rendement, il ne le crée pas. La source du surplus n'est pas documentée. Sur le même placement, le coussin est d'environ 20 % chez Mezzanine, contre plus de 70 % chez Strata.
 
 [avis]
 💡 **Notre avis :**
