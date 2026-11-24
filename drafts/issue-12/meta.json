@@ -1,0 +1,33 @@
+{
+ "date": "Mardi 24 novembre 2026",
+ "titre": "Emprunter contre une action tokenisée sur Aave : ce qui change par rapport à l'ETH",
+ "subject": "CryptoLuciole #12 — Emprunter contre une action Tesla sur Aave",
+ "vignette": "/vignettes/aave-actions.jpg",
+ "excerpt": "Emprunter contre des actions tokenisées sur Aave V4 et le risque du week-end ; Chainflip vidé par une faille commune à ses validateurs ; Kalshi face à l'État de New York ; Strata et ses tranches senior et junior sous la loupe ; le bitcoin qui suit la Bourse tech ; Strategy qui puise dans sa réserve pour son STRC.",
+ "intro": "Cette semaine, on regarde ce qui change quand on emprunte contre une action tokenisée plutôt que contre de l'ETH sur Aave, et on passe Strata sous la loupe : un même placement, découpé en une tranche protégée et une tranche qui encaisse les pertes.",
+ "menu": [
+  "🔦 **On éclaire** — emprunter contre une action tokenisée sur Aave, et le risque du week-end",
+  "✨ **Dans le faisceau** — Chainflip vidé par une faille commune à ses validateurs · Kalshi face à l'État de New York",
+  "🔍 **Sous la loupe** — Strata, un même placement en deux tranches",
+  "📊 **Les repères** — les cours de la semaine, et le bitcoin qui suit la Bourse tech",
+  "💡 **Ça brille** — Strategy pioche dans sa réserve à dividendes pour défendre son STRC",
+  "📖 **Définitions** — collateral factor, ratio de couverture",
+  "✉️ **À toi de jouer** — senior ou junior ?"
+ ],
+ "notionTitreTexte": "Emprunter contre une action tokenisée sur Aave",
+ "notionTitreHtml": "Emprunter contre une <em style=\"color:#28B092; font-style:normal;\">action tokenisée</em> sur Aave",
+ "onEclaireAvis": "dernier",
+ "loupeNom": "Strata",
+ "loupeSlug": "strata",
+ "loupeSousTitre": "un même placement, deux niveaux de risque",
+ "risqueNiveau": "moyen",
+ "risqueSens": "moyen",
+ "risqueBadges": [
+  {"label": "senior USDe", "niveau": "moyen", "sens": "moyen"},
+  {"label": "juniors, autres marchés", "niveau": "élevé", "sens": "eleve"}
+ ],
+ "cours7jLabel": "Depuis notre n°11 (7 jours)",
+ "coursHeure": "16h32",
+ "reperesDate": "au 24 novembre 2026",
+ "coursNote": "Cours au 24 novembre, 16h32 ; variations sur 7 jours. Source : DeFiLlama."
+}

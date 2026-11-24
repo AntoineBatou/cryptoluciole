@@ -315,6 +315,7 @@ if HAS_SL:
         "etapesCorps": site_els(etapes), "rendement": "", "rendementCorps": site_els(rend),
         "risqueNiveau": CFG["risqueNiveau"], "risqueSens": CFG["risqueSens"],
         "risques": to_txt(risq[0]["t"]), "risquesCorps": site_els(risq[1:]),
+        **({"badges": CFG["risqueBadges"]} if CFG.get("risqueBadges") else {}),
         "importance": to_txt(imp[0]["t"]), "importanceCorps": site_els(imp[1:]),
     }
 for a in actus:
@@ -389,7 +390,12 @@ for i, a in enumerate(actus):
 h.append(HR)
 # SOUS LA LOUPE (facultatif)
 if HAS_SL:
-    badge = {"eleve": ("#fee2e2", "#b91c1c", "🔴 Élevé"), "moyen": ("#fef9c3", "#a16207", "🟡 Moyen"), "faible": ("#dcfce7", "#15803d", "🟢 Faible")}[CFG["risqueSens"]]
+    BADGE = {"eleve": ("#fee2e2", "#b91c1c", "🔴 Élevé"), "moyen": ("#fef9c3", "#a16207", "🟡 Moyen"), "faible": ("#dcfce7", "#15803d", "🟢 Faible")}
+    def risk_pill(sens, label=""):
+        bg, fg, txt = BADGE[sens]
+        return f'<span style="background-color:{bg}; color:{fg}; border-radius:20px; padding:3px 12px; font-size:13px; font-weight:700; white-space:nowrap;">{txt}{" · " + label if label else ""}</span>'
+    # Plusieurs badges (protocole à tranches, ex. Re au n°2, Strata au n°12) : meta.json "risqueBadges".
+    badges_html = " ".join(risk_pill(b["sens"], b["label"]) for b in CFG["risqueBadges"]) if CFG.get("risqueBadges") else risk_pill(CFG["risqueSens"])
     h.append(f"""  <tr><td style="padding:24px 36px 0 36px;">
         {sec_pill('🔍 SOUS LA LOUPE')}
         <p style="margin:14px 0 16px 0; font-size:22px; font-weight:800; color:#1A2332;">{CFG['loupeNom']} <span style="color:#94a3b8; font-weight:600; font-size:18px;">{to_html(CFG['loupeSousTitre'])}</span></p>
@@ -400,7 +406,7 @@ if HAS_SL:
         {mail_els(etapes)}
         {ST}Le rendement</p>
         {mail_els(rend)}
-        {ST}Les risques &nbsp;<span style="background-color:{badge[0]}; color:{badge[1]}; border-radius:20px; padding:3px 12px; font-size:13px; font-weight:700;">{badge[2]}</span></p>
+        {ST}Les risques &nbsp;{badges_html}</p>
         {mail_els(risq)}
         {ST}Pourquoi ça compte</p>
         {mail_els(imp)}

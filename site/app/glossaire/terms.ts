@@ -600,6 +600,27 @@ export const TERMES: GlossaireTerme[] = [
       "Un titre de dette court émis par une banque centrale : l'acheteur lui prête de l'argent pour quelques semaines ou quelques mois, et récupère sa mise plus les intérêts à l'échéance. La banque centrale s'en sert pour retirer des liquidités du système et tenir son taux directeur.",
     numero: 11,
   },
+  {
+    slug: "collateral-factor",
+    terme: "Collateral factor",
+    definition:
+      "La part de la valeur de ta garantie que tu peux emprunter sur un protocole de prêt. Avec un collateral factor de 65 %, 1 000 $ de garantie permettent d'emprunter au plus 650 $. Plus l'actif est jugé risqué et volatil, plus il est bas. Sur Aave V4, c'est aussi le seuil de liquidation : emprunter le maximum, c'est être liquidable à la moindre baisse.",
+    numero: 12,
+  },
+  {
+    slug: "ratio-de-couverture",
+    terme: "Ratio de couverture",
+    definition:
+      "Dans un produit découpé en tranches, le total des dépôts divisé par les dépôts de la tranche protégée (la senior). Exemple : 100 $ au total dont 80 $ en senior, soit 125 % ; derrière les 80 $ de la senior, il y a 20 $ de junior, et la senior ne perd rien tant que la perte reste sous 20 % du total. Plus la couverture est haute, plus le coussin est épais.",
+    numero: 12,
+  },
+  {
+    slug: "threshold-signature",
+    terme: "Threshold signature (signature à seuil)",
+    definition:
+      "Une signature produite à plusieurs sans que la clé privée existe jamais en entier : chaque participant détient un morceau de clé, et un nombre minimum d'entre eux (le seuil) doit coopérer pour signer. Contrairement à un multisig, la blockchain ne voit qu'une seule signature ordinaire. C'est une application du MPC ; Chainflip l'utilise pour garder ses vaults.",
+    numero: 12,
+  },
 ];
 
 // Retrouver un terme par son slug.

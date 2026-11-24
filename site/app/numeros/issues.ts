@@ -4588,6 +4588,757 @@ export const issues: Issue[] = [
         "slug": "revenus-de-reserves"
       }
     ]
+  },
+  // ===== Numéro 12 (généré par drafts/build_issue.py depuis drafts/issue-12/) =====
+  // FACTCHECK: Actu « Chainflip vidé d'environ 12,6  » : [À VÉRIFIER]
+  // FACTCHECK: Actu « Chainflip vidé d'environ 12,6  » : [À VÉRIFIER]
+  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER]
+  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER]
+  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER]
+  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER : la décision et le juge qui l'a rendue]
+  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER]
+  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER : couverture réelle du marché NUSD avant la perte, ne pas l'estimer]
+  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER le jour de l'envoi]
+  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER le jour de l'envoi sur app.strata.markets]
+  // FACTCHECK: LES REPÈRES : [À VÉRIFIER]
+  {
+    "id": "12",
+    "numero": 12,
+    "vignette": "/vignettes/aave-actions.jpg",
+    "date": "Mardi 24 novembre 2026",
+    "titre": "Emprunter contre une action tokenisée sur Aave : ce qui change par rapport à l'ETH",
+    "excerpt": "Emprunter contre des actions tokenisées sur Aave V4 et le risque du week-end ; Chainflip vidé par une faille commune à ses validateurs ; Kalshi face à l'État de New York ; Strata et ses tranches senior et junior sous la loupe ; le bitcoin qui suit la Bourse tech ; Strategy qui puise dans sa réserve pour son STRC.",
+    "notion": {
+      "titre": "Emprunter contre une action tokenisée sur Aave",
+      "corps": [
+        {
+          "type": "p",
+          "texte": "Sur Aave V4, l'un des marchés accepte en collatéral huit actions tokenisées par Coinbase (c'est Coinbase qui émet les jetons et peut les échanger contre les vraies actions) : Apple, Amazon, Alphabet (Google), Meta, Microsoft, Nvidia, Tesla et SpaceX. Contre elles, tu ne peux emprunter qu'un actif, de l'USDC, et en petite quantité : au total, les emprunteurs de ce marché ne peuvent pas emprunter plus de 21 M$ d'USDC aux prêteurs d'Aave."
+        },
+        {
+          "type": "p",
+          "texte": "Pour rappel, le principe d'Aave : tu déposes une garantie sur le protocole, en échange de quoi tu peux emprunter un actif (par exemple de l'USDC) pour une valeur moindre. Si tu ne rembourses pas, ta garantie est vendue pour rembourser ta dette ; et si elle baisse trop, c'est la même chose : tu es liquidé. Mais presque chaque réglage change. Un terme d'abord : le collateral factor."
+        },
+        {
+          "type": "def",
+          "terme": "Collateral factor",
+          "slug": "collateral-factor",
+          "texte": "La part de la valeur de ta garantie que tu peux emprunter. Avec un facteur de 65 %, 1 000 $ d'actions te permettent d'emprunter au plus 650 $. Plus l'actif est jugé risqué et volatile, plus le facteur est bas."
+        },
+        {
+          "type": "st",
+          "texte": "Aave classique contre Aave actions"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "",
+            "Aave classique (ETH, Aave V3)",
+            "Aave actions (V4, sur Base)"
+          ],
+          "lignes": [
+            [
+              "Prix de la garantie",
+              "Bouge en continu, 7 jours sur 7",
+              "• Bouge en semaine, jour et nuit\n• Figé le week-end et les jours fériés américains"
+            ],
+            [
+              "Combien tu peux emprunter",
+              "• 81 % de ta garantie\n• Liquidation à 84 %",
+              "• 55 à 79 % selon l'action\n• Liquidation dès ce même seuil"
+            ],
+            [
+              "Bonus du liquidateur",
+              "5 %",
+              "4,95 à 5,5 %"
+            ],
+            [
+              "Qui revend ta garantie liquidée",
+              "Le liquidateur, aussitôt, sur un DEX",
+              "Le liquidateur, qui ne peut pas échanger les jetons contre les vraies actions auprès de Coinbase : il doit les revendre ou se couvrir"
+            ],
+            [
+              "Pouvoirs de l'émetteur",
+              "Aucun : l'ETH n'a pas d'émetteur",
+              "Coinbase peut geler des jetons, bloquer les transferts, arrêter le prix"
+            ],
+            [
+              "Accès",
+              "Ouvert à tous",
+              "• Interdit aux Américains\n• Offert publiquement seulement à Abu Dhabi\n• Statut incertain en France"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "ETH : paramètres d'Aave V3 Ethereum lus on-chain le 23/11. Actions : facteurs en vigueur au 23/11, avant la proposition de baisse."
+        },
+        {
+          "type": "st",
+          "texte": "Le prix s'arrête le week-end"
+        },
+        {
+          "type": "p",
+          "texte": "Sur Aave, le prix de ta garantie est fourni par un oracle Chainlink. Pour l'ETH, il suit un marché qui ne ferme jamais. Pour une action, il suit la Bourse américaine, avec ses séances avant l'ouverture, après la clôture et de nuit : il publie du dimanche 20 h au vendredi 20 h, heure de New York (de 2 h le lundi à 2 h le samedi à Paris, en ce moment), soit 120 heures sur les 168 d'une semaine."
+        },
+        {
+          "type": "image",
+          "src": "/numeros/12/semaine-prix.png",
+          "legende": "La semaine d'une action tokenisée sur Aave : le prix bouge du dimanche 20 h au vendredi 20 h (heure de New York), soit 120 heures sur 168 ; il reste figé le week-end et les jours fériés américains."
+        },
+        {
+          "type": "p",
+          "texte": "Le reste du temps, l'oracle affiche le dernier prix du vendredi soir. Tout ce qui arrive à l'action pendant le week-end atteint ton prêt d'un seul coup, à la reprise du prix le dimanche soir."
+        },
+        {
+          "type": "st",
+          "texte": "Un seul seuil au lieu de deux"
+        },
+        {
+          "type": "p",
+          "texte": "Sur Aave V3, deux chiffres sont séparés : tu peux emprunter jusqu'à 81 % de la valeur de ton ETH, et tu n'es liquidé qu'à 84 %. Même en empruntant au maximum, tu gardes un coussin de 3 points."
+        },
+        {
+          "type": "p",
+          "texte": "Sur Aave V4, dont ce marché fait partie, le collateral factor fait les deux : c'est à la fois ta limite d'emprunt et ton seuil de liquidation. Emprunter au maximum, c'est se placer exactement sur le seuil. La marge de sécurité, c'est toi qui la fixes, en empruntant moins que le facteur."
+        },
+        {
+          "type": "st",
+          "texte": "Le risque du week-end, en chiffres"
+        },
+        {
+          "type": "p",
+          "texte": "Aave mesure la santé d'un prêt avec un seul chiffre, le health factor : la valeur de ta garantie multipliée par le collateral factor, divisée par ta dette. Au-dessus de 1, tout va bien ; sous 1, tu es liquidable."
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Au départ : tu déposes 1 000 $ d'actions Tesla tokenisées (ta garantie, collateral factor de 65 %) et tu empruntes 600 USDC (ta dette), un peu sous le maximum de 650 $. Health factor : 1 000 × 0,65 ÷ 600 = 1,08.",
+            "Ton seuil : tu es liquidé quand ta dette dépasse 65 % de ta garantie. Tant que l'action vaut 1 000 $, ce plafond est de 650 $ ; mais ici c'est la garantie qui baisse, et ta dette de 600 $ le touche quand la garantie ne vaut plus que 923 $ (600 ÷ 0,65), soit une baisse d'environ 8 %.",
+            "Vendredi, 20 h à New York : le prix se fige à 1 000 $.",
+            "Pendant le week-end, une mauvaise nouvelle tombe. Sur Aave, rien ne bouge : ton health factor reste à 1,08.",
+            "Dimanche soir, le prix reprend directement à 900 $ (−10 %). Health factor : 900 × 0,65 ÷ 600 = 0,975, sous 1 : tu es liquidable dès la première mise à jour.",
+            "Ce que tu perds : la liquidation est partielle. D'après notre calcul, tu perds environ 15 $, le bonus du liquidateur, et tu gardes le reste."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Tu aurais pu rembourser pendant le week-end, à condition de suivre l'action ailleurs (sur un perp, par exemple). Mais tu n'as jamais eu de prix intermédiaire, à 950 $ ou à 930 $, pour te signaler le danger. Avec de l'ETH, la même baisse de 10 % se serait faite par étapes, sous tes yeux, et ton health factor aurait baissé au fil des heures."
+        },
+        {
+          "type": "st",
+          "texte": "Pourquoi liquider une action est plus délicat"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Le liquidateur ne peut pas rendre l'action. Sur l'ETH, il saisit ta garantie et la revend dans la seconde sur un DEX. Ici, il ne peut en pratique pas échanger les jetons contre les vraies actions auprès de Coinbase : ce rachat est réservé à des participants agréés par l'émetteur. Il doit donc revendre les jetons sur le marché, ou se couvrir avec un perp sur la même action (voir notre numéro 10) en attendant de pouvoir vendre. Son bonus reste proche de celui de l'ETH (4,95 à 5,5 % contre 5 %) : ce risque en plus est payé par une part empruntable plus basse, pas par le bonus.",
+            "L'émetteur peut tout arrêter. Coinbase peut mettre un wallet sur liste noire, geler des jetons ou suspendre leurs transferts. Une suspension bloque tout sur Aave : ni dépôt, ni retrait, ni liquidation. Lors d'une division d'action, Coinbase arrête aussi le prix, et Aave gèle le marché de l'action le temps de l'opération."
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "Pourquoi Aave veut prêter moins cette semaine"
+        },
+        {
+          "type": "p",
+          "texte": "Le saut du dimanche soir menace aussi les prêteurs d'USDC. Si l'action reprend si bas que ta garantie ne couvre plus ta dette et le bonus du liquidateur, personne n'a intérêt à te liquider, et la perte reste au marché : c'est la bad debt (une dette que plus aucune garantie ne couvre). Le collateral factor sert à l'éviter."
+        },
+        {
+          "type": "p",
+          "texte": "Il est calculé par LlamaRisk, le cabinet qui conseille Aave sur ses risques, pour encaisser le bonus du liquidateur et un saut de prix qu'une action ne fait qu'une nuit sur dix ans. Plus l'action est volatile, plus ce calcul donne un facteur bas. Dans la version actuelle de sa méthode, le résultat est en outre plafonné à 65 %."
+        },
+        {
+          "type": "p",
+          "texte": "Le 23 novembre, LlamaRisk a proposé de baisser six des huit facteurs :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Microsoft : de 79 % à 65 % ;",
+            "Apple : de 78 % à 65 % ;",
+            "Alphabet : de 76 % à 65 % ;",
+            "Amazon : de 73 % à 65 % ;",
+            "Nvidia : de 70 % à 65 % ;",
+            "SpaceX : de 55 % à 53 % ;",
+            "Meta et Tesla restent à 65 %."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Cette baisse a deux causes :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "La volatilité a monté depuis début 2026 : de 27,9 % à 34,1 % par an pour l'action typique du S&P 500, de 19,4 % à 33,5 % pour Microsoft. Le facteur de Microsoft passerait ainsi de 79 % à environ 72 %.",
+            "Le plafond de la méthode actuelle : il ramène ces 72 % à 65 %. Les 79 % dataient de la mise en ligne du marché, avant ce plafond, et LlamaRisk ne publie pas la raison de ce plafond."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Seules les actions les plus volatiles, comme SpaceX, passent sous le plafond ; l'action d'Anthropic, que LlamaRisk propose aussi d'ajouter et qui ne cote que depuis une séance, serait à 45 %."
+        },
+        {
+          "type": "p",
+          "texte": "Prenons un emprunt au maximum contre Microsoft. À 79 %, il ne supportait qu'une chute d'environ 17 % en un seul saut avant que la garantie ne couvre plus la dette et le bonus maximal de 5,5 % (0,79 × 1,055 ≈ 0,83), le point où apparaît la bad debt. À 65 %, il en supporte environ 31 % (0,65 × 1,055 ≈ 0,69). Le marché encaisserait un saut presque deux fois plus grand ; en échange, 1 000 $ de Microsoft ne permettraient plus d'emprunter que 650 $, contre 790 $."
+        },
+        {
+          "type": "p",
+          "texte": "Aucune position ne serait liquidée par ce changement : un emprunt existant garde l'ancien facteur tant que tu n'y touches pas. Ces propositions sont publiées sur le forum d'Aave et ne sont pas encore votées."
+        },
+        {
+          "type": "avis",
+          "texte": "la baisse proposée cette semaine protège d'abord les prêteurs d'USDC, pas l'emprunteur. Pour lui, la vraie marge se mesure au saut que l'action peut faire d'ici au dimanche soir, pas au health factor affiché le vendredi."
+        }
+      ]
+    },
+    "actus": [
+      {
+        "titre": "Chainflip vidé d'environ 12,6 M$ par une faille commune à tous ses validateurs",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Le 21 novembre 2026, environ 12,6 M$ ont été volés à Chainflip, un bridge, concurrent de THORChain."
+          },
+          {
+            "type": "st",
+            "texte": "1. Un vault gardé par une centaine de validateurs"
+          },
+          {
+            "type": "p",
+            "texte": "Chainflip tient un vault, le portefeuille du protocole, sur chaque blockchain : une adresse sur Bitcoin, un contrat sur Ethereum, etc. Quand tu échanges du BTC contre de l'ETH, tu envoies tes BTC dans le vault Bitcoin, et le vault Ethereum t'envoie les ETH."
+          },
+          {
+            "type": "p",
+            "texte": "Personne ne détient la clé de ces vaults : elle est découpée en morceaux, répartis entre les validateurs du réseau (jusqu'à 150), des opérateurs qui immobilisent des jetons FLIP pour obtenir leur place. Pour sortir des fonds, il faut qu'environ 100 d'entre eux signent ensemble. Pour voler un vault, il faudrait donc en corrompre les deux tiers en même temps."
+          },
+          {
+            "type": "def",
+            "terme": "Threshold signature* (signature à seuil)",
+            "slug": "threshold-signature",
+            "texte": "Une signature produite à plusieurs sans que la clé privée existe jamais en entier : chaque participant détient un morceau de clé, et un nombre minimum d'entre eux (le seuil) doit coopérer pour signer. Chaque morceau reste sur la machine de son validateur : c'est donc une cible. Contrairement à un multisig, la blockchain ne voit qu'une seule signature ordinaire : elle ne sait pas combien de participants l'ont produite. C'est une application du MPC."
+          },
+          {
+            "type": "st",
+            "texte": "2. Ce qui s'est passé"
+          },
+          {
+            "type": "p",
+            "texte": "D'après le rapport publié par Chainflip le 23 novembre, un compte de validateur enregistré la veille du vol, avec la mise minimale, a servi de point d'entrée : il permettait de se connecter aux autres validateurs. Via une faille dans une bibliothèque réseau commune à tous les nœuds, l'attaquant a pris la main sur des machines de validateurs et en a extrait les morceaux de clé."
+          },
+          {
+            "type": "p",
+            "texte": "Avec assez de morceaux pour atteindre le seuil, il a fabriqué hors du réseau une signature que celui-ci n'avait jamais demandée : elle était valide. Les vaults n'avaient donc aucun moyen de refuser le retrait."
+          },
+          {
+            "type": "p",
+            "texte": "Le vault Bitcoin a été vidé, puis le vault Ethereum peu après :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "133,34 BTC côté Bitcoin ;",
+              "520,2 ETH, ≈ 3,25 M USDC et ≈ 758 000 USDT côté Ethereum."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Cet argent était surtout celui des fournisseurs de liquidité, qui déposent leurs jetons dans les vaults pour servir les échanges : d'après Chainflip, ce sont eux qui subissent l'essentiel de la perte. L'indemnisation n'est pas encore annoncée."
+          },
+          {
+            "type": "st",
+            "texte": "3. La réponse"
+          },
+          {
+            "type": "p",
+            "texte": "Chainflip a suspendu les échanges, les dépôts et les retraits, puis déployé un correctif chez tous les validateurs le 23 novembre. Une alerte avait sonné côté Bitcoin 8 minutes après le vol, sans déclencher d'arrêt automatique : ce type d'alerte donnait jusque-là trop de fausses alarmes. Le FLIP, le jeton que les validateurs immobilisent, est passé d'environ 0,46 $ à 0,12-0,15 $ le 22 novembre."
+          }
+        ],
+        "avis": "Le seuil protège contre des validateurs qui trichent un par un, pas contre un défaut commun à tous les nœuds. Ajouter des validateurs n'y change rien. Pour juger un bridge qui se dit décentralisé, la question utile n'est donc pas seulement « combien de signataires ? », mais « tournent-ils tous le même logiciel ? ».",
+        "source": "Chainflip, rapport d'incident partie 1 (23/11, chainflip.io/blog/incident-report-vault-exploit-21-november-2026-part-1) · The Block (22/11) · FinanceFeeds · Cryptoticker"
+      },
+      {
+        "titre": "Marchés de prédiction : Kalshi peut rester à New York, pour l'instant",
+        "corps": [
+          {
+            "type": "p",
+            "texte": "Notre numéro 11 racontait le procès de la CFTC contre la Louisiane : le régulateur fédéral y défend la préemption fédérale, le principe selon lequel sa loi sur les produits dérivés l'emporte sur les lois des États sur le jeu. Le même conflit se joue désormais à New York : Kalshi, plateforme de marchés de prédiction agréée par la CFTC, y a son siège."
+          },
+          {
+            "type": "st",
+            "texte": "1. Ce que veut l'État de New York"
+          },
+          {
+            "type": "p",
+            "texte": "La procureure générale de New York poursuit Kalshi et demande au juge de lui interdire d'opérer depuis New York, et pas seulement auprès des New-Yorkais. Elle lui reproche notamment :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "d'accepter des utilisateurs de 18 à 20 ans, alors que l'âge minimum pour parier sur le sport en ligne est de 21 ans dans l'État ;",
+              "de proposer des contrats sur des équipes universitaires new-yorkaises, sur lesquelles l'État interdit les paris."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Comme Kalshi est installé à New York, il affirme qu'une telle interdiction le fermerait dans tout le pays. La procureure assure que ce n'est pas son but."
+          },
+          {
+            "type": "st",
+            "texte": "2. Une semaine devant les tribunaux"
+          },
+          {
+            "type": "p",
+            "texte": "Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer l'action de l'État. Trois décisions sont tombées en six jours :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "18 novembre : la cour d'appel fédérale du 4e circuit donne tort à Kalshi face au Maryland sur la préemption : la loi du Maryland sur le jeu peut s'appliquer.",
+              "19 novembre : un juge fédéral renvoie le dossier new-yorkais devant le tribunal de l'État et rejette la demande d'urgence de la CFTC. C'est donc un juge de l'État, et non un juge fédéral, qui tranchera.",
+              "23 novembre : la Cour suprême de l'État de New York, qui est malgré son nom un tribunal de première instance, refuse l'interdiction temporaire demandée par la procureure."
+            ]
+          },
+          {
+            "type": "p",
+            "texte": "Kalshi continue donc d'opérer. Ce refus ne tranche pas le fond : une audience sur une interdiction valable pendant toute la durée du procès est prévue en janvier."
+          }
+        ],
+        "avis": "Le conflit change d'échelle : ailleurs, Kalshi risquait de perdre les clients d'un État ; à New York, la demande telle qu'elle est écrite vise son siège. Et cette semaine, les juges fédéraux ont laissé les États décider. Tant que la Cour suprême des États-Unis ne tranche pas, c'est État par État que se dessine la carte de Kalshi.",
+        "source": "CoinDesk (23/11) · Sports Betting Dime · Cointelegraph · notre numéro 11"
+      }
+    ],
+    "cours": [
+      {
+        "actif": "BTC",
+        "nom": "Bitcoin",
+        "prix": "~59 900 $",
+        "var7j": "▼ −7,7 %",
+        "sens": "down"
+      },
+      {
+        "actif": "ETH",
+        "nom": "Ether",
+        "prix": "~1 680 $",
+        "var7j": "▼ −7,0 %",
+        "sens": "down"
+      },
+      {
+        "actif": "SOL",
+        "nom": "Solana",
+        "prix": "~69 $",
+        "var7j": "▼ −6,1 %",
+        "sens": "down"
+      },
+      {
+        "actif": "HYPE",
+        "nom": "Hyperliquid",
+        "prix": "~61 $",
+        "var7j": "▼ −11,5 %",
+        "sens": "down"
+      },
+      {
+        "actif": "BNB",
+        "nom": "",
+        "prix": "~548 $",
+        "var7j": "▼ −7,4 %",
+        "sens": "down"
+      }
+    ],
+    "cours7jLabel": "Depuis notre n°11 (7 jours)",
+    "coursHeure": "16h32",
+    "coursAvisCorps": [
+      {
+        "type": "st",
+        "texte": "Ce qui a fait bouger les prix"
+      },
+      {
+        "type": "p",
+        "texte": "Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse technologique américaine qui a donné le ton."
+      },
+      {
+        "type": "image",
+        "src": "/numeros/12/btc-nasdaq.png",
+        "legende": "Bitcoin et Nasdaq 100 depuis le 1er octobre (base 100)"
+      },
+      {
+        "type": "liste",
+        "items": [
+          "La Bourse tech doute de l'IA. Le Nasdaq 100 (les cent plus grosses valeurs du Nasdaq, surtout technologiques) recule depuis début novembre sur des doutes quant à la rentabilité des dépenses dans l'IA. Le 23, il a rebondi quand Nvidia a annoncé le retour de son patron, Jensen Huang.",
+          "Le bitcoin a bougé les mêmes jours. Sur les 30 dernières séances, la corrélation de leurs variations quotidiennes est de 0,71, contre 0,46 sur un an (un indicateur de −1 à 1 : à 1, les deux bougeraient toujours ensemble ; à 0, aucun lien)."
+        ]
+      },
+      {
+        "type": "tableau",
+        "entetes": [
+          "Séance",
+          "Nasdaq 100",
+          "Bitcoin"
+        ],
+        "lignes": [
+          [
+            "5 novembre",
+            "−6,4 %",
+            "−5,5 %"
+          ],
+          [
+            "20 novembre",
+            "−5,6 %",
+            "−5,0 %"
+          ],
+          [
+            "23 novembre",
+            "+6,9 %",
+            "+4,0 %"
+          ]
+        ]
+      },
+      {
+        "type": "liste",
+        "items": [
+          "Et la crypto a ajouté ses propres ventes. Au même moment, les ETF bitcoin se vident (environ 1,8 Md$ retirés sur la semaine, d'après SoSoValue) et plus de 1,5 Md$ de paris à la hausse pris avec levier ont été liquidés en 24 heures. Ces ventes s'ajoutent à celles qui suivent la Bourse, d'où une baisse plus forte que celle du Nasdaq."
+        ]
+      },
+      {
+        "type": "avis",
+        "texte": "en ce moment, le bitcoin se négocie comme une valeur tech plus risquée, pas comme une valeur refuge. Même son rebond est venu d'une nouvelle de Nvidia. Tant que ce lien tient, le premier signal à suivre pour le bitcoin est la Bourse tech américaine."
+      }
+    ],
+    "data": {
+      "titre": "Strategy pioche dans sa réserve à dividendes pour défendre son STRC",
+      "texte": "Le STRC est l'action privilégiée de Strategy, la société cotée qui détient le plus de bitcoins : il verse un dividende mensuel, 12 % par an, et vise un cours de 100 $ (voir notre numéro 10). Il glisse pourtant : Strategy le rachetait entre 99,5 et 99,9 $ en moyenne début novembre, 97 $ la semaine dernière.",
+      "corps": [
+        {
+          "type": "liste",
+          "items": [
+            "Il glisse avec le bitcoin : ses dividendes sont versés par une société dont l'actif principal est du bitcoin.",
+            "Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. Strategy y trouve aussi son compte : chaque STRC racheté supprime un dividende de 12 % par an, et, d'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.",
+            "Ces rachats sont payés surtout en nouvelles actions : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente d'actions MSTR, ce qui dilue ses actionnaires ; le reste, de sa trésorerie.",
+            "Et maintenant, par la réserve : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à 1 Md$ vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à 3,73 Md$. D'après Strategy, ses dollars couvrent encore environ 3,4 ans de dividendes."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. Avec plus de trois ans de dividendes en caisse, rien ne presse. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée."
+        },
+        {
+          "type": "p",
+          "texte": "Sources : Strategy, formulaires 8-K du 2, 9, 16 et 23 novembre 2026 (SEC EDGAR) · compte X de Strategy (23/11)"
+        }
+      ]
+    },
+    "jeu": {
+      "cta": "Chez Strata, tu choisirais quelle tranche : la senior, qui rapporte moins mais passe après le junior en cas de perte, ou le junior, qui rapporte plus mais encaisse les pertes en premier ? Réponds directement à ce mail : je lis tout, et je réponds."
+    },
+    "definitions": [
+      {
+        "terme": "Collateral factor",
+        "def": "La part de la valeur de ta garantie que tu peux emprunter sur un protocole de prêt. Avec un collateral factor de 65 %, 1 000 $ de garantie permettent d'emprunter au plus 650 $. Sur Aave V4, c'est aussi le seuil de liquidation : emprunter le maximum, c'est être liquidable à la moindre baisse. Voir ON ÉCLAIRE.",
+        "slug": "collateral-factor"
+      },
+      {
+        "terme": "Ratio de couverture",
+        "def": "Dans un produit découpé en tranches, le total des dépôts divisé par les dépôts de la tranche protégée (la senior). À 125 %, la senior a 25 % de dépôts en plus derrière elle et ne perd rien tant que la perte reste sous 20 % du total. Voir SOUS LA LOUPE.",
+        "slug": "ratio-de-couverture"
+      }
+    ],
+    "protocole": {
+      "nom": "Strata",
+      "slug": "strata",
+      "bref": "Strata découpe un placement à rendement en deux jetons : une tranche senior, moins payée mais protégée en priorité, et une tranche junior, mieux payée, qui encaisse les pertes en premier. Le protocole propose sept placements, des dollars synthétiques au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$, et fonctionne depuis 2025.",
+      "etapes": [],
+      "etapesCorps": [
+        {
+          "type": "p",
+          "texte": "On a présenté le principe du tranching dans notre numéro 2, avec Re : un même placement, découpé en tranches qui n'ont pas la même priorité face aux pertes. Strata applique ce découpage à des placements existants, qu'il ne gère pas lui-même."
+        },
+        {
+          "type": "st",
+          "texte": "1. Tu choisis ta tranche"
+        },
+        {
+          "type": "p",
+          "texte": "Tu déposes l'actif du marché sur l'application de Strata, par exemple de l'USDe pour le marché Ethena, Strata le place dans le produit à rendement (ici le sUSDe) et te remet un jeton : srUSDe si tu choisis la senior, jrUSDe si tu choisis le junior. Les deux tranches partagent le même pot."
+        },
+        {
+          "type": "st",
+          "texte": "2. Le rendement est partagé"
+        },
+        {
+          "type": "p",
+          "texte": "La senior cède au junior une prime : un pourcentage du rendement, environ 21 % aujourd'hui sur le marché USDe. Plus la senior pèse lourd dans le pot, plus cette prime augmente. La senior touche donc :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "le rendement du placement, moins la prime ;",
+            "mais jamais moins qu'un plancher : un taux minimum propre à chaque marché (pour l'USDe, ce que rapporte un prêt d'USDC ou d'USDT sur Aave). Si le placement rapporte moins que ce plancher, c'est le junior qui paie la différence, sur son propre capital. Donc la tanche junior protège d'une baisse de valeur, mais également d'une absence de rendement, puisqu'elle paiera sur son capital la tranche senior s'il y a une absence de rendement."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Exemple en chiffres ronds : un pot commun de 100 $, dont 80 $ en senior et 20 $ en junior, dans un placement qui rapporte 10 % par an, avec une prime de 20 %. Le pot commun gagne 10 $ par an (10% de 100$). La senior touchera donc 8 % (10 % moins 20 % de 10 %), soit 6,40 $ sur 80 $. Le junior garde le reste, 3,60 $ sur 20 $, soit 18 %."
+        },
+        {
+          "type": "p",
+          "texte": "Une année faible, avec le même pot : le placement ne rapporte que 2 % et le plancher est à 3 %. Le pot gagne 2 $, mais la senior doit toucher 3 % de 80 $, soit 2,40 $. Les 0,40 $ manquants sont pris sur le capital du junior, qui passe de 20 $ à 19,60 $ : il perd de l'argent alors que le placement en a gagné. Le junior ne protège donc pas seulement la senior contre les pertes (étape 3) : il lui garantit aussi un rendement minimum. Une fois le junior vidé, la senior ne touche plus que ce que rapporte le placement."
+        },
+        {
+          "type": "st",
+          "texte": "3. Les pertes suivent l'ordre inverse"
+        },
+        {
+          "type": "p",
+          "texte": "Si le placement perd de la valeur, le junior absorbe la perte en premier. La senior n'est touchée qu'une fois le junior vidé. Avec le même pot :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "une perte de 15 % : les 15 $ sont pris sur la partie junior, à qui il reste 5 $. La senior n'est pas touchée ;",
+            "une perte de 30 % : le junior perd ses 20 $, les 10 $ restants tombent sur la senior, qui perd 12,5 % (10 sur 80)."
+          ]
+        },
+        {
+          "type": "def",
+          "terme": "Ratio de couverture",
+          "slug": "ratio-de-couverture",
+          "texte": "Le total des dépôts d'un marché divisé par les dépôts de la senior. Dans l'exemple, 100 $ ÷ 80 $ = 125 % : derrière les 80 $ de la senior, il y a 25 % de dépôts en plus, les 20 $ du junior. En pratique, la senior ne perd rien tant que la perte du pot ne dépasse pas ces 20 $, soit 20 % du pot. Plus la couverture est haute, plus ce coussin est épais."
+        },
+        {
+          "type": "st",
+          "texte": "4. Des garde-fous sur les sorties"
+        },
+        {
+          "type": "p",
+          "texte": "Quand la couverture baisse, Strata retient le junior ou empêche de déposer sur la senior, afin que le coussin ne disparaisse pas au moment où il sert. Les seuils et les délais de sortie de la tranche junior varient selon le marché :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "mHYPER : sortie du junior immédiate au-dessus de 120 % de couverture, 7 jours entre 110 et 120 %, 21 jours en dessous ;",
+            "USDat : 7 jours même au-dessus de 130 %, jusqu'à 28 jours sous 115 % ;",
+            "USDe : pas de délai progressif, mais sous 105 % de couverture, les rachats du junior et les nouveaux dépôts en senior sont suspendus."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "La senior sort sans délai chez Strata, mais elle reçoit l'actif du placement (du sUSDe sur le marché USDe) : pour récupérer des dollars, il faut ensuite passer par le délai de cet actif, 7 jours pour le sUSDe."
+        },
+        {
+          "type": "st",
+          "texte": "Les sept marchés"
+        },
+        {
+          "type": "p",
+          "texte": "Le même mécanisme s'applique à des placements très différents, d'après la documentation de Strata :"
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "Marché",
+            "Le placement",
+            "Plancher de la senior"
+          ],
+          "lignes": [
+            [
+              "Ethena USDe",
+              "Dollar synthétique d'Ethena, rémunéré par des positions delta-neutres",
+              "Taux de prêt USDC/USDT sur Aave"
+            ],
+            [
+              "Neutrl NUSD",
+              "Dollar synthétique de Neutrl : arbitrages de gré à gré, funding, DeFi",
+              "Rendement du sUSDe"
+            ],
+            [
+              "Midas mHYPER",
+              "Stratégie sur stablecoins, sur plusieurs blockchains, gérée par Hyperithm",
+              "Taux Aave + 3 points"
+            ],
+            [
+              "Midas mM1-USD",
+              "Fonds neutre au marché de M1 Capital",
+              "Aucun"
+            ],
+            [
+              "Saturn USDat",
+              "Dividendes du STRC, l'action privilégiée de Strategy",
+              "• 65 % du dividende du STRC\n• le junior encaisse les variations de prix"
+            ],
+            [
+              "Hastra PRIME",
+              "Lignes de crédit adossées à la valeur de logements américains, accordées par Figure",
+              "Aucun"
+            ],
+            [
+              "Plume nOPAL",
+              "Créances de cartes bancaires brésiliennes (paiements en plusieurs fois)",
+              "Aucun"
+            ]
+          ]
+        },
+        {
+          "type": "st",
+          "texte": "L'épreuve Neutrl : la protection a-t-elle joué ?"
+        },
+        {
+          "type": "p",
+          "texte": "Ce n'est pas un piratage : une partie de la stratégie derrière le NUSD a perdu de la valeur et ne pouvait plus être revendue. Le 13 août, Neutrl a suspendu les créations et les rachats de NUSD ; le 17 septembre, les rachats ont rouvert à 0,51 USDC par NUSD."
+        },
+        {
+          "type": "p",
+          "texte": "D'après Strata, le srNUSD (tranche senior) a été réglé 0,63 $ par part, contre 0,54 $ pour le sNUSD détenu en direct. Le jrNUSD (tranche junior) a été ramené à zéro, d'après Merkle.Press."
+        },
+        {
+          "type": "image",
+          "src": "/numeros/12/neutrl-reglement.png",
+          "legende": "Ce qu'a récupéré chaque détenteur pour 1 $ de départ, d'après Strata et Neutrl."
+        },
+        {
+          "type": "p",
+          "texte": "La senior a perdu environ 37 %, contre environ 46 % en direct : la protection a fonctionné, mais elle n'a couvert qu'une petite partie de la perte. Pour qu'une perte de l'ordre de 46 % épargne la senior, il aurait fallu un junior d'au moins 46 % du pot, soit une couverture d'au moins 185 % (100 ÷ 54). Depuis le 19 septembre, ce marché est fermé aux nouveaux dépôts en senior, d'après Yearn, qui note les protocoles avant d'y placer ses fonds."
+        },
+        {
+          "type": "st",
+          "texte": "Ce qui fait vraiment la protection : trois chiffres"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "La couverture du marché, qui donne l'épaisseur du coussin (voir l'encadré plus haut).",
+            "Ce que le placement peut perdre dans un mauvais scénario, à comparer au coussin. Pour un dollar synthétique qui dépend de stratégies hors blockchain, Neutrl a montré que la perte peut dépasser 40 %.",
+            "Le délai de sortie du junior quand la couverture baisse : plus il est long, moins le coussin peut partir juste avant une perte."
+          ]
+        }
+      ],
+      "rendement": "",
+      "rendementCorps": [
+        {
+          "type": "p",
+          "texte": "Sur le marché USDe, le plus simple à comparer, au 23 novembre d'après DeFiLlama :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "le sUSDe détenu en direct rapporte environ 4,9 % par an ;",
+            "la senior (srUSDe), environ 3,9 % ;",
+            "le junior (jrUSDe), environ 5,9 %."
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "La senior cède environ un point (21 % d'un USDe à 4,9 %) ; le junior en gagne environ un. Le plancher n'intervient pas aujourd'hui : la senior touche plus que le taux d'Aave. Sur un an, d'après DeFiLlama, la senior a rapporté le plus souvent entre 2,7 et 4,1 %, le junior entre 5,6 et 11,5 %."
+        },
+        {
+          "type": "tableau",
+          "entetes": [
+            "Marché",
+            "Senior",
+            "Junior",
+            "Couverture (au 23/11)"
+          ],
+          "lignes": [
+            [
+              "Ethena USDe",
+              "3,9 %",
+              "5,9 %",
+              "168 %"
+            ],
+            [
+              "Saturn USDat",
+              "8,1 %",
+              "Varie avec le prix du STRC",
+              "119 %"
+            ],
+            [
+              "Midas mHYPER",
+              "6,4 %",
+              "environ 7 %",
+              "120 %"
+            ],
+            [
+              "Hastra PRIME",
+              "6,9 %",
+              "7,4 %",
+              "358 %"
+            ],
+            [
+              "Plume nOPAL",
+              "8,4 %",
+              "10,6 %",
+              "454 %"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "texte": "Rendements annuels et dépôts au 23 novembre, d'après DeFiLlama ; couverture = dépôts totaux ÷ dépôts de la senior. DeFiLlama n'affiche pas de rendement pour mM1-USD (couverture 353 %) ; NUSD est fermé aux dépôts senior. Junior mHYPER : moyenne sur 30 jours (17,1 % au pic)."
+        },
+        {
+          "type": "p",
+          "texte": "Le marché où la senior détient le plus d'argent, USDat (environ 4,3 M$), est aussi l'un des moins couverts : son coussin absorbe une perte d'environ 16 % du pot. La prime dépend du seul poids de la senior, pas de ce que le placement peut perdre : sur PRIME, du crédit immobilier hors blockchain, le junior ne touche qu'environ un demi-point de plus que la senior."
+        }
+      ],
+      "risqueNiveau": "moyen",
+      "risqueSens": "moyen",
+      "risques": "Le risque dépend d'abord du marché, pour deux raisons : le placement de départ (ce que fait le jeton de ton argent, et ce qu'il peut perdre) et la couverture (l'épaisseur du coussin). On le note ici sur la senior du marché USDe.",
+      "risquesCorps": [
+        {
+          "type": "p",
+          "texte": "🟡 Moyen pour la senior du marché USDe : son coussin absorbe une perte d'environ 40 % du pot. 🔴 Élevé pour les juniors, qui peuvent perdre tout leur capital (c'est leur rôle), et pour les marchés adossés à des placements risqués."
+        },
+        {
+          "type": "liste",
+          "items": [
+            "Le placement de départ. Strata n'en gère aucun : chaque marché ajoute les risques de son émetteur, dont des stratégies et des crédits hors blockchain qu'on ne peut pas vérifier soi-même.",
+            "Un coussin qui peut fondre. Il s'use quand des juniors partent, mais aussi quand le placement rapporte moins que le plancher, puisque le junior paie alors la différence sur son capital.",
+            "Des marchés petits. Quelques millions de dollars par marché, parfois moins : un gros retrait suffit à déplacer la couverture et les rendements.",
+            "Les contrats et l'équipe. Les contrats de Strata ont été audités plusieurs fois ; d'après Yearn, aucun audit public ne couvre les marchés Neutrl, Midas, Saturn et Hastra. L'équipe garde la main sur les réglages, délais de sortie compris, avec un préavis d'un à deux jours, et peut tout mettre en pause sans délai."
+          ]
+        }
+      ],
+      "badges": [
+        {
+          "label": "senior USDe",
+          "niveau": "moyen",
+          "sens": "moyen"
+        },
+        {
+          "label": "juniors, autres marchés",
+          "niveau": "élevé",
+          "sens": "eleve"
+        }
+      ],
+      "importance": "Strata a compté 276 M$ de dépôts en mars, d'après DeFiLlama ; il en reste 13,5 M$. Avec si peu d'argent en jeu, la couverture et les rendements de chaque marché peuvent bouger vite.",
+      "importanceCorps": [
+        {
+          "type": "image",
+          "src": "/numeros/12/strata-tvl.png",
+          "legende": "Dépôts sur Strata, d'après DeFiLlama, relevés le 23 novembre 2026. La ligne pointillée marque le gel des rachats de Neutrl."
+        },
+        {
+          "type": "st",
+          "texte": "Un nouveau concurrent : Mezzanine"
+        },
+        {
+          "type": "p",
+          "texte": "En ligne depuis début novembre, Mezzanine compte 6,4 M$ de dépôts sur Ethereum et Solana, d'après DeFiLlama. Il fonctionne sur le même modèle. Son premier marché porte sur Hastra PRIME, le même placement que le marché PRIME de Strata, avec un junior qui pèse 20 % du vault (le fonds commun où sont déposées les deux tranches) d'après son fondateur, soit une couverture de 125 %. Au 23 novembre, d'après DeFiLlama (un relevé sur quelques semaines d'existence) :"
+        },
+        {
+          "type": "liste",
+          "items": [
+            "PRIME détenu en direct rapporte environ 7,3 % ;",
+            "la senior de Mezzanine, environ 10,5 % ;",
+            "son junior, environ 26 %."
+          ]
+        },
+        {
+          "type": "avis",
+          "texte": "Aucun des marchés où les seniors ont vraiment déposé n'aurait couvert une perte de type Neutrl : les coussins vont d'environ 16 % (USDat) à 40 % (USDe). Les seuls assez épais, sur PRIME, nOPAL et mM1-USD, protègent environ 600 000 $ de seniors à eux trois. Le tranching de Strata amortit aujourd'hui les petites pertes et les années de rendement faible, pas l'effondrement d'un placement."
+        }
+      ]
+    }
   }
 ];
 
