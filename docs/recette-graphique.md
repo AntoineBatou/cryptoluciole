@@ -22,3 +22,4 @@ et fait passer un chiffre d'un coup d'œil.
 - **Schéma de scénario** : exemple `drafts/issue-12/captures/weekend-tesla-nuit.html` (prix figé le week-end, seuil de liquidation pointillé rouge, saut du dimanche soir, health factor écrit aux deux points). Généré par un petit script Python, même rendu Chrome ×2.
 - **Courbes base 100** : `drafts/issue-12/captures/btc-nasdaq.html` (deux séries, étiquettes en bout de courbe, point bas annoté).
 
+- **Image modifiée après un mail de test : changer son nom de fichier.** Gmail garde l'image en cache tant que son adresse ne change pas (constaté le 2026-11-24 : le schéma corrigé ne s'affichait pas).
