@@ -43,3 +43,4 @@ vérificateur le 11/11.
 | 11 | LES REPÈRES | ≥ 8 | 8/8 | validé | non conservé | — |
 | 11 | ÇA BRILLE + définitions | ≥ 8 | 8/8 | validé | non conservé | — |
 | 11 | À toi de jouer | — | — | sondage coupé | — | question sans vrai dilemme |
+| 12 | ON ÉCLAIRE (Aave V4, actions tokenisées) | 8 | 8/8 | retouché (clarté) | non conservé | rôle de Coinbase flou ; seuil de liquidation mal formulé (garantie/dette inversées) → formule du health factor de la doc ; traduction inventée (« facteur de garantie ») ; rappel du principe trop chargé, réécrit par Marc |
