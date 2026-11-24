@@ -91,7 +91,7 @@ def parse(text, where):
         elif k == "tableau":
             rows = [[c.strip() for c in l.strip().strip("|").split("|")] for l in ls if l.strip().startswith("|")]
             rows = [r for r in rows if not all(re.fullmatch(r":?-+:?", c) for c in r)]
-            out.append({"k": "tableau", "head": rows[0], "rows": rows[1:]})
+            out.append({"k": "tableau", "head": rows[0], "rows": rows[1:], "style": (b.get("arg") or "").strip()})
         elif k == "avis":
             body = "\n".join(ls)
             body = re.sub(r"^💡\s*\*\*Notre avis\s*:?\s*\*\*\s*:?\s*", "", body.strip())
@@ -212,6 +212,22 @@ def mail_els(blocks):
             out.append(DEF + f'📖 <a href="https://www.cryptoluciole.com/glossaire/{b["slug"]}" {A}>{to_html(b["terme"])}</a> — {to_html(b["t"])}</td></tr></table>')
         elif k == "liste":
             out.append(ul(b["items"]))
+        elif k == "tableau" and b.get("style") == "compare":
+            # Tableau de comparaison (avant / après, A contre B) : la dernière colonne, la nouveauté, en or-luciole.
+            n = len(b["head"])
+            th = ['<td style="padding:12px 10px; background-color:#1A2332;"></td>']
+            for i, h in enumerate(b["head"][1:], 1):
+                bg, fg = ("#F5A623", "#1A2332") if i == n - 1 else ("#1d8870", "#ffffff")
+                th.append(f'<td valign="middle" style="padding:12px 10px; background-color:{bg}; color:{fg}; font-size:14px; font-weight:800; line-height:1.3;">' + to_html(h).replace(" (", '<br><span style="font-size:11px; font-weight:600; opacity:.85;">(', 1).replace(")", ")</span>", 1) + "</td>")
+            rows = ["<tr>" + "".join(th) + "</tr>"]
+            for r in b["rows"]:
+                tds = ['<td valign="top" style="padding:12px 10px; border-top:1px solid #e2e8f0; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#64748b; line-height:1.4; width:24%;">' + to_html(r[0]) + "</td>"]
+                for i, c in enumerate(r[1:], 1):
+                    bg = "background-color:#fff8eb; color:#1A2332;" if i == n - 1 else "color:#334155;"
+                    tds.append(f'<td valign="top" style="padding:12px 10px; border-top:1px solid #e2e8f0; font-size:14px; line-height:1.5; {bg}">' + cell_html(c) + "</td>")
+                rows.append("<tr>" + "".join(tds) + "</tr>")
+            out.append('<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; margin:0 0 16px 0;">\n      '
+                       + "\n      ".join(rows) + "\n    </table>")
         elif k == "tableau":
             rows = [f'<tr style="background-color:#1d8870;">' + "".join(TH + to_html(h).replace(" (", "<br>(", 1) + "</td>" for h in b["head"]) + "</tr>"]
             for j, r in enumerate(b["rows"]):

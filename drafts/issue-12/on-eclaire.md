@@ -21,7 +21,7 @@ La part de la valeur de ta garantie que tu peux emprunter. Avec un facteur de 65
 
 [st] **⬡ Aave classique contre Aave actions.**
 
-[tableau]
+[tableau | compare]
 | | Aave classique (ETH, Aave V3) | Aave actions (V4, sur Base) |
 |---|---|---|
 | Prix de la garantie | Bouge en continu, 7 jours sur 7 | • Bouge en semaine, jour et nuit • Figé le week-end et les jours fériés américains |
@@ -65,6 +65,8 @@ Aave mesure la santé d'un prêt avec un seul chiffre, le ***health factor*** : 
 - **Dimanche soir**, le prix reprend directement à **900 $** (−10 %). *Health factor* : 900 × 0,65 ÷ 600 = **0,975**, sous 1 : tu es liquidable dès la première mise à jour.
 - **Ce que tu perds** : la liquidation est partielle. D'après notre calcul, tu perds environ **15 $**, le bonus du liquidateur, et tu gardes le reste.
 
+[image | drafts/issue-12/captures/weekend-tesla.png | Le même exemple en image : le prix reste figé tout le week-end, puis saute sous le seuil d'un coup.]
+
 [p]
 Tu aurais pu rembourser pendant le week-end, à condition de suivre l'action ailleurs (sur un perp, par exemple). Mais tu n'as jamais eu de prix intermédiaire, à 950 $ ou à 930 $, pour te signaler le danger. Avec de l'ETH, la même baisse de 10 % se serait faite par étapes, sous tes yeux, et ton *health factor* aurait baissé au fil des heures.
 
@@ -85,14 +87,16 @@ Il est calculé par LlamaRisk, le cabinet qui conseille Aave sur ses risques, po
 [p]
 Le 23 novembre, LlamaRisk a proposé de baisser six des huit facteurs :
 
-[liste]
-- **Microsoft** : de 79 % à 65 % ;
-- **Apple** : de 78 % à 65 % ;
-- **Alphabet** : de 76 % à 65 % ;
-- **Amazon** : de 73 % à 65 % ;
-- **Nvidia** : de 70 % à 65 % ;
-- **SpaceX** : de 55 % à 53 % ;
-- Meta et Tesla restent à 65 %.
+[tableau | compare]
+| Action | Aujourd'hui | Proposé |
+|---|---|---|
+| Microsoft | 79 % | **65 %** (−14 points) |
+| Apple | 78 % | **65 %** (−13 points) |
+| Alphabet | 76 % | **65 %** (−11 points) |
+| Amazon | 73 % | **65 %** (−8 points) |
+| Nvidia | 70 % | **65 %** (−5 points) |
+| SpaceX | 55 % | **53 %** (−2 points) |
+| Meta, Tesla | 65 % | 65 % (inchangé) |
 
 [p]
 Cette baisse a deux causes :

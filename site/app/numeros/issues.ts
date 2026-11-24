@@ -4712,6 +4712,11 @@ export const issues: Issue[] = [
           ]
         },
         {
+          "type": "image",
+          "src": "/numeros/12/weekend-tesla.png",
+          "legende": "Le même exemple en image : le prix reste figé tout le week-end, puis saute sous le seuil d'un coup."
+        },
+        {
           "type": "p",
           "texte": "Tu aurais pu rembourser pendant le week-end, à condition de suivre l'action ailleurs (sur un perp, par exemple). Mais tu n'as jamais eu de prix intermédiaire, à 950 $ ou à 930 $, pour te signaler le danger. Avec de l'ETH, la même baisse de 10 % se serait faite par étapes, sous tes yeux, et ton health factor aurait baissé au fil des heures."
         },
@@ -4743,15 +4748,48 @@ export const issues: Issue[] = [
           "texte": "Le 23 novembre, LlamaRisk a proposé de baisser six des huit facteurs :"
         },
         {
-          "type": "liste",
-          "items": [
-            "Microsoft : de 79 % à 65 % ;",
-            "Apple : de 78 % à 65 % ;",
-            "Alphabet : de 76 % à 65 % ;",
-            "Amazon : de 73 % à 65 % ;",
-            "Nvidia : de 70 % à 65 % ;",
-            "SpaceX : de 55 % à 53 % ;",
-            "Meta et Tesla restent à 65 %."
+          "type": "tableau",
+          "entetes": [
+            "Action",
+            "Aujourd'hui",
+            "Proposé"
+          ],
+          "lignes": [
+            [
+              "Microsoft",
+              "79 %",
+              "65 % (−14 points)"
+            ],
+            [
+              "Apple",
+              "78 %",
+              "65 % (−13 points)"
+            ],
+            [
+              "Alphabet",
+              "76 %",
+              "65 % (−11 points)"
+            ],
+            [
+              "Amazon",
+              "73 %",
+              "65 % (−8 points)"
+            ],
+            [
+              "Nvidia",
+              "70 %",
+              "65 % (−5 points)"
+            ],
+            [
+              "SpaceX",
+              "55 %",
+              "53 % (−2 points)"
+            ],
+            [
+              "Meta, Tesla",
+              "65 %",
+              "65 % (inchangé)"
+            ]
           ]
         },
         {
