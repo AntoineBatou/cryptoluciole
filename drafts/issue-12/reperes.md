@@ -19,13 +19,13 @@
 [st] Ce qui a fait bouger les prix
 
 [p]
-Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse technologique américaine qui a donné le ton.
+Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse américaine qui a donné le ton.
 
 [image | drafts/issue-12/captures/btc-nasdaq.png | Bitcoin et Nasdaq 100 depuis le 1er octobre (base 100)]
 
 [liste]
-- **La Bourse tech doute de l'IA.** Le Nasdaq 100 (les cent plus grosses valeurs du Nasdaq, surtout technologiques) recule depuis début novembre sur des doutes quant à la rentabilité des dépenses dans l'IA. Le 23, il a rebondi quand Nvidia a annoncé le retour de son patron, Jensen Huang.
-- **Le bitcoin a bougé les mêmes jours.** Sur les 30 dernières séances, la corrélation de leurs variations quotidiennes est de **0,71**, contre 0,46 sur un an (un indicateur de −1 à 1 : à 1, les deux bougeraient toujours ensemble ; à 0, aucun lien).
+- **La Bourse doute de l'IA.** Le Nasdaq 100 (les cent plus grosses valeurs du Nasdaq, surtout technologiques) recule depuis début novembre sur des doutes quant à la rentabilité des dépenses dans l'IA. Le 23, il a rebondi quand Nvidia a annoncé le retour de son patron, Jensen Huang.
+- **Le bitcoin a bougé les mêmes jours.** Sur les 30 dernières séances la correlation est très forte  (**0,71**, contre 0,46 sur un an. à 1, les deux bougeraient toujours ensemble ; à 0, aucun lien).
 
 [tableau]
 | Séance | Nasdaq 100 | Bitcoin |
@@ -38,7 +38,7 @@ Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 6
 - **Et la crypto a ajouté ses propres ventes.** Au même moment, les ETF bitcoin américains se vident : **1,8 Md$** retirés du 16 au 20 novembre, dont 669 M$ le seul 20 novembre, leur pire journée du mois, et 4,7 Md$ depuis le 1er novembre. Ces ventes s'ajoutent à celles qui suivent la Bourse, d'où une baisse plus forte que celle du Nasdaq.
 
 [avis]
-💡 **Notre avis** : en ce moment, le bitcoin se négocie comme une valeur tech plus risquée, pas comme une valeur refuge. Même son rebond est venu d'une nouvelle de Nvidia. Tant que ce lien tient, le premier signal à suivre pour le bitcoin est la Bourse tech américaine.
+💡 **Notre avis** : en ce moment, le bitcoin & plus largement les cryptos se négocient comme des valeurs tech plus risquées. Même le rebond est venu d'une nouvelle de Nvidia. Tant que ce lien tient, le premier signal à suivre pour le bitcoin est la Bourse tech américaine.
 
 ---
 

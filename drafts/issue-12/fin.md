@@ -14,16 +14,16 @@
 Strategy pioche dans sa réserve à dividendes pour défendre son STRC
 
 [texte]
-Le STRC est l'action privilégiée de Strategy, la société cotée qui détient le plus de bitcoins : il verse un dividende mensuel, 12 % par an, et vise un cours de 100 $ (voir [notre numéro 10](https://www.cryptoluciole.com/numeros/10)). Il glisse pourtant : Strategy le rachetait entre 99,5 et 99,9 $ en moyenne début novembre, **97 $** la semaine dernière.
+Le STRC est l'action privilégiée de Strategy, la société cotée qui détient le plus de bitcoins : il verse un dividende mensuel, 12 % par an, et Strategy cherche à maintenir son cours à 100 $ (on a détaillé le mécanisme dans [notre dossier sur les DAT](https://www.cryptoluciole.com/dossiers/dat)). Son cours baisse pourtant : Strategy le rachetait entre 99,5 et 99,9 $ en moyenne début novembre, **97 $** la semaine dernière.
 
 [liste]
-- **Il glisse avec le bitcoin** : ses dividendes sont versés par une société dont l'actif principal est du bitcoin.
-- **Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin** : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. D'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.
-- **Ces rachats sont payés surtout en nouvelles actions** : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente d'actions MSTR, ce qui dilue ses actionnaires ; le reste, de sa trésorerie.
-- **Et maintenant, par la réserve** : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à **1 Md$** vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à **3,73 Md$**. D'après Strategy, avant ce transfert, ses dollars couvraient environ **3,4 ans** de dividendes : c'est cette marge qui lui a permis de déplacer le milliard.
+- **Un STRC sous 100 $ coupe une source d'argent** : il baisse avec le bitcoin, puisque ses dividendes sont versés par une société dont l'actif principal est du bitcoin. Or Strategy ne vend pas de STRC neuf lorsque sa valeur est en dessous de 100 $. D'où les rachats, pour tenter de le faire remonter.
+- **Strategy dépense quatre fois plus pour racheter du STRC que pour acheter du bitcoin** : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. Le taux reste de 12 % par action ; c'est le total versé qui baisse, puisqu'une action rachetée ne touche plus de dividende : d'après Strategy, 353 M$ de dividendes annuels en moins grâce à ses rachats d'actions privilégiées des derniers mois.
+- **Ces rachats sont payés surtout en nouvelles actions** : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente de nouvelles actions MSTR (ses actions ordinaires, cotées en Bourse), ce qui dilue ses actionnaires ; le reste, de sa trésorerie.
+- **Et maintenant, par la réserve** : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à **1 Md$** vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à **3,73 Md$**. Avant ce transfert, ses dollars couvraient environ **3,4 ans** de dividendes, d'après Strategy, qui juge cette marge suffisante pour en déplacer une partie.
 
 [avis]
-💡 **Notre avis** : racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. La marge reste large, rien ne presse ; mais elle vient de raccourcir. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée.
+💡 **Notre avis** : racheter du STRC sous 100 $ a du sens, puisque cela réduit les dividendes à verser. Mais pour soutenir ce cours, Strategy entame la réserve qui garantit justement ces dividendes, et ce soutien coûte plus cher quand le bitcoin baisse : il faut alors vendre davantage d'actions MSTR, qui baissent avec lui. La marge reste large, mais elle vient de raccourcir. Le chiffre à suivre n'est plus son stock de bitcoins : c'est le nombre d'années de dividendes qu'elle garde en caisse.
 
 [source] Strategy, formulaires 8-K du 2, 9, 16 et 23 novembre 2026 (SEC EDGAR) · compte X de Strategy (23/11)
 

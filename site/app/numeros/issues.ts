@@ -4946,7 +4946,7 @@ export const issues: Issue[] = [
       },
       {
         "type": "p",
-        "texte": "Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse technologique américaine qui a donné le ton."
+        "texte": "Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse américaine qui a donné le ton."
       },
       {
         "type": "image",
@@ -4956,8 +4956,8 @@ export const issues: Issue[] = [
       {
         "type": "liste",
         "items": [
-          "La Bourse tech doute de l'IA. Le Nasdaq 100 (les cent plus grosses valeurs du Nasdaq, surtout technologiques) recule depuis début novembre sur des doutes quant à la rentabilité des dépenses dans l'IA. Le 23, il a rebondi quand Nvidia a annoncé le retour de son patron, Jensen Huang.",
-          "Le bitcoin a bougé les mêmes jours. Sur les 30 dernières séances, la corrélation de leurs variations quotidiennes est de 0,71, contre 0,46 sur un an (un indicateur de −1 à 1 : à 1, les deux bougeraient toujours ensemble ; à 0, aucun lien)."
+          "La Bourse doute de l'IA. Le Nasdaq 100 (les cent plus grosses valeurs du Nasdaq, surtout technologiques) recule depuis début novembre sur des doutes quant à la rentabilité des dépenses dans l'IA. Le 23, il a rebondi quand Nvidia a annoncé le retour de son patron, Jensen Huang.",
+          "Le bitcoin a bougé les mêmes jours. Sur les 30 dernières séances la correlation est très forte  (0,71, contre 0,46 sur un an. à 1, les deux bougeraient toujours ensemble ; à 0, aucun lien)."
         ]
       },
       {
@@ -4993,25 +4993,25 @@ export const issues: Issue[] = [
       },
       {
         "type": "avis",
-        "texte": "en ce moment, le bitcoin se négocie comme une valeur tech plus risquée, pas comme une valeur refuge. Même son rebond est venu d'une nouvelle de Nvidia. Tant que ce lien tient, le premier signal à suivre pour le bitcoin est la Bourse tech américaine."
+        "texte": "en ce moment, le bitcoin & plus largement les cryptos se négocient comme des valeurs tech plus risquées. Même le rebond est venu d'une nouvelle de Nvidia. Tant que ce lien tient, le premier signal à suivre pour le bitcoin est la Bourse tech américaine."
       }
     ],
     "data": {
       "titre": "Strategy pioche dans sa réserve à dividendes pour défendre son STRC",
-      "texte": "Le STRC est l'action privilégiée de Strategy, la société cotée qui détient le plus de bitcoins : il verse un dividende mensuel, 12 % par an, et vise un cours de 100 $ (voir notre numéro 10). Il glisse pourtant : Strategy le rachetait entre 99,5 et 99,9 $ en moyenne début novembre, 97 $ la semaine dernière.",
+      "texte": "Le STRC est l'action privilégiée de Strategy, la société cotée qui détient le plus de bitcoins : il verse un dividende mensuel, 12 % par an, et Strategy cherche à maintenir son cours à 100 $ (on a détaillé le mécanisme dans notre dossier sur les DAT). Son cours baisse pourtant : Strategy le rachetait entre 99,5 et 99,9 $ en moyenne début novembre, 97 $ la semaine dernière.",
       "corps": [
         {
           "type": "liste",
           "items": [
-            "Il glisse avec le bitcoin : ses dividendes sont versés par une société dont l'actif principal est du bitcoin.",
-            "Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. D'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.",
-            "Ces rachats sont payés surtout en nouvelles actions : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente d'actions MSTR, ce qui dilue ses actionnaires ; le reste, de sa trésorerie.",
-            "Et maintenant, par la réserve : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à 1 Md$ vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à 3,73 Md$. D'après Strategy, avant ce transfert, ses dollars couvraient environ 3,4 ans de dividendes : c'est cette marge qui lui a permis de déplacer le milliard."
+            "Un STRC sous 100 $ coupe une source d'argent : il baisse avec le bitcoin, puisque ses dividendes sont versés par une société dont l'actif principal est du bitcoin. Or Strategy ne vend pas de STRC neuf lorsque sa valeur est en dessous de 100 $. D'où les rachats, pour tenter de le faire remonter.",
+            "Strategy dépense quatre fois plus pour racheter du STRC que pour acheter du bitcoin : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. Le taux reste de 12 % par action ; c'est le total versé qui baisse, puisqu'une action rachetée ne touche plus de dividende : d'après Strategy, 353 M$ de dividendes annuels en moins grâce à ses rachats d'actions privilégiées des derniers mois.",
+            "Ces rachats sont payés surtout en nouvelles actions : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente de nouvelles actions MSTR (ses actions ordinaires, cotées en Bourse), ce qui dilue ses actionnaires ; le reste, de sa trésorerie.",
+            "Et maintenant, par la réserve : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à 1 Md$ vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à 3,73 Md$. Avant ce transfert, ses dollars couvraient environ 3,4 ans de dividendes, d'après Strategy, qui juge cette marge suffisante pour en déplacer une partie."
           ]
         },
         {
           "type": "avis",
-          "texte": "racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. La marge reste large, rien ne presse ; mais elle vient de raccourcir. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée."
+          "texte": "racheter du STRC sous 100 $ a du sens, puisque cela réduit les dividendes à verser. Mais pour soutenir ce cours, Strategy entame la réserve qui garantit justement ces dividendes, et ce soutien coûte plus cher quand le bitcoin baisse : il faut alors vendre davantage d'actions MSTR, qui baissent avec lui. La marge reste large, mais elle vient de raccourcir. Le chiffre à suivre n'est plus son stock de bitcoins : c'est le nombre d'années de dividendes qu'elle garde en caisse."
         },
         {
           "type": "p",
