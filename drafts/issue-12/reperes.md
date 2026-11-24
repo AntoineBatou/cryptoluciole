@@ -35,7 +35,7 @@ Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 6
 | 23 novembre | +6,9 % | +4,0 % |
 
 [liste]
-- **Et la crypto a ajouté ses propres ventes.** Au même moment, les ETF bitcoin se vident (environ **1,8 Md$** retirés sur la semaine, d'après SoSoValue) et plus de 1,5 Md$ de paris à la hausse pris avec levier ont été liquidés en 24 heures [À VÉRIFIER]. Ces ventes s'ajoutent à celles qui suivent la Bourse, d'où une baisse plus forte que celle du Nasdaq.
+- **Et la crypto a ajouté ses propres ventes.** Au même moment, les ETF bitcoin américains se vident : **1,8 Md$** retirés du 16 au 20 novembre, dont 669 M$ le seul 20 novembre, leur pire journée du mois, et 4,7 Md$ depuis le 1er novembre. Ces ventes s'ajoutent à celles qui suivent la Bourse, d'où une baisse plus forte que celle du Nasdaq.
 
 [avis]
 💡 **Notre avis** : en ce moment, le bitcoin se négocie comme une valeur tech plus risquée, pas comme une valeur refuge. Même son rebond est venu d'une nouvelle de Nvidia. Tant que ce lien tient, le premier signal à suivre pour le bitcoin est la Bourse tech américaine.
@@ -51,7 +51,8 @@ Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 6
 - ETF bitcoin : −1,79 Md$ sur la semaine (SoSoValue via The Block, relevé de la veille du 23/11) [À VÉRIFIER : semaine exacte, et reprendre la semaine précédant l'envoi].
 - Rebond du 23/11 : Nvidia rappelle Jensen Huang (démission < 2 semaines plus tôt) ; Nasdaq Composite +6,51 %, Nvidia +31-32 % (ABC News, NBC News, 23/11). NDX Yahoo : 25 029 → 26 746 (+6,9 %) ; BTC 58 799 → 61 156 (+4,0 %). Un papier Bloomberg du 24/11 évoque un NDX −2,1 % le 24 : reprendre le mouvement le jour de l'envoi.
 - Corrélation recalculée le 24/11 sur les seules séances du Nasdaq (variation du BTC d'une séance à la suivante, week-end inclus) : 0,71 / 0,66 / 0,46. Bêta 30 séances 0,69 : au jour le jour le BTC ne bouge pas plus que le NDX ; l'écart cumulé (BTC −29,6 % sur les jours de séance contre NDX −12,3 %, du 01/10 au 23/11) vient d'une baisse propre à la crypto qui s'ajoute → puce 3.
-- Liquidations : 1,5 à 1,8 Md$ en 24 h, Coin Hebdo #266 (coinacademy.fr, 22/11) ; à confirmer sur CoinGlass (date exacte).
+- ETF (TFTC, tftc.io/bitcoin-etf-flows/november-2026, relevé le 24/11) : 16/11 +8,0 ; 17/11 −239,9 ; 18/11 −306,4 ; 19/11 −582,2 ; 20/11 −669,2 M$ → −1 789,7 M$ (cohérent avec The Block/SoSoValue −1,79 Md$) ; 23/11 −569,7 ; mois −4,7 Md$ sur 16 séances.
+- Liquidations retirées du texte (fact-checker : introuvables hors Coin Hebdo).
 - « pire séance depuis mars 2020 » retiré du texte (à recouper avec avril 2025).
 - Cause du 20/11 non établie (départ de Huang ? doutes IA) : non écrite. Agenda (NFP 04/12, FOMC 09/12) retiré du texte.
 

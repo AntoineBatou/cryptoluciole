@@ -13,7 +13,7 @@
 **Titre (proposition)** : ✦ Chainflip vidé d'environ 12,6 M$ par une faille commune à tous ses validateurs
 
 [p]
-Le 21 novembre 2026, environ **12,6 M$** ont été volés à Chainflip, un *bridge*, concurrent de THORChain [À VÉRIFIER].
+Le 21 novembre 2026, environ **12,6 M$** ont été volés à Chainflip, un *bridge*, concurrent de THORChain.
 
 [st] **1. Un vault gardé par une centaine de validateurs**
 
@@ -42,12 +42,12 @@ Le vault Bitcoin a été vidé, puis le vault Ethereum peu après :
 - **520,2 ETH**, **≈ 3,25 M USDC** et **≈ 758 000 USDT** côté Ethereum.
 
 [p]
-Cet argent était surtout celui des fournisseurs de liquidité, qui déposent leurs jetons dans les vaults pour servir les échanges : d'après Chainflip, ce sont eux qui subissent l'essentiel de la perte. L'indemnisation n'est pas encore annoncée.
+Cet argent était d'abord celui des fournisseurs de liquidité, qui déposent leurs jetons dans les vaults pour servir les échanges : d'après Chainflip, la perte touche ces fournisseurs, les acteurs de l'écosystème et les détenteurs de FLIP. L'indemnisation n'est pas encore annoncée.
 
 [st] **3. La réponse**
 
 [p]
-Chainflip a suspendu les échanges, les dépôts et les retraits, puis déployé un correctif chez tous les validateurs le 23 novembre. Une alerte avait sonné côté Bitcoin 8 minutes après le vol, sans déclencher d'arrêt automatique : ce type d'alerte donnait jusque-là trop de fausses alarmes. Le FLIP, le jeton que les validateurs immobilisent, est passé d'environ 0,46 $ à 0,12-0,15 $ le 22 novembre [À VÉRIFIER].
+Chainflip a suspendu les échanges, les dépôts et les retraits, puis publié un correctif le 21 novembre, actif chez tous les validateurs le 23. Une alerte avait sonné côté Bitcoin 8 minutes après le vol, sans déclencher d'arrêt : elle n'était pas reliée à la procédure d'arrêt automatique. Le FLIP, le jeton que les validateurs immobilisent, est passé d'environ 0,48 $ à 0,31 $ le jour du vol, puis à 0,20 $ le 24 novembre.
 
 [avis]
 💡 **Notre avis** :
@@ -75,7 +75,7 @@ La procureure générale de New York poursuit Kalshi et demande au juge de lui i
 
 [liste]
 - d'accepter des utilisateurs de 18 à 20 ans, alors que l'âge minimum pour parier sur le sport en ligne est de 21 ans dans l'État ;
-- de proposer des contrats sur des équipes universitaires new-yorkaises, sur lesquelles l'État interdit les paris [À VÉRIFIER].
+- de proposer des contrats sur des équipes universitaires new-yorkaises, sur lesquelles l'État interdit les paris.
 
 [p]
 Comme Kalshi est installé à New York, il affirme qu'une telle interdiction le fermerait **dans tout le pays**. La procureure assure que ce n'est pas son but.
@@ -83,15 +83,16 @@ Comme Kalshi est installé à New York, il affirme qu'une telle interdiction le 
 [st] **2. Une semaine devant les tribunaux**
 
 [p]
-Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer l'action de l'État [À VÉRIFIER]. Trois décisions sont tombées en six jours :
+Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer l'action de l'État. Quatre décisions sont tombées en une semaine :
 
 [liste]
-- **18 novembre** : la cour d'appel fédérale du 4e circuit donne tort à Kalshi face au Maryland sur la préemption : la loi du Maryland sur le jeu peut s'appliquer [À VÉRIFIER].
-- **19 novembre** : un juge fédéral renvoie le dossier new-yorkais devant le tribunal de l'État et rejette la demande d'urgence de la CFTC [À VÉRIFIER : la décision et le juge qui l'a rendue]. C'est donc un juge de l'État, et non un juge fédéral, qui tranchera.
+- **18 novembre** : la cour d'appel fédérale du 4e circuit donne tort à Kalshi face au Maryland sur la préemption : la loi du Maryland sur le jeu peut s'appliquer.
+- **19 novembre** : un juge fédéral renvoie le dossier new-yorkais devant le tribunal de l'État, faute de compétence fédérale. C'est donc un juge de l'État, et non un juge fédéral, qui tranchera.
+- **Dans la foulée** : dans un autre dossier, une juge fédérale refuse la demande d'urgence de la CFTC, qui voulait bloquer la procédure de l'État.
 - **23 novembre** : la Cour suprême de l'État de New York, qui est malgré son nom un tribunal de première instance, refuse l'interdiction temporaire demandée par la procureure.
 
 [p]
-**Kalshi continue donc d'opérer.** Ce refus ne tranche pas le fond : une audience sur une interdiction valable pendant toute la durée du procès est prévue en janvier.
+**Kalshi continue donc d'opérer.** Ce refus ne tranche pas le fond : les deux parties reviennent devant la juge le 30 novembre sur l'accès des 18-20 ans, et une audience sur une interdiction valable pendant toute la durée du procès est prévue en janvier.
 
 [avis]
 💡 **Notre avis** :
@@ -119,7 +120,7 @@ Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer
 - À qui appartenaient les fonds volés (liquidité des fournisseurs, échanges en cours) : non dit dans mes notes.
 - Paris interdits sur les équipes universitaires new-yorkaises.
 - « Concurrent de THORChain ».
-- FLIP ≈ 0,46 $ → 0,12-0,15 $ le 22/11 : à reprendre en source primaire le jour de l'envoi.
+- FLIP (fact-check du 24/11, DeFiLlama et CoinGecko) : ≈ 0,48 $ avant le vol → ≈ 0,31 $ le 21/11 → 0,20 $ le 24/11 (DeFiLlama, 24/11). Le « 0,12 $ » était un point isolé de CoinGecko. Juges : Vernon Broderick (renvoi, 19/11) ; Lorna Schofield (refus de la demande de la CFTC, 20/11 d'après une source). Audience du 30/11 devant la juge Melissa Crane (18-20 ans).
 - Kalshi : intervention de la CFTC devant un juge fédéral contre New York (si infirmée, la 2e phrase de l'avis tombe) ; 4e circuit le 18/11 (portée exacte : la loi du Maryland peut s'appliquer) ; renvoi le 19/11 et rejet de la demande d'urgence de la CFTC (nom du juge et nature exacte de la décision) ; audience de janvier.
 
 ### Glossaire

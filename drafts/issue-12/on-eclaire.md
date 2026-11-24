@@ -102,7 +102,7 @@ Cette baisse a deux causes :
 - **Le plafond de la méthode actuelle** : **il ramène ces 72 % à 65 %.** Les 79 % dataient de la mise en ligne du marché, avant ce plafond, et LlamaRisk ne publie pas la raison de ce plafond.
 
 [p]
-Seules les actions les plus volatiles, comme SpaceX, passent sous le plafond ; l'action d'Anthropic, que LlamaRisk propose aussi d'ajouter et qui ne cote que depuis une séance, serait à 45 %.
+Seules les actions les plus volatiles, comme SpaceX, passent sous le plafond ; l'action d'Anthropic, que LlamaRisk propose aussi d'ajouter et qui cote depuis le 19 novembre, serait à 45 %.
 
 [p]
 Prenons un emprunt au maximum contre Microsoft. À 79 %, il ne supportait qu'une chute d'environ 17 % en un seul saut avant que la garantie ne couvre plus la dette et le bonus maximal de 5,5 % (0,79 × 1,055 ≈ 0,83), le point où apparaît la *bad debt*. À 65 %, il en supporte environ 31 % (0,65 × 1,055 ≈ 0,69). **Le marché encaisserait un saut presque deux fois plus grand ; en échange, 1 000 $ de Microsoft ne permettraient plus d'emprunter que 650 $, contre 790 $.**

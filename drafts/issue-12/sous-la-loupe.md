@@ -15,7 +15,7 @@
 [st] En bref
 
 [p]
-**Strata** découpe un placement à rendement en **deux jetons** : une tranche **senior**, moins payée mais protégée en priorité, et une tranche **junior**, mieux payée, qui encaisse les pertes en premier. Le protocole propose **sept placements**, des [dollars synthétiques](https://www.cryptoluciole.com/glossaire/dollar-synthetique) au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$, et fonctionne depuis 2025.
+**Strata** découpe un placement à rendement en **deux jetons** : une tranche **senior**, moins payée mais protégée en priorité, et une tranche **junior**, mieux payée, qui encaisse les pertes en premier. Le protocole propose **sept placements**, des [dollars synthétiques](https://www.cryptoluciole.com/glossaire/dollar-synthetique) au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$ en décembre 2025.
 
 [st] Comment ça marche
 
@@ -79,12 +79,12 @@ La senior sort sans délai chez Strata, mais elle reçoit l'actif du placement (
 Ce n'est pas un piratage : une partie de la stratégie derrière le NUSD a perdu de la valeur et ne pouvait plus être revendue. Le 13 août, Neutrl a suspendu les créations et les rachats de NUSD ; le 17 septembre, les rachats ont rouvert à **0,51 USDC par NUSD**.
 
 [p]
-D'après Strata, le srNUSD (tranche senior) a été réglé **0,63 $ par part**, contre **0,54 $** pour le sNUSD détenu en direct. Le jrNUSD (tranche junior) a été ramené à zéro, d'après Merkle.Press [À VÉRIFIER].
+D'après Strata, le srNUSD (tranche senior) a été réglé **0,63 $ par part**, contre **0,54 $** pour le sNUSD détenu en direct. Le jrNUSD (tranche junior) doit être ramené à zéro, d'après The Defiant.
 
 [image | drafts/issue-12/captures/neutrl-reglement.png | Ce qu'a récupéré chaque détenteur pour 1 $ de départ, d'après Strata et Neutrl.]
 
 [p]
-**La senior a perdu environ 37 %, contre environ 46 % en direct : la protection a fonctionné, mais elle n'a couvert qu'une petite partie de la perte.** Pour qu'une perte de l'ordre de 46 % épargne la senior, il aurait fallu un junior d'au moins 46 % du pot, soit une couverture d'au moins 185 % (100 ÷ 54). [À VÉRIFIER : couverture réelle du marché NUSD avant la perte, ne pas l'estimer] Depuis le 19 septembre, ce marché est fermé aux nouveaux dépôts en senior, d'après Yearn, qui note les protocoles avant d'y placer ses fonds.
+**La senior a perdu environ 37 %, contre environ 46 % en direct : la protection a fonctionné, mais elle n'a couvert qu'une petite partie de la perte.** Pour qu'une perte de l'ordre de 46 % épargne la senior, il aurait fallu un junior d'au moins 46 % du pot, soit une couverture d'au moins 185 % (100 ÷ 54). Depuis le 19 septembre, ce marché est fermé aux nouveaux dépôts en senior, d'après Yearn, qui note les protocoles avant d'y placer ses fonds.
 
 [st] **⬡ Ce qui fait vraiment la protection : trois chiffres.**
 
@@ -96,7 +96,7 @@ D'après Strata, le srNUSD (tranche senior) a été réglé **0,63 $ par part**,
 [st] Le rendement
 
 [p]
-Sur le marché USDe, le plus simple à comparer, au 23 novembre d'après DeFiLlama [À VÉRIFIER le jour de l'envoi] :
+Sur le marché USDe, le plus simple à comparer, au 24 novembre d'après DeFiLlama :
 
 [liste]
 - **le sUSDe détenu en direct** rapporte environ **4,9 %** par an ;
@@ -107,16 +107,17 @@ Sur le marché USDe, le plus simple à comparer, au 23 novembre d'après DeFiLla
 **La senior cède environ un point (21 % d'un USDe à 4,9 %) ; le junior en gagne environ un.** Le plancher n'intervient pas aujourd'hui : la senior touche plus que le taux d'Aave. Sur un an, d'après DeFiLlama, la senior a rapporté le plus souvent entre **2,7 et 4,1 %**, le junior entre **5,6 et 11,5 %**.
 
 [tableau]
-| Marché | Senior | Junior | Couverture (au 23/11) |
+| Marché | Senior | Junior | Couverture (au 24/11) |
 |---|---|---|---|
 | Ethena USDe | 3,9 % | 5,9 % | 168 % |
 | Saturn USDat | 8,1 % | Varie avec le prix du STRC | 119 % |
-| Midas mHYPER | 6,4 % | environ 7 % | 120 % |
-| Hastra PRIME | 6,9 % | 7,4 % | 358 % |
-| Plume nOPAL | 8,4 % | 10,6 % | 454 % |
+| Midas mHYPER | 6,3 % | environ 8 % | 106 % |
+| Midas mM1-USD | 6,4 % | 9,2 % | 353 % |
+| Hastra PRIME | 6,8 % | 7,3 % | 357 % |
+| Plume nOPAL | 8,7 % | 11,0 % | 453 % |
 
 [note]
-Rendements annuels et dépôts au 23 novembre, d'après DeFiLlama ; couverture = dépôts totaux ÷ dépôts de la senior. DeFiLlama n'affiche pas de rendement pour mM1-USD (couverture 353 %) ; NUSD est fermé aux dépôts senior. Junior mHYPER : moyenne sur 30 jours (17,1 % au pic). [À VÉRIFIER le jour de l'envoi sur app.strata.markets]
+Rendements annuels et dépôts au 24 novembre, d'après DeFiLlama ; couverture = dépôts totaux ÷ dépôts de la senior. NUSD est fermé aux dépôts senior. Junior mHYPER : moyenne sur 30 jours (le taux du jour, sur 30 000 $ de dépôts, n'est pas représentatif).
 
 [p]
 **Le marché où la senior détient le plus d'argent, USDat (environ 4,3 M$), est aussi l'un des moins couverts : son coussin absorbe une perte d'environ 16 % du pot.** La prime dépend du seul poids de la senior, pas de ce que le placement peut perdre : sur PRIME, du crédit immobilier hors blockchain, le junior ne touche qu'environ un demi-point de plus que la senior.
@@ -138,14 +139,14 @@ Rendements annuels et dépôts au 23 novembre, d'après DeFiLlama ; couverture =
 [st] Pourquoi ça compte
 
 [p]
-Strata a compté **276 M$ de dépôts en mars**, d'après DeFiLlama ; il en reste **13,5 M$**. **Avec si peu d'argent en jeu, la couverture et les rendements de chaque marché peuvent bouger vite.**
+Strata a compté **276 M$ de dépôts en mars**, d'après DeFiLlama ; il en reste **13,3 M$**. **Avec si peu d'argent en jeu, la couverture et les rendements de chaque marché peuvent bouger vite.**
 
 [image | drafts/issue-12/captures/strata-tvl.png | Dépôts sur Strata, d'après DeFiLlama, relevés le 23 novembre 2026. La ligne pointillée marque le gel des rachats de Neutrl.]
 
 [p]
 
 [p]
-**⬡ Un nouveau concurrent : Mezzanine.** En ligne depuis début novembre, Mezzanine compte 6,4 M$ de dépôts sur Ethereum et Solana, d'après DeFiLlama. Il fonctionne sur le même modèle. Son premier marché porte sur Hastra PRIME, le même placement que le marché PRIME de Strata, avec un junior qui pèse 20 % du *vault* (le fonds commun où sont déposées les deux tranches) d'après son fondateur, soit une couverture de 125 %. Au 23 novembre, d'après DeFiLlama (un relevé sur quelques semaines d'existence) :
+**⬡ Un nouveau concurrent : Mezzanine.** En ligne depuis fin octobre, Mezzanine compte 6,4 M$ de dépôts sur Ethereum et Solana, d'après DeFiLlama. Il fonctionne sur le même modèle. Son premier marché porte sur Hastra PRIME, le même placement que le marché PRIME de Strata, avec un junior qui pèse 20 % du *vault* (le fonds commun où sont déposées les deux tranches) d'après son fondateur, soit une couverture de 125 %. Au 23 novembre, d'après DeFiLlama (un relevé sur quelques semaines d'existence) :
 
 [liste]
 - **PRIME détenu en direct** rapporte environ **7,3 %** ;
@@ -153,6 +154,7 @@ Strata a compté **276 M$ de dépôts en mars**, d'après DeFiLlama ; il en rest
 - **son junior**, environ **26 %**.
 
 [p]
+Ces taux plus élevés viennent du levier : Mezzanine emprunte pour racheter du PRIME (environ 15 M$ empruntés pour 6,4 M$ de dépôts, d'après DeFiLlama), ce que Strata ne fait pas sur ce marché.
 
 [avis]
 💡 **Notre avis :**

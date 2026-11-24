@@ -4590,17 +4590,7 @@ export const issues: Issue[] = [
     ]
   },
   // ===== Numéro 12 (généré par drafts/build_issue.py depuis drafts/issue-12/) =====
-  // FACTCHECK: Actu « Chainflip vidé d'environ 12,6  » : [À VÉRIFIER]
-  // FACTCHECK: Actu « Chainflip vidé d'environ 12,6  » : [À VÉRIFIER]
-  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER]
-  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER]
-  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER]
-  // FACTCHECK: Actu « Marchés de prédiction : Kalshi » : [À VÉRIFIER : la décision et le juge qui l'a rendue]
-  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER]
-  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER : couverture réelle du marché NUSD avant la perte, ne pas l'estimer]
-  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER le jour de l'envoi]
-  // FACTCHECK: SOUS LA LOUPE : [À VÉRIFIER le jour de l'envoi sur app.strata.markets]
-  // FACTCHECK: LES REPÈRES : [À VÉRIFIER]
+
   {
     "id": "12",
     "numero": 12,
@@ -4777,7 +4767,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "Seules les actions les plus volatiles, comme SpaceX, passent sous le plafond ; l'action d'Anthropic, que LlamaRisk propose aussi d'ajouter et qui ne cote que depuis une séance, serait à 45 %."
+          "texte": "Seules les actions les plus volatiles, comme SpaceX, passent sous le plafond ; l'action d'Anthropic, que LlamaRisk propose aussi d'ajouter et qui cote depuis le 19 novembre, serait à 45 %."
         },
         {
           "type": "p",
@@ -4844,7 +4834,7 @@ export const issues: Issue[] = [
           },
           {
             "type": "p",
-            "texte": "Cet argent était surtout celui des fournisseurs de liquidité, qui déposent leurs jetons dans les vaults pour servir les échanges : d'après Chainflip, ce sont eux qui subissent l'essentiel de la perte. L'indemnisation n'est pas encore annoncée."
+            "texte": "Cet argent était d'abord celui des fournisseurs de liquidité, qui déposent leurs jetons dans les vaults pour servir les échanges : d'après Chainflip, la perte touche ces fournisseurs, les acteurs de l'écosystème et les détenteurs de FLIP. L'indemnisation n'est pas encore annoncée."
           },
           {
             "type": "st",
@@ -4852,7 +4842,7 @@ export const issues: Issue[] = [
           },
           {
             "type": "p",
-            "texte": "Chainflip a suspendu les échanges, les dépôts et les retraits, puis déployé un correctif chez tous les validateurs le 23 novembre. Une alerte avait sonné côté Bitcoin 8 minutes après le vol, sans déclencher d'arrêt automatique : ce type d'alerte donnait jusque-là trop de fausses alarmes. Le FLIP, le jeton que les validateurs immobilisent, est passé d'environ 0,46 $ à 0,12-0,15 $ le 22 novembre."
+            "texte": "Chainflip a suspendu les échanges, les dépôts et les retraits, puis publié un correctif le 21 novembre, actif chez tous les validateurs le 23. Une alerte avait sonné côté Bitcoin 8 minutes après le vol, sans déclencher d'arrêt : elle n'était pas reliée à la procédure d'arrêt automatique. Le FLIP, le jeton que les validateurs immobilisent, est passé d'environ 0,48 $ à 0,31 $ le jour du vol, puis à 0,20 $ le 24 novembre."
           }
         ],
         "avis": "Le seuil protège contre des validateurs qui trichent un par un, pas contre un défaut commun à tous les nœuds. Ajouter des validateurs n'y change rien. Pour juger un bridge qui se dit décentralisé, la question utile n'est donc pas seulement « combien de signataires ? », mais « tournent-ils tous le même logiciel ? ».",
@@ -4890,19 +4880,20 @@ export const issues: Issue[] = [
           },
           {
             "type": "p",
-            "texte": "Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer l'action de l'État. Trois décisions sont tombées en six jours :"
+            "texte": "Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer l'action de l'État. Quatre décisions sont tombées en une semaine :"
           },
           {
             "type": "liste",
             "items": [
               "18 novembre : la cour d'appel fédérale du 4e circuit donne tort à Kalshi face au Maryland sur la préemption : la loi du Maryland sur le jeu peut s'appliquer.",
-              "19 novembre : un juge fédéral renvoie le dossier new-yorkais devant le tribunal de l'État et rejette la demande d'urgence de la CFTC. C'est donc un juge de l'État, et non un juge fédéral, qui tranchera.",
+              "19 novembre : un juge fédéral renvoie le dossier new-yorkais devant le tribunal de l'État, faute de compétence fédérale. C'est donc un juge de l'État, et non un juge fédéral, qui tranchera.",
+              "Dans la foulée : dans un autre dossier, une juge fédérale refuse la demande d'urgence de la CFTC, qui voulait bloquer la procédure de l'État.",
               "23 novembre : la Cour suprême de l'État de New York, qui est malgré son nom un tribunal de première instance, refuse l'interdiction temporaire demandée par la procureure."
             ]
           },
           {
             "type": "p",
-            "texte": "Kalshi continue donc d'opérer. Ce refus ne tranche pas le fond : une audience sur une interdiction valable pendant toute la durée du procès est prévue en janvier."
+            "texte": "Kalshi continue donc d'opérer. Ce refus ne tranche pas le fond : les deux parties reviennent devant la juge le 30 novembre sur l'accès des 18-20 ans, et une audience sur une interdiction valable pendant toute la durée du procès est prévue en janvier."
           }
         ],
         "avis": "Le conflit change d'échelle : ailleurs, Kalshi risquait de perdre les clients d'un État ; à New York, la demande telle qu'elle est écrite vise son siège. Et cette semaine, les juges fédéraux ont laissé les États décider. Tant que la Cour suprême des États-Unis ne tranche pas, c'est État par État que se dessine la carte de Kalshi.",
@@ -4997,7 +4988,7 @@ export const issues: Issue[] = [
       {
         "type": "liste",
         "items": [
-          "Et la crypto a ajouté ses propres ventes. Au même moment, les ETF bitcoin se vident (environ 1,8 Md$ retirés sur la semaine, d'après SoSoValue) et plus de 1,5 Md$ de paris à la hausse pris avec levier ont été liquidés en 24 heures. Ces ventes s'ajoutent à celles qui suivent la Bourse, d'où une baisse plus forte que celle du Nasdaq."
+          "Et la crypto a ajouté ses propres ventes. Au même moment, les ETF bitcoin américains se vident : 1,8 Md$ retirés du 16 au 20 novembre, dont 669 M$ le seul 20 novembre, leur pire journée du mois, et 4,7 Md$ depuis le 1er novembre. Ces ventes s'ajoutent à celles qui suivent la Bourse, d'où une baisse plus forte que celle du Nasdaq."
         ]
       },
       {
@@ -5013,14 +5004,14 @@ export const issues: Issue[] = [
           "type": "liste",
           "items": [
             "Il glisse avec le bitcoin : ses dividendes sont versés par une société dont l'actif principal est du bitcoin.",
-            "Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. Strategy y trouve aussi son compte : chaque STRC racheté supprime un dividende de 12 % par an, et, d'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.",
+            "Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. D'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.",
             "Ces rachats sont payés surtout en nouvelles actions : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente d'actions MSTR, ce qui dilue ses actionnaires ; le reste, de sa trésorerie.",
-            "Et maintenant, par la réserve : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à 1 Md$ vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à 3,73 Md$. D'après Strategy, ses dollars couvrent encore environ 3,4 ans de dividendes."
+            "Et maintenant, par la réserve : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à 1 Md$ vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à 3,73 Md$. D'après Strategy, avant ce transfert, ses dollars couvraient environ 3,4 ans de dividendes : c'est cette marge qui lui a permis de déplacer le milliard."
           ]
         },
         {
           "type": "avis",
-          "texte": "racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. Avec plus de trois ans de dividendes en caisse, rien ne presse. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée."
+          "texte": "racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. La marge reste large, rien ne presse ; mais elle vient de raccourcir. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée."
         },
         {
           "type": "p",
@@ -5046,7 +5037,7 @@ export const issues: Issue[] = [
     "protocole": {
       "nom": "Strata",
       "slug": "strata",
-      "bref": "Strata découpe un placement à rendement en deux jetons : une tranche senior, moins payée mais protégée en priorité, et une tranche junior, mieux payée, qui encaisse les pertes en premier. Le protocole propose sept placements, des dollars synthétiques au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$, et fonctionne depuis 2025.",
+      "bref": "Strata découpe un placement à rendement en deux jetons : une tranche senior, moins payée mais protégée en priorité, et une tranche junior, mieux payée, qui encaisse les pertes en premier. Le protocole propose sept placements, des dollars synthétiques au crédit immobilier américain. Il est développé par Frontera Labs, qui a levé 3 M$ en décembre 2025.",
       "etapes": [],
       "etapesCorps": [
         {
@@ -5188,7 +5179,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "D'après Strata, le srNUSD (tranche senior) a été réglé 0,63 $ par part, contre 0,54 $ pour le sNUSD détenu en direct. Le jrNUSD (tranche junior) a été ramené à zéro, d'après Merkle.Press."
+          "texte": "D'après Strata, le srNUSD (tranche senior) a été réglé 0,63 $ par part, contre 0,54 $ pour le sNUSD détenu en direct. Le jrNUSD (tranche junior) doit être ramené à zéro, d'après The Defiant."
         },
         {
           "type": "image",
@@ -5216,7 +5207,7 @@ export const issues: Issue[] = [
       "rendementCorps": [
         {
           "type": "p",
-          "texte": "Sur le marché USDe, le plus simple à comparer, au 23 novembre d'après DeFiLlama :"
+          "texte": "Sur le marché USDe, le plus simple à comparer, au 24 novembre d'après DeFiLlama :"
         },
         {
           "type": "liste",
@@ -5236,7 +5227,7 @@ export const issues: Issue[] = [
             "Marché",
             "Senior",
             "Junior",
-            "Couverture (au 23/11)"
+            "Couverture (au 24/11)"
           ],
           "lignes": [
             [
@@ -5253,27 +5244,33 @@ export const issues: Issue[] = [
             ],
             [
               "Midas mHYPER",
+              "6,3 %",
+              "environ 8 %",
+              "106 %"
+            ],
+            [
+              "Midas mM1-USD",
               "6,4 %",
-              "environ 7 %",
-              "120 %"
+              "9,2 %",
+              "353 %"
             ],
             [
               "Hastra PRIME",
-              "6,9 %",
-              "7,4 %",
-              "358 %"
+              "6,8 %",
+              "7,3 %",
+              "357 %"
             ],
             [
               "Plume nOPAL",
-              "8,4 %",
-              "10,6 %",
-              "454 %"
+              "8,7 %",
+              "11,0 %",
+              "453 %"
             ]
           ]
         },
         {
           "type": "p",
-          "texte": "Rendements annuels et dépôts au 23 novembre, d'après DeFiLlama ; couverture = dépôts totaux ÷ dépôts de la senior. DeFiLlama n'affiche pas de rendement pour mM1-USD (couverture 353 %) ; NUSD est fermé aux dépôts senior. Junior mHYPER : moyenne sur 30 jours (17,1 % au pic)."
+          "texte": "Rendements annuels et dépôts au 24 novembre, d'après DeFiLlama ; couverture = dépôts totaux ÷ dépôts de la senior. NUSD est fermé aux dépôts senior. Junior mHYPER : moyenne sur 30 jours (le taux du jour, sur 30 000 $ de dépôts, n'est pas représentatif)."
         },
         {
           "type": "p",
@@ -5310,7 +5307,7 @@ export const issues: Issue[] = [
           "sens": "eleve"
         }
       ],
-      "importance": "Strata a compté 276 M$ de dépôts en mars, d'après DeFiLlama ; il en reste 13,5 M$. Avec si peu d'argent en jeu, la couverture et les rendements de chaque marché peuvent bouger vite.",
+      "importance": "Strata a compté 276 M$ de dépôts en mars, d'après DeFiLlama ; il en reste 13,3 M$. Avec si peu d'argent en jeu, la couverture et les rendements de chaque marché peuvent bouger vite.",
       "importanceCorps": [
         {
           "type": "image",
@@ -5323,7 +5320,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "p",
-          "texte": "En ligne depuis début novembre, Mezzanine compte 6,4 M$ de dépôts sur Ethereum et Solana, d'après DeFiLlama. Il fonctionne sur le même modèle. Son premier marché porte sur Hastra PRIME, le même placement que le marché PRIME de Strata, avec un junior qui pèse 20 % du vault (le fonds commun où sont déposées les deux tranches) d'après son fondateur, soit une couverture de 125 %. Au 23 novembre, d'après DeFiLlama (un relevé sur quelques semaines d'existence) :"
+          "texte": "En ligne depuis fin octobre, Mezzanine compte 6,4 M$ de dépôts sur Ethereum et Solana, d'après DeFiLlama. Il fonctionne sur le même modèle. Son premier marché porte sur Hastra PRIME, le même placement que le marché PRIME de Strata, avec un junior qui pèse 20 % du vault (le fonds commun où sont déposées les deux tranches) d'après son fondateur, soit une couverture de 125 %. Au 23 novembre, d'après DeFiLlama (un relevé sur quelques semaines d'existence) :"
         },
         {
           "type": "liste",
@@ -5332,6 +5329,10 @@ export const issues: Issue[] = [
             "la senior de Mezzanine, environ 10,5 % ;",
             "son junior, environ 26 %."
           ]
+        },
+        {
+          "type": "p",
+          "texte": "Ces taux plus élevés viennent du levier : Mezzanine emprunte pour racheter du PRIME (environ 15 M$ empruntés pour 6,4 M$ de dépôts, d'après DeFiLlama), ce que Strata ne fait pas sur ce marché."
         },
         {
           "type": "avis",

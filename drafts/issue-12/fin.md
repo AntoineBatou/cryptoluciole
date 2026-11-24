@@ -18,12 +18,12 @@ Le STRC est l'action privilégiée de Strategy, la société cotée qui détient
 
 [liste]
 - **Il glisse avec le bitcoin** : ses dividendes sont versés par une société dont l'actif principal est du bitcoin.
-- **Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin** : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. Strategy y trouve aussi son compte : chaque STRC racheté supprime un dividende de 12 % par an, et, d'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.
+- **Strategy rachète quatre fois plus de STRC qu'elle n'achète de bitcoin** : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. D'après elle, ses rachats des derniers mois ont réduit ses dividendes annuels de 353 M$.
 - **Ces rachats sont payés surtout en nouvelles actions** : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente d'actions MSTR, ce qui dilue ses actionnaires ; le reste, de sa trésorerie.
-- **Et maintenant, par la réserve** : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à **1 Md$** vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à **3,73 Md$**. D'après Strategy, ses dollars couvrent encore environ **3,4 ans** de dividendes.
+- **Et maintenant, par la réserve** : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à **1 Md$** vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à **3,73 Md$**. D'après Strategy, avant ce transfert, ses dollars couvraient environ **3,4 ans** de dividendes : c'est cette marge qui lui a permis de déplacer le milliard.
 
 [avis]
-💡 **Notre avis** : racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. Avec plus de trois ans de dividendes en caisse, rien ne presse. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée.
+💡 **Notre avis** : racheter du STRC sous 100 $ n'est pas absurde, puisque chaque action rachetée supprime un dividende de 12 %. Mais pour défendre un cours, Strategy entame la marge de sécurité de son dividende, et ce coût grimpe quand le bitcoin baisse : il faut alors vendre plus d'actions MSTR, qui baissent avec lui. La marge reste large, rien ne presse ; mais elle vient de raccourcir. Le chiffre à suivre, ce n'est plus son stock de bitcoins, c'est cette durée.
 
 [source] Strategy, formulaires 8-K du 2, 9, 16 et 23 novembre 2026 (SEC EDGAR) · compte X de Strategy (23/11)
 
@@ -61,6 +61,7 @@ Chez Strata, tu choisirais quelle tranche : la senior, qui rapporte moins mais p
 - STRC à 96,01 $ « un mercredi » quand le BTC passe sous 63 000 $ : Yahoo Finance / BeInCrypto (« Is MicroStrategy's 12% Dividend Safe? ») [À VÉRIFIER la date : probablement le 18/11]. Dividende de décembre maintenu à 12 % (8-K du 16/11, d'après BeInCrypto) [À VÉRIFIER dans le 8-K].
 - Saylor, 19/11 : rachats tant que STRC < 100 $ (CryptoNews) [À VÉRIFIER source primaire].
 - Compte X de Strategy, 23/11 (x.com/Strategy/status/2124851021448908869) : « reduced credit outstanding by $2.9B in recent months, lowering annual dividends by $353M. Our USD Duration is now 3.4 years, so we reallocated $1B ». [À VÉRIFIER : définition de la « USD Duration » (actifs en dollars ÷ dividendes annuels ?) sur strategy.com.] Avant la réallocation : 3,73 + 1,0 ≈ 4,7 Md$ (si le milliard a été déplacé en entier).
+- Fact-check du 24/11 : « 3,4 ans » = niveau AVANT la réallocation (« USD Duration is now 3.4 years, so we reallocated $1B »). Après : non publié ; estimation du fact-checker ≈ 2,7 ans (3,73 ÷ ≈ 1,36 Md$ de charges annuelles), non écrite. Tweet lu seulement via l'extrait d'un moteur de recherche (X renvoie 402).
 - Phrase Saylor du 19/11 et STRC à 96 $ retirés (source secondaire, non datée).
 - Perte latente (75 446 $ de coût moyen) retirée du texte (vérificateur : pas reliée à la thèse).
 - La divergence de la veille (485 BTC / 228 M$ contre 457 BTC / 212 M$) : ce sont deux semaines différentes (16/11 et 23/11).
