@@ -19,6 +19,6 @@ et fait passer un chiffre d'un coup d'œil.
 
 ## Ajouts du 2026-11-24 (numéro 12)
 - **Tableau de comparaison** : `[tableau | compare]` dans le brouillon. `build_issue.py` met la dernière colonne (la nouveauté, la proposition) en or-luciole, l'en-tête de la première colonne en nuit, les libellés de lignes en petites capitales grises. Pour A contre B ou avant / après.
-- **Schéma de scénario** : exemple `drafts/issue-12/captures/weekend-tesla.html` (prix figé le week-end, seuil de liquidation pointillé rouge, saut du dimanche soir, health factor écrit aux deux points). Généré par un petit script Python, même rendu Chrome ×2.
+- **Schéma de scénario** : exemple `drafts/issue-12/captures/weekend-tesla-nuit.html` (prix figé le week-end, seuil de liquidation pointillé rouge, saut du dimanche soir, health factor écrit aux deux points). Généré par un petit script Python, même rendu Chrome ×2.
 - **Courbes base 100** : `drafts/issue-12/captures/btc-nasdaq.html` (deux séries, étiquettes en bout de courbe, point bas annoté).
 

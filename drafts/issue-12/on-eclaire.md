@@ -65,7 +65,7 @@ Aave mesure la santé d'un prêt avec un seul chiffre, le ***health factor*** : 
 - **Dimanche soir**, le prix reprend directement à **900 $** (−10 %). *Health factor* : 900 × 0,65 ÷ 600 = **0,975**, sous 1 : tu es liquidable dès la première mise à jour.
 - **Ce que tu perds** : la liquidation est partielle. D'après notre calcul, tu perds environ **15 $**, le bonus du liquidateur, et tu gardes le reste.
 
-[image | drafts/issue-12/captures/weekend-tesla.png | Le même exemple en image : le prix reste figé tout le week-end, puis saute sous le seuil d'un coup.]
+[image | drafts/issue-12/captures/weekend-tesla-nuit.png | Le même exemple en image : le prix reste figé tout le week-end, puis saute sous le seuil d'un coup.]
 
 [p]
 Tu aurais pu rembourser pendant le week-end, à condition de suivre l'action ailleurs (sur un perp, par exemple). Mais tu n'as jamais eu de prix intermédiaire, à 950 $ ou à 930 $, pour te signaler le danger. Avec de l'ETH, la même baisse de 10 % se serait faite par étapes, sous tes yeux, et ton *health factor* aurait baissé au fil des heures.

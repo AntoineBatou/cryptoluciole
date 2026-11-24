@@ -4713,7 +4713,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "image",
-          "src": "/numeros/12/weekend-tesla.png",
+          "src": "/numeros/12/weekend-tesla-nuit.png",
           "legende": "Le même exemple en image : le prix reste figé tout le week-end, puis saute sous le seuil d'un coup."
         },
         {
