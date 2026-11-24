@@ -13,12 +13,12 @@
 **Titre (proposition)** : ✦ Chainflip vidé d'environ 12,6 M$ par une faille commune à tous ses validateurs
 
 [p]
-Le 21 novembre 2026, environ **12,6 M$** ont été volés à Chainflip, un protocole d'échange entre blockchains (un *bridge*), concurrent de THORChain [À VÉRIFIER]. Comme lui, il échange des jetons natifs (du vrai BTC contre du vrai ETH, par exemple), sans passer par un jeton *wrapped*.
+Le 21 novembre 2026, environ **12,6 M$** ont été volés à Chainflip, un *bridge*, concurrent de THORChain [À VÉRIFIER].
 
 [st] **1. Un vault gardé par une centaine de validateurs**
 
 [p]
-Pour cela, Chainflip tient un *vault*, le portefeuille du protocole, sur chaque blockchain : une adresse sur Bitcoin, un contrat sur Ethereum, etc. Quand tu échanges du BTC contre de l'ETH, tu envoies tes BTC dans le vault Bitcoin, et le vault Ethereum t'envoie les ETH.
+Chainflip tient un *vault*, le portefeuille du protocole, sur chaque blockchain : une adresse sur Bitcoin, un contrat sur Ethereum, etc. Quand tu échanges du BTC contre de l'ETH, tu envoies tes BTC dans le vault Bitcoin, et le vault Ethereum t'envoie les ETH.
 
 [p]
 Personne ne détient la clé de ces vaults : elle est découpée en morceaux, répartis entre les [validateurs](https://www.cryptoluciole.com/glossaire/validateur) du réseau (jusqu'à 150), des opérateurs qui immobilisent des jetons FLIP pour obtenir leur place. Pour sortir des fonds, il faut qu'**environ 100 d'entre eux** signent ensemble. Pour voler un vault, il faudrait donc en corrompre les deux tiers en même temps.
@@ -80,7 +80,7 @@ La procureure générale de New York poursuit Kalshi et demande au juge de lui i
 [p]
 Comme Kalshi est installé à New York, il affirme qu'une telle interdiction le fermerait **dans tout le pays**. La procureure assure que ce n'est pas son but.
 
-[st] **2. Une semaine dans les tribunaux**
+[st] **2. Une semaine devant les tribunaux**
 
 [p]
 Comme en Louisiane, la CFTC est intervenue devant un juge fédéral pour bloquer l'action de l'État [À VÉRIFIER]. Trois décisions sont tombées en six jours :
