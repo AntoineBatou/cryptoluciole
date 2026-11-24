@@ -4904,41 +4904,41 @@ export const issues: Issue[] = [
       {
         "actif": "BTC",
         "nom": "Bitcoin",
-        "prix": "~59 900 $",
-        "var7j": "▼ −7,7 %",
+        "prix": "~60 000 $",
+        "var7j": "▼ −5,8 %",
         "sens": "down"
       },
       {
         "actif": "ETH",
         "nom": "Ether",
         "prix": "~1 680 $",
-        "var7j": "▼ −7,0 %",
+        "var7j": "▼ −5,6 %",
         "sens": "down"
       },
       {
         "actif": "SOL",
         "nom": "Solana",
-        "prix": "~69 $",
-        "var7j": "▼ −6,1 %",
+        "prix": "~70 $",
+        "var7j": "▼ −3,7 %",
         "sens": "down"
       },
       {
         "actif": "HYPE",
         "nom": "Hyperliquid",
         "prix": "~61 $",
-        "var7j": "▼ −11,5 %",
+        "var7j": "▼ −10,4 %",
         "sens": "down"
       },
       {
         "actif": "BNB",
         "nom": "",
-        "prix": "~548 $",
-        "var7j": "▼ −7,4 %",
+        "prix": "~549 $",
+        "var7j": "▼ −6,2 %",
         "sens": "down"
       }
     ],
     "cours7jLabel": "Depuis notre n°11 (7 jours)",
-    "coursHeure": "16h32",
+    "coursHeure": "18h58",
     "coursAvisCorps": [
       {
         "type": "st",
@@ -4946,7 +4946,7 @@ export const issues: Issue[] = [
       },
       {
         "type": "p",
-        "texte": "Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse américaine qui a donné le ton."
+        "texte": "Encore une semaine rouge : le bitcoin a perdu près de 6 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse américaine qui a donné le ton."
       },
       {
         "type": "image",
@@ -5003,7 +5003,7 @@ export const issues: Issue[] = [
         {
           "type": "liste",
           "items": [
-            "Un STRC sous 100 $ coupe une source d'argent : il baisse avec le bitcoin, puisque ses dividendes sont versés par une société dont l'actif principal est du bitcoin. Or Strategy ne vend pas de STRC neuf lorsque sa valeur est en dessous de 100 $. D'où les rachats, pour tenter de le faire remonter.",
+            "Un STRC sous 100 $ coupe une source d'argent : il baisse avec le bitcoin, puisque ses dividendes sont versés par une société dont l'actif principal est du bitcoin. Or Strategy ne vend pas de STRC sur le marché primaire lorsque sa valeur est en dessous de 100 $. D'où les rachats, pour tenter de le faire remonter.",
             "Strategy dépense quatre fois plus pour racheter du STRC que pour acheter du bitcoin : sur quatre semaines, 836 M$ contre 210 M$, d'après ses déclarations à la SEC. Le taux reste de 12 % par action ; c'est le total versé qui baisse, puisqu'une action rachetée ne touche plus de dividende : d'après Strategy, 353 M$ de dividendes annuels en moins grâce à ses rachats d'actions privilégiées des derniers mois.",
             "Ces rachats sont payés surtout en nouvelles actions : la semaine dernière, 147 M$ sur 212 M$ venaient de la vente de nouvelles actions MSTR (ses actions ordinaires, cotées en Bourse), ce qui dilue ses actionnaires ; le reste, de sa trésorerie.",
             "Et maintenant, par la réserve : Strategy garde une réserve en dollars pour payer les dividendes de ses actions privilégiées et les intérêts de sa dette. Le 23 novembre, son conseil a autorisé à en transférer jusqu'à 1 Md$ vers la trésorerie qui finance les rachats : la réserve passe d'environ 4,7 à 3,73 Md$. Avant ce transfert, ses dollars couvraient environ 3,4 ans de dividendes, d'après Strategy, qui juge cette marge suffisante pour en déplacer une partie."
@@ -5011,7 +5011,7 @@ export const issues: Issue[] = [
         },
         {
           "type": "avis",
-          "texte": "racheter du STRC sous 100 $ a du sens, puisque cela réduit les dividendes à verser. Mais pour soutenir ce cours, Strategy entame la réserve qui garantit justement ces dividendes, et ce soutien coûte plus cher quand le bitcoin baisse : il faut alors vendre davantage d'actions MSTR, qui baissent avec lui. La marge reste large, mais elle vient de raccourcir. Le chiffre à suivre n'est plus son stock de bitcoins : c'est le nombre d'années de dividendes qu'elle garde en caisse."
+          "texte": "racheter ses propres actions STRC sous 100 $ a du sens pour Strategy, puisque cela réduit les dividendes à verser. Mais pour soutenir ce cours, Strategy entame la réserve qui garantit justement ces dividendes, et ce soutien coûte plus cher quand le bitcoin baisse : il faut alors vendre davantage d'actions MSTR, qui baissent avec lui. La marge est large, mais elle vient de raccourcir. Le chiffre à suivre n'est plus son stock de bitcoins : c'est le nombre d'années de dividendes qu'elle garde en caisse."
         },
         {
           "type": "p",

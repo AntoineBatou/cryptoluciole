@@ -6,20 +6,20 @@
 
 | Actif | Nom | Prix | 7 jours |
 |---|---|---|---|
-| BTC | Bitcoin | ~59 900 $ | ▼ −7,7 % |
-| ETH | Ether | ~1 680 $ | ▼ −7,0 % |
-| SOL | Solana | ~69 $ | ▼ −6,1 % |
-| HYPE | Hyperliquid | ~61 $ | ▼ −11,5 % |
-| BNB | BNB | ~548 $ | ▼ −7,4 % |
+| BTC | Bitcoin | ~60 000 $ | ▼ −5,8 % |
+| ETH | Ether | ~1 680 $ | ▼ −5,6 % |
+| SOL | Solana | ~70 $ | ▼ −3,7 % |
+| HYPE | Hyperliquid | ~61 $ | ▼ −10,4 % |
+| BNB | BNB | ~549 $ | ▼ −6,2 % |
 
-`cours7jLabel` : « Depuis notre n°11 (7 jours) » · `coursHeure` : « 16h32 » [À RAFRAÎCHIR]
+`cours7jLabel` : « Depuis notre n°11 (7 jours) » · `coursHeure` : « 18h58 »
 
 ---
 
 [st] Ce qui a fait bouger les prix
 
 [p]
-Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse américaine qui a donné le ton.
+Encore une semaine rouge : le bitcoin a perdu près de 6 % et tourne autour de 60 000 $. La semaine dernière, on pointait l'inflation et la Fed ; cette semaine, c'est la Bourse américaine qui a donné le ton.
 
 [image | drafts/issue-12/captures/btc-nasdaq.png | Bitcoin et Nasdaq 100 depuis le 1er octobre (base 100)]
 
@@ -45,7 +45,8 @@ Encore une semaine rouge : le bitcoin a perdu près de 8 % et tourne autour de 6
 ## Notes (hors texte)
 
 ### Sources
-- Cours : DeFiLlama coins API, 24/11 16 h 32 (J−7 = 17/11 16 h 32). BTC 59 915,5 / 64 930,9 = −7,7 % ; ETH 1 680,2 / 1 806,1 = −7,0 % ; SOL 68,96 / 73,41 = −6,1 % ; HYPE 61,23 / 69,19 = −11,5 % ; BNB 547,6 / 591,5 = −7,4 %.
+- Cours d'envoi : DeFiLlama, 24/11 18 h 58 (J−7 = 17/11 18 h 58) : BTC 60 028 / 63 712 = −5,8 % ; ETH 1 683,6 / 1 783,7 = −5,6 % ; SOL 69,56 / 72,21 = −3,7 % ; HYPE 60,89 / 67,93 = −10,4 % ; BNB 549,4 / 585,9 = −6,2 %.
+- Cours initiaux : DeFiLlama coins API, 24/11 16 h 32 (J−7 = 17/11 16 h 32). BTC 59 915,5 / 64 930,9 = −7,7 % ; ETH 1 680,2 / 1 806,1 = −7,0 % ; SOL 68,96 / 73,41 = −6,1 % ; HYPE 61,23 / 69,19 = −11,5 % ; BNB 547,6 / 591,5 = −7,4 %.
 - Graphique et corrélation : clôtures quotidiennes Yahoo Finance (BTC-USD, ^NDX), relevées le 23/11 ; base 100 au 01/10 ; creux du 20/11 : Nasdaq 100 82,1 (−17,9 %), BTC 69,3 (−30,7 %). Corrélation des variations quotidiennes : 0,71 (30 séances), 0,66 (60), 0,46 (≈ 250). Calcul CryptoLuciole.
 - Pires séances de novembre (Yahoo) : 05/11 NDX −6,36 %, S&P −4,36 %, BTC −5,55 % ; 20/11 NDX −5,61 %, BTC −5,01 %. « Pire depuis mars 2020 » : OAK (« Why Did Wall Street Just Have Its Worst Session Since Covid? », 06/11) [À VÉRIFIER source primaire]. Cause IA : OAK, The DeFi Investor (05/11) [À VÉRIFIER].
 - ETF bitcoin : −1,79 Md$ sur la semaine (SoSoValue via The Block, relevé de la veille du 23/11) [À VÉRIFIER : semaine exacte, et reprendre la semaine précédant l'envoi].
